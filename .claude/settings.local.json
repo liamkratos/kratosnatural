@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(git --version)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/liamkrassenburg/.nvm/versions/**)",
+      "Read(//Users/liamkrassenburg/.volta/**)",
+      "Read(//usr/local/n/versions/**)",
+      "Bash(echo \"exit=$?\")",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(command -v brew)",
+      "Bash(command -v corepack)",
+      "Read(//usr/local/**)",
+      "Bash(cd \"/Users/liamkrassenburg/kratos natural\" && mkdir -p src/app/\\\\[locale\\\\]/articles/\\\\[slug\\\\] src/components src/lib src/i18n src/content/en src/content/nl messages && ls -R src | head -40)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c 'user.name=Liam Krassenburg' -c user.email=liamkrassenburg@gmail.com commit -q -m ' *)"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "Site": {
+    "name": "Kratos Natural",
+    "tagline": "Natural supplements, honestly made.",
+    "description": "Kratos Natural makes clean, third-party tested natural supplements with full ingredient transparency."
+  },
+  "Nav": {
+    "home": "Home",
+    "articles": "Articles",
+    "shop": "Shop",
+    "about": "About"
+  },
+  "Home": {
+    "title": "Natural supplements, honestly made",
+    "intro": "No proprietary blends, no filler, no marketing theatre. Every batch is third-party tested and the results are published.",
+    "cta": "Read our articles"
+  },
+  "Articles": {
+    "title": "Articles",
+    "intro": "Research notes and plain-language guides on ingredients, dosing and sourcing.",
+    "readMore": "Read article",
+    "empty": "No articles published yet.",
+    "publishedOn": "Published on {date}",
+    "readingTime": "{minutes} min read"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "en": "English",
+    "nl": "Nederlands"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you were looking for does not exist.",
+    "back": "Back to home"
+  }
+}

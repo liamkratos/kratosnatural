@@ -1,0 +1,36 @@
+{
+  "Site": {
+    "name": "Kratos Natural",
+    "tagline": "Natuurlijke supplementen, eerlijk gemaakt.",
+    "description": "Kratos Natural maakt zuivere, extern geteste natuurlijke supplementen met volledige transparantie over ingrediënten."
+  },
+  "Nav": {
+    "home": "Home",
+    "articles": "Artikelen",
+    "shop": "Shop",
+    "about": "Over ons"
+  },
+  "Home": {
+    "title": "Natuurlijke supplementen, eerlijk gemaakt",
+    "intro": "Geen geheime mengsels, geen vulstoffen, geen marketingpraat. Elke batch wordt extern getest en de resultaten publiceren we.",
+    "cta": "Lees onze artikelen"
+  },
+  "Articles": {
+    "title": "Artikelen",
+    "intro": "Onderzoeksnotities en heldere gidsen over ingrediënten, dosering en herkomst.",
+    "readMore": "Lees artikel",
+    "empty": "Nog geen artikelen gepubliceerd.",
+    "publishedOn": "Gepubliceerd op {date}",
+    "readingTime": "{minutes} min lezen"
+  },
+  "LocaleSwitcher": {
+    "label": "Taal wijzigen",
+    "en": "English",
+    "nl": "Nederlands"
+  },
+  "NotFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zocht bestaat niet.",
+    "back": "Terug naar home"
+  }
+}
