@@ -1,6 +1,5 @@
 import type {ReactNode} from 'react';
 import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -10,9 +9,6 @@ import {organizationSchema, websiteSchema} from '@/lib/schema';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
-import '../globals.css';
-
-const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -34,6 +30,10 @@ export async function generateMetadata({
   });
 }
 
+/**
+ * Locale layout. The document shell lives in the root layout (`app/layout.tsx`),
+ * so this renders only the i18n provider and the page chrome.
+ */
 export default async function LocaleLayout({
   children,
   params: {locale}
@@ -50,20 +50,16 @@ export default async function LocaleLayout({
   const t = await getTranslations({locale, namespace: 'Site'});
 
   return (
-    <html lang={locale} className={inter.variable}>
-      <body className="flex min-h-screen flex-col font-sans">
-        <NextIntlClientProvider messages={messages}>
-          <Header locale={locale as Locale} />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
-        <JsonLd
-          schema={[
-            organizationSchema(locale as Locale),
-            websiteSchema(locale as Locale, t('name'))
-          ]}
-        />
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <Header locale={locale as Locale} />
+      <main className="flex-1">{children}</main>
+      <Footer />
+      <JsonLd
+        schema={[
+          organizationSchema(locale as Locale),
+          websiteSchema(locale as Locale, t('name'))
+        ]}
+      />
+    </NextIntlClientProvider>
   );
 }
