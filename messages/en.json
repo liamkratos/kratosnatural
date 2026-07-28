@@ -23,6 +23,18 @@
     "publishedOn": "Published on {date}",
     "readingTime": "{minutes} min read"
   },
+  "Article": {
+    "keyFindings": "Key findings",
+    "tableOfContents": "Contents",
+    "sources": "Sources",
+    "byAuthor": "By {author}",
+    "updatedOn": "Updated {date}",
+    "viewSource": "View source",
+    "backToText": "Back to reference {number} in the text",
+    "sourceCount": "{count, plural, one {# source} other {# sources}}",
+    "basedOn": "Based on {sources, plural, one {# cited source} other {# cited sources}}.",
+    "basedOnWithStudies": "Based on {studies, plural, one {# study} other {# studies}}, {sources, plural, one {# cited source} other {# cited sources}}."
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "en": "English",

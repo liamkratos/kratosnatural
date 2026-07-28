@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {isLocale} from '@/i18n/routing';
-import {getArticles} from '@/lib/content';
+import {getArticles} from '@/lib/mdx';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import ArticleCard from '@/components/ArticleCard';

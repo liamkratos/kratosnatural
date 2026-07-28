@@ -23,6 +23,18 @@
     "publishedOn": "Gepubliceerd op {date}",
     "readingTime": "{minutes} min lezen"
   },
+  "Article": {
+    "keyFindings": "Belangrijkste bevindingen",
+    "tableOfContents": "Inhoud",
+    "sources": "Bronnen",
+    "byAuthor": "Door {author}",
+    "updatedOn": "Bijgewerkt {date}",
+    "viewSource": "Bekijk bron",
+    "backToText": "Terug naar verwijzing {number} in de tekst",
+    "sourceCount": "{count, plural, one {# bron} other {# bronnen}}",
+    "basedOn": "Gebaseerd op {sources, plural, one {# geciteerde bron} other {# geciteerde bronnen}}.",
+    "basedOnWithStudies": "Gebaseerd op {studies, plural, one {# studie} other {# studies}}, {sources, plural, one {# geciteerde bron} other {# geciteerde bronnen}}."
+  },
   "LocaleSwitcher": {
     "label": "Taal wijzigen",
     "en": "English",

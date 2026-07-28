@@ -20,7 +20,7 @@ export function getStripe(): Stripe {
   }
 
   client = new Stripe(secretKey, {
-    apiVersion: '2024-11-20.acacia',
+    apiVersion: '2025-02-24.acacia',
     appInfo: {name: 'Kratos Natural', url: 'https://kratosnatural.com'}
   });
 

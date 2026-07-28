@@ -1,4 +1,5 @@
-import type {Article} from '@/lib/content';
+import type {Article, Citation} from '@/lib/mdx';
+import {citationUrl} from '@/lib/mdx';
 import type {Locale} from '@/i18n/routing';
 import {absoluteUrl} from '@/lib/seo';
 
@@ -34,29 +35,123 @@ export function websiteSchema(locale: Locale, name: string): JsonLdObject {
   };
 }
 
+/**
+ * One citation as a ScholarlyArticle.
+ *
+ * DOI and PMID are emitted as PropertyValue identifiers rather than being
+ * buried in the URL, so a consumer can resolve the source without parsing
+ * strings — this is what makes a claim independently checkable.
+ */
+function citationNode(citation: Citation): JsonLdObject {
+  const identifiers: JsonLdObject[] = [];
+  if (citation.doi) {
+    identifiers.push({
+      '@type': 'PropertyValue',
+      propertyID: 'DOI',
+      value: citation.doi.replace(/^(https?:\/\/)?(dx\.)?doi\.org\//, '')
+    });
+  }
+  if (citation.pmid) {
+    identifiers.push({
+      '@type': 'PropertyValue',
+      propertyID: 'PMID',
+      value: citation.pmid
+    });
+  }
+
+  return {
+    '@type': 'ScholarlyArticle',
+    name: citation.text,
+    url: citationUrl(citation) ?? undefined,
+    identifier: identifiers.length ? identifiers : undefined
+  };
+}
+
 export function articleSchema(article: Article, pathname: string): JsonLdObject {
   const url = absoluteUrl(article.locale, pathname);
 
   return {
-    '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${url}#article`,
     headline: article.title,
     description: article.description,
-    datePublished: article.date,
-    dateModified: article.updated ?? article.date,
+    abstract: article.description,
+    datePublished: article.publishDate,
+    dateModified: article.updatedDate ?? article.publishDate,
     inLanguage: article.locale,
-    mainEntityOfPage: {'@type': 'WebPage', '@id': url},
+    mainEntityOfPage: {'@id': `${url}#webpage`},
     url,
+    wordCount: article.body.trim().split(/\s+/).filter(Boolean).length,
     image: article.image
       ? absoluteUrl(article.locale, article.image)
       : undefined,
-    author: {
-      '@type': article.author ? 'Person' : 'Organization',
-      name: article.author ?? 'Kratos Natural',
-      ...(article.author ? {} : {'@id': ORGANIZATION_ID})
-    },
+    author: {'@type': 'Person', name: article.author},
     publisher: {'@id': ORGANIZATION_ID},
-    keywords: article.tags?.length ? article.tags.join(', ') : undefined
+    keywords: article.tags?.length ? article.tags.join(', ') : undefined,
+    citation: article.citations.length
+      ? article.citations.map(citationNode)
+      : undefined
+  };
+}
+
+/**
+ * MedicalWebPage for the same URL.
+ *
+ * `lastReviewed` and the citation count are the signals that distinguish a
+ * reviewed, sourced health page from generic content.
+ */
+export function medicalWebPageSchema(
+  article: Article,
+  pathname: string
+): JsonLdObject {
+  const url = absoluteUrl(article.locale, pathname);
+
+  return {
+    '@type': 'MedicalWebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: article.title,
+    description: article.description,
+    inLanguage: article.locale,
+    lastReviewed: article.updatedDate ?? article.publishDate,
+    datePublished: article.publishDate,
+    dateModified: article.updatedDate ?? article.publishDate,
+    isPartOf: {'@id': `${absoluteUrl(article.locale)}/#website`},
+    audience: {'@type': 'MedicalAudience', audienceType: 'Patient'},
+    // Key findings are the page's primary entity: each is a standalone,
+    // quotable conclusion backed by the citations below.
+    mainEntity: article.keyFindings.length
+      ? {
+          '@type': 'ItemList',
+          name: 'Key findings',
+          numberOfItems: article.keyFindings.length,
+          itemListElement: article.keyFindings.map((finding, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: finding
+          }))
+        }
+      : undefined,
+    citation: article.citations.length
+      ? article.citations.map(citationNode)
+      : undefined
+  };
+}
+
+/**
+ * Article + MedicalWebPage as a single @graph, cross-linked by @id.
+ * One <script> per page keeps the entity relationships explicit.
+ */
+export function articlePageSchema(
+  article: Article,
+  pathname: string
+): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      articleSchema(article, pathname),
+      medicalWebPageSchema(article, pathname)
+    ]
   };
 }
 

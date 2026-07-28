@@ -2,13 +2,16 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
-import {getAllArticleParams, getArticle} from '@/lib/content';
+import {getAllArticleParams, getArticle} from '@/lib/mdx';
 import {buildMetadata} from '@/lib/seo';
-import {articleSchema, breadcrumbSchema} from '@/lib/schema';
+import {articlePageSchema, breadcrumbSchema} from '@/lib/schema';
 import {formatDate} from '@/lib/utils';
 import Container from '@/components/Container';
 import JsonLd from '@/components/JsonLd';
 import Mdx from '@/components/Mdx';
+import KeyFindings from '@/components/KeyFindings';
+import TableOfContents from '@/components/TableOfContents';
+import Citations from '@/components/Citations';
 
 type PageParams = {params: {locale: string; slug: string}};
 
@@ -31,8 +34,8 @@ export async function generateMetadata({
     pathname: `/articles/${slug}`,
     image: article.image,
     type: 'article',
-    publishedTime: article.date,
-    modifiedTime: article.updated ?? article.date,
+    publishedTime: article.publishDate,
+    modifiedTime: article.updatedDate ?? article.publishDate,
     noIndex: article.draft
   });
 }
@@ -44,34 +47,66 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
   const article = await getArticle(locale, slug);
   if (!article) notFound();
 
-  const t = await getTranslations('Articles');
+  const t = await getTranslations('Article');
+  const tArticles = await getTranslations('Articles');
   const pathname = `/articles/${slug}`;
 
   return (
     <Container className="py-16">
       <article>
-        <h1 className="text-3xl font-semibold tracking-tight text-kratos-900">
-          {article.title}
-        </h1>
+        <header>
+          <h1 className="text-3xl font-semibold tracking-tight text-kratos-900">
+            {article.title}
+          </h1>
 
-        <p className="mt-3 text-sm text-kratos-500">
-          <time dateTime={article.date}>
-            {t('publishedOn', {date: formatDate(article.date, locale)})}
-          </time>
-          {' · '}
-          {t('readingTime', {minutes: article.readingTimeMinutes})}
-        </p>
+          {/* Stated up front so the claim's provenance is visible without
+              scrolling: who wrote it, when it was last reviewed, how many
+              sources back it. */}
+          <p className="mt-4 text-sm text-kratos-500">
+            <span>{t('byAuthor', {author: article.author})}</span>
+            {' · '}
+            <time dateTime={article.publishDate}>
+              {tArticles('publishedOn', {
+                date: formatDate(article.publishDate, locale)
+              })}
+            </time>
+            {article.updatedDate && (
+              <>
+                {' · '}
+                <time dateTime={article.updatedDate}>
+                  {t('updatedOn', {
+                    date: formatDate(article.updatedDate, locale)
+                  })}
+                </time>
+              </>
+            )}
+            {' · '}
+            {tArticles('readingTime', {minutes: article.readingTimeMinutes})}
+          </p>
+
+          <p className="mt-6 text-lg text-kratos-700">{article.description}</p>
+        </header>
+
+        <KeyFindings
+          findings={article.keyFindings}
+          studyCount={article.studyCount}
+          citationCount={article.citations.length}
+        />
+
+        <TableOfContents entries={article.toc} />
 
         <div className="mt-10">
-          <Mdx source={article.body} />
+          <Mdx source={article.body} citations={article.citations} />
         </div>
+
+        <Citations citations={article.citations} />
       </article>
 
       <JsonLd
         schema={[
-          articleSchema(article, pathname),
+          articlePageSchema(article, pathname),
           breadcrumbSchema(locale, [
-            {name: t('title'), pathname: '/articles'},
+            {name: tArticles('title'), pathname: '/articles'},
             {name: article.title, pathname}
           ])
         ]}
