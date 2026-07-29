@@ -1,9 +1,22 @@
 import type {ReactNode} from 'react';
-import {Inter} from 'next/font/google';
+import {Covered_By_Your_Grace, IBM_Plex_Mono, Inter} from 'next/font/google';
 import {getLocale} from 'next-intl/server';
 import './globals.css';
 
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
+
+// Display face. Ships a single weight; used only at large sizes.
+const coveredByYourGrace = Covered_By_Your_Grace({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-display'
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono'
+});
 
 /**
  * Root layout — the only place that renders <html>/<body>.
@@ -19,7 +32,10 @@ export default async function RootLayout({children}: {children: ReactNode}) {
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${coveredByYourGrace.variable} ${ibmPlexMono.variable}`}
+    >
       <body className="flex min-h-screen flex-col font-sans">{children}</body>
     </html>
   );

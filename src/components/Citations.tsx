@@ -33,7 +33,7 @@ export default function Citations({citations}: {citations: Citation[]}) {
             <li
               key={number}
               id={`source-${number}`}
-              className="flex gap-3 text-sm leading-relaxed text-kratos-700 target:bg-kratos-50"
+              className="flex gap-3 text-left text-sm leading-relaxed text-kratos-700 target:bg-kratos-50"
             >
               <span className="shrink-0 font-medium text-kratos-900">
                 {number}.

@@ -1,23 +1,31 @@
 {
   "Site": {
     "name": "Kratos Natural",
-    "tagline": "Natural supplements, honestly made.",
-    "description": "Kratos Natural makes clean, third-party tested natural supplements with full ingredient transparency."
+    "tagline": "Natural products, backed by published research.",
+    "description": "Kratos Natural sells natural products — Himalayan salt lamps, infrared bulbs and more — and publishes systematic reviews and meta-analyses of the evidence behind them.",
+    "announcement": "Slow down your aging process with proven methods"
   },
   "Nav": {
     "home": "Home",
-    "articles": "Articles",
+    "articles": "Research",
     "shop": "Shop",
-    "about": "About"
+    "about": "About",
+    "account": "Account"
   },
   "Home": {
-    "title": "Natural supplements, honestly made",
-    "intro": "No proprietary blends, no filler, no marketing theatre. Every batch is third-party tested and the results are published.",
-    "cta": "Read our articles"
+    "title": "Natural products, backed by published research",
+    "intro": "Himalayan salt lamps, infrared bulbs and other natural products, alongside systematic reviews and meta-analyses of what the literature actually shows.",
+    "cta": "Read our articles",
+    "stat1": "Every review built from systematic reviews and meta-analyses, not press releases.",
+    "stat2": "Full specifications published for every product we sell.",
+    "stat3": "Claims we cannot trace to an indexed, published source.",
+    "tagline": "Aging can't be stopped (yet), it can be slowed.",
+    "ctaShop": "Visit the shop",
+    "ctaLearn": "Start learning"
   },
   "Articles": {
-    "title": "Articles",
-    "intro": "Research notes and plain-language guides on ingredients, dosing and sourcing.",
+    "title": "Research",
+    "intro": "Systematic reviews and meta-analyses, read in full and reported with the numbers intact.",
     "readMore": "Read article",
     "empty": "No articles published yet.",
     "publishedOn": "Published on {date}",
@@ -44,5 +52,71 @@
     "title": "Page not found",
     "description": "The page you were looking for does not exist.",
     "back": "Back to home"
+  },
+  "Footer": {
+    "newsletterTitle": "Free longevity e-book",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com",
+    "subscribe": "Join mailinglist",
+    "stayConnected": "Stay connected",
+    "policies": "Terms and policies",
+    "privacy": "Privacy policy",
+    "refund": "Refund policy",
+    "terms": "Terms of service",
+    "shipping": "Shipping policy",
+    "contact": "Contact details",
+    "legal": "Legal notice",
+    "cookies": "Cookie preferences",
+    "rights": "All rights reserved.",
+    "email": "info@kratosnatural.com"
+  },
+  "Account": {
+    "title": "Your account",
+    "signInTitle": "Sign in",
+    "signInIntro": "Enter your email and we'll send you a sign-in link. No password needed.",
+    "emailLabel": "Email",
+    "send": "Send link",
+    "checkEmailTitle": "Check your email",
+    "checkEmailIntro": "If that address has ordered from us, a sign-in link is on its way. It expires in 10 minutes.",
+    "expired": "That link has expired. Request a new one.",
+    "signOut": "Sign out",
+    "signedInAs": "Signed in as {email}",
+    "orders": "Your orders",
+    "noOrders": "No orders yet.",
+    "orderRef": "Order {reference}",
+    "track": "Track parcel",
+    "returns": "Returns",
+    "returnsIntro": "Fourteen days to change your mind, counted from the day your parcel arrives.",
+    "state_processing": "Processing",
+    "state_shipped": "Shipped",
+    "state_delivered": "Delivered",
+    "state_cancelled": "Cancelled",
+    "state_refunded": "Refunded",
+    "step1Title": "Tell us within 14 days",
+    "step1Body": "Email us your order reference and what you're sending back.",
+    "step2Title": "Pack it as it arrived",
+    "step2Body": "Unused and in its original packaging, with any seals intact.",
+    "step3Title": "Send it with PostNL or DHL",
+    "step3Body": "We'll email you a return label. Keep the drop-off receipt until the refund lands.",
+    "step4Title": "Refund within 14 days",
+    "step4Body": "Paid back to the card or account you ordered with, once we've received the parcel."
+  },
+  "Shop": {
+    "title": "Shop",
+    "intro": "Natural products, with the specifications published.",
+    "empty": "Nothing in the shop yet.",
+    "buy": "Buy now",
+    "inclVat": "incl. VAT",
+    "exclVat": "excl. VAT",
+    "photoComingSoon": "Photo coming soon",
+    "priceUnavailable": "Price unavailable",
+    "specs": "Specifications",
+    "specsComingSoon": "Full specifications are being finalised.",
+    "checkoutError": "Checkout could not be started. Please try again.",
+    "unavailable": "Not available",
+    "successTitle": "Thank you for your order",
+    "successIntro": "A confirmation is on its way to your email. You can follow your delivery in your account.",
+    "viewAccount": "View my orders",
+    "backToShop": "Back to the shop"
   }
 }

@@ -57,7 +57,7 @@ export default function Mdx({
   };
 
   return (
-    <div className="prose prose-neutral max-w-none prose-headings:tracking-tight prose-a:text-kratos-700">
+    <div className="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-kratos-700">
       <MDXRemote
         source={source}
         components={components}

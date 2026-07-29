@@ -1,23 +1,31 @@
 {
   "Site": {
     "name": "Kratos Natural",
-    "tagline": "Natuurlijke supplementen, eerlijk gemaakt.",
-    "description": "Kratos Natural maakt zuivere, extern geteste natuurlijke supplementen met volledige transparantie over ingrediënten."
+    "tagline": "Natuurlijke producten, onderbouwd met gepubliceerd onderzoek.",
+    "description": "Kratos Natural verkoopt natuurlijke producten — Himalaya-zoutlampen, infraroodlampen en meer — en publiceert systematische reviews en meta-analyses van het onderliggende bewijs.",
+    "announcement": "Vertraag uw verouderingsproces met onze bewezen methoden"
   },
   "Nav": {
     "home": "Home",
-    "articles": "Artikelen",
+    "articles": "Onderzoek",
     "shop": "Shop",
-    "about": "Over ons"
+    "about": "Over ons",
+    "account": "Account"
   },
   "Home": {
-    "title": "Natuurlijke supplementen, eerlijk gemaakt",
-    "intro": "Geen geheime mengsels, geen vulstoffen, geen marketingpraat. Elke batch wordt extern getest en de resultaten publiceren we.",
-    "cta": "Lees onze artikelen"
+    "title": "Natuurlijke producten, onderbouwd met gepubliceerd onderzoek",
+    "intro": "Himalaya-zoutlampen, infraroodlampen en andere natuurlijke producten, naast systematische reviews en meta-analyses van wat de literatuur werkelijk laat zien.",
+    "cta": "Lees onze artikelen",
+    "stat1": "Elke review opgebouwd uit systematische reviews en meta-analyses, niet uit persberichten.",
+    "stat2": "Volledige specificaties gepubliceerd bij elk product dat we verkopen.",
+    "stat3": "Beweringen die we niet kunnen herleiden tot een geïndexeerde, gepubliceerde bron.",
+    "tagline": "Veroudering stoppen kan (nog) niet, vertragen wel!",
+    "ctaShop": "Bezoek de shop",
+    "ctaLearn": "Begin met leren"
   },
   "Articles": {
-    "title": "Artikelen",
-    "intro": "Onderzoeksnotities en heldere gidsen over ingrediënten, dosering en herkomst.",
+    "title": "Onderzoek",
+    "intro": "Systematische reviews en meta-analyses, volledig gelezen en gerapporteerd met de cijfers intact.",
     "readMore": "Lees artikel",
     "empty": "Nog geen artikelen gepubliceerd.",
     "publishedOn": "Gepubliceerd op {date}",
@@ -44,5 +52,71 @@
     "title": "Pagina niet gevonden",
     "description": "De pagina die je zocht bestaat niet.",
     "back": "Terug naar home"
+  },
+  "Footer": {
+    "newsletterTitle": "Gratis longevity e-book",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "jouw@email.nl",
+    "subscribe": "Word lid",
+    "stayConnected": "Stay connected",
+    "policies": "Voorwaarden en beleid",
+    "privacy": "Privacybeleid",
+    "refund": "Terugbetalingsbeleid",
+    "terms": "Algemene voorwaarden",
+    "shipping": "Verzendbeleid",
+    "contact": "Contactgegevens",
+    "legal": "Wettelijke kennisgeving",
+    "cookies": "Cookievoorkeuren",
+    "rights": "Alle rechten voorbehouden.",
+    "email": "info@kratosnatural.com"
+  },
+  "Account": {
+    "title": "Jouw account",
+    "signInTitle": "Inloggen",
+    "signInIntro": "Vul je e-mailadres in en we sturen je een inloglink. Geen wachtwoord nodig.",
+    "emailLabel": "E-mail",
+    "send": "Stuur link",
+    "checkEmailTitle": "Check je e-mail",
+    "checkEmailIntro": "Als er met dit adres is besteld, is er een inloglink onderweg. Deze verloopt over 10 minuten.",
+    "expired": "Deze link is verlopen. Vraag een nieuwe aan.",
+    "signOut": "Uitloggen",
+    "signedInAs": "Ingelogd als {email}",
+    "orders": "Jouw bestellingen",
+    "noOrders": "Nog geen bestellingen.",
+    "orderRef": "Bestelling {reference}",
+    "track": "Volg pakket",
+    "returns": "Retourneren",
+    "returnsIntro": "Veertien dagen bedenktijd, gerekend vanaf de dag dat je pakket aankomt.",
+    "state_processing": "In behandeling",
+    "state_shipped": "Verzonden",
+    "state_delivered": "Bezorgd",
+    "state_cancelled": "Geannuleerd",
+    "state_refunded": "Terugbetaald",
+    "step1Title": "Meld het binnen 14 dagen",
+    "step1Body": "Mail ons je bestelnummer en wat je terugstuurt.",
+    "step2Title": "Verpak het zoals het aankwam",
+    "step2Body": "Ongebruikt en in de originele verpakking, met zegels intact.",
+    "step3Title": "Verstuur met PostNL of DHL",
+    "step3Body": "We mailen je een retourlabel. Bewaar het afgiftebewijs tot de terugbetaling binnen is.",
+    "step4Title": "Terugbetaling binnen 14 dagen",
+    "step4Body": "Terug op de kaart of rekening waarmee je betaalde, zodra we het pakket hebben ontvangen."
+  },
+  "Shop": {
+    "title": "Shop",
+    "intro": "Natuurlijke producten, met de specificaties erbij gepubliceerd.",
+    "empty": "Nog niets in de shop.",
+    "buy": "Nu kopen",
+    "inclVat": "incl. btw",
+    "exclVat": "excl. btw",
+    "photoComingSoon": "Foto volgt",
+    "priceUnavailable": "Prijs niet beschikbaar",
+    "specs": "Specificaties",
+    "specsComingSoon": "Volledige specificaties worden nog afgerond.",
+    "checkoutError": "Afrekenen kon niet worden gestart. Probeer het opnieuw.",
+    "unavailable": "Niet beschikbaar",
+    "successTitle": "Bedankt voor je bestelling",
+    "successIntro": "Een bevestiging is onderweg naar je e-mail. Je bestelling volg je in je account.",
+    "viewAccount": "Bekijk mijn bestellingen",
+    "backToShop": "Terug naar de shop"
   }
 }

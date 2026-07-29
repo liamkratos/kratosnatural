@@ -10,6 +10,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        /**
+         * Brand tokens.
+         *
+         * `pink` is an accent for dark surfaces: #FEB9FF on #0A0A0A passes
+         * WCAG AA comfortably, but on white it lands around 1.4:1, so it must
+         * not be used for body copy on light backgrounds. Use `ink` there.
+         */
+        black: '#0A0A0A',
+        white: '#FFFFFF',
+        pink: '#FEB9FF',
+        ink: '#151515',
+        cream: '#F7F5F3',
+
+        // Superseded palette, still referenced by the existing components.
+        // Being migrated page by page.
         kratos: {
           50: '#f4f7f4',
           100: '#e3ebe3',
@@ -20,7 +35,12 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        // Handwriting display face: logo wordmark and large hero headings
+        // only, in white/cream. Too thin to carry pink or small sizes.
+        display: ['var(--font-display)', 'ui-serif', 'cursive'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Figures, data and source references.
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
       }
     }
   },

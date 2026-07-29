@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
@@ -55,7 +56,7 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
     <Container className="py-16">
       <article>
         <header>
-          <h1 className="text-3xl font-semibold tracking-tight text-kratos-900">
+          <h1 className="text-3xl font-bold tracking-tight text-kratos-900">
             {article.title}
           </h1>
 
@@ -85,6 +86,19 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
           </p>
 
           <p className="mt-6 text-lg text-kratos-700">{article.description}</p>
+
+          {article.image && (
+            <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[20px] bg-ink/5">
+              <Image
+                src={article.image}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 768px) 768px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
         </header>
 
         <KeyFindings

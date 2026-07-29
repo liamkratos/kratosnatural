@@ -36,14 +36,17 @@ export default async function ArticlesPage({
 
   return (
     <Container className="py-16">
-      <h1 className="text-3xl font-semibold tracking-tight text-kratos-900">
+      <h1
+        className="whitespace-nowrap font-display font-bold uppercase leading-tight"
+        style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
+      >
         {t('title')}
       </h1>
-      <p className="mt-4 text-kratos-700">{t('intro')}</p>
+      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-ink/70 sm:text-2xl">{t('intro')}</p>
 
       <div className="mt-10">
         {articles.length === 0 ? (
-          <p className="text-kratos-500">{t('empty')}</p>
+          <p className="font-display text-xl uppercase text-ink/60">{t('empty')}</p>
         ) : (
           articles.map((article) => (
             <ArticleCard key={article.slug} article={article} />

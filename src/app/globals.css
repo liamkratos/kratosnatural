@@ -8,6 +8,18 @@
   }
 
   body {
-    @apply bg-white text-kratos-900 antialiased;
+    @apply bg-white text-center text-kratos-900 antialiased;
+  }
+
+  /*
+   * Long-form article prose stays left-aligned. Centring 1,700 words of
+   * research copy — with tables, bullet lists, numbered citations and a source
+   * list — breaks the reading rhythm and makes list items impossible to scan,
+   * because every line starts at a different x position. Everything outside
+   * `.prose` follows the centred site style.
+   */
+  .prose,
+  .prose * {
+    text-align: left;
   }
 }
