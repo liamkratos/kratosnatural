@@ -17,6 +17,25 @@ const PRODUCTS_ROOT = path.join(process.cwd(), 'src', 'content', 'products');
  * resolves against. Prices are fetched at render and cached, so the shop never
  * displays a figure that disagrees with what Checkout will charge.
  */
+/**
+ * A claim made for a product on the strength of published research.
+ *
+ * `article` is the slug of our own analysis of that literature, and it is
+ * required. A shop claim that cannot be traced to a page showing the studies —
+ * including the ones that found nothing — is a marketing sentence, and this
+ * type exists to make writing one impossible rather than merely discouraged.
+ */
+export type ProductClaim = {
+  text: string;
+  article: string;
+};
+
+export type ProductResearch = {
+  /** Article slugs to link, in the product's own locale. */
+  articles?: string[];
+  claims?: ProductClaim[];
+};
+
 export type ProductFrontmatter = {
   title: string;
   description: string;
@@ -28,6 +47,8 @@ export type ProductFrontmatter = {
   badge?: string;
   /** Surfaced in the bestsellers block on the homepage. */
   bestseller?: boolean;
+  /** Evidence block. Omitted entirely when we have no analysis to point at. */
+  research?: ProductResearch;
   draft?: boolean;
 };
 
@@ -58,6 +79,16 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     );
   }
 
+  // Fails the build rather than shipping an unsourced claim.
+  for (const [index, claim] of (fm.research?.claims ?? []).entries()) {
+    if (!claim?.text || !claim?.article) {
+      throw new Error(
+        `Product "${ref}": research claim ${index + 1} needs both "text" and "article". ` +
+          `Every claim must point at the analysis that supports it.`
+      );
+    }
+  }
+
   return {
     title: fm.title!,
     description: fm.description!,
@@ -65,6 +96,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     image: fm.image,
     badge: fm.badge,
     bestseller: fm.bestseller ?? false,
+    research: fm.research,
     draft: fm.draft ?? false,
     specs: fm.specs ?? [],
     slug,

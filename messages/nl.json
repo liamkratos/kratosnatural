@@ -117,7 +117,7 @@
   },
   "Shop": {
     "title": "Shop",
-    "intro": "Natuurlijke producten, met de specificaties erbij gepubliceerd.",
+    "intro": "De hoogste kwaliteit natuurlijke producten, allemaal onderbouwd door wetenschap.",
     "empty": "Nog niets in de shop.",
     "buy": "Nu kopen",
     "inclVat": "incl. btw",
@@ -142,7 +142,11 @@
     "checkout": "Afrekenen",
     "remove": "Verwijderen",
     "increase": "Aantal verhogen",
-    "decrease": "Aantal verlagen"
+    "decrease": "Aantal verlagen",
+    "research": "Wetenschappelijk onderbouwd",
+    "researchIntro": "Elke claim hieronder komt uit onze eigen analyse van de gepubliceerde studies. Volg de link om het bewijs te lezen, inclusief de studies die niets vonden.",
+    "researchRead": "Lees de volledige analyse",
+    "researchStudies": "{count} studies geanalyseerd"
   },
   "About": {
     "title": "Over Kratos Natural",

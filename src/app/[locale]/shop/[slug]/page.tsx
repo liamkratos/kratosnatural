@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {getAllProductParams, getProduct} from '@/lib/products';
+import {resolveResearch} from '@/lib/product-research';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import {productSchema} from '@/lib/schema';
@@ -12,6 +13,7 @@ import Container from '@/components/Container';
 import JsonLd from '@/components/JsonLd';
 import Mdx from '@/components/Mdx';
 import AddToCart from '@/components/AddToCart';
+import ScienceBacked from '@/components/ScienceBacked';
 
 type PageParams = {params: {locale: string; slug: string}};
 
@@ -47,6 +49,7 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
 
   const t = await getTranslations('Shop');
   const price = await getPrice(product.priceId);
+  const research = await resolveResearch(product);
   // A price that is missing or archived must not be purchasable.
   const buyable = price !== null && price.active;
 
@@ -156,6 +159,8 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
       <div className="mt-16 text-left">
         <Mdx source={product.body} />
       </div>
+
+      {research && <ScienceBacked research={research} />}
 
       {price && (
         <JsonLd

@@ -117,7 +117,7 @@
   },
   "Shop": {
     "title": "Shop",
-    "intro": "Natural products, with the specifications published.",
+    "intro": "The highest quality natural products, all backed by science.",
     "empty": "Nothing in the shop yet.",
     "buy": "Buy now",
     "inclVat": "incl. VAT",
@@ -142,7 +142,11 @@
     "checkout": "Checkout",
     "remove": "Remove",
     "increase": "Increase quantity",
-    "decrease": "Decrease quantity"
+    "decrease": "Decrease quantity",
+    "research": "Science backed",
+    "researchIntro": "Every claim below is drawn from our own analysis of the published studies. Follow the link to read the evidence, including the trials that found nothing.",
+    "researchRead": "Read the full analysis",
+    "researchStudies": "{count} studies analysed"
   },
   "About": {
     "title": "About Kratos Natural",
