@@ -3,6 +3,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import {Link} from '@/i18n/navigation';
 import Cite from '@/components/Cite';
+import {Study, Finding} from '@/components/Study';
 import type {Citation, CiteRef} from '@/lib/mdx';
 
 /**
@@ -51,13 +52,15 @@ export default function Mdx({
 
   const components = {
     ...baseComponents,
+    Study,
+    Finding,
     Cite: (props: {n: CiteRef | CiteRef[]}) => (
       <Cite {...props} citations={citations} claimAnchor={claimAnchor} />
     )
   };
 
   return (
-    <div className="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-kratos-700">
+    <div className="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-black">
       <MDXRemote
         source={source}
         components={components}

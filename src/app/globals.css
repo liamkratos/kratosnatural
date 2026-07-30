@@ -23,3 +23,44 @@
     text-align: left;
   }
 }
+
+@layer components {
+  /*
+   * Section and page headings are wrapped in quotation marks, set in black.
+   * Done with pseudo-elements rather than literal characters in the copy, so
+   * the marks never end up in the translation files, the page <title>, the
+   * JSON-LD or a screen reader's announcement of the heading.
+   */
+  .quoted {
+    @apply text-black;
+  }
+
+  .quoted::before {
+    content: '\201C';
+  }
+
+  .quoted::after {
+    content: '\201D';
+  }
+}
+
+@layer components {
+  /*
+   * Long-form article typography.
+   *
+   * The site runs on a handwriting face, which suits a shop but not a paper
+   * carrying confidence intervals and a numbered reference list. Anything
+   * marked `.paper` reverts to the reading face, in sentence case, so an
+   * analysis looks like an analysis.
+   */
+  .paper,
+  .paper * {
+    @apply font-reading normal-case;
+  }
+
+  .paper .figures,
+  .paper table,
+  .paper code {
+    @apply font-figures;
+  }
+}
