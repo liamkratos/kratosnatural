@@ -8,6 +8,7 @@ import {buildMetadata} from '@/lib/seo';
 import {organizationSchema, websiteSchema} from '@/lib/schema';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Newsletter from '@/components/Newsletter';
 import JsonLd from '@/components/JsonLd';
 
 export function generateStaticParams() {
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <Header locale={locale as Locale} />
       <main className="flex-1">{children}</main>
+      <Newsletter />
       <Footer />
       <JsonLd
         schema={[

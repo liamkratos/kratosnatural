@@ -2,7 +2,7 @@
   "Site": {
     "name": "Kratos Natural",
     "tagline": "Natuurlijke producten, onderbouwd met gepubliceerd onderzoek.",
-    "description": "Kratos Natural verkoopt natuurlijke producten — Himalaya-zoutlampen, infraroodlampen en meer — en publiceert systematische reviews en meta-analyses van het onderliggende bewijs.",
+    "description": "Kratos Natural verkoopt natuurlijke producten zoals Himalaya-zoutlampen en infraroodlampen, en publiceert systematische reviews en meta-analyses van het onderliggende bewijs.",
     "announcement": "Vertraag uw verouderingsproces met onze bewezen methoden"
   },
   "Nav": {
@@ -13,8 +13,8 @@
     "account": "Account"
   },
   "Home": {
-    "title": "Natuurlijke producten, onderbouwd met gepubliceerd onderzoek",
-    "intro": "Himalaya-zoutlampen, infraroodlampen en andere natuurlijke producten, naast systematische reviews en meta-analyses van wat de literatuur werkelijk laat zien.",
+    "title": "Natuurlijke producten & gratis onderzoek",
+    "intro": "Natuurlijke producten van de hoogste kwaliteit, naast volledige analyses van de studiedatabases, zodat het echte bewijs jou gratis bereikt.",
     "cta": "Lees onze artikelen",
     "stat1": "Elke review opgebouwd uit systematische reviews en meta-analyses, niet uit persberichten.",
     "stat2": "Volledige specificaties gepubliceerd bij elk product dat we verkopen.",
@@ -29,7 +29,8 @@
     "readMore": "Lees artikel",
     "empty": "Nog geen artikelen gepubliceerd.",
     "publishedOn": "Gepubliceerd op {date}",
-    "readingTime": "{minutes} min lezen"
+    "readingTime": "{minutes} min lezen",
+    "other": "Overig onderzoek"
   },
   "Article": {
     "keyFindings": "Belangrijkste bevindingen",
@@ -41,7 +42,19 @@
     "backToText": "Terug naar verwijzing {number} in de tekst",
     "sourceCount": "{count, plural, one {# bron} other {# bronnen}}",
     "basedOn": "Gebaseerd op {sources, plural, one {# geciteerde bron} other {# geciteerde bronnen}}.",
-    "basedOnWithStudies": "Gebaseerd op {studies, plural, one {# studie} other {# studies}}, {sources, plural, one {# geciteerde bron} other {# geciteerde bronnen}}."
+    "basedOnWithStudies": "Gebaseerd op {studies, plural, one {# studie} other {# studies}}, {sources, plural, one {# geciteerde bron} other {# geciteerde bronnen}}.",
+    "downloadTitle": "Download de volledige onderzoeksdatabase",
+    "downloadIntro": "Wil je de onderliggende studies in een gestructureerd formaat?",
+    "downloadIntroWithCount": "Wil je alle {count} studies in een gestructureerd formaat?",
+    "downloadFor": "Handig voor:",
+    "downloadNow": "Nu downloaden",
+    "metaAuthorLabel": "Auteur:",
+    "metaPublishedLabel": "Gepubliceerd:",
+    "metaUpdatedLabel": "Bijgewerkt:",
+    "metaSourcesLabel": "Bronnen:",
+    "metaSourcesValue": "{count} PubMed-studies",
+    "metaCitedLabel": "Hier geciteerd:",
+    "metaCitedValue": "{count} humane studies"
   },
   "LocaleSwitcher": {
     "label": "Taal wijzigen",
@@ -56,7 +69,7 @@
   "Footer": {
     "newsletterTitle": "Gratis longevity e-book",
     "emailLabel": "E-mail",
-    "emailPlaceholder": "jouw@email.nl",
+    "emailPlaceholder": "E-mail",
     "subscribe": "Word lid",
     "stayConnected": "Stay connected",
     "policies": "Voorwaarden en beleid",
@@ -68,7 +81,8 @@
     "legal": "Wettelijke kennisgeving",
     "cookies": "Cookievoorkeuren",
     "rights": "Alle rechten voorbehouden.",
-    "email": "info@kratosnatural.com"
+    "email": "info@kratosnatural.com",
+    "newsletterIntro": "Kratos Weekly valt elke vrijdag in je inbox: de nieuwste analyse van het onderzoek dat we donderdag in de blogs plaatsten, een recept, een workout, een nummer met uitleg, een gedicht, en wat er verder de moeite waard is."
   },
   "Account": {
     "title": "Jouw account",
@@ -117,6 +131,42 @@
     "successTitle": "Bedankt voor je bestelling",
     "successIntro": "Een bevestiging is onderweg naar je e-mail. Je bestelling volg je in je account.",
     "viewAccount": "Bekijk mijn bestellingen",
-    "backToShop": "Terug naar de shop"
+    "backToShop": "Terug naar de shop",
+    "bestsellers": "Bestsellers",
+    "viewAll": "Bekijk alle producten",
+    "addToCart": "In winkelmand",
+    "added": "Toegevoegd",
+    "cart": "Winkelmand",
+    "cartEmpty": "Je winkelmand is leeg.",
+    "total": "Totaal",
+    "checkout": "Afrekenen",
+    "remove": "Verwijderen",
+    "increase": "Aantal verhogen",
+    "decrease": "Aantal verlagen"
+  },
+  "About": {
+    "title": "Over Kratos Natural",
+    "lead": "Leuk je te ontmoeten. Kratos Natural is de winkel en onderzoekstak van Liam Kratos, orthomoleculair therapeut en longevity coach.",
+    "body1": "Wij verkopen natuurlijke producten en publiceren het onderzoek erachter. Geen persberichten, geen marketingclaims: systematische reviews en meta-analyses, volledig gelezen en gerapporteerd met de cijfers intact.",
+    "body2": "Kunnen we een bewering niet herleiden tot een geïndexeerde, gepubliceerde bron, dan doen we die bewering niet. Elke analyse vermeldt de PMIDs zodat je het zelf kunt nakijken.",
+    "sliderTitle": "Waar wil je heen",
+    "slide1Title": "Longevity & anti-aging",
+    "slide1Body": "Vertraag je verouderingsproces met methoden die getest zijn.",
+    "slide1Cta": "Let's go",
+    "slide2Title": "Kratos Universiteit",
+    "slide2Body": "Leer over longevity en anti-aging van A tot Z.",
+    "slide2Cta": "Let's go",
+    "slide3Title": "Kratos Natural",
+    "slide3Body": "Bezoek de winkel met natuurlijke producten van de hoogste kwaliteit.",
+    "slide3Cta": "Let's go",
+    "detailsTitle": "Bedrijfsgegevens",
+    "tradeName": "Handelsnaam",
+    "phone": "Telefoon",
+    "email": "E-mail",
+    "address": "Adres",
+    "vat": "Btw-nummer",
+    "coc": "KvK-nummer",
+    "prev": "Vorige",
+    "next": "Volgende"
   }
 }

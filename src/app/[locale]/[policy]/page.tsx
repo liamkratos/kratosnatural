@@ -48,7 +48,7 @@ export default async function PolicyPage({params: {locale, policy}}: PageParams)
           way article prose is. */}
       <div className="mt-10 space-y-5 text-left">
         {doc.paragraphs.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed text-ink/80">
+          <p key={index} className="text-base leading-relaxed text-black">
             {paragraph}
           </p>
         ))}

@@ -11,6 +11,7 @@ import {formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
 import JsonLd from '@/components/JsonLd';
 import Mdx from '@/components/Mdx';
+import AddToCart from '@/components/AddToCart';
 
 type PageParams = {params: {locale: string; slug: string}};
 
@@ -53,6 +54,16 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
     <Container className="max-w-5xl py-24">
       <div className="grid gap-12 md:grid-cols-2 md:items-start">
         <div className="relative aspect-square overflow-hidden rounded-[20px] bg-ink/5">
+          {/* Moss backdrop: a square crop of the site's own stream photograph. */}
+          <Image
+            src="/moss.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <span aria-hidden="true" className="absolute inset-0 bg-black/15" />
+
           {product.image ? (
             <Image
               src={product.image}
@@ -60,10 +71,10 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-contain p-8"
+              className="relative object-contain p-8 drop-shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
             />
           ) : (
-            <span className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-[0.2em] text-ink/35">
+            <span className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-[0.2em] text-black">
               {t('photoComingSoon')}
             </span>
           )}
@@ -73,7 +84,7 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
           <h1 className="font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
             {product.title}
           </h1>
-          <p className="mt-3 font-display text-xl uppercase leading-snug text-ink/70">
+          <p className="mt-3 font-display text-xl uppercase leading-snug text-black">
             {product.description}
           </p>
 
@@ -82,26 +93,37 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
               <>
                 {formatPrice(price.amountCents, locale)}
                 {price.taxInclusive && (
-                  <span className="ml-2 text-base text-ink/50">
+                  <span className="ml-2 text-base text-black">
                     {t('inclVat')}
                   </span>
                 )}
               </>
             ) : (
-              <span className="text-lg text-ink/40">{t('priceUnavailable')}</span>
+              <span className="text-lg text-black">{t('priceUnavailable')}</span>
             )}
           </p>
 
           {/* A plain form post: no client-side JS needed to start checkout, so
               it still works if the bundle fails. The server resolves the price
               from the slug, never from anything the browser sends. */}
-          <form action="/api/checkout" method="post" className="mt-8">
+          <div className="mt-8">
+            <AddToCart
+              slug={slug}
+              title={product.title}
+              amountCents={price?.amountCents ?? 0}
+              currency={price?.currency ?? 'eur'}
+              image={product.image}
+              disabled={!buyable}
+            />
+          </div>
+
+          <form action="/api/checkout" method="post" className="mt-3">
             <input type="hidden" name="slug" value={slug} />
             <input type="hidden" name="locale" value={locale} />
             <button
               type="submit"
               disabled={!buyable}
-              className="w-full rounded-[20px] bg-black px-8 py-4 font-display text-2xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
+              className="w-full rounded-[20px] border border-ink/25 px-8 py-4 font-display text-2xl uppercase leading-none text-ink transition-colors duration-200 hover:text-pink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-ink"
             >
               {buyable ? t('buy') : t('unavailable')}
             </button>
@@ -116,14 +138,14 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
                 {product.specs.map((spec) => (
                   <li
                     key={spec}
-                    className="border-b border-ink/10 pb-2 font-mono text-sm text-ink/70"
+                    className="border-b border-ink/10 pb-2 font-mono text-sm text-black"
                   >
                     {spec}
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="mt-4 font-mono text-sm text-ink/50">
+              <p className="mt-4 font-mono text-sm text-black">
                 {t('specsComingSoon')}
               </p>
             )}

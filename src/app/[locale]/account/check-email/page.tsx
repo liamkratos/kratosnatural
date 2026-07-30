@@ -17,7 +17,7 @@ export default async function CheckEmailPage({
       <h1 className="font-display text-5xl font-bold uppercase leading-tight">
         {t('checkEmailTitle')}
       </h1>
-      <p className="mt-4 font-display text-xl uppercase text-ink/70">
+      <p className="mt-4 font-display text-xl uppercase text-black">
         {t('checkEmailIntro')}
       </p>
     </Container>

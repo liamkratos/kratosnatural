@@ -12,14 +12,14 @@
   }
 
   /*
-   * Long-form article prose stays left-aligned. Centring 1,700 words of
+   * Long-form article copy stays left-aligned. Centring 1,700 words of
    * research copy — with tables, bullet lists, numbered citations and a source
    * list — breaks the reading rhythm and makes list items impossible to scan,
    * because every line starts at a different x position. Everything outside
-   * `.prose` follows the centred site style.
+   * `.paper` follows the centred site style.
    */
-  .prose,
-  .prose * {
+  .paper,
+  .paper * {
     text-align: left;
   }
 }
@@ -46,21 +46,209 @@
 
 @layer components {
   /*
-   * Long-form article typography.
+   * Long-form article typography — the "paper" look.
    *
-   * The site runs on a handwriting face, which suits a shop but not a paper
+   * The site runs on a handwriting face, which suits a shop but not a document
    * carrying confidence intervals and a numbered reference list. Anything
-   * marked `.paper` reverts to the reading face, in sentence case, so an
+   * marked `.paper` reverts to sentence case and the reading stack, so an
    * analysis looks like an analysis.
+   *
+   * The values below are the research document's own stylesheet, kept literal
+   * rather than mapped onto the brand tokens. That is deliberate: the blue
+   * heading rules, the orange study rule and the amber finding box are what
+   * make a reader recognise the page as a paper instead of a product page, and
+   * approximating them in pink and black would lose exactly the signal the
+   * design exists to send. The shop keeps the brand palette; the papers keep
+   * this one.
    */
   .paper,
   .paper * {
-    @apply font-reading normal-case;
+    @apply normal-case;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, sans-serif;
   }
 
-  .paper .figures,
-  .paper table,
-  .paper code {
-    @apply font-figures;
+  .paper {
+    line-height: 1.7;
+    color: #1a1a1a;
+  }
+
+  /* Document surface. The page behind it stays white; this is the sheet. */
+  .paper-sheet {
+    background: #fafafa;
+  }
+
+  .paper h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #0066cc;
+    line-height: 1.2;
+  }
+
+  .paper h2 {
+    font-size: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #0052a3;
+    border-left: 4px solid #0066cc;
+    padding-left: 15px;
+    line-height: 1.25;
+  }
+
+  .paper h3 {
+    font-size: 1.5em;
+    margin-top: 1.2em;
+    color: #003d7a;
+    line-height: 1.3;
+  }
+
+  /* Headings that label a furniture block (contents, key findings, sources)
+     rather than a section of the argument: same colour, no left rule. */
+  .paper .block-heading {
+    border-left: 0;
+    padding-left: 0;
+    margin-top: 0;
+  }
+
+  .paper strong {
+    font-weight: 700;
+    color: #0066cc;
+  }
+
+  .paper em {
+    font-style: italic;
+    color: #333;
+  }
+
+  /* Publication line under the title. */
+  .paper .meta-info {
+    background: #e6f2ff;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-size: 0.95em;
+  }
+
+  /* A single study, with the orange rule that separates evidence from prose. */
+  .paper .study-citation {
+    background: #fff;
+    border-left: 4px solid #ff6600;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 3px;
+    font-size: 0.95em;
+  }
+
+  .paper .key-finding {
+    background: #fffbea;
+    border: 1px solid #ffb84d;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .paper .toc {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+
+  .paper .toc ul,
+  .paper .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .paper .toc li {
+    margin: 8px 0;
+  }
+
+  .paper .toc a,
+  .paper .pmid-link {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .paper .pmid-link {
+    font-weight: 600;
+  }
+
+  .paper .toc a:hover,
+  .paper .pmid-link:hover {
+    text-decoration: underline;
+  }
+
+  .paper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #fff;
+  }
+
+  .paper th {
+    background: #0066cc;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .paper td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .paper tbody tr:hover {
+    background: #f5f5f5;
+  }
+
+  .paper .highlight {
+    background: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /*
+   * Article body spacing. The source document relied on browser defaults; this
+   * reproduces them explicitly, since Tailwind's preflight resets margins on
+   * p, ul and ol.
+   */
+  .paper-body p {
+    margin: 1em 0;
+  }
+
+  .paper-body ul,
+  .paper-body ol {
+    margin: 1em 0;
+    padding-left: 40px;
+  }
+
+  .paper-body ul {
+    list-style: disc;
+  }
+
+  .paper-body ol {
+    list-style: decimal;
+  }
+
+  .paper-body li {
+    margin: 0.4em 0;
+  }
+
+  /* Body links inside the argument, distinct from PMID links. */
+  .paper-body p > a,
+  .paper-body li > a {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+
+  /* The study card sets its own spacing; don't double it up. */
+  .paper .study-citation p,
+  .paper .key-finding p {
+    margin: 0;
   }
 }

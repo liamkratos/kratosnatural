@@ -28,7 +28,7 @@ export default async function SuccessPage({
       <h1 className="font-display text-5xl font-bold uppercase leading-tight">
         {t('successTitle')}
       </h1>
-      <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-ink/70">
+      <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-black">
         {t('successIntro')}
       </p>
 
@@ -41,7 +41,7 @@ export default async function SuccessPage({
         </Link>
         <Link
           href="/shop"
-          className="font-display text-xl uppercase leading-none text-ink/60 underline underline-offset-4 transition-colors duration-200 hover:text-pink"
+          className="font-display text-xl uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
         >
           {t('backToShop')}
         </Link>

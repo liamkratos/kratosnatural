@@ -46,12 +46,15 @@ export default function ArticleCover({
             {tags.length > 0 ? tags.join(' · ') : 'Research'}
           </p>
 
-          <p className="font-display text-2xl uppercase leading-none text-cream sm:text-3xl">
-            {article.title}
+          {/* Short label, not the full headline: the card repeats the title
+              immediately below the cover, and the long version wraps to four
+              lines here. */}
+          <p className="font-display text-4xl uppercase leading-none text-cream sm:text-5xl">
+            {article.shortTitle ?? article.title}
           </p>
 
           {sources > 0 && (
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cream/60">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cream">
               {sources} sources
               {article.studyCount ? ` · ${article.studyCount} studies` : ''}
             </p>

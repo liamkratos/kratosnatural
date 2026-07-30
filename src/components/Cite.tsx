@@ -44,7 +44,7 @@ export default function Cite({n, citations, claimAnchor}: CiteProps) {
           <a
             id={claimAnchor?.(number) === false ? undefined : `cite-ref-${number}`}
             href={`#source-${number}`}
-            className="text-kratos-700 no-underline hover:underline"
+            className="pmid-link"
           >
             {number}
           </a>

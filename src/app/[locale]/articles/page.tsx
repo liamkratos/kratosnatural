@@ -1,11 +1,16 @@
 import type {Metadata} from 'next';
-import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
-import {isLocale} from '@/i18n/routing';
-import {getArticles} from '@/lib/mdx';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {isLocale, routing} from '@/i18n/routing';
+import {getArticlesByCollection, getUncollectedArticles} from '@/lib/mdx';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import ArticleCard from '@/components/ArticleCard';
+import Reveal from '@/components/Reveal';
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
 
 export async function generateMetadata({
   params: {locale}
@@ -32,27 +37,51 @@ export default async function ArticlesPage({
   setRequestLocale(locale);
 
   const t = await getTranslations('Articles');
-  const articles = await getArticles(locale);
+  const groups = await getArticlesByCollection(locale);
+  // Anything without a collection still gets shown, so an article can never
+  // disappear from the site just because its frontmatter is incomplete.
+  const uncollected = await getUncollectedArticles(locale);
+
+  const sections = [
+    ...groups,
+    ...(uncollected.length > 0
+      ? [{id: 'other' as const, label: t('other'), articles: uncollected}]
+      : [])
+  ];
 
   return (
-    <Container className="py-16">
+    <Container className="max-w-6xl py-24">
       <h1
-        className="whitespace-nowrap font-display font-bold uppercase leading-tight"
+        className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
         style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
       >
         {t('title')}
       </h1>
-      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-ink/70 sm:text-2xl">{t('intro')}</p>
+      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+        {t('intro')}
+      </p>
 
-      <div className="mt-10">
-        {articles.length === 0 ? (
-          <p className="font-display text-xl uppercase text-ink/60">{t('empty')}</p>
-        ) : (
-          articles.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
-          ))
-        )}
-      </div>
+      {sections.length === 0 ? (
+        <p className="mt-16 font-display text-xl uppercase text-black">
+          {t('empty')}
+        </p>
+      ) : (
+        sections.map((section) => (
+          <section key={section.id} className="mt-20">
+            <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
+              {section.label}
+            </h2>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {section.articles.map((article, index) => (
+                <Reveal key={article.slug} delay={index * 60}>
+                  <ArticleCard article={article} />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        ))
+      )}
     </Container>
   );
 }

@@ -23,7 +23,7 @@ export default function Hero() {
   const t = useTranslations('Home');
 
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-7rem)] flex-col justify-center overflow-hidden">
+    <section className="relative isolate mx-3 flex min-h-[calc(100svh-8rem)] flex-col justify-center overflow-hidden rounded-[20px] sm:mx-5">
       <Image
         src="/hero.jpg"
         alt=""

@@ -19,10 +19,10 @@ function OrderRow({order, t, locale}: {order: Order; t: any; locale: 'en' | 'nl'
   return (
     <li className="border border-ink/10 p-6 text-left">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-ink/50">
+        <p className="font-mono text-xs uppercase tracking-widest text-black">
           {t('orderRef', {reference: order.reference})}
         </p>
-        <p className="font-mono text-xs uppercase tracking-widest text-ink/50">
+        <p className="font-mono text-xs uppercase tracking-widest text-black">
           {formatDate(order.createdAt.slice(0, 10), locale)}
         </p>
       </div>
@@ -37,7 +37,7 @@ function OrderRow({order, t, locale}: {order: Order; t: any; locale: 'en' | 'nl'
       </div>
 
       {order.lines.length > 0 && (
-        <ul className="mt-4 space-y-1 text-sm text-ink/70">
+        <ul className="mt-4 space-y-1 text-sm text-black">
           {order.lines.map((line, index) => (
             <li key={index}>
               {line.quantity}&times; {line.description}
@@ -47,7 +47,7 @@ function OrderRow({order, t, locale}: {order: Order; t: any; locale: 'en' | 'nl'
       )}
 
       {order.trackingNumber && (
-        <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/60">
+        <p className="mt-4 font-mono text-xs uppercase tracking-widest text-black">
           {carrierLabel(order.carrier)} · {order.trackingNumber}
           {order.trackingUrl && (
             <>
@@ -102,14 +102,14 @@ export default async function AccountPage({
       <h1 className="font-display text-5xl font-bold uppercase leading-tight">
         {t('title')}
       </h1>
-      <p className="mt-3 font-mono text-xs uppercase tracking-widest text-ink/50">
+      <p className="mt-3 font-mono text-xs uppercase tracking-widest text-black">
         {t('signedInAs', {email})}
       </p>
 
       <form action="/api/account/signout" method="post" className="mt-4">
         <button
           type="submit"
-          className="font-display text-lg uppercase leading-none text-ink/60 underline underline-offset-4 transition-colors duration-200 hover:text-pink"
+          className="font-display text-lg uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
         >
           {t('signOut')}
         </button>
@@ -121,11 +121,11 @@ export default async function AccountPage({
         </h2>
 
         {ordersFailed ? (
-          <p className="mt-6 font-display text-xl uppercase text-ink/60">
+          <p className="mt-6 font-display text-xl uppercase text-black">
             {t('noOrders')}
           </p>
         ) : orders.length === 0 ? (
-          <p className="mt-6 font-display text-xl uppercase text-ink/60">
+          <p className="mt-6 font-display text-xl uppercase text-black">
             {t('noOrders')}
           </p>
         ) : (
@@ -141,21 +141,21 @@ export default async function AccountPage({
         <h2 className="font-display text-4xl font-bold uppercase leading-tight">
           {t('returns')}
         </h2>
-        <p className="mt-3 font-display text-xl uppercase text-ink/70">
+        <p className="mt-3 font-display text-xl uppercase text-black">
           {t('returnsIntro')}
         </p>
 
         <ol className="mt-8 space-y-4 text-left">
           {steps.map((step) => (
             <li key={step} className="flex gap-5 border border-ink/10 p-6">
-              <span className="font-mono text-lg tabular-nums text-ink/40">
+              <span className="font-mono text-lg tabular-nums text-black">
                 0{step}
               </span>
               <span>
                 <span className="block font-display text-2xl uppercase leading-none">
                   {t(`step${step}Title`)}
                 </span>
-                <span className="mt-2 block text-sm leading-relaxed text-ink/70">
+                <span className="mt-2 block text-sm leading-relaxed text-black">
                   {t(`step${step}Body`)}
                 </span>
               </span>

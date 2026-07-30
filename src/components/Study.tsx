@@ -23,29 +23,35 @@ export function Study({
   verdict?: 'positive' | 'null' | 'caution' | 'neutral';
   children: ReactNode;
 }) {
+  /**
+   * The orange rule is the document's own; the verdict recolours it so a null
+   * result is legible at a glance rather than only on reading. Grey is not a
+   * demotion — it is the flag that says "this trial found nothing", which is
+   * the reason the page can be trusted.
+   */
   const rule = {
-    positive: 'border-l-emerald-600',
-    null: 'border-l-slate-400',
-    caution: 'border-l-amber-500',
-    neutral: 'border-l-sky-600'
+    positive: '#ff6600',
+    null: '#8a8a8a',
+    caution: '#d97706',
+    neutral: '#0066cc'
   }[verdict];
 
   return (
-    <aside
-      className={`my-6 rounded-r-[12px] border border-ink/10 border-l-4 bg-white p-5 ${rule}`}
-    >
-      <p className="font-bold text-black">{title}</p>
-      {design && <p className="mt-1 text-sm text-black">{design}</p>}
-      <div className="mt-3 space-y-2 text-sm leading-relaxed">{children}</div>
+    <aside className="study-citation" style={{borderLeftColor: rule}}>
+      <p>
+        <strong>{title}</strong>
+      </p>
+      {design && <p style={{color: '#333', fontStyle: 'italic'}}>{design}</p>}
+      <div className="mt-2 space-y-2">{children}</div>
       {pmid && (
-        <p className="mt-3 text-sm">
+        <p className="mt-2">
           <a
+            className="pmid-link"
             href={`https://pubmed.ncbi.nlm.nih.gov/${pmid}/`}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold underline underline-offset-4 hover:text-pink"
           >
-            PMID {pmid}
+            PMID: {pmid}
           </a>
         </p>
       )}
@@ -53,11 +59,7 @@ export function Study({
   );
 }
 
-/** Highlighted takeaway, equivalent to the source document's key-finding box. */
+/** Highlighted takeaway, the source document's `.key-finding` box. */
 export function Finding({children}: {children: ReactNode}) {
-  return (
-    <p className="my-6 rounded-[12px] border border-amber-300 bg-amber-50 p-4 font-medium leading-relaxed text-black">
-      {children}
-    </p>
-  );
+  return <div className="key-finding">{children}</div>;
 }

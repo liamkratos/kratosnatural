@@ -6,6 +6,7 @@ import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
+import CartButton from '@/components/CartButton';
 import {cn} from '@/lib/utils';
 
 /**
@@ -34,8 +35,7 @@ export default function Header({locale}: {locale: Locale}) {
     {href: '/', label: t('Nav.home')},
     {href: '/shop', label: t('Nav.shop')},
     {href: '/articles', label: t('Nav.articles')},
-    {href: '/about', label: t('Nav.about')},
-    {href: '/account', label: t('Nav.account')}
+    {href: '/about', label: t('Nav.about')}
   ];
 
   return (
@@ -93,7 +93,33 @@ export default function Header({locale}: {locale: Locale}) {
             ))}
           </nav>
 
-          <LocaleSwitcher current={locale} />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <CartButton locale={locale} />
+
+            {/* Icon-only, so it needs an accessible name of its own. */}
+            <Link
+              href="/account"
+              aria-label={t('Nav.account')}
+              title={t('Nav.account')}
+              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="h-5 w-5"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-3.6 3.6-6 8-6s8 2.4 8 6" />
+              </svg>
+            </Link>
+
+            <LocaleSwitcher current={locale} />
+          </div>
         </header>
       </div>
     </div>

@@ -15,12 +15,9 @@ export default function Citations({citations}: {citations: Citation[]}) {
   return (
     <section
       aria-labelledby="citations-heading"
-      className="mt-16 border-t border-kratos-100 pt-8"
+      className="mt-16 border-t border-[#e0e0e0] pt-8"
     >
-      <h2
-        id="citations-heading"
-        className="text-xl font-semibold tracking-tight text-kratos-900"
-      >
+      <h2 id="citations-heading" className="block-heading">
         {t('sources')}
       </h2>
 
@@ -33,9 +30,9 @@ export default function Citations({citations}: {citations: Citation[]}) {
             <li
               key={number}
               id={`source-${number}`}
-              className="flex gap-3 text-left text-sm leading-relaxed text-kratos-700 target:bg-kratos-50"
+              className="flex gap-3 text-left text-[0.95em] target:bg-[#fff3cd]"
             >
-              <span className="shrink-0 font-medium text-kratos-900">
+              <span className="shrink-0 font-semibold text-[#0066cc]">
                 {number}.
               </span>
 
@@ -43,13 +40,13 @@ export default function Citations({citations}: {citations: Citation[]}) {
                 {citation.text}{' '}
                 {href && (
                   <a
+                    className="pmid-link whitespace-nowrap"
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="whitespace-nowrap text-kratos-700 underline underline-offset-4"
                   >
                     {citation.pmid
-                      ? `PMID ${citation.pmid}`
+                      ? `PMID: ${citation.pmid}`
                       : citation.doi
                         ? `DOI ${citation.doi.replace(/^(https?:\/\/)?(dx\.)?doi\.org\//, '')}`
                         : t('viewSource')}
@@ -58,7 +55,7 @@ export default function Citations({citations}: {citations: Citation[]}) {
                 <a
                   href={`#cite-ref-${number}`}
                   aria-label={t('backToText', {number})}
-                  className="ml-2 text-kratos-500 no-underline hover:text-kratos-900"
+                  className="pmid-link ml-2"
                 >
                   ↩
                 </a>

@@ -35,12 +35,19 @@ const config: Config = {
         }
       },
       fontFamily: {
-        // Handwriting display face: logo wordmark and large hero headings
-        // only, in white/cream. Too thin to carry pink or small sizes.
+        /*
+         * One face across the whole site. `sans` and `mono` deliberately point
+         * at the same display font, so existing font-sans / font-mono classes
+         * keep their meaning and the decision can be reversed by editing these
+         * three lines rather than every component.
+         */
         display: ['var(--font-display)', 'ui-serif', 'cursive'],
-        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        // Figures, data and source references.
-        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
+        sans: ['var(--font-display)', 'ui-serif', 'cursive'],
+        mono: ['var(--font-display)', 'ui-serif', 'cursive'],
+        // Article prose only, so a meta-analysis reads like a paper rather than
+        // a poster. Everything outside `.prose` stays on the display face.
+        reading: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        figures: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
       }
     }
   },

@@ -4,15 +4,15 @@ import {Link} from '@/i18n/navigation';
 import Container from '@/components/Container';
 
 /**
- * Footer modelled on liamkratos.nl: logo, newsletter capture and social icons
- * on black, then a full-bleed pink rule with the policy links beneath it.
+ * Footer modelled on liamkratos.nl: logo and social icons on black, then a
+ * full-bleed pink rule with the policy links beneath it.
+ *
+ * The mailing-list signup lives in <Newsletter />, in its own section above the
+ * footer, so it reads as part of the page rather than as footer furniture.
  *
  * The policy list is collapsed to a single label and expands on hover. It also
  * expands on keyboard focus (focus-within), because a hover-only disclosure is
  * unreachable by keyboard and invisible to touch.
- *
- * The signup form has no action yet — it needs an endpoint before it will do
- * anything.
  */
 
 const socials = [
@@ -50,10 +50,9 @@ export default function Footer() {
   ] as const;
 
   return (
-    <footer className="bg-black text-cream">
+    <footer className="mx-3 mb-3 mt-3 rounded-[20px] border border-white/10 bg-black text-cream sm:mx-5 sm:mb-5">
       <Container className="max-w-6xl py-16">
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
-          {/* Logo, with the mailing-list signup beside it rather than beneath. */}
           <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center">
             <Link
               href="/"
@@ -69,34 +68,6 @@ export default function Footer() {
               />
             </Link>
 
-            <div>
-              <h2 className="font-display text-2xl font-bold uppercase leading-none">
-                {t('newsletterTitle')}
-              </h2>
-
-              {/* Submit sits inside the field. The input carries right padding
-                  equal to the button's width so typed text can never run
-                  underneath it. */}
-              <form className="relative mt-4 w-full max-w-lg">
-                <label htmlFor="footer-email" className="sr-only">
-                  {t('emailLabel')}
-                </label>
-                <input
-                  id="footer-email"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  placeholder={t('emailPlaceholder')}
-                  className="w-full rounded-[20px] border border-white/25 bg-transparent py-3 pl-5 pr-32 font-display text-lg uppercase text-cream placeholder:text-cream/40 focus:border-pink focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="absolute inset-y-1 right-1 rounded-[16px] bg-white px-5 font-display text-base uppercase leading-none text-black transition-colors duration-200 hover:text-pink"
-                >
-                  {t('subscribe')}
-                </button>
-              </form>
-            </div>
           </div>
 
           <div>
@@ -149,7 +120,7 @@ export default function Footer() {
                     <li key={key}>
                       <Link
                         href={`/${key}`}
-                        className="uppercase tracking-wide text-cream/70 transition-colors duration-200 hover:text-pink"
+                        className="uppercase tracking-wide text-cream transition-colors duration-200 hover:text-pink"
                       >
                         {t(key)}
                       </Link>
@@ -160,9 +131,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <p className="font-display text-base uppercase leading-none text-cream/60">
-            &copy; {new Date().getFullYear()} {tSite('name')} &mdash;{' '}
-            {t('rights')}
+          <p className="font-display text-base uppercase leading-none text-cream">
+            &copy; {new Date().getFullYear()} {tSite('name')}. {t('rights')}
           </p>
         </div>
       </Container>

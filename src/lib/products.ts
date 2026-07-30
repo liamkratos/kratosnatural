@@ -26,6 +26,8 @@ export type ProductFrontmatter = {
   /** Short spec lines shown on the product page. */
   specs?: string[];
   badge?: string;
+  /** Surfaced in the bestsellers block on the homepage. */
+  bestseller?: boolean;
   draft?: boolean;
 };
 
@@ -62,6 +64,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     priceId: fm.priceId!,
     image: fm.image,
     badge: fm.badge,
+    bestseller: fm.bestseller ?? false,
     draft: fm.draft ?? false,
     specs: fm.specs ?? [],
     slug,
@@ -120,4 +123,19 @@ export async function getAllProductParams(): Promise<
     })
   );
   return perLocale.flat();
+}
+
+/**
+ * Products for the homepage bestsellers block.
+ *
+ * Falls back to the newest products when nothing is flagged, so the block is
+ * never empty just because no one has ticked `bestseller` yet.
+ */
+export async function getBestsellers(
+  locale: Locale,
+  limit = 4
+): Promise<Product[]> {
+  const products = await getProducts(locale);
+  const flagged = products.filter((product) => product.bestseller);
+  return (flagged.length > 0 ? flagged : products).slice(0, limit);
 }

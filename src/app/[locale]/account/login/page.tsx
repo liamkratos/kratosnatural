@@ -19,7 +19,7 @@ export default async function LoginPage({
       <h1 className="font-display text-5xl font-bold uppercase leading-tight">
         {t('signInTitle')}
       </h1>
-      <p className="mt-4 font-display text-xl uppercase text-ink/70">
+      <p className="mt-4 font-display text-xl uppercase text-black">
         {t('signInIntro')}
       </p>
 
@@ -48,7 +48,7 @@ export default async function LoginPage({
           required
           autoComplete="email"
           placeholder={t('emailLabel')}
-          className="w-full rounded-[20px] border border-ink/25 bg-transparent py-3 pl-5 pr-32 text-center font-display text-lg uppercase text-ink placeholder:text-ink/40 focus:border-pink focus:outline-none"
+          className="w-full rounded-[20px] border border-ink/25 bg-transparent py-3 pl-5 pr-32 text-center font-display text-lg uppercase text-ink placeholder:text-black focus:border-pink focus:outline-none"
         />
         <button
           type="submit"

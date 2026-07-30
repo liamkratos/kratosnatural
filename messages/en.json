@@ -2,7 +2,7 @@
   "Site": {
     "name": "Kratos Natural",
     "tagline": "Natural products, backed by published research.",
-    "description": "Kratos Natural sells natural products — Himalayan salt lamps, infrared bulbs and more — and publishes systematic reviews and meta-analyses of the evidence behind them.",
+    "description": "Kratos Natural sells natural products such as Himalayan salt lamps and infrared bulbs, and publishes systematic reviews and meta-analyses of the evidence behind them.",
     "announcement": "Slow down your aging process with proven methods"
   },
   "Nav": {
@@ -13,8 +13,8 @@
     "account": "Account"
   },
   "Home": {
-    "title": "Natural products, backed by published research",
-    "intro": "Himalayan salt lamps, infrared bulbs and other natural products, alongside systematic reviews and meta-analyses of what the literature actually shows.",
+    "title": "Natural products & free research",
+    "intro": "The highest quality natural products, alongside complete analyses of the study databases, so the real evidence reaches you for free.",
     "cta": "Read our articles",
     "stat1": "Every review built from systematic reviews and meta-analyses, not press releases.",
     "stat2": "Full specifications published for every product we sell.",
@@ -29,7 +29,8 @@
     "readMore": "Read article",
     "empty": "No articles published yet.",
     "publishedOn": "Published on {date}",
-    "readingTime": "{minutes} min read"
+    "readingTime": "{minutes} min read",
+    "other": "Other research"
   },
   "Article": {
     "keyFindings": "Key findings",
@@ -41,7 +42,19 @@
     "backToText": "Back to reference {number} in the text",
     "sourceCount": "{count, plural, one {# source} other {# sources}}",
     "basedOn": "Based on {sources, plural, one {# cited source} other {# cited sources}}.",
-    "basedOnWithStudies": "Based on {studies, plural, one {# study} other {# studies}}, {sources, plural, one {# cited source} other {# cited sources}}."
+    "basedOnWithStudies": "Based on {studies, plural, one {# study} other {# studies}}, {sources, plural, one {# cited source} other {# cited sources}}.",
+    "downloadTitle": "Download the complete research database",
+    "downloadIntro": "Want the underlying studies in a structured format?",
+    "downloadIntroWithCount": "Want all {count} studies in a structured format?",
+    "downloadFor": "Useful for:",
+    "downloadNow": "Download now",
+    "metaAuthorLabel": "Author:",
+    "metaPublishedLabel": "Published:",
+    "metaUpdatedLabel": "Updated:",
+    "metaSourcesLabel": "Sources:",
+    "metaSourcesValue": "{count} PubMed studies",
+    "metaCitedLabel": "Cited here:",
+    "metaCitedValue": "{count} human studies"
   },
   "LocaleSwitcher": {
     "label": "Change language",
@@ -56,7 +69,7 @@
   "Footer": {
     "newsletterTitle": "Free longevity e-book",
     "emailLabel": "Email",
-    "emailPlaceholder": "your@email.com",
+    "emailPlaceholder": "E-mail",
     "subscribe": "Join mailinglist",
     "stayConnected": "Stay connected",
     "policies": "Terms and policies",
@@ -68,7 +81,8 @@
     "legal": "Legal notice",
     "cookies": "Cookie preferences",
     "rights": "All rights reserved.",
-    "email": "info@kratosnatural.com"
+    "email": "info@kratosnatural.com",
+    "newsletterIntro": "Kratos Weekly drops every Friday in your inbox: the latest analysis of Thursday's research from the blogs, a recipe, a workout, a song with an explanation, a poem, and whatever else is worth passing on."
   },
   "Account": {
     "title": "Your account",
@@ -117,6 +131,42 @@
     "successTitle": "Thank you for your order",
     "successIntro": "A confirmation is on its way to your email. You can follow your delivery in your account.",
     "viewAccount": "View my orders",
-    "backToShop": "Back to the shop"
+    "backToShop": "Back to the shop",
+    "bestsellers": "Bestsellers",
+    "viewAll": "View all products",
+    "addToCart": "Add to cart",
+    "added": "Added",
+    "cart": "Cart",
+    "cartEmpty": "Your cart is empty.",
+    "total": "Total",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity"
+  },
+  "About": {
+    "title": "About Kratos Natural",
+    "lead": "Nice to meet you. Kratos Natural is the shop and research arm of Liam Kratos, orthomolecular therapist and longevity coach.",
+    "body1": "We sell natural products, and we publish the research behind them. Not press releases, not marketing claims: systematic reviews and meta-analyses, read in full and reported with the numbers intact.",
+    "body2": "If we cannot trace a claim to an indexed, published source, we do not make it. Every analysis lists its PMIDs so you can check the work yourself.",
+    "sliderTitle": "Where to go next",
+    "slide1Title": "Longevity & anti-aging",
+    "slide1Body": "Slow your aging process with methods that have been tested.",
+    "slide1Cta": "Let's go",
+    "slide2Title": "Kratos University",
+    "slide2Body": "Learn about longevity and anti-aging from A to Z.",
+    "slide2Cta": "Let's go",
+    "slide3Title": "Kratos Natural",
+    "slide3Body": "Visit the shop for natural products of the highest quality.",
+    "slide3Cta": "Let's go",
+    "detailsTitle": "Company details",
+    "tradeName": "Trade name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "vat": "VAT number",
+    "coc": "Chamber of Commerce",
+    "prev": "Previous",
+    "next": "Next"
   }
 }

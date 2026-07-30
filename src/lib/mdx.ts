@@ -30,11 +30,43 @@ export type Citation = {
   url?: string;
 };
 
+/** An optional dataset offered for download alongside an article. */
+export type ArticleDownload = {
+  file: string;
+  size?: string;
+  contents?: string[];
+  audience?: string;
+};
+
 /** A reference as written in the body: either a citation id or a 1-based index. */
 export type CiteRef = string | number;
 
+/**
+ * Article collections.
+ *
+ * A closed list rather than free-form strings: a typo in frontmatter would
+ * otherwise silently create a new, near-empty collection on the research page.
+ * Order here is the order they appear on that page.
+ */
+export const collections = [
+  {id: 'longevity-molecules', label: 'Longevity molecules (Supplements)'},
+  {id: 'quality', label: 'Quality & testing'}
+] as const;
+
+export type CollectionId = (typeof collections)[number]['id'];
+
+export function isCollectionId(value: string): value is CollectionId {
+  return collections.some((collection) => collection.id === value);
+}
+
+export function collectionLabel(id: CollectionId): string {
+  return collections.find((collection) => collection.id === id)?.label ?? id;
+}
+
 export type ArticleFrontmatter = {
   title: string;
+  /** Short label for the cover artwork, e.g. "Nattokinase". Falls back to title. */
+  shortTitle?: string;
   description: string;
   /** ISO date, e.g. "2026-06-18". */
   publishDate: string;
@@ -47,6 +79,10 @@ export type ArticleFrontmatter = {
   citations?: Citation[];
   image?: string;
   tags?: string[];
+  /** Which collection this article belongs to on the research page. */
+  collection?: CollectionId;
+  /** Dataset offered for download in the article. */
+  download?: ArticleDownload;
   draft?: boolean;
 };
 
@@ -242,11 +278,18 @@ function parseArticle(locale: Locale, slug: string, raw: string): Article {
     throw new Error(`Article "${ref}": "keyFindings" must be an array.`);
   }
 
+  if (fm.collection && !isCollectionId(fm.collection)) {
+    throw new Error(
+      `Article "${ref}": unknown collection "${fm.collection}". Valid ids: ${collections.map((c) => c.id).join(', ')}.`
+    );
+  }
+
   const citations = validateCitations(fm.citations, ref);
   validateCiteRefs(content, citations, ref);
 
   return {
     title: fm.title!,
+    shortTitle: fm.shortTitle,
     description: fm.description!,
     publishDate: fm.publishDate!,
     updatedDate: fm.updatedDate,
@@ -254,6 +297,8 @@ function parseArticle(locale: Locale, slug: string, raw: string): Article {
     studyCount: fm.studyCount,
     image: fm.image,
     tags: fm.tags ?? [],
+    collection: fm.collection,
+    download: fm.download,
     draft: fm.draft ?? false,
     slug,
     locale,
@@ -380,4 +425,30 @@ export async function getTags(
   return [...counts.entries()]
     .map(([tag, count]) => ({tag, count}))
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}
+
+/**
+ * Articles grouped by collection, in the order declared above.
+ * Collections with no published articles are omitted rather than rendered empty.
+ */
+export async function getArticlesByCollection(locale: Locale): Promise<
+  Array<{id: CollectionId; label: string; articles: ArticleSummary[]}>
+> {
+  const articles = await getArticles(locale);
+
+  return collections
+    .map((collection) => ({
+      id: collection.id,
+      label: collection.label,
+      articles: articles.filter((article) => article.collection === collection.id)
+    }))
+    .filter((group) => group.articles.length > 0);
+}
+
+/** Articles not assigned to any collection, so nothing is silently hidden. */
+export async function getUncollectedArticles(
+  locale: Locale
+): Promise<ArticleSummary[]> {
+  const articles = await getArticles(locale);
+  return articles.filter((article) => !article.collection);
 }

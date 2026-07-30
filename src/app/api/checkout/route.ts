@@ -19,19 +19,50 @@ export async function POST(request: Request) {
 
   try {
     const form = await request.formData();
-    const slug = String(form.get('slug') ?? '');
     const rawLocale = String(form.get('locale') ?? '');
     const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
     const prefix = locale === defaultLocale ? '' : `/${locale}`;
 
-    const product = await getProduct(locale, slug);
-    if (!product) {
+    // Two entry points: a single product page ("slug"), or the cart
+    // ("items" as "slug:qty,slug:qty"). Either way the browser sends only
+    // identifiers, and every price is resolved here from the product's own
+    // content file — a tampered cart cannot alter what Stripe charges.
+    const requested: Array<{slug: string; quantity: number}> = [];
+
+    const singleSlug = String(form.get('slug') ?? '');
+    if (singleSlug) {
+      requested.push({slug: singleSlug, quantity: 1});
+    }
+
+    const items = String(form.get('items') ?? '');
+    for (const entry of items.split(',').filter(Boolean)) {
+      const [slug, rawQuantity] = entry.split(':');
+      const quantity = Number.parseInt(rawQuantity ?? '1', 10);
+      if (!slug || !Number.isFinite(quantity) || quantity < 1) continue;
+      requested.push({slug, quantity: Math.min(quantity, 10)});
+    }
+
+    const resolved = await Promise.all(
+      requested.map(async ({slug, quantity}) => {
+        const product = await getProduct(locale, slug);
+        return product ? {price: product.priceId, quantity} : null;
+      })
+    );
+
+    const lineItems = resolved.filter(
+      (item): item is {price: string; quantity: number} => item !== null
+    );
+
+    if (lineItems.length === 0) {
       return NextResponse.redirect(`${origin}${prefix}/shop`, {status: 303});
     }
 
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
-      line_items: [{price: product.priceId, quantity: 1, adjustable_quantity: {enabled: true, minimum: 1, maximum: 10}}],
+      line_items: lineItems.map((item) => ({
+        ...item,
+        adjustable_quantity: {enabled: true, minimum: 1, maximum: 10}
+      })),
       // Stripe Tax needs a destination before it can pick a rate.
       automatic_tax: {enabled: true},
       shipping_address_collection: {allowed_countries: ['NL', 'BE', 'DE', 'FR', 'AT', 'ES', 'IT', 'IE', 'PT', 'LU', 'DK', 'SE', 'FI', 'PL']},
@@ -41,7 +72,7 @@ export async function POST(request: Request) {
       customer_creation: 'always',
       locale: locale === 'nl' ? 'nl' : 'en',
       success_url: `${origin}${prefix}/shop/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}${prefix}/shop/${slug}`
+      cancel_url: `${origin}${prefix}/shop`
     });
 
     if (!session.url) throw new Error('Stripe returned a session without a URL.');

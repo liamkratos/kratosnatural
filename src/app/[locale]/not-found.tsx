@@ -7,13 +7,13 @@ export default function NotFoundPage() {
 
   return (
     <Container className="py-24">
-      <h1 className="text-3xl font-semibold tracking-tight text-kratos-900">
+      <h1 className="text-3xl font-semibold tracking-tight text-black">
         {t('title')}
       </h1>
-      <p className="mt-4 text-kratos-700">{t('description')}</p>
+      <p className="mt-4 text-black">{t('description')}</p>
       <Link
         href="/"
-        className="mt-8 inline-block text-kratos-700 underline underline-offset-4"
+        className="mt-8 inline-block text-black underline underline-offset-4"
       >
         {t('back')}
       </Link>

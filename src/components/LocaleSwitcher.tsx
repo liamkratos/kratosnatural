@@ -17,6 +17,14 @@ import {cn} from '@/lib/utils';
  * Switching locale is a cross-origin navigation because each locale lives on its
  * own domain, so the options are plain anchors rather than router pushes.
  */
+/** Heart outline, in the same 0-100 space the flags are drawn into. */
+const HEART_PATH =
+  'M50,95 C50,95 3,62 3,32 C3,13 19,2 33,2 C42,2 48,9 50,13 C52,9 58,2 67,2 C81,2 97,13 97,32 C97,62 50,95 50,95 Z';
+
+/**
+ * Flag artwork, drawn edge-to-edge into a 0-100 box. Each is a nested <svg> so
+ * its own aspect ratio is stretched to fill the heart rather than letterboxed.
+ */
 const flags: Record<Locale, {node: React.ReactNode; country: string}> = {
   en: {
     country: 'United Kingdom',
@@ -24,18 +32,16 @@ const flags: Record<Locale, {node: React.ReactNode; country: string}> = {
       <svg
         viewBox="0 0 60 30"
         preserveAspectRatio="none"
-        className="h-full w-full"
+        width="100"
+        height="100"
       >
-        <clipPath id="uk-clip">
-          <path d="M0 0v30h60V0z" />
-        </clipPath>
         <path d="M0 0v30h60V0z" fill="#012169" />
         <path d="M0 0l60 30m0-30L0 30" stroke="#fff" strokeWidth="6" />
         <path
           d="M0 0l60 30m0-30L0 30"
           stroke="#C8102E"
           strokeWidth="4"
-          clipPath="url(#uk-clip)"
+          clipPath="url(#uk-diagonals)"
         />
         <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10" />
         <path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6" />
@@ -48,7 +54,8 @@ const flags: Record<Locale, {node: React.ReactNode; country: string}> = {
       <svg
         viewBox="0 0 9 6"
         preserveAspectRatio="none"
-        className="h-full w-full"
+        width="100"
+        height="100"
       >
         <rect width="9" height="6" fill="#21468B" />
         <rect width="9" height="4" fill="#FFF" />
@@ -58,14 +65,30 @@ const flags: Record<Locale, {node: React.ReactNode; country: string}> = {
   }
 };
 
+/**
+ * One heart: the flag clipped to the heart, with a white outline stroked on top.
+ *
+ * The outline has to be an SVG path rather than a CSS border — a border follows
+ * the element's box, not its clip-path, so it would draw a rectangle around the
+ * heart. Stroking the same path used for the clip keeps the two exactly aligned.
+ * The stroke sits outside the clipped group so it is not itself clipped away.
+ */
 function Heart({locale, className}: {locale: Locale; className?: string}) {
   return (
-    <span
-      style={{clipPath: 'url(#flag-heart)'}}
-      className={cn('block h-6 w-7 shrink-0 overflow-hidden', className)}
+    <svg
+      viewBox="0 0 100 100"
+      role="presentation"
+      className={cn('block h-6 w-7 shrink-0 overflow-visible', className)}
     >
-      {flags[locale].node}
-    </span>
+      <g clipPath="url(#flag-heart)">{flags[locale].node}</g>
+      <path
+        d={HEART_PATH}
+        fill="none"
+        stroke="#FFFFFF"
+        strokeWidth="7"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -99,10 +122,15 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
     <div ref={ref} className="relative">
       {/* Heart mask, declared once and shared by every flag. Normalised
           coordinates, so it scales to whatever size the flag renders at. */}
+      {/* Declared once and shared by every heart. Ids must be unique per
+          document, so they cannot live inside the repeated flag markup. */}
       <svg width="0" height="0" aria-hidden="true" className="absolute">
         <defs>
-          <clipPath id="flag-heart" clipPathUnits="objectBoundingBox">
-            <path d="M0.5,0.95 C0.5,0.95 0.03,0.62 0.03,0.32 C0.03,0.13 0.19,0.02 0.33,0.02 C0.42,0.02 0.48,0.09 0.5,0.13 C0.52,0.09 0.58,0.02 0.67,0.02 C0.81,0.02 0.97,0.13 0.97,0.32 C0.97,0.62 0.5,0.95 0.5,0.95 Z" />
+          <clipPath id="flag-heart">
+            <path d={HEART_PATH} />
+          </clipPath>
+          <clipPath id="uk-diagonals">
+            <path d="M0 0v30h60V0z" />
           </clipPath>
         </defs>
       </svg>

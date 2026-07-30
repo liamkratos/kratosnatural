@@ -12,29 +12,15 @@ export default function TableOfContents({entries}: {entries: TocEntry[]}) {
   if (entries.length < 2) return null;
 
   return (
-    <nav
-      aria-labelledby="toc-heading"
-      className="my-8 rounded-lg border border-kratos-100 p-6"
-    >
-      <h2
-        id="toc-heading"
-        className="text-sm font-semibold uppercase tracking-wide text-kratos-700"
-      >
+    <nav aria-labelledby="toc-heading" className="toc">
+      <h2 id="toc-heading" className="block-heading text-2xl">
         {t('tableOfContents')}
       </h2>
 
-      <ol className="mt-4 space-y-2 text-sm">
+      <ol className="mt-3">
         {entries.map((entry) => (
-          <li
-            key={entry.id}
-            className={cn(entry.depth === 3 && 'ml-5 list-disc')}
-          >
-            <a
-              href={`#${entry.id}`}
-              className="text-kratos-700 underline-offset-4 hover:text-kratos-900 hover:underline"
-            >
-              {entry.text}
-            </a>
+          <li key={entry.id} className={cn(entry.depth === 3 && 'ml-5')}>
+            <a href={`#${entry.id}`}>{entry.text}</a>
           </li>
         ))}
       </ol>

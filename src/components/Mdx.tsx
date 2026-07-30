@@ -59,8 +59,15 @@ export default function Mdx({
     )
   };
 
+  /*
+   * No `prose` wrapper here. The Tailwind typography plugin selects with
+   * `.prose :where(h2):not(…)`, which outranks the `.paper h2` rules carrying
+   * the research document's type scale and blue heading rules, so the two
+   * cannot both apply. The document's own stylesheet wins, and the spacing
+   * rules on `.paper-body` in globals.css replace what prose was providing.
+   */
   return (
-    <div className="prose prose-neutral max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-black">
+    <div className="paper-body">
       <MDXRemote
         source={source}
         components={components}

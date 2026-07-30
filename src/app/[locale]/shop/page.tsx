@@ -47,17 +47,17 @@ export default async function ShopPage({
   return (
     <Container className="max-w-6xl py-24">
       <h1
-        className="whitespace-nowrap font-display font-bold uppercase leading-tight"
+        className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
         style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
       >
         {t('title')}
       </h1>
-      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-ink/70 sm:text-2xl">
+      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-black sm:text-2xl">
         {t('intro')}
       </p>
 
       {products.length === 0 ? (
-        <p className="mt-16 font-display text-xl uppercase text-ink/60">
+        <p className="mt-16 font-display text-xl uppercase text-black">
           {t('empty')}
         </p>
       ) : (
