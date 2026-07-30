@@ -1,6 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
+import {useScrolled} from '@/lib/use-scrolled';
+import {cn} from '@/lib/utils';
 
 /**
  * Full-viewport hero: edge-to-edge photograph, wordmark set large in the
@@ -21,9 +25,24 @@ const heroButton =
 
 export default function Hero() {
   const t = useTranslations('Home');
+  const scrolled = useScrolled();
 
   return (
-    <section className="relative isolate mx-3 flex min-h-[calc(100svh-8rem)] flex-col justify-center overflow-hidden rounded-[20px] sm:mx-5">
+    /*
+     * The hero tracks the navigation bar's shape. At the top of the page both
+     * are square and run to the edges, so the photograph reads as the page
+     * itself; once scrolled, both pull in and take the 20px button radius
+     * together. Driven by the shared threshold so the two never round at
+     * different moments.
+     */
+    <section
+      className={cn(
+        'relative isolate flex min-h-[calc(100svh-8rem)] flex-col justify-center overflow-hidden transition-[margin,border-radius] duration-300 ease-out',
+        scrolled
+          ? 'mx-3 rounded-[20px] sm:mx-5'
+          : 'mx-0 rounded-none sm:mx-0'
+      )}
+    >
       <Image
         src="/hero.jpg"
         alt=""

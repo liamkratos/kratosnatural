@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import CartButton from '@/components/CartButton';
+import {useScrolled} from '@/lib/use-scrolled';
 import {cn} from '@/lib/utils';
 
 /**
@@ -22,14 +22,7 @@ import {cn} from '@/lib/utils';
  */
 export default function Header({locale}: {locale: Locale}) {
   const t = useTranslations();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, {passive: true});
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const scrolled = useScrolled();
 
   const navItems = [
     {href: '/', label: t('Nav.home')},
