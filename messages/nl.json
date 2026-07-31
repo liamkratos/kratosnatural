@@ -83,7 +83,10 @@
     "cookies": "Cookievoorkeuren",
     "rights": "Alle rechten voorbehouden.",
     "email": "info@kratosnatural.com",
-    "newsletterIntro": "Kratos Weekly valt elke vrijdag in je inbox: de nieuwste analyse van het onderzoek dat we donderdag in de blogs plaatsten, een recept, een workout, een nummer met uitleg, een gedicht, en wat er verder de moeite waard is."
+    "newsletterIntro": "Kratos Weekly valt elke vrijdag in je inbox: de nieuwste analyse van het onderzoek dat we donderdag in de blogs plaatsten, een recept, een workout, een nummer met uitleg, een gedicht, en wat er verder de moeite waard is.",
+    "newsletterThanksTitle": "Kijk in je inbox",
+    "newsletterThanksBody": "Je gratis gids is onderweg. Kratos Weekly valt elke vrijdag binnen.",
+    "newsletterError": "Dat is niet gelukt. Controleer het adres en probeer het opnieuw."
   },
   "Account": {
     "title": "Jouw account",

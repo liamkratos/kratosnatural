@@ -47,7 +47,7 @@ export default async function PolicyPage({
   return (
     <Container className="max-w-3xl py-24">
       <Card>
-        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
+        <h1 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-5xl">
           {doc.title}
         </h1>
         {/* The source documents are Dutch and are served as-is on both
@@ -66,7 +66,7 @@ export default async function PolicyPage({
 
         {/* Rendered as plain paragraphs, left-aligned for readability the same
             way article prose is. */}
-        <div lang="nl" className="mt-10 space-y-5 text-left">
+        <div lang="nl" className="longform mt-10 space-y-5 text-left">
           {doc.paragraphs.map((paragraph, index) => (
             <p key={index} className="text-base leading-relaxed text-black">
               {paragraph}

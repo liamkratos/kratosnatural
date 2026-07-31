@@ -33,7 +33,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
 
   return (
     <div className="floating relative overflow-hidden">
-      <div className="relative aspect-[16/10] sm:aspect-[21/9]">
+      <div className="relative aspect-[3/4] sm:aspect-[21/9]">
         {slides.map((slide, i) => (
           <div
             key={slide.title}
@@ -55,11 +55,11 @@ export default function Slider({slides}: {slides: Slide[]}) {
               className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25"
             />
 
-            <div className="relative flex h-full flex-col items-center justify-end gap-3 p-8 text-center sm:p-12">
-              <h3 className="quoted font-display text-3xl font-bold uppercase leading-none text-cream sm:text-4xl">
+            <div className="relative flex h-full flex-col items-center justify-end gap-3 p-6 text-center sm:p-12">
+              <h3 className="quoted font-display text-2xl font-bold uppercase leading-none text-pink sm:text-4xl">
                 {slide.title}
               </h3>
-              <p className="max-w-lg font-display text-lg uppercase leading-snug text-cream">
+              <p className="max-w-lg font-display text-base uppercase leading-snug text-cream sm:text-lg">
                 {slide.body}
               </p>
               <Link

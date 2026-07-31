@@ -83,7 +83,10 @@
     "cookies": "Cookie preferences",
     "rights": "All rights reserved.",
     "email": "info@kratosnatural.com",
-    "newsletterIntro": "Kratos Weekly drops every Friday in your inbox: the latest analysis of Thursday's research from the blogs, a recipe, a workout, a song with an explanation, a poem, and whatever else is worth passing on."
+    "newsletterIntro": "Kratos Weekly drops every Friday in your inbox: the latest analysis of Thursday's research from the blogs, a recipe, a workout, a song with an explanation, a poem, and whatever else is worth passing on.",
+    "newsletterThanksTitle": "Check your inbox",
+    "newsletterThanksBody": "Your free guide is on its way. Kratos Weekly lands every Friday.",
+    "newsletterError": "That did not go through. Please check the address and try again."
   },
   "Account": {
     "title": "Your account",

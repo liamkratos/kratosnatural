@@ -34,9 +34,19 @@
    * unscannable, which is the one thing a research page cannot afford.
    */
   @media (max-width: 767px) {
-    .text-left:not(.paper):not(.paper *) {
+    .text-left:not(.paper):not(.paper *):not(.longform):not(.longform *) {
       text-align: center;
     }
+  }
+
+  /*
+   * Opt-out for running prose that is read rather than scanned: articles and
+   * the legal documents. A page of terms centred on a 375px screen is the one
+   * place where the site-wide centring actively works against the reader.
+   */
+  .longform,
+  .longform * {
+    text-align: left;
   }
 }
 
