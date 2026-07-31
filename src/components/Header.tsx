@@ -58,7 +58,7 @@ export default function Header({locale}: {locale: Locale}) {
       {/* Square and edge-to-edge at rest; becomes an inset pill once scrolled. */}
       <div
         className={cn(
-          'transition-[padding] duration-300 ease-out',
+          'relative transition-[padding] duration-300 ease-out',
           scrolled ? 'px-3 pt-3 sm:px-5' : 'px-0 pt-0'
         )}
       >
@@ -155,36 +155,31 @@ export default function Header({locale}: {locale: Locale}) {
           </div>
         </header>
 
-        {/* Animated on grid-template-rows like the announcement strip above,
-            so it opens without a hard-coded height and without shifting the
-            page underneath it. */}
-        <div
+        {/* A floating panel, matching the cart: inset from the page edges,
+            20px corners, its own shadow. An earlier version was a full-width
+            strip welded under the bar, which read as part of the chrome rather
+            than as something that had opened. */}
+        <nav
           id="mobile-nav"
+          aria-label={t('Nav.menu')}
           className={cn(
-            'grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out md:hidden',
-            menuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+            'absolute inset-x-3 top-full z-50 mt-2 overflow-hidden rounded-[20px] bg-black py-2 text-center text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200 md:hidden',
+            menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
           )}
         >
-          <nav className="min-h-0">
-            <ul
-              className={cn(
-                'mt-2 flex flex-col gap-1 bg-black px-5 py-4 text-center font-display text-2xl uppercase leading-none text-cream',
-                scrolled ? 'rounded-[20px]' : 'rounded-none'
-              )}
-            >
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="block py-3 transition-colors duration-200 hover:text-pink"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+          <ul className="font-display text-2xl uppercase leading-none">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="block px-5 py-4 transition-colors duration-200 hover:text-pink"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </div>
   );

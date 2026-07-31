@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
+import PolicyMenu from '@/components/PolicyMenu';
 import Container from '@/components/Container';
 
 /**
@@ -15,10 +16,16 @@ import Container from '@/components/Container';
  * unreachable by keyboard and invisible to touch.
  */
 
+/** The two markets run separate Instagram accounts. */
+const instagram = {
+  en: 'https://www.instagram.com/kratos.natural/',
+  nl: 'https://www.instagram.com/kratos_natural/'
+} as const;
+
 const socials = [
   {
     label: 'Instagram',
-    href: 'https://instagram.com',
+    href: instagram.en,
     path: 'M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4A6.4 6.4 0 1 0 18.4 12 6.4 6.4 0 0 0 12 5.6zm0 10.6A4.2 4.2 0 1 1 16.2 12 4.2 4.2 0 0 1 12 16.2zm6.6-10.9a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z'
   },
   {
@@ -40,6 +47,7 @@ export default function Footer() {
   // Mirrors the documents in src/content/policies. Cookie preferences are not
   // listed: there is no cookie banner on this site yet, so the link would have
   // gone nowhere.
+  const locale = useLocale();
   const policies = [
     'privacy',
     'refund',
@@ -78,7 +86,7 @@ export default function Footer() {
               {socials.map((social) => (
                 <li key={social.label}>
                   <a
-                    href={social.href}
+                    href={social.label === 'Instagram' ? (instagram[locale as keyof typeof instagram] ?? instagram.en) : social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
@@ -104,32 +112,8 @@ export default function Footer() {
       <div aria-hidden="true" className="h-0.5 w-full bg-pink" />
 
       <Container className="max-w-6xl py-8">
-        <div className="group flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="focus-within:[&_ul]:grid-rows-[1fr]">
-            <p className="cursor-default font-display text-lg uppercase leading-none transition-colors duration-200 group-hover:text-pink">
-              {t('policies')}
-            </p>
-
-            {/* Collapsed by default; expands on hover or keyboard focus.
-                Animating grid-template-rows keeps it smooth without a fixed
-                height and without pushing layout when closed. */}
-            <ul className="grid grid-rows-[0fr] overflow-hidden text-sm transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr]">
-              <li className="min-h-0">
-                <ul className="space-y-2 pt-4 text-center">
-                  {policies.map((key) => (
-                    <li key={key}>
-                      <Link
-                        href={`/${key}`}
-                        className="uppercase tracking-wide text-cream transition-colors duration-200 hover:text-pink"
-                      >
-                        {t(key)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            </ul>
-          </div>
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <PolicyMenu policies={policies} />
 
           <p className="font-display text-base uppercase leading-none text-cream">
             &copy; {new Date().getFullYear()} {tSite('name')}. {t('rights')}
