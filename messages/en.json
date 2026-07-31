@@ -172,5 +172,8 @@
     "coc": "Chamber of Commerce",
     "prev": "Previous",
     "next": "Next"
+  },
+  "Policies": {
+    "dutchNotice": "These documents are published in Dutch. That is the authoritative text, and it is served here rather than an unreviewed translation."
   }
 }

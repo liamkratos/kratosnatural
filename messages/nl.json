@@ -172,5 +172,8 @@
     "coc": "KvK-nummer",
     "prev": "Vorige",
     "next": "Volgende"
+  },
+  "Policies": {
+    "dutchNotice": ""
   }
 }

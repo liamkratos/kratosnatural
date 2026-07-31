@@ -32,9 +32,3 @@ export const stripeLocaleConfig = {
   en: {currency: 'eur', locale: 'en' as const},
   nl: {currency: 'eur', locale: 'nl' as const}
 };
-
-export function getWebhookSecret(): string {
-  const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  if (!secret) throw new Error('STRIPE_WEBHOOK_SECRET is not set.');
-  return secret;
-}
