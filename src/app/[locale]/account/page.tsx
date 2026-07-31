@@ -7,6 +7,7 @@ import {readToken, SESSION_COOKIE} from '@/lib/account';
 import {getOrdersByEmail, carrierLabel, type Order} from '@/lib/orders';
 import {formatDate, formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
+import Card from '@/components/Card';
 
 /**
  * Account overview: orders and their delivery state, read live from Stripe, plus
@@ -15,7 +16,15 @@ import Container from '@/components/Container';
  */
 export const dynamic = 'force-dynamic';
 
-function OrderRow({order, t, locale}: {order: Order; t: any; locale: 'en' | 'nl'}) {
+function OrderRow({
+  order,
+  t,
+  locale
+}: {
+  order: Order;
+  t: any;
+  locale: 'en' | 'nl';
+}) {
   return (
     <li className="border border-ink/10 p-6 text-left">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
@@ -99,23 +108,25 @@ export default async function AccountPage({
 
   return (
     <Container className="max-w-3xl py-24">
-      <h1 className="font-display text-5xl font-bold uppercase leading-tight">
-        {t('title')}
-      </h1>
-      <p className="mt-3 font-mono text-xs uppercase tracking-widest text-black">
-        {t('signedInAs', {email})}
-      </p>
+      <Card>
+        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+          {t('title')}
+        </h1>
+        <p className="mt-3 font-mono text-xs uppercase tracking-widest text-black">
+          {t('signedInAs', {email})}
+        </p>
 
-      <form action="/api/account/signout" method="post" className="mt-4">
-        <button
-          type="submit"
-          className="font-display text-lg uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
-        >
-          {t('signOut')}
-        </button>
-      </form>
+        <form action="/api/account/signout" method="post" className="mt-4">
+          <button
+            type="submit"
+            className="font-display text-lg uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
+          >
+            {t('signOut')}
+          </button>
+        </form>
+      </Card>
 
-      <section className="mt-16">
+      <Card className="mt-6">
         <h2 className="font-display text-4xl font-bold uppercase leading-tight">
           {t('orders')}
         </h2>
@@ -135,9 +146,9 @@ export default async function AccountPage({
             ))}
           </ul>
         )}
-      </section>
+      </Card>
 
-      <section className="mt-20">
+      <Card className="mt-6">
         <h2 className="font-display text-4xl font-bold uppercase leading-tight">
           {t('returns')}
         </h2>
@@ -147,7 +158,7 @@ export default async function AccountPage({
 
         <ol className="mt-8 space-y-4 text-left">
           {steps.map((step) => (
-            <li key={step} className="flex gap-5 border border-ink/10 p-6">
+            <li key={step} className="floating flex gap-5 bg-white p-6">
               <span className="font-mono text-lg tabular-nums text-black">
                 0{step}
               </span>
@@ -162,7 +173,7 @@ export default async function AccountPage({
             </li>
           ))}
         </ol>
-      </section>
+      </Card>
     </Container>
   );
 }

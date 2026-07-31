@@ -10,6 +10,7 @@ import {buildMetadata} from '@/lib/seo';
 import {productSchema} from '@/lib/schema';
 import {formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
+import Card from '@/components/Card';
 import JsonLd from '@/components/JsonLd';
 import Mdx from '@/components/Mdx';
 import AddToCart from '@/components/AddToCart';
@@ -40,7 +41,9 @@ export async function generateMetadata({
   });
 }
 
-export default async function ProductPage({params: {locale, slug}}: PageParams) {
+export default async function ProductPage({
+  params: {locale, slug}
+}: PageParams) {
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
 
@@ -83,7 +86,7 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
           )}
         </div>
 
-        <div className="text-left">
+        <Card className="text-left">
           <h1 className="font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
             {product.title}
           </h1>
@@ -102,7 +105,9 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
                 )}
               </>
             ) : (
-              <span className="text-lg text-black">{t('priceUnavailable')}</span>
+              <span className="text-lg text-black">
+                {t('priceUnavailable')}
+              </span>
             )}
           </p>
 
@@ -153,12 +158,12 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
               </p>
             )}
           </section>
-        </div>
+        </Card>
       </div>
 
-      <div className="mt-16 text-left">
+      <Card className="mt-6 text-left">
         <Mdx source={product.body} />
-      </div>
+      </Card>
 
       {research && <ScienceBacked research={research} />}
 

@@ -6,6 +6,7 @@ import {getProducts} from '@/lib/products';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
+import Card from '@/components/Card';
 import ProductCard from '@/components/ProductCard';
 import Reveal from '@/components/Reveal';
 
@@ -46,15 +47,17 @@ export default async function ShopPage({
 
   return (
     <Container className="max-w-6xl py-24">
-      <h1
+      <Card>
+        <h1
         className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
         style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
       >
         {t('title')}
       </h1>
-      <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-black sm:text-2xl">
-        {t('intro')}
-      </p>
+        <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+          {t('intro')}
+        </p>
+      </Card>
 
       {products.length === 0 ? (
         <p className="mt-16 font-display text-xl uppercase text-black">

@@ -3,6 +3,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
 import Container from '@/components/Container';
+import Card from '@/components/Card';
 
 /**
  * Post-checkout confirmation.
@@ -25,27 +26,29 @@ export default async function SuccessPage({
 
   return (
     <Container className="max-w-2xl py-32">
-      <h1 className="font-display text-5xl font-bold uppercase leading-tight">
-        {t('successTitle')}
-      </h1>
-      <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-black">
-        {t('successIntro')}
-      </p>
+      <Card>
+        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+          {t('successTitle')}
+        </h1>
+        <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-black">
+          {t('successIntro')}
+        </p>
 
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-        <Link
-          href="/account"
-          className="rounded-[20px] bg-black px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
-        >
-          {t('viewAccount')}
-        </Link>
-        <Link
-          href="/shop"
-          className="font-display text-xl uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
-        >
-          {t('backToShop')}
-        </Link>
-      </div>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/account"
+            className="rounded-[20px] bg-black px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
+          >
+            {t('viewAccount')}
+          </Link>
+          <Link
+            href="/shop"
+            className="font-display text-xl uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
+          >
+            {t('backToShop')}
+          </Link>
+        </div>
+      </Card>
     </Container>
   );
 }

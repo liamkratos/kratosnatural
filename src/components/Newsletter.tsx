@@ -36,7 +36,7 @@ export default function Newsletter() {
   if (subscribed) return null;
 
   return (
-    <section className="mx-3 mt-3 rounded-[20px] bg-white py-12 text-ink sm:mx-5">
+    <section className="floating mx-3 mt-3 bg-white py-12 text-ink sm:mx-5">
       <Container className="max-w-3xl">
         {/* Copy sits above the signup bar rather than beside it, so the block
             reads top to bottom on every width. */}

@@ -35,7 +35,7 @@ export default async function HomePage({
       {/* Evidence section. The brand's distinguishing artifact is the lab
           record, so the figures are set in the mono face and treated as the
           visual material rather than being dressed up. */}
-      <section className="mx-3 mt-3 rounded-[20px] bg-white py-24 text-ink sm:mx-5 sm:py-32">
+      <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
         <Container className="max-w-6xl">
           <Reveal>
             <h2
@@ -71,7 +71,7 @@ export default async function HomePage({
       {/* Bestsellers, above the research block. Same card as the shop so the
           two pages cannot drift apart. */}
       {bestsellers.length > 0 && (
-        <section className="mx-3 mt-3 rounded-[20px] bg-white py-24 text-ink sm:mx-5 sm:py-32">
+        <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
           <Container className="max-w-6xl">
             <Reveal>
               <h2
@@ -105,7 +105,7 @@ export default async function HomePage({
       {/* Research. Real, cited articles — the nattokinase piece is the showcase
           until more are published. */}
       {articles.length > 0 && (
-        <section className="mx-3 mt-3 rounded-[20px] bg-white py-24 text-ink sm:mx-5 sm:py-32">
+        <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
           <Container className="max-w-6xl">
             <Reveal>
               <h2
