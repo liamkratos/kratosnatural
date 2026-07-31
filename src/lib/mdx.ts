@@ -50,6 +50,7 @@ export type CiteRef = string | number;
  */
 export const collections = [
   {id: 'longevity-molecules', label: 'Longevity molecules (Supplements)'},
+  {id: 'light-therapy', label: 'Light & devices'},
   {id: 'quality', label: 'Quality & testing'}
 ] as const;
 
