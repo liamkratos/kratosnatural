@@ -2,6 +2,7 @@ import type {ReactNode} from 'react';
 import {Covered_By_Your_Grace, IBM_Plex_Mono, Inter} from 'next/font/google';
 import {getLocale} from 'next-intl/server';
 import {Analytics} from '@vercel/analytics/next';
+import {SpeedInsights} from '@vercel/speed-insights/next';
 import './globals.css';
 
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
@@ -39,9 +40,11 @@ export default async function RootLayout({children}: {children: ReactNode}) {
     >
       <body className="flex min-h-screen flex-col font-sans">
         {children}
-        {/* Page views and referrers. Cookieless, so no consent banner is owed
-            for it, and it does nothing outside a Vercel deployment. */}
+        {/* Page views, referrers and real-user load times. Both are
+            cookieless, so no consent banner is owed for them, and both are
+            inert outside a Vercel deployment. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
