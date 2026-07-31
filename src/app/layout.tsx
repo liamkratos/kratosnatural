@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import {Covered_By_Your_Grace, IBM_Plex_Mono, Inter} from 'next/font/google';
 import {getLocale} from 'next-intl/server';
+import {Analytics} from '@vercel/analytics/next';
 import './globals.css';
 
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
@@ -36,7 +37,12 @@ export default async function RootLayout({children}: {children: ReactNode}) {
       lang={locale}
       className={`${inter.variable} ${coveredByYourGrace.variable} ${ibmPlexMono.variable}`}
     >
-      <body className="flex min-h-screen flex-col font-sans">{children}</body>
+      <body className="flex min-h-screen flex-col font-sans">
+        {children}
+        {/* Page views and referrers. Cookieless, so no consent banner is owed
+            for it, and it does nothing outside a Vercel deployment. */}
+        <Analytics />
+      </body>
     </html>
   );
 }
