@@ -10,8 +10,13 @@ export const defaultLocale: Locale = 'en';
  *
  * kratosnatural.com serves English, kratosnatural.nl serves Dutch. Because each
  * domain lists exactly one locale, the middleware never prefixes the pathname on
- * production domains: kratosnatural.nl/artikelen stays prefix-free while still
+ * production domains: kratosnatural.nl/articles stays prefix-free while still
  * resolving to the `nl` segment internally.
+ *
+ * The `www` hosts are listed too, because the match is on the exact Host header.
+ * Vercel serves `www` as the production domain, so without these entries no
+ * domain matched and every request fell through to the default locale — which
+ * silently served the Dutch site in English while looking entirely healthy.
  *
  * On any other host (localhost, Vercel preview URLs) the domain list does not
  * match, so routing falls back to prefixes: /en/... and /nl/....
@@ -28,7 +33,17 @@ export const routing = defineRouting({
       locales: ['en']
     },
     {
+      domain: 'www.kratosnatural.com',
+      defaultLocale: 'en',
+      locales: ['en']
+    },
+    {
       domain: 'kratosnatural.nl',
+      defaultLocale: 'nl',
+      locales: ['nl']
+    },
+    {
+      domain: 'www.kratosnatural.nl',
       defaultLocale: 'nl',
       locales: ['nl']
     }
