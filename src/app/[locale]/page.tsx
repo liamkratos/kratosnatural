@@ -10,6 +10,7 @@ import Hero from '@/components/Hero';
 import Reveal from '@/components/Reveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
+import WhereNext from '@/components/WhereNext';
 
 export default async function HomePage({
   params: {locale}
@@ -44,7 +45,9 @@ export default async function HomePage({
             >
               {t('title')}
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">{t('intro')}</p>
+            <p className="mx-auto mt-6 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+              {t('intro')}
+            </p>
           </Reveal>
 
           <dl className="mt-16 grid gap-4 sm:grid-cols-3">
@@ -85,7 +88,10 @@ export default async function HomePage({
             <div className="mt-14 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {bestsellers.map((product, index) => (
                 <Reveal key={product.slug} delay={index * 60}>
-                  <ProductCard product={product} price={bestsellerPrices[index]} />
+                  <ProductCard
+                    product={product}
+                    price={bestsellerPrices[index]}
+                  />
                 </Reveal>
               ))}
             </div>
@@ -114,7 +120,9 @@ export default async function HomePage({
               >
                 {tArticles('title')}
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">{tArticles('intro')}</p>
+              <p className="mx-auto mt-4 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+                {tArticles('intro')}
+              </p>
             </Reveal>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -127,6 +135,12 @@ export default async function HomePage({
           </Container>
         </section>
       )}
+
+      {/* Sits directly above the mailing list block, which the layout renders
+          after this page's content. */}
+      <Reveal>
+        <WhereNext className="mx-3 mt-3 sm:mx-5" />
+      </Reveal>
     </>
   );
 }
