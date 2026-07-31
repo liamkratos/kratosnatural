@@ -155,24 +155,24 @@ export default function Header({locale}: {locale: Locale}) {
           </div>
         </header>
 
-        {/* A floating panel, matching the cart: inset from the page edges,
-            20px corners, its own shadow. An earlier version was a full-width
-            strip welded under the bar, which read as part of the chrome rather
-            than as something that had opened. */}
+        {/* Each item is its own floating block on a transparent carrier, so
+            the menu reads as a stack of separate objects over the page rather
+            than as one panel. The carrier itself paints nothing: it only
+            positions and fades the group. */}
         <nav
           id="mobile-nav"
           aria-label={t('Nav.menu')}
           className={cn(
-            'absolute inset-x-3 top-full z-50 mt-2 overflow-hidden rounded-[20px] bg-black py-2 text-center text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200 md:hidden',
+            'absolute inset-x-3 top-full z-50 mt-2 transition-opacity duration-200 md:hidden',
             menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
           )}
         >
-          <ul className="font-display text-2xl uppercase leading-none">
+          <ul className="flex flex-col gap-2 font-display text-2xl uppercase leading-none">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block px-5 py-4 transition-colors duration-200 hover:text-pink"
+                  className="block rounded-[20px] bg-black px-5 py-4 text-center text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-colors duration-200 hover:text-pink"
                 >
                   {item.label}
                 </Link>
