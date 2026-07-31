@@ -23,7 +23,7 @@ export default function ScienceBacked({
   return (
     <section
       aria-labelledby="science-backed-heading"
-      className="mt-16 rounded-[20px] border border-ink/15 bg-white p-6 text-left sm:p-10"
+      className="floating mt-16 bg-white p-6 text-left sm:p-10"
     >
       <h2
         id="science-backed-heading"
@@ -41,7 +41,7 @@ export default function ScienceBacked({
           {research.claims.map((claim) => (
             <li
               key={claim.text}
-              className="rounded-[20px] border border-ink/15 p-5"
+              className="floating bg-white p-5"
             >
               <p className="font-display text-xl uppercase leading-snug">
                 {claim.text}
@@ -62,7 +62,7 @@ export default function ScienceBacked({
           <Link
             key={article.slug}
             href={article.href}
-            className="group rounded-[20px] border border-ink/15 p-5 transition-colors duration-200 hover:border-pink"
+            className="floating group bg-white p-5 transition-colors duration-200 hover:border-pink"
           >
             <p className="font-display text-2xl font-bold uppercase leading-none">
               {article.shortTitle ?? article.title}

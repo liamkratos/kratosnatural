@@ -18,7 +18,7 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
   const tArticle = useTranslations('Article');
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-ink/10 bg-white">
+    <article className="group floating flex h-full flex-col overflow-hidden bg-white">
       {article.image ? (
         <span className="relative block aspect-[3/2] overflow-hidden bg-ink/5">
           <Image

@@ -32,7 +32,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
   const go = (next: number) => setIndex((next + total) % total);
 
   return (
-    <div className="relative overflow-hidden rounded-[20px]">
+    <div className="floating relative overflow-hidden">
       <div className="relative aspect-[16/10] sm:aspect-[21/9]">
         {slides.map((slide, i) => (
           <div

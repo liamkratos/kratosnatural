@@ -56,7 +56,7 @@ export default async function ProductPage({params: {locale, slug}}: PageParams) 
   return (
     <Container className="max-w-5xl py-24">
       <div className="grid gap-12 md:grid-cols-2 md:items-start">
-        <div className="relative aspect-square overflow-hidden rounded-[20px] bg-ink/5">
+        <div className="floating relative aspect-square overflow-hidden bg-ink/5">
           {/* Moss backdrop: a square crop of the site's own stream photograph. */}
           <Image
             src="/moss.jpg"

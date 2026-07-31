@@ -24,7 +24,7 @@ export default function ProductCard({
   const t = useTranslations('Shop');
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-ink/10 bg-white">
+    <article className="group floating flex h-full flex-col overflow-hidden bg-white">
       <Link href={`/shop/${product.slug}`} className="flex h-full flex-col">
         <span className="relative block aspect-square overflow-hidden bg-ink/5">
           {/* Moss backdrop, a square crop of the site's own stream photograph, so

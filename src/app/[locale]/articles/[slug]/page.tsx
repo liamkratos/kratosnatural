@@ -56,7 +56,7 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
   // tables, narrow enough to read.
   return (
     <div className="paper mx-auto w-full max-w-[900px] px-3 py-16 sm:px-5">
-      <article className="paper-sheet rounded-[20px] border border-[#e0e0e0] p-6 sm:p-10">
+      <article className="floating paper-sheet p-6 sm:p-10">
         <header>
           <h1>{article.title}</h1>
 

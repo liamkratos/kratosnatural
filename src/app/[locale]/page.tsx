@@ -54,7 +54,7 @@ export default async function HomePage({
               {value: '0', label: t('stat3')}
             ].map((stat, index) => (
               <Reveal key={stat.value} delay={index * 60}>
-                <div className="h-full rounded-[20px] border border-ink/15 bg-white p-8">
+                <div className="floating h-full bg-white p-8">
                   <dt className="font-mono text-3xl font-bold tabular-nums text-ink">
                     {stat.value}
                   </dt>

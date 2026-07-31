@@ -26,6 +26,20 @@
 
 @layer components {
   /*
+   * The card treatment every content block shares.
+   *
+   * One outline weight and one shadow across the site, so a product card, an
+   * article card, an About section and the evidence block all read as the same
+   * kind of object floating on the white page. Defined once here rather than
+   * repeated per component, because the moment two blocks carry slightly
+   * different border or shadow values the "floating on white" effect reads as
+   * a mistake instead of a system.
+   */
+  .floating {
+    @apply rounded-[20px] border border-ink/15 shadow-[0_8px_30px_rgba(0,0,0,0.08)];
+  }
+
+  /*
    * Section and page headings are wrapped in quotation marks, set in black.
    * Done with pseudo-elements rather than literal characters in the copy, so
    * the marks never end up in the translation files, the page <title>, the

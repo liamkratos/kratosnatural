@@ -101,7 +101,7 @@ export default async function AboutPage({
   return (
     <Container className="max-w-4xl py-16">
       <Reveal>
-        <section className="rounded-[20px] border border-ink/15 bg-white p-6 sm:p-10">
+        <section className="floating bg-white p-6 sm:p-10">
           <h1
             className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
             style={{fontSize: 'clamp(2rem, 7vw, 4.5rem)'}}
@@ -122,7 +122,7 @@ export default async function AboutPage({
       </Reveal>
 
       <Reveal delay={60}>
-        <section className="mt-6 rounded-[20px] border border-ink/15 bg-white p-6 sm:p-10">
+        <section className="mt-6 floating bg-white p-6 sm:p-10">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('sliderTitle')}
           </h2>
@@ -133,7 +133,7 @@ export default async function AboutPage({
       </Reveal>
 
       <Reveal delay={120}>
-        <section className="mt-6 rounded-[20px] border border-ink/15 bg-white p-6 sm:p-10">
+        <section className="mt-6 floating bg-white p-6 sm:p-10">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('detailsTitle')}
           </h2>
