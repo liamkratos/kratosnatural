@@ -20,7 +20,7 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
   return (
     <article className="group floating flex h-full flex-col overflow-hidden bg-white">
       {article.image ? (
-        <span className="relative block aspect-[3/2] overflow-hidden bg-ink/5">
+        <span className="relative block aspect-[16/9] overflow-hidden bg-ink/5">
           <Image
             src={article.image}
             alt=""
@@ -30,10 +30,10 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
           />
         </span>
       ) : (
-        <ArticleCover article={article} className="aspect-[3/2]" />
+        <ArticleCover article={article} className="aspect-[16/9]" />
       )}
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-5">
         <p className="font-mono text-xs uppercase tracking-widest text-black">
           <time dateTime={article.publishDate}>
             {formatDate(article.publishDate, article.locale)}
@@ -46,17 +46,19 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
         </p>
 
         {/* Same size as the product card title. */}
-        <h3 className="mt-3 font-display text-2xl uppercase leading-tight">
+        <h3 className="mt-2 line-clamp-2 font-display text-xl uppercase leading-tight">
           {article.title}
         </h3>
 
-        <p className="mt-2 flex-1 font-display text-lg uppercase leading-snug text-black">
+        {/* Clamped: descriptions vary from one line to forty words, and an
+            unclamped one sets the height of every card in the row. */}
+        <p className="mt-2 line-clamp-2 flex-1 font-display text-base uppercase leading-snug text-black">
           {article.description}
         </p>
 
         <Link
           href={`/articles/${article.slug}`}
-          className="mt-6 inline-flex items-center justify-center self-center rounded-[20px] bg-black px-6 py-3 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
+          className="mt-5 inline-flex items-center justify-center self-center rounded-[20px] bg-black px-5 py-2.5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
         >
           {t('readMore')}
         </Link>

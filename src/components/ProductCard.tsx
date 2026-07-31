@@ -47,7 +47,7 @@ export default function ProductCard({
               alt=""
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className="relative object-contain p-6 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-[1.04]"
+              className="relative object-contain p-5 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-[1.04]"
             />
           ) : (
             <span className="flex h-full items-center justify-center font-mono text-[0.65rem] uppercase tracking-[0.2em] text-black">
@@ -62,12 +62,12 @@ export default function ProductCard({
           )}
         </span>
 
-        <div className="flex flex-1 flex-col p-6">
-          <h3 className="font-display text-2xl uppercase leading-tight transition-colors duration-200 group-hover:text-pink">
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="font-display text-xl uppercase leading-tight transition-colors duration-200 group-hover:text-pink">
             {product.title}
           </h3>
 
-          <p className="mt-1 flex-1 font-display text-lg uppercase leading-snug text-black">
+          <p className="mt-1 line-clamp-2 flex-1 font-display text-base uppercase leading-snug text-black">
             {product.description}
           </p>
 
