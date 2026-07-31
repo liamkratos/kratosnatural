@@ -51,7 +51,7 @@ export async function sendMagicLink({to, url, locale}: MagicLinkEmail) {
 }
 
 /** Where the free guide lives, relative to the site origin. */
-export const EBOOK_PATH = '/downloads/aging-cant-be-stopped.pdf';
+export const EBOOK_PATH = '/downloads/longevity-basics.pdf';
 
 /**
  * Newsletter welcome, carrying the link to the free guide.
@@ -86,8 +86,8 @@ export async function sendEbook({
 
   const nl = locale === 'nl';
   const subject = nl
-    ? 'Je gratis gids: Aging Can\u2019t Be Stopped'
-    : 'Your free guide: Aging Can\u2019t Be Stopped';
+    ? 'Je gratis gids: Longevity Basics'
+    : 'Your free guide: Longevity Basics';
 
   const text = nl
     ? [
@@ -121,4 +121,52 @@ export async function sendEbook({
   if (!response.ok) {
     throw new Error(`Sending the guide failed (${response.status}).`);
   }
+}
+
+/**
+ * Add a subscriber to the mailing list.
+ *
+ * The list lives in a Resend audience rather than in a table of our own. That
+ * is deliberate: it is the same processor that already sends the mail, so no
+ * second vendor gets the address, and unsubscribe handling and suppression come
+ * with it. A table here would mean writing an unsubscribe route, a suppression
+ * check on every send and a retention policy before the first address could be
+ * stored responsibly.
+ *
+ * Only the address is stored. Nothing else is asked for, so nothing else can
+ * leak.
+ *
+ * Returns false when the list is not configured, so the caller can still send
+ * the guide rather than failing the signup outright.
+ */
+export async function addSubscriber(email: string): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const audienceId = process.env.RESEND_AUDIENCE_ID;
+
+  if (!apiKey || !audienceId) {
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.warn(`\n[dev] would store subscriber: ${email}\n`);
+    }
+    return false;
+  }
+
+  const response = await fetch(
+    `https://api.resend.com/audiences/${audienceId}/contacts`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({email, unsubscribed: false})
+    }
+  );
+
+  // A repeat signup is a success, not an error: Resend answers 409 for an
+  // address already on the list, and the visitor should still get the guide.
+  if (!response.ok && response.status !== 409) {
+    throw new Error(`Storing the subscriber failed (${response.status}).`);
+  }
+  return true;
 }

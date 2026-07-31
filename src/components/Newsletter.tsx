@@ -127,6 +127,12 @@ export default function Newsletter() {
             {t('subscribe')}
           </button>
         </form>
+
+        {/* Stated at the point of collection, not buried in the policy: the
+            address is kept, and getting off the list is one click. */}
+        <p className="mx-auto mt-3 max-w-lg font-mono text-[0.6rem] uppercase leading-relaxed tracking-widest text-black">
+          {t('newsletterConsent')}
+        </p>
       </Container>
     </section>
   );

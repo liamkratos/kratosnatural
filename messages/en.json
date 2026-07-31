@@ -86,7 +86,8 @@
     "newsletterIntro": "Kratos Weekly drops every Friday in your inbox: the latest analysis of Thursday's research from the blogs, a recipe, a workout, a song with an explanation, a poem, and whatever else is worth passing on.",
     "newsletterThanksTitle": "Check your inbox",
     "newsletterThanksBody": "Your free guide is on its way. Kratos Weekly lands every Friday.",
-    "newsletterError": "That did not go through. Please check the address and try again."
+    "newsletterError": "That did not go through. Please check the address and try again.",
+    "newsletterConsent": "We store your email address to send the newsletter. Unsubscribe in one click, any time."
   },
   "Account": {
     "title": "Your account",

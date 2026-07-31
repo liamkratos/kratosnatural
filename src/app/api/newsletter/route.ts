@@ -1,5 +1,5 @@
 import {NextResponse} from 'next/server';
-import {sendEbook} from '@/lib/email';
+import {addSubscriber, sendEbook} from '@/lib/email';
 import {isLocale} from '@/i18n/routing';
 
 /**
@@ -10,10 +10,10 @@ import {isLocale} from '@/i18n/routing';
  * request rather than from configuration, so a preview deployment links to the
  * guide on itself instead of on production.
  *
- * No list is stored yet: this sends the guide and nothing else. Storing
- * addresses means a subscriber record, an unsubscribe route and a retention
- * policy, none of which exist, and collecting them without those would be worse
- * than not collecting them at all.
+ * The address goes onto the Resend audience and the guide is sent. The order
+ * matters: storing first means a send that fails still leaves a subscriber who
+ * can be reached, whereas sending first and failing to store would give someone
+ * the guide while silently dropping them from the list they asked to join.
  */
 export async function POST(request: Request) {
   const form = await request.formData();
@@ -34,6 +34,7 @@ export async function POST(request: Request) {
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return redirect('error');
 
   try {
+    await addSubscriber(email);
     await sendEbook({to: email, origin, locale});
   } catch {
     // The address is never echoed back into the response.
