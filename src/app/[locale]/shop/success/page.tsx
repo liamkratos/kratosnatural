@@ -27,7 +27,7 @@ export default async function SuccessPage({
   return (
     <Container className="max-w-2xl py-32">
       <Card>
-        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {t('successTitle')}
         </h1>
         <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-black">

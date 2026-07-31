@@ -100,7 +100,7 @@ export default async function ProductPage({
         </div>
 
         <Card className="text-left">
-          <h1 className="font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
+          <h1 className="quoted font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
             {product.title}
           </h1>
           <p className="mt-3 font-display text-xl uppercase leading-snug text-black">
@@ -151,7 +151,7 @@ export default async function ProductPage({
           </form>
 
           <section className="mt-12">
-            <h2 className="font-display text-2xl uppercase leading-none">
+            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none">
               {t('specs')}
             </h2>
             {product.specs.length > 0 ? (

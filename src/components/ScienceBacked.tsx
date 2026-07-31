@@ -27,7 +27,7 @@ export default function ScienceBacked({
     >
       <h2
         id="science-backed-heading"
-        className="font-display text-3xl font-bold uppercase leading-none sm:text-4xl"
+        className="quoted font-display text-3xl font-bold uppercase leading-none sm:text-4xl"
       >
         {t('research')}
       </h2>

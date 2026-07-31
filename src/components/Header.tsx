@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/navigation';
+import {Link, usePathname} from '@/i18n/navigation';
 import type {Locale} from '@/i18n/routing';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import CartButton from '@/components/CartButton';
@@ -23,6 +24,13 @@ import {cn} from '@/lib/utils';
 export default function Header({locale}: {locale: Locale}) {
   const t = useTranslations();
   const scrolled = useScrolled();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Below md the nav collapses into a drawer. Closing on route change matters:
+  // Next.js does not remount the header between pages, so without this the
+  // drawer would stay open over the page the visitor just asked for.
+  const pathname = usePathname();
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   const navItems = [
     {href: '/', label: t('Nav.home')},
@@ -62,6 +70,38 @@ export default function Header({locale}: {locale: Locale}) {
               : 'max-w-none rounded-none shadow-none'
           )}
         >
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={t('Nav.menu')}
+            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink md:hidden"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+              className="h-6 w-6"
+            >
+              {menuOpen ? (
+                <>
+                  <path d="M5 5l14 14" />
+                  <path d="M19 5L5 19" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 7h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 17h16" />
+                </>
+              )}
+            </svg>
+          </button>
+
           <Link href="/" className="shrink-0" aria-label={t('Site.name')}>
             {/* Intrinsic 1000x380 after cropping the source's empty canvas. */}
             <Image
@@ -114,6 +154,37 @@ export default function Header({locale}: {locale: Locale}) {
             <LocaleSwitcher current={locale} />
           </div>
         </header>
+
+        {/* Animated on grid-template-rows like the announcement strip above,
+            so it opens without a hard-coded height and without shifting the
+            page underneath it. */}
+        <div
+          id="mobile-nav"
+          className={cn(
+            'grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out md:hidden',
+            menuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+          )}
+        >
+          <nav className="min-h-0">
+            <ul
+              className={cn(
+                'mt-2 flex flex-col gap-1 bg-black px-5 py-4 text-center font-display text-2xl uppercase leading-none text-cream',
+                scrolled ? 'rounded-[20px]' : 'rounded-none'
+              )}
+            >
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="block py-3 transition-colors duration-200 hover:text-pink"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   );

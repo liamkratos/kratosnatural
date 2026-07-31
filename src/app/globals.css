@@ -22,6 +22,22 @@
   .paper * {
     text-align: left;
   }
+
+  /*
+   * On phones everything outside an article is centred, including the blocks
+   * that opt into `text-left` on wider screens. A left-aligned column at 375px
+   * has so little measure that the alignment reads as an accident rather than
+   * a choice, while the rest of the site is centred around it.
+   *
+   * Articles keep their left alignment at every width: `.paper` carries tables,
+   * numbered citations and bullet lists, and centring those makes them
+   * unscannable, which is the one thing a research page cannot afford.
+   */
+  @media (max-width: 767px) {
+    .text-left:not(.paper):not(.paper *) {
+      text-align: center;
+    }
+  }
 }
 
 @layer components {

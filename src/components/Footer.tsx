@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold uppercase leading-none">
+            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none">
               {t('stayConnected')}
             </h2>
             <ul className="mt-6 flex justify-center gap-4">

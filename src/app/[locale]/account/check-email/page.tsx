@@ -16,7 +16,7 @@ export default async function CheckEmailPage({
   return (
     <Container className="max-w-lg py-24">
       <Card>
-        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {t('checkEmailTitle')}
         </h1>
         <p className="mt-4 font-display text-xl uppercase text-black">

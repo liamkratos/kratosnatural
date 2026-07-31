@@ -109,7 +109,7 @@ export default async function AccountPage({
   return (
     <Container className="max-w-3xl py-24">
       <Card>
-        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {t('title')}
         </h1>
         <p className="mt-3 font-mono text-xs uppercase tracking-widest text-black">
@@ -127,7 +127,7 @@ export default async function AccountPage({
       </Card>
 
       <Card className="mt-6">
-        <h2 className="font-display text-4xl font-bold uppercase leading-tight">
+        <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">
           {t('orders')}
         </h2>
 
@@ -149,7 +149,7 @@ export default async function AccountPage({
       </Card>
 
       <Card className="mt-6">
-        <h2 className="font-display text-4xl font-bold uppercase leading-tight">
+        <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">
           {t('returns')}
         </h2>
         <p className="mt-3 font-display text-xl uppercase text-black">

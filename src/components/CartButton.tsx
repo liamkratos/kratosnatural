@@ -14,6 +14,7 @@ import {
   type CartLine
 } from '@/lib/cart';
 import {formatPrice} from '@/lib/utils';
+import {useScrolled} from '@/lib/use-scrolled';
 import type {Locale} from '@/i18n/routing';
 import {cn} from '@/lib/utils';
 
@@ -30,6 +31,7 @@ export default function CartButton({locale}: {locale: Locale}) {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const scrolled = useScrolled();
 
   const refresh = useCallback(() => setLines(readCart()), []);
 
@@ -101,7 +103,15 @@ export default function CartButton({locale}: {locale: Locale}) {
         role="dialog"
         aria-label={t('cart')}
         className={cn(
-          'absolute right-0 top-full z-50 mt-2 w-[min(22rem,calc(100vw-1.5rem))] overflow-hidden rounded-[20px] bg-black p-5 text-left text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200',
+          'z-50 overflow-hidden rounded-[20px] bg-black p-5 text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200',
+          // On phones the panel is pinned to the viewport rather than to the
+          // icon. Anchored to the icon it ran 110px off the left edge, because
+          // the cart sits mid-header and the panel is wider than the distance
+          // from the icon to the screen edge.
+          'fixed inset-x-3 text-center',
+          scrolled ? 'top-[4.75rem]' : 'top-[6.75rem]',
+          // From md the header is roomy enough to hang it off the icon.
+          'md:absolute md:inset-x-auto md:right-0 md:top-full md:mt-2 md:w-[22rem] md:text-left',
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
       >

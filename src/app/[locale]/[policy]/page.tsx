@@ -47,7 +47,7 @@ export default async function PolicyPage({
   return (
     <Container className="max-w-3xl py-24">
       <Card>
-        <h1 className="font-display text-5xl font-bold uppercase leading-tight">
+        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {doc.title}
         </h1>
         {/* The source documents are Dutch and are served as-is on both

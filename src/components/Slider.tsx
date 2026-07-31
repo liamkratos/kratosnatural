@@ -56,7 +56,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
             />
 
             <div className="relative flex h-full flex-col items-center justify-end gap-3 p-8 text-center sm:p-12">
-              <h3 className="font-display text-3xl font-bold uppercase leading-none text-cream sm:text-4xl">
+              <h3 className="quoted font-display text-3xl font-bold uppercase leading-none text-cream sm:text-4xl">
                 {slide.title}
               </h3>
               <p className="max-w-lg font-display text-lg uppercase leading-snug text-cream">
