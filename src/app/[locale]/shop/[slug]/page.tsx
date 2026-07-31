@@ -59,30 +59,43 @@ export default async function ProductPage({
   return (
     <Container className="max-w-5xl py-24">
       <div className="grid gap-12 md:grid-cols-2 md:items-start">
-        <div className="floating relative aspect-square overflow-hidden bg-ink/5">
-          {/* Moss backdrop: a square crop of the site's own stream photograph. */}
-          <Image
-            src="/moss.jpg"
-            alt=""
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-          <span aria-hidden="true" className="absolute inset-0 bg-black/15" />
+        {/* Gallery. The photographs are shot on moss and fill the frame, so
+            nothing is composited behind them. */}
+        <div className="space-y-3">
+          <div className="floating relative aspect-square overflow-hidden bg-ink/5">
+            {product.image ? (
+              <Image
+                src={product.image}
+                alt={product.title}
+                fill
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <span className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-[0.2em] text-black">
+                {t('photoComingSoon')}
+              </span>
+            )}
+          </div>
 
-          {product.image ? (
-            <Image
-              src={product.image}
-              alt={product.title}
-              fill
-              priority
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="relative object-contain p-8 drop-shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
-            />
-          ) : (
-            <span className="flex h-full items-center justify-center font-mono text-xs uppercase tracking-[0.2em] text-black">
-              {t('photoComingSoon')}
-            </span>
+          {product.images.length > 0 && (
+            <div className="grid grid-cols-3 gap-3">
+              {product.images.map((src) => (
+                <div
+                  key={src}
+                  className="floating relative aspect-square overflow-hidden bg-ink/5"
+                >
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 17vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           )}
         </div>
 

@@ -42,6 +42,12 @@ export type ProductFrontmatter = {
   /** Stripe price id, e.g. "price_1Abc...". Source of truth for the amount. */
   priceId: string;
   image?: string;
+  /**
+   * Additional photographs, shown as a gallery on the product page. `image`
+   * stays the primary shot and the one used on cards, so a product with a
+   * single photo needs no change.
+   */
+  images?: string[];
   /** Short spec lines shown on the product page. */
   specs?: string[];
   badge?: string;
@@ -57,6 +63,7 @@ export type Product = ProductFrontmatter & {
   locale: Locale;
   body: string;
   specs: string[];
+  images: string[];
 };
 
 function localeDir(locale: Locale) {
@@ -94,6 +101,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     description: fm.description!,
     priceId: fm.priceId!,
     image: fm.image,
+    images: fm.images ?? [],
     badge: fm.badge,
     bestseller: fm.bestseller ?? false,
     research: fm.research,

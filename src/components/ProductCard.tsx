@@ -6,10 +6,12 @@ import type {PriceInfo} from '@/lib/pricing';
 import {formatPrice} from '@/lib/utils';
 
 /**
- * Product card, following the collection layout on elvou.com: no card chrome at
- * all — no border, no shadow, no panel — just a rounded image well with the
- * text sitting directly on the page. The radius is 20px rather than elvou's 8,
- * to match the buttons and the nav bar.
+ * Product card: a square photograph closed by the title, description and price.
+ *
+ * The photographs are shot on moss rather than cut out on white, so they fill
+ * the well edge to edge. An earlier version composited a packshot over a shared
+ * moss backdrop; with photographs that already carry their own setting that
+ * would put moss on moss.
  *
  * Products without photography yet get a neutral well rather than a broken
  * image, so the grid still reads as intentional.
@@ -27,27 +29,13 @@ export default function ProductCard({
     <article className="group floating flex h-full flex-col overflow-hidden bg-white">
       <Link href={`/shop/${product.slug}`} className="flex h-full flex-col">
         <span className="relative block aspect-square overflow-hidden bg-ink/5">
-          {/* Moss backdrop, a square crop of the site's own stream photograph, so
-              the packshot sits on something rather than floating on grey. */}
-          <Image
-            src="/moss.jpg"
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 25vw, 50vw"
-            className="object-cover"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-black/15"
-          />
-
           {product.image ? (
             <Image
               src={product.image}
               alt=""
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className="relative object-contain p-5 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-[1.04]"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
           ) : (
             <span className="flex h-full items-center justify-center font-mono text-[0.65rem] uppercase tracking-[0.2em] text-black">
