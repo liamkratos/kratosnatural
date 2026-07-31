@@ -63,13 +63,22 @@ export default function Hero() {
         {/* `quoted` adds the curly marks every other heading on the site
             carries. It also sets black, which the pink utility overrides —
             utilities outrank the components layer, so the wordmark stays
-            pink and only the quotation marks are inherited. */}
-        <h1 className="quoted font-display text-6xl font-bold uppercase leading-[0.85] text-pink drop-shadow-sm sm:text-7xl md:text-8xl lg:text-9xl">
+            pink and only the quotation marks are inherited.
+
+            Sized in vw with nowrap rather than in steps, so the wordmark
+            stays on one line at every width. Fixed sizes broke it on phones:
+            the two quotation marks pushed "Natural" onto a second line. */}
+        <h1
+          className="quoted whitespace-nowrap font-display font-bold uppercase leading-[0.85] text-pink drop-shadow-sm"
+          style={{fontSize: 'clamp(2rem, 10.5vw, 9rem)'}}
+        >
           Kratos Natural
         </h1>
 
-        <p className="mx-auto mt-6 whitespace-nowrap font-display uppercase leading-tight text-cream"
-          style={{fontSize: 'clamp(0.6rem, 2.3vw, 1.6rem)'}}>
+        <p
+          className="mx-auto mt-6 whitespace-nowrap font-display uppercase leading-tight text-cream"
+          style={{fontSize: 'clamp(0.72rem, 2.8vw, 1.9rem)'}}
+        >
           {t('tagline')}
         </p>
 
