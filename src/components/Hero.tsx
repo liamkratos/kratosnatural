@@ -60,7 +60,11 @@ export default function Hero() {
       />
 
       <div className="mx-auto w-full max-w-5xl px-6 py-16 text-center sm:pb-28">
-        <h1 className="font-display text-6xl font-bold uppercase leading-[0.85] text-pink drop-shadow-sm sm:text-7xl md:text-8xl lg:text-9xl">
+        {/* `quoted` adds the curly marks every other heading on the site
+            carries. It also sets black, which the pink utility overrides —
+            utilities outrank the components layer, so the wordmark stays
+            pink and only the quotation marks are inherited. */}
+        <h1 className="quoted font-display text-6xl font-bold uppercase leading-[0.85] text-pink drop-shadow-sm sm:text-7xl md:text-8xl lg:text-9xl">
           Kratos Natural
         </h1>
 
