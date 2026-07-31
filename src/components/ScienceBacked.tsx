@@ -5,10 +5,17 @@ import type {ResolvedResearch} from '@/lib/product-research';
 /**
  * Evidence block on a product page.
  *
+ * Set in the research document's own typography rather than the shop's, using
+ * the same `.paper` treatment as the analyses: the reading face in sentence
+ * case, blue headings, and the orange left rule that marks a study. A claim
+ * about published evidence should look like the page it came from, not like
+ * the product copy next to it, and that difference in setting is what tells a
+ * reader which of the two they are looking at.
+ *
  * Each claim carries the link to the analysis it came from, right next to the
- * sentence rather than collected in a footer. The point is that a reader can
- * check any single claim in one click — including reading the trials that found
- * nothing, which the analyses report alongside the ones that found something.
+ * sentence rather than collected in a footer, so any single one can be checked
+ * in a click — including the trials that found nothing, which the analyses
+ * report alongside the ones that found something.
  *
  * Rendered only when a product actually has research behind it. A product with
  * no published evidence shows no block, rather than a block saying nothing.
@@ -23,35 +30,24 @@ export default function ScienceBacked({
   return (
     <section
       aria-labelledby="science-backed-heading"
-      className="floating mt-16 bg-white p-6 text-left sm:p-10"
+      className="paper floating paper-sheet mt-6 p-6 sm:p-10"
     >
-      <h2
-        id="science-backed-heading"
-        className="quoted font-display text-3xl font-bold uppercase leading-none sm:text-4xl"
-      >
+      <h2 id="science-backed-heading" className="block-heading">
         {t('research')}
       </h2>
 
-      <p className="mt-4 max-w-2xl font-display text-lg uppercase leading-snug text-black">
-        {t('researchIntro')}
-      </p>
+      <p className="mt-4 max-w-2xl">{t('researchIntro')}</p>
 
       {research.claims.length > 0 && (
-        <ul className="mt-8 space-y-4">
+        <ul className="mt-8">
           {research.claims.map((claim) => (
-            <li
-              key={claim.text}
-              className="floating bg-white p-5"
-            >
-              <p className="font-display text-xl uppercase leading-snug">
-                {claim.text}
+            <li key={claim.text} className="study-citation">
+              <p>{claim.text}</p>
+              <p className="mt-2">
+                <Link className="pmid-link" href={claim.href}>
+                  {claim.articleTitle}
+                </Link>
               </p>
-              <Link
-                href={claim.href}
-                className="mt-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
-              >
-                {claim.articleTitle}
-              </Link>
             </li>
           ))}
         </ul>
@@ -62,19 +58,19 @@ export default function ScienceBacked({
           <Link
             key={article.slug}
             href={article.href}
-            className="floating group bg-white p-5 transition-colors duration-200 hover:border-pink"
+            className="meta-info group m-0 block transition-colors duration-200"
           >
-            <p className="font-display text-2xl font-bold uppercase leading-none">
-              {article.shortTitle ?? article.title}
+            <p className="text-lg">
+              <strong>{article.shortTitle ?? article.title}</strong>
             </p>
 
-            <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-black">
+            <p className="mt-1">
               {article.studyCount !== undefined
                 ? t('researchStudies', {count: article.studyCount})
                 : t('researchStudies', {count: article.citationCount})}
             </p>
 
-            <p className="mt-4 font-display text-lg uppercase leading-snug text-black underline underline-offset-4 transition-colors duration-200 group-hover:text-pink">
+            <p className="pmid-link mt-3 group-hover:underline">
               {t('researchRead')}
             </p>
           </Link>

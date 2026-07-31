@@ -155,15 +155,14 @@ export default function Header({locale}: {locale: Locale}) {
           </div>
         </header>
 
-        {/* Each item is its own floating block on a transparent carrier, so
-            the menu reads as a stack of separate objects over the page rather
-            than as one panel. The carrier itself paints nothing: it only
-            positions and fades the group. */}
+        {/* A black panel carrying white buttons, so the items read as
+            controls sitting on the menu rather than as four separate cards
+            floating over the page. */}
         <nav
           id="mobile-nav"
           aria-label={t('Nav.menu')}
           className={cn(
-            'absolute inset-x-3 top-full z-50 mt-2 transition-opacity duration-200 md:hidden',
+            'absolute inset-x-3 top-full z-50 mt-2 rounded-[20px] bg-black p-3 shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200 md:hidden',
             menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
           )}
         >
@@ -172,7 +171,7 @@ export default function Header({locale}: {locale: Locale}) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block rounded-[20px] bg-black px-5 py-4 text-center text-cream shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-colors duration-200 hover:text-pink"
+                  className="block rounded-[20px] bg-white px-5 py-4 text-center text-black transition-colors duration-200 hover:text-pink"
                 >
                   {item.label}
                 </Link>
