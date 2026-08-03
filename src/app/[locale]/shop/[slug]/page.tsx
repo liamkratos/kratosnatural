@@ -92,14 +92,17 @@ export default async function ProductPage({
 
           {product.images.length > 0 && (
             <div className="grid grid-cols-3 gap-3">
-              {product.images.map((src) => (
+              {product.images.map((src, index) => (
                 <div
                   key={src}
                   className="floating relative aspect-square overflow-hidden bg-ink/5"
                 >
                   <Image
                     src={src}
-                    alt=""
+                    alt={t('galleryAlt', {
+                      product: product.title,
+                      number: index + 2
+                    })}
                     fill
                     sizes="(min-width: 768px) 17vw, 33vw"
                     className="object-cover"

@@ -31,7 +31,8 @@
     "empty": "Nog geen artikelen gepubliceerd.",
     "publishedOn": "Gepubliceerd op {date}",
     "readingTime": "{minutes} min lezen",
-    "other": "Overig onderzoek"
+    "other": "Overig onderzoek",
+    "related": "Gerelateerde analyses"
   },
   "Article": {
     "keyFindings": "Belangrijkste bevindingen",
@@ -151,7 +152,8 @@
     "research": "Wetenschappelijk onderbouwd",
     "researchIntro": "Elke claim hieronder komt uit onze eigen analyse van de gepubliceerde studies. Volg de link om het bewijs te lezen, inclusief de studies die niets vonden.",
     "researchRead": "Lees de volledige analyse",
-    "researchStudies": "{count} studies geanalyseerd"
+    "researchStudies": "{count} studies geanalyseerd",
+    "galleryAlt": "{product}, foto {number}"
   },
   "About": {
     "title": "Over Kratos Natural",

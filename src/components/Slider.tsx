@@ -45,7 +45,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
           >
             <Image
               src={slide.image}
-              alt=""
+              alt={slide.title}
               fill
               sizes="(min-width: 768px) 768px, 100vw"
               className="object-cover"

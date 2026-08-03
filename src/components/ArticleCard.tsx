@@ -23,7 +23,7 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
         <span className="relative block aspect-[16/9] overflow-hidden bg-ink/5">
           <Image
             src={article.image}
-            alt=""
+            alt={article.title}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

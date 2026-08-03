@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
-import {getAllArticleParams, getArticle} from '@/lib/mdx';
+import {getAllArticleParams, getArticle, getArticles} from '@/lib/mdx';
 import {locales, type Locale} from '@/i18n/routing';
 import {buildMetadata} from '@/lib/seo';
 import {articlePageSchema, breadcrumbSchema} from '@/lib/schema';
@@ -14,6 +14,7 @@ import KeyFindings from '@/components/KeyFindings';
 import TableOfContents from '@/components/TableOfContents';
 import Citations from '@/components/Citations';
 import ResearchDownload from '@/components/ResearchDownload';
+import RelatedArticles from '@/components/RelatedArticles';
 
 type PageParams = {params: {locale: string; slug: string}};
 
@@ -64,6 +65,13 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
   const t = await getTranslations('Article');
   const tArticles = await getTranslations('Articles');
   const pathname = `/articles/${slug}`;
+
+  // Same collection first, then anything else, so the closest matches lead.
+  const others = (await getArticles(locale)).filter((a) => a.slug !== slug);
+  const related = [
+    ...others.filter((a) => a.collection && a.collection === article.collection),
+    ...others.filter((a) => !a.collection || a.collection !== article.collection)
+  ].slice(0, 3);
 
   // 900px is the source document's own measure — wide enough for the data
   // tables, narrow enough to read.
@@ -144,6 +152,8 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
         <Mdx source={article.body} citations={article.citations} />
 
         <Citations citations={article.citations} />
+
+        <RelatedArticles articles={related} />
       </article>
 
       <JsonLd

@@ -31,7 +31,8 @@
     "empty": "No articles published yet.",
     "publishedOn": "Published on {date}",
     "readingTime": "{minutes} min read",
-    "other": "Other research"
+    "other": "Other research",
+    "related": "Related analyses"
   },
   "Article": {
     "keyFindings": "Key findings",
@@ -151,7 +152,8 @@
     "research": "Science backed",
     "researchIntro": "Every claim below is drawn from our own analysis of the published studies. Follow the link to read the evidence, including the trials that found nothing.",
     "researchRead": "Read the full analysis",
-    "researchStudies": "{count} studies analysed"
+    "researchStudies": "{count} studies analysed",
+    "galleryAlt": "{product}, photo {number}"
   },
   "About": {
     "title": "About Kratos Natural",
