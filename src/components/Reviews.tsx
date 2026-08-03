@@ -1,4 +1,4 @@
-import {useLocale, useTranslations} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
 import Reveal from '@/components/Reveal';
@@ -42,7 +42,6 @@ function Stars({rating}: {rating: number}) {
 
 export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
   const t = useTranslations('Reviews');
-  const locale = useLocale() as 'en' | 'nl';
   const average = averageRating(reviews);
 
   if (reviews.length === 0 || average === null) return null;
@@ -68,9 +67,11 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
             <Reveal key={review.author} delay={index * 60}>
               <li className="floating h-full bg-white p-6 text-left">
                 <Stars rating={review.rating} />
-                <p className="mt-4 text-base uppercase leading-snug">
-                  {review.body[locale] ?? review.body.en ?? review.body.nl}
-                </p>
+                {review.body && (
+                  <p lang={review.lang} className="mt-4 text-base uppercase leading-snug">
+                    {`\u201C${review.body}\u201D`}
+                  </p>
+                )}
                 <p className="mt-4 font-mono text-xs uppercase tracking-widest text-black">
                   {review.author}
                 </p>

@@ -17,8 +17,20 @@ export type Review = {
   author: string;
   /** Whole stars, 1 to 5. */
   rating: 1 | 2 | 3 | 4 | 5;
-  /** The review text, per locale. Untranslated reviews stay in one language. */
-  body: Partial<Record<'en' | 'nl', string>>;
+  /**
+   * The review as written. Left in the reviewer's own language and never
+   * translated: a quote is someone's words, and a translated one presented as
+   * theirs is not what they said. The `lang` attribute tells a screen reader
+   * and a search engine which language it is in.
+   *
+   * Omitted for a star-only review. Those are real and count towards the
+   * average; inventing a sentence for them would not be.
+   */
+  body?: string;
+  /** BCP 47 tag for `body`. */
+  lang?: 'en' | 'nl';
+  /** ISO date, used to order newest first. */
+  date?: string;
 };
 
 /**
@@ -28,14 +40,27 @@ export type Review = {
  * (Profile → Ask for reviews → copy link). Until it is set the invitation is
  * not rendered, because a button that leads nowhere is worse than no button.
  */
-export const GOOGLE_REVIEW_URL = '';
+export const GOOGLE_REVIEW_URL = 'https://g.page/r/CevpmDLkTxW_EBM/review';
 
 /**
  * The reviews themselves. Add each one as it comes in, with the reviewer's
  * name as it appears publicly, so what is on the site can be checked against
  * what is on Google.
  */
-export const REVIEWS: Review[] = [];
+export const REVIEWS: Review[] = [
+  {
+    author: 'Otis Ripping',
+    rating: 5,
+    body: 'Goed geholpen',
+    lang: 'nl',
+    date: '2026-01-03'
+  },
+  {
+    author: 'Raul Singh',
+    rating: 5,
+    date: '2025-09-03'
+  }
+];
 
 export function averageRating(reviews: Review[]): number | null {
   if (reviews.length === 0) return null;
