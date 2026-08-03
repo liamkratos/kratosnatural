@@ -42,14 +42,14 @@ export default function ArticleCover({
         />
 
         <div className="relative flex h-full flex-col justify-between p-6 text-left sm:p-8">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-pink">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-white">
             {tags.length > 0 ? tags.join(' · ') : 'Research'}
           </p>
 
           {/* Short label, not the full headline: the card repeats the title
               immediately below the cover, and the long version wraps to four
               lines here. */}
-          <p className="text-4xl leading-none text-cream sm:text-5xl">
+          <p className="font-display text-4xl leading-none text-pink sm:text-5xl">
             {article.shortTitle ?? article.title}
           </p>
 
