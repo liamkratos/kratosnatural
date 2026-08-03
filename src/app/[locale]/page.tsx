@@ -39,6 +39,8 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const t = await getTranslations('Home');
+  /** Bold anchors inside the copy; see the note in globals.css. */
+  const bold = {b: (chunks: React.ReactNode) => <b className="font-semibold">{chunks}</b>};
   const tArticles = await getTranslations('Articles');
   const articles = (await getArticles(locale)).slice(0, 2);
   const tShop = await getTranslations('Shop');
@@ -63,24 +65,24 @@ export default async function HomePage({
             >
               {t('title')}
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-center text-xl uppercase leading-snug text-black sm:text-2xl">
-              {t('intro')}
+            <p className="mx-auto mt-6 max-w-3xl text-center text-xl leading-snug text-black sm:text-2xl">
+              {t.rich('intro', bold)}
             </p>
           </Reveal>
 
           <dl className="mt-16 grid gap-4 sm:grid-cols-3">
             {[
-              {value: 'PubMed', label: t('stat1')},
-              {value: '100%', label: t('stat2')},
-              {value: '0', label: t('stat3')}
+              {value: 'PubMed', key: 'stat1'},
+              {value: '100%', key: 'stat2'},
+              {value: '0', key: 'stat3'}
             ].map((stat, index) => (
               <Reveal key={stat.value} delay={index * 60}>
                 <div className="floating h-full bg-white p-8">
                   <dt className="font-mono text-3xl font-bold tabular-nums text-ink">
                     {stat.value}
                   </dt>
-                  <dd className="mt-3 text-lg uppercase leading-snug text-black sm:text-xl">
-                    {stat.label}
+                  <dd className="mt-3 text-lg leading-snug text-black sm:text-xl">
+                    {t.rich(stat.key, bold)}
                   </dd>
                 </div>
               </Reveal>
@@ -138,8 +140,8 @@ export default async function HomePage({
               >
                 {tArticles('title')}
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-center text-xl uppercase leading-snug text-black sm:text-2xl">
-                {tArticles('intro')}
+              <p className="mx-auto mt-4 max-w-3xl text-center text-xl leading-snug text-black sm:text-2xl">
+                {tArticles.rich('intro', bold)}
               </p>
             </Reveal>
 

@@ -116,7 +116,7 @@ export default function CartButton({locale}: {locale: Locale}) {
         )}
       >
         {lines.length === 0 ? (
-          <p className="text-lg uppercase leading-none text-cream">
+          <p className="text-lg leading-none text-cream">
             {t('cartEmpty')}
           </p>
         ) : (
@@ -139,7 +139,7 @@ export default function CartButton({locale}: {locale: Locale}) {
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-lg uppercase leading-tight">
+                    <p className="text-lg leading-tight">
                       {line.title}
                     </p>
                     <p className="mt-1 font-mono text-xs tabular-nums text-cream">
@@ -178,7 +178,7 @@ export default function CartButton({locale}: {locale: Locale}) {
             </ul>
 
             <p className="mt-5 flex items-baseline justify-between border-t border-white/15 pt-4 font-mono text-sm tabular-nums">
-              <span className="uppercase text-cream">{t('total')}</span>
+              <span className="text-cream">{t('total')}</span>
               <span>{formatPrice(cartTotalCents(lines), locale)}</span>
             </p>
 

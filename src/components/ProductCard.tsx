@@ -77,7 +77,7 @@ export default function ProductCard({
             {product.title}
           </h3>
 
-          <p className="mt-1 line-clamp-2 flex-1 text-base uppercase leading-snug text-black">
+          <p className="mt-1 line-clamp-2 flex-1 text-base leading-snug text-black">
             {product.description}
           </p>
 

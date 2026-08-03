@@ -30,13 +30,19 @@
    * font utility still wins, which is what keeps the hero wordmark, the cover
    * titles and the card headings on the script.
    *
-   * Uppercase stays. Worth knowing it costs something: capitals strip the
-   * ascenders and descenders that give a word its outline, and that outline is
-   * the cue a dyslexic reader leans on most. The face change is the larger half
-   * of the fix rather than all of it.
+   * Sentence case with it. Capitals strip the ascenders and descenders that
+   * give a word its outline, and that outline is the cue a dyslexic reader
+   * leans on most, so the face change alone was only half the fix. Headings
+   * keep their capitals: those are a few words that are looked at rather than
+   * read through.
+   *
+   * The emphasis inside this copy does the rest. One bold phrase per paragraph
+   * carries the message and gives the eye somewhere to land after a slip, which
+   * is why it is never a whole sentence: bold everything and the contrast that
+   * makes it work is gone.
    */
   :where(p, li, dd, summary):not(:where(.paper *)) {
-    @apply font-body tracking-normal;
+    @apply font-body normal-case tracking-normal;
   }
 
   /*

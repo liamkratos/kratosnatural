@@ -59,7 +59,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
               <h3 className="quoted font-display text-2xl font-bold uppercase leading-none text-pink sm:text-4xl">
                 {slide.title}
               </h3>
-              <p className="max-w-lg text-base uppercase leading-snug text-cream sm:text-lg">
+              <p className="max-w-lg text-base leading-snug text-cream sm:text-lg">
                 {slide.body}
               </p>
               <Link

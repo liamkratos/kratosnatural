@@ -49,7 +49,7 @@ export default function ArticleCover({
           {/* Short label, not the full headline: the card repeats the title
               immediately below the cover, and the long version wraps to four
               lines here. */}
-          <p className="text-4xl uppercase leading-none text-cream sm:text-5xl">
+          <p className="text-4xl leading-none text-cream sm:text-5xl">
             {article.shortTitle ?? article.title}
           </p>
 

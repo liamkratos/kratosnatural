@@ -21,7 +21,7 @@ export default async function LoginPage({
         <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {t('signInTitle')}
         </h1>
-        <p className="mt-4 text-xl uppercase text-black">
+        <p className="mt-4 text-xl text-black">
           {t('signInIntro')}
         </p>
 

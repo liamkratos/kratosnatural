@@ -115,7 +115,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
           <PolicyMenu policies={policies} />
 
-          <p className="text-base uppercase leading-none text-cream">
+          <p className="text-base leading-none text-cream">
             &copy; {new Date().getFullYear()} {tSite('name')}. {t('rights')}
           </p>
         </div>
