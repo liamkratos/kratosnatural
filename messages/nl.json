@@ -190,5 +190,10 @@
     "articlesDescription": "Volledige analyses van PubMed-literatuur over nattokinase, rood en infrarood licht en meer. Alleen humaan onderzoek, met elk PMID en ook de nulresultaten.",
     "aboutTitle": "Over Kratos Natural, de winkel en onderzoekstak",
     "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter. Opgericht door Liam Kratos, orthomoleculair therapeut en longevity-coach."
+  },
+  "Reviews": {
+    "title": "Wat mensen zeggen",
+    "summary": "{rating} van de 5, uit {count} Google-reviews",
+    "write": "Schrijf een review"
   }
 }

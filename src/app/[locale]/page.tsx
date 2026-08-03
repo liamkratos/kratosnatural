@@ -12,6 +12,7 @@ import Reveal from '@/components/Reveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
 import WhereNext from '@/components/WhereNext';
+import Reviews from '@/components/Reviews';
 
 export async function generateMetadata({
   params: {locale}
@@ -152,6 +153,8 @@ export default async function HomePage({
           </Container>
         </section>
       )}
+
+      <Reviews />
 
       {/* Sits directly above the mailing list block, which the layout renders
           after this page's content. */}
