@@ -180,5 +180,15 @@
   },
   "Policies": {
     "dutchNotice": ""
+  },
+  "Seo": {
+    "homeTitle": "Natuurlijke producten met het onderzoek er volledig bij",
+    "homeDescription": "Natuurlijke producten onderbouwd met onderzoek, naast gratis analyses van de PubMed-literatuur. Elke claim herleidbaar, inclusief de studies die niets vonden.",
+    "shopTitle": "Natuurlijke producten kopen, elke claim onderbouwd",
+    "shopDescription": "Himalaya-zoutlampen met infraroodlicht en meer, met volledige specificaties en het gepubliceerde onderzoek achter elke claim. Verzonden vanuit Nederland.",
+    "articlesTitle": "Onderzoeksanalyses van het gepubliceerde bewijs",
+    "articlesDescription": "Volledige analyses van PubMed-literatuur over nattokinase, rood en infrarood licht en meer. Alleen humaan onderzoek, met elk PMID en ook de nulresultaten.",
+    "aboutTitle": "Over Kratos Natural, de winkel en onderzoekstak",
+    "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter. Opgericht door Liam Kratos, orthomoleculair therapeut en longevity-coach."
   }
 }

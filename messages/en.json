@@ -180,5 +180,15 @@
   },
   "Policies": {
     "dutchNotice": "These documents are published in Dutch. That is the authoritative text, and it is served here rather than an unreviewed translation."
+  },
+  "Seo": {
+    "homeTitle": "Natural products with the studies published in full",
+    "homeDescription": "Natural products backed by research, alongside free analyses of the PubMed literature. Every claim traced to a source, including the trials that found nothing.",
+    "shopTitle": "Shop natural products, every claim sourced",
+    "shopDescription": "Himalayan salt lamps with infrared light and more, with full specifications and the published research behind each claim. Shipped from the Netherlands.",
+    "articlesTitle": "Research analyses of the published evidence",
+    "articlesDescription": "Complete analyses of PubMed literature on nattokinase, red and infrared light and more. Human trials only, with every PMID listed and null results included.",
+    "aboutTitle": "About Kratos Natural, the shop and research arm",
+    "aboutDescription": "Kratos Natural sells natural products and publishes the research behind them. Founded by Liam Kratos, orthomolecular therapist and longevity coach."
   }
 }

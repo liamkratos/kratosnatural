@@ -23,12 +23,23 @@ export async function generateMetadata({
   if (!isLocale(locale)) notFound();
   const t = await getTranslations({locale, namespace: 'Site'});
 
-  return buildMetadata({
+  const base = buildMetadata({
     locale,
     title: `${t('name')} — ${t('tagline')}`,
     description: t('description'),
     pathname: '/'
   });
+
+  return {
+    ...base,
+    // Page titles are written to stand alone in a search result; the brand is
+    // appended once here rather than repeated in every buildMetadata call. A
+    // page that sets an absolute title opts out of the template.
+    title: {
+      default: `${t('name')} — ${t('tagline')}`,
+      template: `%s | ${t('name')}`
+    }
+  };
 }
 
 /**

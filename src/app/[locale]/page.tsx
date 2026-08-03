@@ -1,6 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {isLocale} from '@/i18n/routing';
+import {buildMetadata} from '@/lib/seo';
 import {Link} from '@/i18n/navigation';
 import {getArticles} from '@/lib/mdx';
 import {getBestsellers} from '@/lib/products';
@@ -11,6 +12,22 @@ import Reveal from '@/components/Reveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
 import WhereNext from '@/components/WhereNext';
+
+export async function generateMetadata({
+  params: {locale}
+}: {
+  params: {locale: string};
+}) {
+  if (!isLocale(locale)) notFound();
+  const t = await getTranslations({locale, namespace: 'Seo'});
+
+  return buildMetadata({
+    locale,
+    title: t('homeTitle'),
+    description: t('homeDescription'),
+    pathname: '/'
+  });
+}
 
 export default async function HomePage({
   params: {locale}

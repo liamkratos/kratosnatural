@@ -43,6 +43,12 @@ export type ProductFrontmatter = {
   priceId: string;
   image?: string;
   /**
+   * Meta description for search results. The on-page `description` is a
+   * one-line label beside the title; a result page needs the fuller sentence,
+   * and writing one line to serve both makes it wrong in one of the two places.
+   */
+  metaDescription?: string;
+  /**
    * Additional photographs, shown as a gallery on the product page. `image`
    * stays the primary shot and the one used on cards, so a product with a
    * single photo needs no change.
@@ -101,6 +107,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     description: fm.description!,
     priceId: fm.priceId!,
     image: fm.image,
+    metaDescription: fm.metaDescription,
     images: fm.images ?? [],
     badge: fm.badge,
     bestseller: fm.bestseller ?? false,

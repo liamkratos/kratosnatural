@@ -19,12 +19,12 @@ export async function generateMetadata({
   params: {locale: string};
 }): Promise<Metadata> {
   if (!isLocale(locale)) notFound();
-  const t = await getTranslations({locale, namespace: 'Articles'});
+  const tSeo = await getTranslations({locale, namespace: 'Seo'});
 
   return buildMetadata({
     locale,
-    title: t('title'),
-    description: t('intro'),
+    title: tSeo('articlesTitle'),
+    description: tSeo('articlesDescription'),
     pathname: '/articles'
   });
 }

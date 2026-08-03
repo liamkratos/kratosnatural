@@ -44,7 +44,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     title: product.title,
-    description: product.description,
+    description: product.metaDescription ?? product.description,
     pathname: `/shop/${slug}`,
     alternates,
     image: product.image,
