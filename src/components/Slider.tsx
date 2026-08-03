@@ -33,7 +33,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
 
   return (
     <div className="floating relative overflow-hidden">
-      <div className="relative aspect-[3/4] sm:aspect-[21/9]">
+      <div className="relative aspect-[4/5] bg-black sm:aspect-[21/9]">
         {slides.map((slide, i) => (
           <div
             key={slide.title}
@@ -48,7 +48,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
               alt={slide.title}
               fill
               sizes="(min-width: 768px) 768px, 100vw"
-              className="object-cover"
+              className="object-contain"
             />
             <div
               aria-hidden="true"
