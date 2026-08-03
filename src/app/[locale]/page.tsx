@@ -61,7 +61,7 @@ export default async function HomePage({
           <Reveal>
             <h2
               className="quoted whitespace-nowrap text-center font-display font-bold uppercase leading-tight"
-              style={{fontSize: 'clamp(0.85rem, 3.4vw, 3.5rem)'}}
+              style={{fontSize: 'clamp(1.6rem, 5.2vw, 5rem)'}}
             >
               {t('title')}
             </h2>
