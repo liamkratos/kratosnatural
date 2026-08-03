@@ -117,7 +117,7 @@ export default async function ProductPage({
           <h1 className="quoted font-display text-4xl font-bold uppercase leading-tight sm:text-5xl">
             {product.title}
           </h1>
-          <p className="mt-3 font-display text-xl uppercase leading-snug text-black">
+          <p className="mt-3 text-xl uppercase leading-snug text-black">
             {product.description}
           </p>
 

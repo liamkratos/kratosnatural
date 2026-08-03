@@ -85,13 +85,13 @@ export default async function AboutPage({
             {t('title')}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl font-display text-xl uppercase leading-snug sm:text-2xl">
+          <p className="mx-auto mt-6 max-w-2xl text-xl uppercase leading-snug sm:text-2xl">
             {t('lead')}
           </p>
-          <p className="mx-auto mt-4 max-w-2xl font-display text-lg uppercase leading-snug text-black">
+          <p className="mx-auto mt-4 max-w-2xl text-lg uppercase leading-snug text-black">
             {t('body1')}
           </p>
-          <p className="mx-auto mt-3 max-w-2xl font-display text-lg uppercase leading-snug text-black">
+          <p className="mx-auto mt-3 max-w-2xl text-lg uppercase leading-snug text-black">
             {t('body2')}
           </p>
         </section>
@@ -112,7 +112,7 @@ export default async function AboutPage({
                 <dt className="font-mono text-xs uppercase tracking-widest text-black">
                   {label}
                 </dt>
-                <dd className="font-display text-lg uppercase leading-snug sm:border-b sm:border-ink/10 sm:pb-3">
+                <dd className="text-lg uppercase leading-snug sm:border-b sm:border-ink/10 sm:pb-3">
                   {value}
                 </dd>
               </div>

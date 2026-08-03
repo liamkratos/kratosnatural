@@ -63,7 +63,7 @@ export default async function HomePage({
             >
               {t('title')}
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+            <p className="mx-auto mt-6 max-w-3xl text-center text-xl uppercase leading-snug text-black sm:text-2xl">
               {t('intro')}
             </p>
           </Reveal>
@@ -79,7 +79,7 @@ export default async function HomePage({
                   <dt className="font-mono text-3xl font-bold tabular-nums text-ink">
                     {stat.value}
                   </dt>
-                  <dd className="mt-3 font-display text-lg uppercase leading-snug text-black sm:text-xl">
+                  <dd className="mt-3 text-lg uppercase leading-snug text-black sm:text-xl">
                     {stat.label}
                   </dd>
                 </div>
@@ -138,7 +138,7 @@ export default async function HomePage({
               >
                 {tArticles('title')}
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-center font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+              <p className="mx-auto mt-4 max-w-3xl text-center text-xl uppercase leading-snug text-black sm:text-2xl">
                 {tArticles('intro')}
               </p>
             </Reveal>

@@ -30,7 +30,7 @@ export default async function SuccessPage({
         <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
           {t('successTitle')}
         </h1>
-        <p className="mx-auto mt-6 max-w-xl font-display text-xl uppercase leading-snug text-black">
+        <p className="mx-auto mt-6 max-w-xl text-xl uppercase leading-snug text-black">
           {t('successIntro')}
         </p>
 

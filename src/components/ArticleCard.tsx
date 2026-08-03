@@ -52,7 +52,7 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
 
         {/* Clamped: descriptions vary from one line to forty words, and an
             unclamped one sets the height of every card in the row. */}
-        <p className="mt-2 line-clamp-2 flex-1 font-display text-base uppercase leading-snug text-black">
+        <p className="mt-2 line-clamp-2 flex-1 text-base uppercase leading-snug text-black">
           {article.description}
         </p>
 

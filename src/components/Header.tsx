@@ -49,7 +49,7 @@ export default function Header({locale}: {locale: Locale}) {
         )}
       >
         <div className="min-h-0">
-          <p className="border-b-2 border-pink bg-white px-4 py-2 text-center font-display text-sm uppercase leading-none tracking-wide text-ink">
+          <p className="border-b-2 border-pink bg-white px-4 py-2 text-center text-sm uppercase leading-none tracking-wide text-ink">
             {t('Site.announcement')}
           </p>
         </div>

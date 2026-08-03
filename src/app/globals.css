@@ -24,6 +24,22 @@
   }
 
   /*
+   * Running text is set in the body face, not the display script. Applied by
+   * element so it reaches copy added later by someone who does not know the
+   * rule, and wrapped in `:where()` so it carries no specificity: any explicit
+   * font utility still wins, which is what keeps the hero wordmark, the cover
+   * titles and the card headings on the script.
+   *
+   * Uppercase stays. Worth knowing it costs something: capitals strip the
+   * ascenders and descenders that give a word its outline, and that outline is
+   * the cue a dyslexic reader leans on most. The face change is the larger half
+   * of the fix rather than all of it.
+   */
+  :where(p, li, dd, summary):not(:where(.paper *)) {
+    @apply font-body tracking-normal;
+  }
+
+  /*
    * On phones everything outside an article is centred, including the blocks
    * that opt into `text-left` on wider screens. A left-aligned column at 375px
    * has so little measure that the alignment reads as an accident rather than

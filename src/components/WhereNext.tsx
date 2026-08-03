@@ -35,7 +35,7 @@ export default function WhereNext({className}: {className?: string}) {
       body: t('slide3Body'),
       cta: t('slide3Cta'),
       href: '/shop',
-      image: '/moss.jpg'
+      image: '/products/salt-lamp-lit.jpg'
     }
   ];
 

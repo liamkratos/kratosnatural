@@ -47,6 +47,8 @@ const config: Config = {
         // Article prose only, so a meta-analysis reads like a paper rather than
         // a poster. Everything outside `.prose` stays on the display face.
         reading: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Running text outside headings. See the note in layout.tsx.
+        body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         figures: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
       }
     }

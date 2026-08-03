@@ -37,7 +37,7 @@ function OrderRow({
       </div>
 
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
-        <p className="font-display text-2xl uppercase leading-none">
+        <p className="text-2xl uppercase leading-none">
           {t(`state_${order.state}`)}
         </p>
         <p className="font-mono text-lg tabular-nums">
@@ -132,11 +132,11 @@ export default async function AccountPage({
         </h2>
 
         {ordersFailed ? (
-          <p className="mt-6 font-display text-xl uppercase text-black">
+          <p className="mt-6 text-xl uppercase text-black">
             {t('noOrders')}
           </p>
         ) : orders.length === 0 ? (
-          <p className="mt-6 font-display text-xl uppercase text-black">
+          <p className="mt-6 text-xl uppercase text-black">
             {t('noOrders')}
           </p>
         ) : (
@@ -152,7 +152,7 @@ export default async function AccountPage({
         <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">
           {t('returns')}
         </h2>
-        <p className="mt-3 font-display text-xl uppercase text-black">
+        <p className="mt-3 text-xl uppercase text-black">
           {t('returnsIntro')}
         </p>
 

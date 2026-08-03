@@ -116,7 +116,7 @@ export default function CartButton({locale}: {locale: Locale}) {
         )}
       >
         {lines.length === 0 ? (
-          <p className="font-display text-lg uppercase leading-none text-cream">
+          <p className="text-lg uppercase leading-none text-cream">
             {t('cartEmpty')}
           </p>
         ) : (
@@ -139,7 +139,7 @@ export default function CartButton({locale}: {locale: Locale}) {
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <p className="font-display text-lg uppercase leading-tight">
+                    <p className="text-lg uppercase leading-tight">
                       {line.title}
                     </p>
                     <p className="mt-1 font-mono text-xs tabular-nums text-cream">

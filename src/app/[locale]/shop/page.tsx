@@ -55,13 +55,13 @@ export default async function ShopPage({
       >
         {t('title')}
       </h1>
-        <p className="mx-auto mt-4 max-w-3xl font-display text-xl uppercase leading-snug text-black sm:text-2xl">
+        <p className="mx-auto mt-4 max-w-3xl text-xl uppercase leading-snug text-black sm:text-2xl">
           {t('intro')}
         </p>
       </Card>
 
       {products.length === 0 ? (
-        <p className="mt-16 font-display text-xl uppercase text-black">
+        <p className="mt-16 text-xl uppercase text-black">
           {t('empty')}
         </p>
       ) : (

@@ -65,7 +65,7 @@ export default function Newsletter() {
           <h2 className="quoted font-display text-2xl font-bold uppercase leading-none sm:text-3xl">
             {t('newsletterThanksTitle')}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl font-display text-base uppercase leading-snug text-black sm:text-lg">
+          <p className="mx-auto mt-3 max-w-2xl text-base uppercase leading-snug text-black sm:text-lg">
             {t('newsletterThanksBody')}
           </p>
         </Container>
@@ -81,7 +81,7 @@ export default function Newsletter() {
         <h2 className="quoted font-display text-2xl font-bold uppercase leading-none sm:text-3xl">
           {t('newsletterTitle')}
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl font-display text-base uppercase leading-snug text-black sm:text-lg">
+        <p className="mx-auto mt-3 max-w-2xl text-base uppercase leading-snug text-black sm:text-lg">
           {t('newsletterIntro')}
         </p>
 
