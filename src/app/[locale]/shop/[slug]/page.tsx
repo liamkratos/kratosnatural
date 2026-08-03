@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {getAllProductParams, getProduct} from '@/lib/products';
+import {locales, type Locale} from '@/i18n/routing';
 import {resolveResearch} from '@/lib/product-research';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
@@ -31,11 +32,21 @@ export async function generateMetadata({
   const product = await getProduct(locale, slug);
   if (!product) return {};
 
+  const alternates: Partial<Record<Locale, string>> = {};
+  await Promise.all(
+    locales.map(async (candidate) => {
+      if (await getProduct(candidate, slug)) {
+        alternates[candidate] = `/shop/${slug}`;
+      }
+    })
+  );
+
   return buildMetadata({
     locale,
     title: product.title,
     description: product.description,
     pathname: `/shop/${slug}`,
+    alternates,
     image: product.image,
     noIndex: product.draft
   });

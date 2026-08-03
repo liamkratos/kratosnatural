@@ -11,7 +11,10 @@ export function absoluteUrl(locale: Locale, pathname = '/'): string {
 
 /**
  * hreflang map for a page that exists on every domain under the same pathname.
- * Pass a per-locale pathname map when the slugs differ between languages.
+ *
+ * Pass a per-locale pathname map when the slugs differ between languages, and
+ * leave a locale out entirely when the page has not been translated. Only the
+ * languages actually present are declared.
  */
 export function alternateLanguages(
   pathnames: Partial<Record<Locale, string>> | string = '/'
@@ -21,9 +24,19 @@ export function alternateLanguages(
 
   const languages: Record<string, string> = {};
   for (const locale of locales) {
+    // A map with a locale left out means the page does not exist in that
+    // language. Emitting it anyway points a crawler at a 404, which is worse
+    // than not declaring the pair at all: hreflang is a promise that the URL
+    // on the other end is the same page, and a missing page breaks it.
+    const path = typeof pathnames === 'string' ? pathnames : pathnames[locale];
+    if (path === undefined) continue;
     languages[locale] = absoluteUrl(locale, resolve(locale));
   }
-  languages['x-default'] = absoluteUrl(defaultLocale, resolve(defaultLocale));
+  const fallback =
+    typeof pathnames === 'string' ? pathnames : pathnames[defaultLocale];
+  if (fallback !== undefined) {
+    languages['x-default'] = absoluteUrl(defaultLocale, fallback);
+  }
   return languages;
 }
 

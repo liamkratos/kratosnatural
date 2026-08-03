@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {getAllArticleParams, getArticle} from '@/lib/mdx';
+import {locales, type Locale} from '@/i18n/routing';
 import {buildMetadata} from '@/lib/seo';
 import {articlePageSchema, breadcrumbSchema} from '@/lib/schema';
 import {formatDate} from '@/lib/utils';
@@ -28,11 +29,23 @@ export async function generateMetadata({
   const article = await getArticle(locale, slug);
   if (!article) return {};
 
+  // Only the languages this slug resolves in. A translation under a different
+  // slug is simply not declared, which is better than declaring one that 404s.
+  const alternates: Partial<Record<Locale, string>> = {};
+  await Promise.all(
+    locales.map(async (candidate) => {
+      if (await getArticle(candidate, slug)) {
+        alternates[candidate] = `/articles/${slug}`;
+      }
+    })
+  );
+
   return buildMetadata({
     locale,
     title: article.title,
     description: article.description,
     pathname: `/articles/${slug}`,
+    alternates,
     image: article.image,
     type: 'article',
     publishedTime: article.publishDate,
