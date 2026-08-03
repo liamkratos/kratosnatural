@@ -47,7 +47,7 @@ export default function PolicyMenu({policies}: {policies: readonly string[]}) {
               <li key={key}>
                 <Link
                   href={`/${key}`}
-                  className="uppercase tracking-wide text-cream transition-colors duration-200 hover:text-pink"
+                  className="font-display uppercase tracking-wide text-cream transition-colors duration-200 hover:text-pink"
                 >
                   {t(key)}
                 </Link>

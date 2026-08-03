@@ -46,6 +46,22 @@
   }
 
   /*
+   * The script is always set in capitals. It is used for headings, the
+   * wordmark, buttons and cover art, which are looked at rather than read
+   * through, and the capitals are what make it read as a mark rather than as
+   * handwriting.
+   *
+   * Stated as a rule rather than typed onto each element, because the two are
+   * one decision: anything that earns the display face earns the capitals with
+   * it, and an element that wants sentence case wants the body face too.
+   * Articles are exempt, since `.paper` is a document rather than the brand.
+   */
+  .font-display:not(.paper *),
+  .font-mono:not(.paper *) {
+    @apply uppercase;
+  }
+
+  /*
    * On phones everything outside an article is centred, including the blocks
    * that opt into `text-left` on wider screens. A left-aligned column at 375px
    * has so little measure that the alignment reads as an accident rather than

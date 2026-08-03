@@ -68,7 +68,7 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
               <li className="floating h-full bg-white p-6 text-left">
                 <Stars rating={review.rating} />
                 {review.body && (
-                  <p lang={review.lang} className="mt-4 text-base uppercase leading-snug">
+                  <p lang={review.lang} className="mt-4 text-base leading-snug">
                     {`\u201C${review.body}\u201D`}
                   </p>
                 )}
