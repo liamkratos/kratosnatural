@@ -19,7 +19,19 @@ export function organizationSchema(locale: Locale): JsonLdObject {
     name: 'Kratos Natural',
     url: absoluteUrl(locale),
     logo: absoluteUrl(locale, '/logo.png'),
-    sameAs: ['https://kratosnatural.com', 'https://kratosnatural.nl']
+    // The profiles that are demonstrably the same entity as this site. Search
+    // engines and AI answer engines use it to tie them together, so it lists
+    // the locale's own accounts rather than every account we have.
+    sameAs: [
+      'https://kratosnatural.com',
+      'https://kratosnatural.nl',
+      locale === 'nl'
+        ? 'https://www.instagram.com/kratos_natural/'
+        : 'https://www.instagram.com/kratos.natural/',
+      locale === 'nl'
+        ? 'https://www.youtube.com/channel/UCET_4WGv5oQRkGJ4pTQNcDA'
+        : 'https://www.youtube.com/@kratosnatural'
+    ]
   };
 }
 
