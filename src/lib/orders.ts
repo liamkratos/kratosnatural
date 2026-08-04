@@ -90,6 +90,13 @@ function deliveryState(
  * All orders for an email address, newest first.
  * Returns an empty array when the address has never bought anything.
  */
+/**
+ * Which site an order belongs to. Checkout writes this onto the PaymentIntent,
+ * and the account page reads it back, so a coaching client does not find a
+ * lamp in their order history and vice versa.
+ */
+export const SITE = 'kratosnatural';
+
 export async function getOrdersByEmail(email: string): Promise<Order[]> {
   const stripe = getStripe();
 
@@ -114,6 +121,11 @@ export async function getOrdersByEmail(email: string): Promise<Order[]> {
         // listed here as orders, permanently stuck on "Processing" because no
         // tracking number will ever be written to them.
         .filter((intent) => intent.invoice === null)
+        // One Stripe account serves both sites, so a purchase carries the site
+        // that made it. Orders from before this label existed have no `site`
+        // and are shown here, which is the right default: this is the older
+        // shop, so an unlabelled order is one of its own.
+        .filter((intent) => (intent.metadata?.site ?? SITE) === SITE)
         .map((intent): Order => {
           const metadata = (intent.metadata ?? {}) as Record<string, string>;
           const charge =

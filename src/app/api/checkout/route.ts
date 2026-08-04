@@ -1,5 +1,6 @@
 import {NextResponse} from 'next/server';
 import {getStripe} from '@/lib/stripe';
+import {SITE} from '@/lib/orders';
 import {getProduct} from '@/lib/products';
 import {isLocale, defaultLocale} from '@/i18n/routing';
 
@@ -70,6 +71,9 @@ export async function POST(request: Request) {
       // Lets Stripe attach the purchase to an existing customer by email, which
       // is what makes it show up in the buyer's account page afterwards.
       customer_creation: 'always',
+      // Stamps the purchase with the site that made it. Set on the payment
+      // intent rather than the session, because the account page reads intents.
+      payment_intent_data: {metadata: {site: SITE}},
       locale: locale === 'nl' ? 'nl' : 'en',
       success_url: `${origin}${prefix}/shop/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}${prefix}/shop`
