@@ -55,7 +55,7 @@ export default async function AboutPage({
     [t('tradeName'), COMPANY.tradeName],
     [
       t('phone'),
-      <a key="phone" href={COMPANY.phoneHref} className="hover:text-cream">
+      <a key="phone" href={COMPANY.phoneHref} className="hover:text-white">
         {COMPANY.phone}
       </a>
     ],
@@ -64,7 +64,7 @@ export default async function AboutPage({
       <a
         key="email"
         href={`mailto:${COMPANY.email}`}
-        className="hover:text-cream"
+        className="hover:text-white"
       >
         {COMPANY.email}
       </a>

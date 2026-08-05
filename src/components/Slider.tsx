@@ -33,7 +33,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
 
   return (
     <div className="floating relative overflow-hidden">
-      <div className="relative aspect-[4/5] bg-olive sm:aspect-[21/9]">
+      <div className="relative aspect-[3/2] bg-olive">
         {slides.map((slide, i) => (
           <div
             key={slide.title}
@@ -56,16 +56,16 @@ export default function Slider({slides}: {slides: Slide[]}) {
             />
 
             <div className="relative flex h-full flex-col items-center justify-end gap-3 p-6 text-center sm:p-12">
-              <h3 className="quoted font-display text-2xl font-bold uppercase leading-none text-cream sm:text-4xl">
+              <h3 className="quoted font-display text-2xl font-bold uppercase leading-none text-pink sm:text-4xl">
                 {slide.title}
               </h3>
-              <p className="max-w-lg text-base leading-snug text-cream sm:text-lg">
+              <p className="max-w-lg text-base leading-snug text-white sm:text-lg">
                 {slide.body}
               </p>
               <Link
                 href={slide.href}
                 tabIndex={i === index ? undefined : -1}
-                className="mt-2 rounded-[20px] bg-white px-6 py-3 font-display text-lg uppercase leading-none text-black transition-colors duration-200 hover:text-olive"
+                className="mt-2 rounded-[20px] bg-olive px-6 py-3 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
               >
                 {slide.cta}
               </Link>
@@ -78,7 +78,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
         type="button"
         onClick={() => go(index - 1)}
         aria-label={t('prev')}
-        className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-cream transition-colors hover:text-cream"
+        className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-white"
       >
         &#8249;
       </button>
@@ -86,7 +86,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
         type="button"
         onClick={() => go(index + 1)}
         aria-label={t('next')}
-        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-cream transition-colors hover:text-cream"
+        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-white"
       >
         &#8250;
       </button>
@@ -101,7 +101,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
             aria-current={i === index}
             className={cn(
               'h-2 rounded-full transition-all duration-200',
-              i === index ? 'w-6 bg-cream' : 'w-2 bg-white/60 hover:bg-white'
+              i === index ? 'w-6 bg-white' : 'w-2 bg-white/60 hover:bg-white'
             )}
           />
         ))}

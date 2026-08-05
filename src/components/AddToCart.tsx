@@ -55,7 +55,7 @@ export default function AddToCart({
         // announced as "add to cart" tell a screen-reader user nothing.
         aria-label={`${t('addToCart')}: ${title}`}
         title={t('addToCart')}
-        className="absolute bottom-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-olive text-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-colors duration-200 hover:text-cream disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
+        className="absolute bottom-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-olive text-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-colors duration-200 hover:bg-oliveSoft disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
       >
         <span aria-live="polite" className="sr-only">
           {added ? t('added') : ''}
@@ -78,7 +78,7 @@ export default function AddToCart({
       type="button"
       disabled={disabled}
       onClick={add}
-      className="w-full rounded-[20px] bg-olive px-8 py-4 font-display text-2xl uppercase leading-none text-white transition-colors duration-200 hover:text-cream disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
+      className="w-full rounded-[20px] bg-olive px-8 py-4 font-display text-2xl uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-white"
     >
       {/* aria-live so the confirmation is announced, not just seen. */}
       <span aria-live="polite">{added ? t('added') : t('addToCart')}</span>

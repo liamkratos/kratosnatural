@@ -58,7 +58,7 @@ export default function ArticleCard({article}: {article: ArticleSummary}) {
 
         <Link
           href={`/articles/${article.slug}`}
-          className="mt-5 inline-flex items-center justify-center self-center rounded-[20px] bg-olive px-5 py-2.5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive"
+          className="mt-5 inline-flex items-center justify-center self-center rounded-[20px] bg-olive px-5 py-2.5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive"
         >
           {t('readMore')}
         </Link>

@@ -64,7 +64,7 @@ export default function Header({locale}: {locale: Locale}) {
       >
         <header
           className={cn(
-            'mx-auto flex items-center justify-between gap-6 bg-olive px-5 py-2.5 text-cream transition-[border-radius,max-width,box-shadow] duration-300 ease-out sm:px-7',
+            'mx-auto flex items-center justify-between gap-6 bg-olive px-5 py-2.5 text-white transition-[border-radius,max-width,box-shadow] duration-300 ease-out sm:px-7',
             scrolled
               ? 'max-w-6xl rounded-[20px] shadow-[0_8px_30px_rgba(0,0,0,0.45)]'
               : 'max-w-none rounded-none shadow-none'
@@ -76,7 +76,7 @@ export default function Header({locale}: {locale: Locale}) {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={t('Nav.menu')}
-            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream md:hidden"
+            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ export default function Header({locale}: {locale: Locale}) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors duration-200 hover:text-cream"
+                className="transition-colors duration-200 hover:text-white"
               >
                 {item.label}
               </Link>
@@ -134,7 +134,7 @@ export default function Header({locale}: {locale: Locale}) {
               href="/account"
               aria-label={t('Nav.account')}
               title={t('Nav.account')}
-              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg
                 viewBox="0 0 24 24"

@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 
 /**
  * Footer modelled on liamkratos.nl: logo and social icons on black, then a
- * full-bleed cream rule with the policy links beneath it.
+ * full-bleed white rule with the policy links beneath it.
  *
  * The mailing-list signup lives in <Newsletter />, in its own section above the
  * footer, so it reads as part of the page rather than as footer furniture.
@@ -71,7 +71,7 @@ export default function Footer() {
   ] as const;
 
   return (
-    <footer className="mx-3 mb-3 mt-3 rounded-[20px] border border-white/10 bg-olive text-cream sm:mx-5 sm:mb-5">
+    <footer className="mx-3 mb-3 mt-3 rounded-[20px] border border-white/10 bg-olive text-white sm:mx-5 sm:mb-5">
       <Container className="max-w-6xl py-16">
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center">
@@ -95,7 +95,7 @@ export default function Footer() {
             {/* `quoted` sets black along with the quotation marks, which is
                 right on a white page and wrong here. The utility overrides it,
                 since utilities outrank the components layer. */}
-            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none text-cream">
+            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none text-white">
               {t('stayConnected')}
             </h2>
             <ul className="mt-6 flex justify-center gap-4">
@@ -106,7 +106,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors duration-200 hover:border-cream hover:text-cream"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors duration-200 hover:border-white hover:text-white"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -124,14 +124,14 @@ export default function Footer() {
         </div>
       </Container>
 
-      {/* Full-bleed cream rule, edge to edge. */}
-      <div aria-hidden="true" className="h-0.5 w-full bg-cream" />
+      {/* Full-bleed white rule, edge to edge. */}
+      <div aria-hidden="true" className="h-0.5 w-full bg-white" />
 
       <Container className="max-w-6xl py-8">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
           <PolicyMenu policies={policies} />
 
-          <p className="text-base leading-none text-cream">
+          <p className="text-base leading-none text-white">
             &copy; {new Date().getFullYear()} {tSite('name')}. {t('rights')}
           </p>
         </div>

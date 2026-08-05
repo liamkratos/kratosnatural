@@ -65,7 +65,7 @@ function OrderRow({
                 href={order.trackingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-4 hover:text-cream"
+                className="underline underline-offset-4 hover:text-white"
               >
                 {t('track')}
               </a>
@@ -119,7 +119,7 @@ export default async function AccountPage({
         <form action="/api/account/signout" method="post" className="mt-4">
           <button
             type="submit"
-            className="font-display text-lg uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-cream"
+            className="font-display text-lg uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-white"
           >
             {t('signOut')}
           </button>
