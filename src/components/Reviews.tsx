@@ -31,7 +31,7 @@ function Stars({rating}: {rating: number}) {
           key={star}
           viewBox="0 0 20 20"
           aria-hidden="true"
-          className={`h-4 w-4 ${star <= Math.round(rating) ? 'fill-pink' : 'fill-ink/20'}`}
+          className={`h-4 w-4 ${star <= Math.round(rating) ? 'fill-olive' : 'fill-ink/20'}`}
         >
           <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" />
         </svg>
@@ -86,7 +86,7 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
             href={GOOGLE_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-black px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
+            className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-cream"
           >
             {t('write')}
           </a>

@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 
 /**
  * Footer modelled on liamkratos.nl: logo and social icons on black, then a
- * full-bleed pink rule with the policy links beneath it.
+ * full-bleed cream rule with the policy links beneath it.
  *
  * The mailing-list signup lives in <Newsletter />, in its own section above the
  * footer, so it reads as part of the page rather than as footer furniture.
@@ -71,7 +71,7 @@ export default function Footer() {
   ] as const;
 
   return (
-    <footer className="mx-3 mb-3 mt-3 rounded-[20px] border border-white/10 bg-black text-cream sm:mx-5 sm:mb-5">
+    <footer className="mx-3 mb-3 mt-3 rounded-[20px] border border-white/10 bg-olive text-cream sm:mx-5 sm:mb-5">
       <Container className="max-w-6xl py-16">
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center">
@@ -103,7 +103,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors duration-200 hover:border-pink hover:text-pink"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors duration-200 hover:border-cream hover:text-cream"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -121,8 +121,8 @@ export default function Footer() {
         </div>
       </Container>
 
-      {/* Full-bleed pink rule, edge to edge. */}
-      <div aria-hidden="true" className="h-0.5 w-full bg-pink" />
+      {/* Full-bleed cream rule, edge to edge. */}
+      <div aria-hidden="true" className="h-0.5 w-full bg-cream" />
 
       <Container className="max-w-6xl py-8">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">

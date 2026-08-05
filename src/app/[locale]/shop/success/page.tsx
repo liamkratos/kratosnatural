@@ -37,13 +37,13 @@ export default async function SuccessPage({
         <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/account"
-            className="rounded-[20px] bg-black px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
+            className="rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-cream"
           >
             {t('viewAccount')}
           </Link>
           <Link
             href="/shop"
-            className="font-display text-xl uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-pink"
+            className="font-display text-xl uppercase leading-none text-black underline underline-offset-4 transition-colors duration-200 hover:text-cream"
           >
             {t('backToShop')}
           </Link>

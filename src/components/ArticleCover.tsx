@@ -26,7 +26,7 @@ export default function ArticleCover({
 
   return (
     <div className={className}>
-      <div className="relative h-full w-full overflow-hidden bg-black">
+      <div className="relative h-full w-full overflow-hidden bg-olive">
         {/* The site's own photograph, pushed back so type stays legible. */}
         <Image
           src="/hero.jpg"
@@ -49,7 +49,7 @@ export default function ArticleCover({
           {/* Short label, not the full headline: the card repeats the title
               immediately below the cover, and the long version wraps to four
               lines here. */}
-          <p className="font-display text-4xl leading-none text-pink sm:text-5xl">
+          <p className="font-display text-4xl leading-none text-cream sm:text-5xl">
             {article.shortTitle ?? article.title}
           </p>
 

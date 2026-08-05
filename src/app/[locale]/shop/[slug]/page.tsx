@@ -158,7 +158,7 @@ export default async function ProductPage({
             <button
               type="submit"
               disabled={!buyable}
-              className="w-full rounded-[20px] border border-ink/25 px-8 py-4 font-display text-2xl uppercase leading-none text-ink transition-colors duration-200 hover:text-pink disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-ink"
+              className="w-full rounded-[20px] border border-ink/25 px-8 py-4 font-display text-2xl uppercase leading-none text-ink transition-colors duration-200 hover:text-cream disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-ink"
             >
               {buyable ? t('buy') : t('unavailable')}
             </button>

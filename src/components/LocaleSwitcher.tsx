@@ -141,7 +141,7 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={t('label')}
-        className="flex items-center gap-2 rounded-[20px] px-2 py-1.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
+        className="flex items-center gap-2 rounded-[20px] px-2 py-1.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
       >
         <Heart locale={current} />
         <span className="hidden sm:inline">{t(current)}</span>
@@ -166,7 +166,7 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
       <ul
         role="menu"
         className={cn(
-          'absolute right-0 top-full z-50 mt-2 min-w-[11rem] overflow-hidden rounded-[20px] bg-black py-2 text-left shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200',
+          'absolute right-0 top-full z-50 mt-2 min-w-[11rem] overflow-hidden rounded-[20px] bg-olive py-2 text-left shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200',
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
@@ -183,8 +183,8 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
                 aria-current={isCurrent ? 'true' : undefined}
                 tabIndex={open ? 0 : -1}
                 className={cn(
-                  'flex items-center gap-3 px-4 py-2.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-pink',
-                  isCurrent ? 'text-pink' : 'text-cream'
+                  'flex items-center gap-3 px-4 py-2.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-cream',
+                  isCurrent ? 'text-cream' : 'text-cream'
                 )}
               >
                 <Heart locale={locale} className={cn(!isCurrent && 'opacity-70')} />

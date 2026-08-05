@@ -50,11 +50,11 @@ export default async function LoginPage({
             required
             autoComplete="email"
             placeholder={t('emailLabel')}
-            className="w-full rounded-[20px] border border-ink/25 bg-transparent py-3 pl-5 pr-32 text-center font-display text-lg uppercase text-ink placeholder:text-black focus:border-pink focus:outline-none"
+            className="w-full rounded-[20px] border border-ink/25 bg-transparent py-3 pl-5 pr-32 text-center font-display text-lg uppercase text-ink placeholder:text-black focus:border-olive focus:outline-none"
           />
           <button
             type="submit"
-            className="absolute inset-y-1 right-1 rounded-[16px] bg-black px-5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
+            className="absolute inset-y-1 right-1 rounded-[16px] bg-olive px-5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:text-cream"
           >
             {t('send')}
           </button>

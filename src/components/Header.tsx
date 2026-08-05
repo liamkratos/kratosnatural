@@ -49,7 +49,7 @@ export default function Header({locale}: {locale: Locale}) {
         )}
       >
         <div className="min-h-0">
-          <p className="border-b-2 border-pink bg-white px-4 py-2 text-center text-sm leading-none tracking-wide text-ink">
+          <p className="border-b-2 border-olive bg-white px-4 py-2 text-center text-sm leading-none tracking-wide text-ink">
             {t('Site.announcement')}
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function Header({locale}: {locale: Locale}) {
       >
         <header
           className={cn(
-            'mx-auto flex items-center justify-between gap-6 bg-black px-5 py-2.5 text-cream transition-[border-radius,max-width,box-shadow] duration-300 ease-out sm:px-7',
+            'mx-auto flex items-center justify-between gap-6 bg-olive px-5 py-2.5 text-cream transition-[border-radius,max-width,box-shadow] duration-300 ease-out sm:px-7',
             scrolled
               ? 'max-w-6xl rounded-[20px] shadow-[0_8px_30px_rgba(0,0,0,0.45)]'
               : 'max-w-none rounded-none shadow-none'
@@ -76,7 +76,7 @@ export default function Header({locale}: {locale: Locale}) {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={t('Nav.menu')}
-            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink md:hidden"
+            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream md:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ export default function Header({locale}: {locale: Locale}) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors duration-200 hover:text-pink"
+                className="transition-colors duration-200 hover:text-cream"
               >
                 {item.label}
               </Link>
@@ -134,7 +134,7 @@ export default function Header({locale}: {locale: Locale}) {
               href="/account"
               aria-label={t('Nav.account')}
               title={t('Nav.account')}
-              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
+              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -162,7 +162,7 @@ export default function Header({locale}: {locale: Locale}) {
           id="mobile-nav"
           aria-label={t('Nav.menu')}
           className={cn(
-            'absolute inset-x-3 top-full z-50 mt-2 rounded-[20px] bg-black p-3 shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200 md:hidden',
+            'absolute inset-x-3 top-full z-50 mt-2 rounded-[20px] bg-olive p-3 shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-opacity duration-200 md:hidden',
             menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
           )}
         >
@@ -171,7 +171,7 @@ export default function Header({locale}: {locale: Locale}) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block rounded-[20px] bg-white px-5 py-4 text-center text-black transition-colors duration-200 hover:text-pink"
+                  className="block rounded-[20px] bg-white px-5 py-4 text-center text-black transition-colors duration-200 hover:text-olive"
                 >
                   {item.label}
                 </Link>

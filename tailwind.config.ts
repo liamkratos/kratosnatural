@@ -13,15 +13,22 @@ const config: Config = {
         /**
          * Brand tokens.
          *
-         * `pink` is an accent for dark surfaces: #FEB9FF on #0A0A0A passes
-         * WCAG AA comfortably, but on white it lands around 1.4:1, so it must
-         * not be used for body copy on light backgrounds. Use `ink` there.
+         * `olive` is the brand's main colour and carries every dark surface:
+         * the header, buttons, markers, the footer. `cream` is the accent that
+         * sits on it — #F3EFE6 on #3E4A2C is about 9:1, comfortably past WCAG
+         * AA for body copy.
+         *
+         * The pairing only works in that direction. Cream on white is roughly
+         * 1.1:1, so an accent on a light surface must be `olive`, never cream.
+         * `oliveSoft` is for hover on olive fills, where a plain lightening
+         * reads as a state change without introducing a third hue.
          */
         black: '#0A0A0A',
         white: '#FFFFFF',
-        pink: '#FEB9FF',
+        olive: '#3E4A2C',
+        oliveSoft: '#55663D',
         ink: '#151515',
-        cream: '#F7F5F3',
+        cream: '#F3EFE6',
 
         // Superseded palette, still referenced by the existing components.
         // Being migrated page by page.

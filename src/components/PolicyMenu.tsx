@@ -27,7 +27,7 @@ export default function PolicyMenu({policies}: {policies: readonly string[]}) {
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-controls="footer-policies"
-        className="font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
+        className="font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
       >
         {t('policies')}
       </button>
@@ -47,7 +47,7 @@ export default function PolicyMenu({policies}: {policies: readonly string[]}) {
               <li key={key}>
                 <Link
                   href={`/${key}`}
-                  className="font-display uppercase tracking-wide text-cream transition-colors duration-200 hover:text-pink"
+                  className="font-display uppercase tracking-wide text-cream transition-colors duration-200 hover:text-cream"
                 >
                   {t(key)}
                 </Link>
