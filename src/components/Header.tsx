@@ -76,7 +76,7 @@ export default function Header({locale}: {locale: Locale}) {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label={t('Nav.menu')}
-            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:hidden"
+            className="-ml-1 flex h-9 w-9 shrink-0 items-center justify-center transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink md:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ export default function Header({locale}: {locale: Locale}) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors duration-200 hover:text-white"
+                className="transition-colors duration-200 hover:text-pink"
               >
                 {item.label}
               </Link>
@@ -134,7 +134,7 @@ export default function Header({locale}: {locale: Locale}) {
               href="/account"
               aria-label={t('Nav.account')}
               title={t('Nav.account')}
-              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
             >
               <svg
                 viewBox="0 0 24 24"

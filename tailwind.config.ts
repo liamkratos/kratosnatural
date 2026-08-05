@@ -27,9 +27,10 @@ const config: Config = {
          * nothing. `oliveSoft` is the hover for olive fills, where lightening
          * the fill reads as a state change without introducing a third hue.
          *
-         * `pink` is kept for the wordmark on the hero, the slider titles and
-         * the badge on a product photo. It is about 1.4:1 on white, so it only
-         * works on dark; reaching for it on a light surface is a bug.
+         * `pink` is the accent on those dark surfaces: hovers, focus rings,
+         * markers, the wordmark on the hero, the slider titles, the badge on a
+         * product photo. About 5:1 on olive. It is 1.4:1 on white, so on a
+         * light surface the accent is `olive` and reaching for pink is a bug.
          */
         black: '#0A0A0A',
         white: '#FFFFFF',

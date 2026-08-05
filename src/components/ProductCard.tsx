@@ -96,7 +96,7 @@ export default function ProductCard({
         <h3 className="font-display text-xl font-bold uppercase leading-tight">
           <Link
             href={`/shop/${product.slug}`}
-            className="transition-colors duration-200 group-hover:text-white"
+            className="transition-colors duration-200 group-hover:text-pink"
           >
             {product.title}
           </Link>
@@ -129,7 +129,7 @@ export default function ProductCard({
             <button
               type="submit"
               disabled={!buyable}
-              className="w-full rounded-[20px] border border-ink/25 px-5 py-3 font-display text-base uppercase leading-none text-ink transition-colors duration-200 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-ink"
+              className="w-full rounded-[20px] border border-ink/25 px-5 py-3 font-display text-base uppercase leading-none text-ink transition-colors duration-200 hover:text-olive disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-ink"
             >
               {buyable ? t('buy') : t('unavailable')}
             </button>

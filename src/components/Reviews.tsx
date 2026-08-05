@@ -89,7 +89,7 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
             href={GOOGLE_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+            className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
           >
             {t('write')}
           </a>

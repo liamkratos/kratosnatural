@@ -65,7 +65,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
               <Link
                 href={slide.href}
                 tabIndex={i === index ? undefined : -1}
-                className="mt-2 rounded-[20px] bg-olive px-6 py-3 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+                className="mt-2 rounded-[20px] bg-olive px-6 py-3 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
               >
                 {slide.cta}
               </Link>
@@ -78,7 +78,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
         type="button"
         onClick={() => go(index - 1)}
         aria-label={t('prev')}
-        className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-white"
+        className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-pink"
       >
         &#8249;
       </button>
@@ -86,7 +86,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
         type="button"
         onClick={() => go(index + 1)}
         aria-label={t('next')}
-        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-white"
+        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-olive/60 text-white transition-colors hover:text-pink"
       >
         &#8250;
       </button>
@@ -101,7 +101,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
             aria-current={i === index}
             className={cn(
               'h-2 rounded-full transition-all duration-200',
-              i === index ? 'w-6 bg-white' : 'w-2 bg-white/60 hover:bg-white'
+              i === index ? 'w-6 bg-pink' : 'w-2 bg-white/60 hover:bg-white'
             )}
           />
         ))}

@@ -21,7 +21,7 @@ import {cn} from '@/lib/utils';
  * Colour-only change, so nothing reflows and the hit area stays put.
  */
 const heroButton =
-  'inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive sm:text-2xl';
+  'inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive sm:text-2xl';
 
 export default function Hero() {
   const t = useTranslations('Home');

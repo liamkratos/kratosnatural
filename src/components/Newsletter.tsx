@@ -124,7 +124,7 @@ export default function Newsletter() {
           />
           <button
             type="submit"
-            className="absolute inset-y-1 right-1 rounded-[16px] bg-olive px-5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+            className="absolute inset-y-1 right-1 rounded-[16px] bg-olive px-5 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
           >
             {t('subscribe')}
           </button>

@@ -141,7 +141,7 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={t('label')}
-        className="flex items-center gap-2 rounded-[20px] px-2 py-1.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="flex items-center gap-2 rounded-[20px] px-2 py-1.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
       >
         <Heart locale={current} />
         <span className="hidden sm:inline">{t(current)}</span>
@@ -183,7 +183,7 @@ export default function LocaleSwitcher({current}: {current: Locale}) {
                 aria-current={isCurrent ? 'true' : undefined}
                 tabIndex={open ? 0 : -1}
                 className={cn(
-                  'flex items-center gap-3 px-4 py-2.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-white',
+                  'flex items-center gap-3 px-4 py-2.5 font-display text-lg uppercase leading-none transition-colors duration-200 hover:text-pink',
                   isCurrent ? 'text-white' : 'text-white'
                 )}
               >

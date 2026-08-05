@@ -76,7 +76,7 @@ export default function CartButton({locale}: {locale: Locale}) {
         aria-haspopup="dialog"
         aria-label={t('cart')}
         title={t('cart')}
-        className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink"
       >
         <svg
           viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ export default function CartButton({locale}: {locale: Locale}) {
         </svg>
 
         {count > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-white px-1 font-mono text-[0.6rem] leading-none text-black">
+          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-pink px-1 font-mono text-[0.6rem] leading-none text-black">
             {count}
           </span>
         )}
@@ -152,7 +152,7 @@ export default function CartButton({locale}: {locale: Locale}) {
                       type="button"
                       aria-label={t('decrease')}
                       onClick={() => setQuantity(line.slug, line.quantity - 1)}
-                      className="h-7 w-7 rounded-full border border-white/25 font-mono leading-none transition-colors hover:border-white hover:text-white"
+                      className="h-7 w-7 rounded-full border border-white/25 font-mono leading-none transition-colors hover:border-pink hover:text-pink"
                     >
                       &minus;
                     </button>
@@ -160,7 +160,7 @@ export default function CartButton({locale}: {locale: Locale}) {
                       type="button"
                       aria-label={t('increase')}
                       onClick={() => setQuantity(line.slug, line.quantity + 1)}
-                      className="h-7 w-7 rounded-full border border-white/25 font-mono leading-none transition-colors hover:border-white hover:text-white"
+                      className="h-7 w-7 rounded-full border border-white/25 font-mono leading-none transition-colors hover:border-pink hover:text-pink"
                     >
                       +
                     </button>
@@ -168,7 +168,7 @@ export default function CartButton({locale}: {locale: Locale}) {
                       type="button"
                       aria-label={t('remove')}
                       onClick={() => removeLine(line.slug)}
-                      className="ml-1 font-mono text-xs uppercase text-white transition-colors hover:text-white"
+                      className="ml-1 font-mono text-xs uppercase text-white transition-colors hover:text-pink"
                     >
                       &times;
                     </button>
