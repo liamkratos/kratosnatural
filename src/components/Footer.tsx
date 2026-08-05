@@ -92,7 +92,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none">
+            {/* `quoted` sets black along with the quotation marks, which is
+                right on a white page and wrong here. The utility overrides it,
+                since utilities outrank the components layer. */}
+            <h2 className="quoted font-display text-2xl font-bold uppercase leading-none text-cream">
               {t('stayConnected')}
             </h2>
             <ul className="mt-6 flex justify-center gap-4">

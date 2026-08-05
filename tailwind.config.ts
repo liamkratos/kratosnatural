@@ -15,7 +15,7 @@ const config: Config = {
          *
          * `olive` is the brand's main colour and carries every dark surface:
          * the header, buttons, markers, the footer. `cream` is the accent that
-         * sits on it — #F3EFE6 on #3E4A2C is about 9:1, comfortably past WCAG
+         * sits on it — #EDE3D1 on #3E4A2C is about 8:1, comfortably past WCAG
          * AA for body copy.
          *
          * The pairing only works in that direction. Cream on white is roughly
@@ -28,7 +28,7 @@ const config: Config = {
         olive: '#3E4A2C',
         oliveSoft: '#55663D',
         ink: '#151515',
-        cream: '#F3EFE6',
+        cream: '#EDE3D1',
 
         // Superseded palette, still referenced by the existing components.
         // Being migrated page by page.
