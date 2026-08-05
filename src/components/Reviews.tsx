@@ -1,6 +1,5 @@
 import {useTranslations} from 'next-intl';
 import Container from '@/components/Container';
-import Card from '@/components/Card';
 import Reveal from '@/components/Reveal';
 import {
   GOOGLE_REVIEW_URL,
@@ -47,8 +46,12 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
   if (reviews.length === 0 || average === null) return null;
 
   return (
-    <Container className="mt-3 max-w-5xl px-3 sm:px-5">
-      <Card className="py-16">
+    // Built like the other homepage sections rather than as a narrower card:
+    // the block runs to the page edges with the same margin, and the content
+    // inside is what is width-limited. Capping the block itself left it visibly
+    // narrower than everything above and below it on a wide screen.
+    <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
+      <Container className="max-w-6xl">
         <Reveal>
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('title')}
@@ -91,7 +94,7 @@ export default function Reviews({reviews = REVIEWS}: {reviews?: Review[]}) {
             {t('write')}
           </a>
         )}
-      </Card>
-    </Container>
+      </Container>
+    </section>
   );
 }
