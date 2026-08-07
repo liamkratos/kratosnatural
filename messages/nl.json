@@ -8,7 +8,9 @@
   "Nav": {
     "home": "Home",
     "articles": "Onderzoek",
+    "plan": "Het plan",
     "shop": "Shop",
+    "guides": "Gidsen",
     "about": "Over ons",
     "account": "Account",
     "menu": "Menu"
@@ -119,7 +121,9 @@
     "step3Title": "Verstuur met PostNL of DHL",
     "step3Body": "We mailen je een retourlabel. Bewaar het afgiftebewijs tot de terugbetaling binnen is.",
     "step4Title": "Terugbetaling binnen 14 dagen",
-    "step4Body": "Terug op de kaart of rekening waarmee je betaalde, zodra we het pakket hebben ontvangen."
+    "step4Body": "Terug op de kaart of rekening waarmee je betaalde, zodra we het pakket hebben ontvangen.",
+    "guides": "Jouw gidsen",
+    "guidesIntro": "Van jou om te downloaden, nu en elke keer dat je terugkomt."
   },
   "Shop": {
     "title": "Shop",
@@ -155,6 +159,33 @@
     "researchStudies": "{count} studies geanalyseerd",
     "galleryAlt": "{product}, foto {number}"
   },
+  "Guides": {
+    "title": "Gidsen",
+    "intro": "De toegepaste protocollen, gebouwd op het onderzoek dat we voluit publiceren.",
+    "researchFree": "Het bewijs blijft gratis. Waar je voor betaalt is het protocol dat erop gebouwd is, nooit de studies zelf.",
+    "empty": "Nog geen gidsen gepubliceerd.",
+    "other": "Overige gidsen",
+    "ebook": "E-book",
+    "pages": "{count} pagina's",
+    "priceUnavailable": "Prijs niet beschikbaar",
+    "unavailable": "Niet beschikbaar",
+    "inclVat": "incl. btw",
+    "exclVat": "excl. btw",
+    "buy": "Koop deze gids",
+    "delivery": "PDF, direct na betaling te downloaden vanuit je account.",
+    "contents": "Wat erin staat",
+    "researchTitle": "Het bewijs erachter",
+    "researchBody": "Elke claim in deze gids is terug te voeren op onze eigen analyse van de gepubliceerde studies, inclusief de studies die niets vonden. Lees die eerst, gratis, en koop dit alleen als het dat verdient.",
+    "researchRead": "Lees de analyse",
+    "noticeTitle": "Geen medisch advies",
+    "noticeBody": "Deze gidsen zijn geschreven om een gezond lichaam te optimaliseren en zijn geen medisch advies. Er wordt hier niets gediagnosticeerd of behandeld. Overleg altijd eerst met je arts, fysiotherapeut of een andere gekwalificeerde professional, en zeker als je een vastgestelde aandoening hebt, pijn hebt, zwanger bent of medicatie gebruikt. Waar een gids de grens raakt van wat het verantwoord kan zeggen, staat dat er, en verwijzen we je door.",
+    "successTitle": "Bedankt",
+    "successIntro": "{title} is van jou.",
+    "successDownload": "Log in met het e-mailadres waarmee je betaald hebt, dan staat de download klaar in je account — nu, en elke keer dat je terugkomt.",
+    "successAccount": "Naar mijn account",
+    "successBack": "Terug naar de gidsen",
+    "download": "Download"
+  },
   "About": {
     "title": "Over Kratos Natural",
     "lead": "Leuk je te ontmoeten. Kratos Natural is de winkel en onderzoekstak van Liam Kratos, orthomoleculair therapeut en longevity coach.",
@@ -183,6 +214,9 @@
   "Policies": {
     "dutchNotice": ""
   },
+  "Plan": {
+    "byline": "Door {author} · {date}"
+  },
   "Seo": {
     "homeTitle": "Natuurlijke producten met het onderzoek er volledig bij",
     "homeDescription": "Natuurlijke producten onderbouwd met onderzoek, naast gratis analyses van de PubMed-literatuur. Elke claim herleidbaar, inclusief de studies die niets vonden.",
@@ -191,7 +225,11 @@
     "articlesTitle": "Onderzoeksanalyses van het gepubliceerde bewijs",
     "articlesDescription": "Volledige analyses van PubMed-literatuur over nattokinase, rood en infrarood licht en meer. Alleen humaan onderzoek, met elk PMID en ook de nulresultaten.",
     "aboutTitle": "Over Kratos Natural, de winkel en onderzoekstak",
-    "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter. Opgericht door Liam Kratos, orthomoleculair therapeut en longevity-coach."
+    "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter. Opgericht door Liam Kratos, orthomoleculair therapeut en longevity-coach.",
+    "planTitle": "Het plan: maak de waarheid makkelijker te vinden dan de verkooppraat",
+    "planDescription": "Het manifest van Kratos Natural. Waarom eten en aandacht zijn zoals ze zijn, wat we gratis publiceren, en waar we de komende tien jaar aan bouwen.",
+    "guidesTitle": "Gidsen en e-books, gebouwd op gepubliceerd onderzoek",
+    "guidesDescription": "Toegepaste protocollen voor slaap, licht, supplementen, houding en meer. Elke claim herleidbaar tot een gepubliceerde bron, inclusief de studies die niets vonden."
   },
   "Reviews": {
     "title": "Wat mensen zeggen",

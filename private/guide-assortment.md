@@ -1,0 +1,251 @@
+# The guide & e-book assortment
+
+Liam Krassenburg · augustus 2026 · intern
+
+Companion to [the marketing plan](./marketing-plan.md). This is the content
+architecture for the paid library: what gets written, in what order, and how the
+pieces relate.
+
+---
+
+## 1. The model
+
+**Pillar e-book per domain → narrow guides per problem.**
+
+One domain is researched once. The e-book is the whole domain. Each guide is one
+specific problem a person actually has, sold on its own.
+
+```
+Houding (e-book, €34)
+├── Eenzijdige dominantie          €12
+├── Naar voren hangende schouders  €12
+├── Anterior pelvic tilt           €12
+├── Forward head / tech neck       €12
+└── … 6 more
+```
+
+**Why this works commercially:** nobody searches "posture e-book". They search
+"waarom hangt mijn linkerschouder lager". The guide is the answer to that exact
+sentence, and the e-book is the upsell once they trust it. One research effort,
+eleven sellable objects, ten of them ranking for long-tail search the e-book
+never could.
+
+**Why this works for us specifically:** it forces the research standard down to
+the smallest unit. A guide about one problem, with every claim traced, is much
+harder to fake than a broad e-book where vagueness hides.
+
+### The rule that must not bend
+
+A guide ships only when every claim in it traces to a published source, **and it
+names the studies that found nothing.** That is the brand. A guide that reads
+like every other PDF on the internet is worse than no guide, because it spends
+credibility we are trying to accumulate.
+
+Each guide ends with a link to the free analysis on the site that backs it.
+Free research → paid application. The research is never the paywalled part.
+
+---
+
+## 2. Naming and structure
+
+Matches the frontmatter `src/lib/guides.ts` already expects:
+
+```yaml
+---
+title: 'Naar voren hangende schouders'
+summary: 'Waarom je schouders naar voren rollen, wat de studies erover zeggen, en het protocol om het terug te draaien.'
+priceId: 'price_…'
+cover: '/guides/houding-schouders.jpg'
+file: 'houding-schouders-nl.pdf'
+pages: 24
+order: 21
+contents:
+  - 'Wat het is, en wat het niet is'
+  - 'De drie oorzaken die het bewijs ondersteunt'
+  - 'Het protocol, week voor week'
+  - 'Wat niet werkt, en waarom het toch verkocht wordt'
+---
+```
+
+**Slug convention:** `{domein}-{probleem}` — `houding-schouders`,
+`slaap-doorslapen`, `licht-ochtendlicht`. Keeps the shop sortable and makes the
+domain obvious from the URL.
+
+**Order convention:** domain number × 10 + guide number. Posture is domain 2, so
+the e-book is `20` and its guides are `21`–`30`. Adding a domain never
+renumbers an existing one.
+
+---
+
+## 3. The domain map
+
+Twenty domains. This is what "everything you need to live optimally" means when
+you actually enumerate it.
+
+| # | Domain | Pillar e-book | Guides | Priority |
+|---|---|---|---|---|
+| 1 | Basis & principes | Longevity Basics *(free — done)* | — | ✅ |
+| 2 | Houding & mechanica | Houding | 10 | **P1** |
+| 3 | Slaap | Slaap | 8 | **P1** |
+| 4 | Licht & circadiaan | Licht | 7 | **P1** ⭐ |
+| 5 | Voeding | Voeding | 12 | **P1** |
+| 6 | Supplementen | Supplementen | 10 | **P1** ⭐ |
+| 7 | Kracht & spiermassa | Kracht | 9 | P2 |
+| 8 | Uithoudingsvermogen | Conditie | 7 | P2 |
+| 9 | Stress & zenuwstelsel | Stress | 8 | P2 |
+| 10 | Darmen & spijsvertering | Darmen | 9 | P2 |
+| 11 | Metabole gezondheid | Metabool | 8 | P2 |
+| 12 | Bloedwaarden & testen | Testen | 7 | P2 ⭐ |
+| 13 | Hormonen | Hormonen | 10 | P3 |
+| 14 | Huid, haar & uiterlijk | Huid | 9 | P3 |
+| 15 | Cognitie & focus | Brein | 8 | P3 |
+| 16 | Herstel | Herstel | 7 | P3 |
+| 17 | Omgeving & toxines | Omgeving | 8 | P3 |
+| 18 | Mond & gebit | Mond | 5 | P4 |
+| 19 | Ogen & zicht | Ogen | 5 | P4 |
+| 20 | Seksuele gezondheid | — | 7 | P4 |
+
+⭐ = existing published research already backs part of it (infraroodlicht,
+nattokinase, externe tests).
+
+**Total at completion: 19 e-books, ~164 guides.** That is the "most complete
+assortment" made concrete — and it is a multi-year build, not a quarter.
+
+---
+
+## 4. Domain 2 — Houding, fully worked as the template
+
+Your example, built out. Every other domain follows this shape.
+
+**Pillar: `houding` — "Houding"** · ~90 pages · €34
+
+| Order | Slug | Title | The search it answers |
+|---|---|---|---|
+| 21 | `houding-eenzijdig` | Eenzijdige dominantie | "één schouder lager dan de andere" |
+| 22 | `houding-schouders` | Naar voren hangende schouders | "ronde schouders rechtzetten" |
+| 23 | `houding-bekkenkanteling` | Anterior pelvic tilt | "holle rug buik vooruit" |
+| 24 | `houding-nek` | Forward head & tech neck | "nek pijn van telefoon" |
+| 25 | `houding-thoracaal` | Stijve bovenrug & ribflare | "bovenrug stijf tussen schouderbladen" |
+| 26 | `houding-voeten` | Platvoeten & voetboog | "doorgezakte voeten" |
+| 27 | `houding-knie` | Knievalgus / X-benen | "knieën naar binnen bij squat" |
+| 28 | `houding-heup` | Heupshift & beenlengteverschil | "scheve heup" |
+| 29 | `houding-bureau` | Zitten & bureau-opstelling | "beste zithouding bureau" |
+| 30 | `houding-ademhaling` | Ademhaling & houding | "ademhaling ribbenkast houding" |
+
+**Shared skeleton for every guide in the domain** (write once, reuse):
+
+1. **Wat het is** — plain description, no jargon
+2. **Hoe je het bij jezelf test** — 2–3 self-tests with photos
+3. **Wat het bewijs zegt over de oorzaak** — with the disagreements intact
+4. **Het protocol** — week by week, specific
+5. **Wat níét werkt** — and which studies found nothing
+6. **Wanneer je naar een professional moet** — the honest boundary
+7. **Bronnen** — every PMID
+
+Section 5 and 6 are the ones competitors skip. They are the reason to buy ours.
+
+⚠️ **Medical boundary:** posture guides sit close to physiotherapy. Section 6 is
+not optional, and scoliosis, hernia and acute pain get referred out, never
+protocolised. Same rule across every domain: we write about optimising a healthy
+body, not treating a diagnosed condition.
+
+---
+
+## 5. Production order
+
+Do not write in domain order. Write in the order that compounds.
+
+**Wave 1 (2026 Q3–Q4) — the domains research already backs**
+`licht`, `supplementen`, `testen`. The infraroodlicht and nattokinase analyses
+are published; the guides are the applied layer on top. Fastest to ship
+honestly, and they prove the free-research → paid-application loop.
+
+**Wave 2 (2027 H1) — the domains with the biggest search volume**
+`houding`, `slaap`, `voeding`. Highest demand, and posture in particular is
+almost entirely served by unsourced content today. Easiest place to be visibly
+better.
+
+**Wave 3 (2027 H2)** — `kracht`, `stress`, `darmen`, `metabool`
+**Wave 4 (2028)** — `hormonen`, `huid`, `brein`, `herstel`, `omgeving`
+**Wave 5 (2028+)** — `conditie`, `mond`, `ogen`, seksuele gezondheid
+
+**Cadence target: 2 guides/month from Q4 2026, 4/month from mid-2027.** At 4/month
+the library completes around 2030 — the same year the marketing plan wants 200+
+published analyses. They are the same effort viewed from two sides: the free
+analysis is the research, the paid guide is the application.
+
+---
+
+## 6. Pricing
+
+| Object | Price | Role |
+|---|---|---|
+| Longevity Basics | **free** | Lead magnet. Never priced. |
+| Single guide | **€12** | Impulse. Cheaper than the thought of comparing. |
+| Pillar e-book | **€34** | ≈3 guides, contains 8–12. Obvious upgrade. |
+| Domain bundle (3 e-books) | **€79** | Thematic, e.g. "Beweging" |
+| Complete library | **€249** | Everything, forever, including future guides |
+
+**Deliberate choices:**
+
+- **The library includes future releases.** It turns a one-off into a reason to
+  stay on the list, and it converts early buyers into people who want the
+  library to grow — which is free distribution.
+- **No subscription.** A recurring charge for static PDFs is the kind of thing
+  our own manifest argues against.
+- **No discount ladder.** Per the marketing plan: one or two events a year,
+  maximum. Permanent discounting teaches people the price is fake.
+- **The research stays free.** Always. The guide is the applied protocol; the
+  evidence behind it is never the paywalled part.
+
+---
+
+## 7. Production checklist per guide
+
+- [ ] Every claim traced to a published source
+- [ ] Null results included and named
+- [ ] Section 5 ("wat niet werkt") written and specific
+- [ ] Section 6 (referral boundary) present
+- [ ] Linked to its free analysis on the site
+- [ ] Stripe price created, `tax_behavior: inclusive` **at creation**
+- [ ] PDF in `private/guides/`, never `public/`
+- [ ] Cover image in `public/guides/`
+- [ ] NL and EN both, or deliberately NL-only and recorded as such
+- [ ] Frontmatter complete — a missing field fails the build by design
+
+---
+
+## 8. Where it lives — decided
+
+**Both sites sell the same library.** Kratos Natural carries the research and
+the shop; liamkratos carries the person, his own blogs, and the same guides.
+
+Built in Kratos Natural (August 2026): `src/lib/guides.ts`,
+`src/lib/entitlements.ts`, `api/checkout/guide`, `api/download/[slug]`,
+`/guides` and `/guides/[slug]`, plus downloads on the account page. liamkratos
+has the older copy of the same machinery and needs the newer changes brought
+back across.
+
+**One consequence, decided deliberately:** `entitlements.ts` only honours
+purchases stamped with its own site. A guide bought on liamkratos does not
+unlock on Kratos Natural. That keeps the two sets of books knowable, at the cost
+of someone theoretically paying twice. Revisit if it ever actually happens.
+
+---
+
+## 9. The medical boundary
+
+Not a section in each guide to remember — **a component the pages always
+render**. `MedicalNotice.tsx` appears on the guides index and on every guide
+page, because a notice an author has to remember is a notice missing from guide
+forty-seven. Forgetting it would mean deleting code.
+
+What it says, in both languages: these guides optimise a healthy body, they are
+not medical advice, nothing here diagnoses or treats, talk to your doctor or
+physiotherapist first — and especially so with a diagnosed condition, pain,
+pregnancy or medication.
+
+On top of that, **section 6 of every guide** is the referral boundary in that
+guide's own terms. Scoliosis, hernia and acute pain get referred out, never
+protocolised. The blanket notice covers the site; section 6 covers the specific
+thing the reader came for.

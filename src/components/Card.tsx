@@ -15,14 +15,17 @@ import {cn} from '@/lib/utils';
 export default function Card({
   children,
   className,
+  id,
   as: Tag = 'section'
 }: {
   children: ReactNode;
   className?: string;
+  /** Anchor id, for sections that can be linked to directly. */
+  id?: string;
   as?: 'section' | 'div';
 }) {
   return (
-    <Tag className={cn('floating bg-white p-6 sm:p-10', className)}>
+    <Tag id={id} className={cn('floating bg-white p-6 sm:p-10', className)}>
       {children}
     </Tag>
   );

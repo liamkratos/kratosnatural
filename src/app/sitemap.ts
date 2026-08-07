@@ -2,6 +2,7 @@ import type {MetadataRoute} from 'next';
 import {locales, localeDomains, type Locale} from '@/i18n/routing';
 import {getArticles} from '@/lib/mdx';
 import {getProducts} from '@/lib/products';
+import {getGuides} from '@/lib/guides';
 import {policySlugs} from '@/lib/policies';
 
 /**
@@ -49,7 +50,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const shared = [
     {path: '/', priority: 1, frequency: CHANGE.home},
     {path: '/shop', priority: 0.9, frequency: CHANGE.listing},
+    {path: '/guides', priority: 0.9, frequency: CHANGE.listing},
     {path: '/articles', priority: 0.9, frequency: CHANGE.listing},
+    {path: '/plan', priority: 0.7, frequency: CHANGE.static},
     {path: '/about', priority: 0.6, frequency: CHANGE.static},
     ...policySlugs.map((slug) => ({
       path: `/${slug}`,
@@ -81,11 +84,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     locales.map(async (locale) => ({
       locale,
       articles: await getArticles(locale),
-      products: await getProducts(locale)
+      products: await getProducts(locale),
+      guides: await getGuides(locale)
     }))
   );
 
-  for (const {locale, articles, products} of byLocale) {
+  for (const {locale, articles, products, guides} of byLocale) {
     for (const article of articles) {
       entries.push({
         url: url(locale, `/articles/${article.slug}`),
@@ -97,6 +101,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const product of products) {
       entries.push({
         url: url(locale, `/shop/${product.slug}`),
+        lastModified: now,
+        changeFrequency: CHANGE.product,
+        priority: 0.8
+      });
+    }
+    for (const guide of guides) {
+      entries.push({
+        url: url(locale, `/guides/${guide.slug}`),
         lastModified: now,
         changeFrequency: CHANGE.product,
         priority: 0.8

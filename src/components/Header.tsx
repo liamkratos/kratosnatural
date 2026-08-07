@@ -35,7 +35,9 @@ export default function Header({locale}: {locale: Locale}) {
   const navItems = [
     {href: '/', label: t('Nav.home')},
     {href: '/shop', label: t('Nav.shop')},
+    {href: '/guides', label: t('Nav.guides')},
     {href: '/articles', label: t('Nav.articles')},
+    {href: '/plan', label: t('Nav.plan')},
     {href: '/about', label: t('Nav.about')}
   ];
 

@@ -5,6 +5,8 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {readToken, SESSION_COOKIE} from '@/lib/account';
 import {getOrdersByEmail, carrierLabel, type Order} from '@/lib/orders';
+import {getOwnedGuides} from '@/lib/entitlements';
+import {findGuide, type Guide} from '@/lib/guides';
 import {formatDate, formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
@@ -93,6 +95,7 @@ export default async function AccountPage({
   }
 
   const t = await getTranslations('Account');
+  const tGuides = await getTranslations('Guides');
 
   // A Stripe outage must not take the account page down with it.
   let orders: Order[] = [];
@@ -102,6 +105,22 @@ export default async function AccountPage({
   } catch (error) {
     console.error('could not load orders', error);
     ordersFailed = true;
+  }
+
+  /*
+   * Purchased guides, resolved from Stripe to the files on disk.
+   *
+   * A slug that no longer matches a guide is dropped rather than rendered as a
+   * dead download: a guide can be renamed or retired, and a buyer should see
+   * the ones they can actually still be given.
+   */
+  let guides: Guide[] = [];
+  try {
+    const owned = await getOwnedGuides(email);
+    const resolved = await Promise.all([...owned].map((slug) => findGuide(slug)));
+    guides = resolved.filter((guide): guide is Guide => guide !== null);
+  } catch (error) {
+    console.error('could not load owned guides', error);
   }
 
   const steps = [1, 2, 3, 4] as const;
@@ -147,6 +166,40 @@ export default async function AccountPage({
           </ul>
         )}
       </Card>
+
+      {/* Only rendered once something has been bought. An empty "your guides"
+          block on every account page would advertise the shop to the one person
+          who has already been there. */}
+      {guides.length > 0 && (
+        <Card className="mt-6">
+          <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">
+            {t('guides')}
+          </h2>
+          <p className="mt-3 text-xl text-black">{t('guidesIntro')}</p>
+
+          <ul className="mt-8 space-y-4 text-left">
+            {guides.map((guide) => (
+              <li
+                key={guide.slug}
+                className="floating flex flex-wrap items-center justify-between gap-4 bg-white p-6"
+              >
+                <span className="font-display text-xl uppercase leading-none">
+                  {guide.title}
+                </span>
+                {/* A plain link, not a form: the handler re-checks ownership
+                    against Stripe on every request, so the URL is worth
+                    nothing to anyone who did not buy it. */}
+                <a
+                  href={`/api/download/${guide.slug}`}
+                  className="rounded-[20px] bg-olive px-5 py-3 font-display text-base uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+                >
+                  {tGuides('download')}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       <Card className="mt-6">
         <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">

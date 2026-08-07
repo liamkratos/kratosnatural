@@ -8,7 +8,9 @@
   "Nav": {
     "home": "Home",
     "articles": "Research",
+    "plan": "The plan",
     "shop": "Shop",
+    "guides": "Guides",
     "about": "About",
     "account": "Account",
     "menu": "Menu"
@@ -119,7 +121,9 @@
     "step3Title": "Send it with PostNL or DHL",
     "step3Body": "We'll email you a return label. Keep the drop-off receipt until the refund lands.",
     "step4Title": "Refund within 14 days",
-    "step4Body": "Paid back to the card or account you ordered with, once we've received the parcel."
+    "step4Body": "Paid back to the card or account you ordered with, once we've received the parcel.",
+    "guides": "Your guides",
+    "guidesIntro": "Yours to download, now and whenever you come back for them."
   },
   "Shop": {
     "title": "Shop",
@@ -155,6 +159,33 @@
     "researchStudies": "{count} studies analysed",
     "galleryAlt": "{product}, photo {number}"
   },
+  "Guides": {
+    "title": "Guides",
+    "intro": "The applied protocols, built on the research we publish in full.",
+    "researchFree": "The evidence stays free. What you pay for is the protocol built on top of it, never the studies themselves.",
+    "empty": "No guides published yet.",
+    "other": "Other guides",
+    "ebook": "E-book",
+    "pages": "{count} pages",
+    "priceUnavailable": "Price unavailable",
+    "unavailable": "Not available",
+    "inclVat": "incl. VAT",
+    "exclVat": "excl. VAT",
+    "buy": "Buy this guide",
+    "delivery": "PDF, downloadable straight after payment from your account.",
+    "contents": "What's in it",
+    "researchTitle": "The evidence behind it",
+    "researchBody": "Every claim in this guide traces back to our own analysis of the published studies, including the ones that found nothing. Read it first, free, and only buy this if it earns it.",
+    "researchRead": "Read the analysis",
+    "noticeTitle": "Not medical advice",
+    "noticeBody": "These guides are written for optimising a healthy body, and they are not medical advice. Nothing here diagnoses or treats a condition. Always talk to your doctor, physiotherapist or another qualified professional first, and especially if you have a diagnosed condition, are in pain, are pregnant, or take medication. If a guide reaches the edge of what it can responsibly say, it says so and refers you on.",
+    "successTitle": "Thank you",
+    "successIntro": "{title} is yours.",
+    "successDownload": "Sign in with the email address you paid with and the download is waiting in your account — now, and whenever you come back for it.",
+    "successAccount": "Go to my account",
+    "successBack": "Back to the guides",
+    "download": "Download"
+  },
   "About": {
     "title": "About Kratos Natural",
     "lead": "Nice to meet you. Kratos Natural is the shop and research arm of Liam Kratos, orthomolecular therapist and longevity coach.",
@@ -183,6 +214,9 @@
   "Policies": {
     "dutchNotice": "These documents are published in Dutch. That is the authoritative text, and it is served here rather than an unreviewed translation."
   },
+  "Plan": {
+    "byline": "By {author} · {date}"
+  },
   "Seo": {
     "homeTitle": "Natural products with the studies published in full",
     "homeDescription": "Natural products backed by research, alongside free analyses of the PubMed literature. Every claim traced to a source, including the trials that found nothing.",
@@ -191,7 +225,11 @@
     "articlesTitle": "Research analyses of the published evidence",
     "articlesDescription": "Complete analyses of PubMed literature on nattokinase, red and infrared light and more. Human trials only, with every PMID listed and null results included.",
     "aboutTitle": "About Kratos Natural, the shop and research arm",
-    "aboutDescription": "Kratos Natural sells natural products and publishes the research behind them. Founded by Liam Kratos, orthomolecular therapist and longevity coach."
+    "aboutDescription": "Kratos Natural sells natural products and publishes the research behind them. Founded by Liam Kratos, orthomolecular therapist and longevity coach.",
+    "planTitle": "The plan: make the truth easier to find than the sales pitch",
+    "planDescription": "The Kratos Natural manifest. Why food and attention are built the way they are, what we publish for free, and what we are building over the next ten years.",
+    "guidesTitle": "Guides and e-books, built on published research",
+    "guidesDescription": "Applied protocols for sleep, light, supplements, posture and more. Every claim traced to a published source, including the studies that found nothing."
   },
   "Reviews": {
     "title": "What people say",
