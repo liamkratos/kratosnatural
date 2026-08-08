@@ -184,7 +184,10 @@
     "successDownload": "Sign in with the email address you paid with and the download is waiting in your account — now, and whenever you come back for it.",
     "successAccount": "Go to my account",
     "successBack": "Back to the guides",
-    "download": "Download"
+    "download": "Download",
+    "withdrawalWaiver": "I ask for the download to be made available immediately, and I understand that I therefore give up my 14-day right of withdrawal once it is delivered.",
+    "withdrawalKept": "You did not waive your right of withdrawal, so you keep the full 14 days. Email us and we will refund it.",
+    "withdrawalWaived": "You asked for immediate access and acknowledged giving up the 14-day right of withdrawal for this download."
   },
   "About": {
     "title": "About Kratos Natural",

@@ -35,6 +35,21 @@ export async function POST(request: Request) {
 
   if (!guide) return NextResponse.redirect(back, {status: 303});
 
+  /*
+   * The withdrawal waiver is checked again here.
+   *
+   * The checkbox on the page carries `required`, so a browser will not submit
+   * without it — but a form can be posted directly, and the whole value of the
+   * waiver is that it is a record of something the buyer actually did. Taking
+   * it on trust would mean recording a consent that may never have been given,
+   * which is worse than not recording one at all.
+   *
+   * Without it the sale still goes ahead; it simply keeps the full 14-day right
+   * of withdrawal. Refusing to sell would be the wrong trade — the consumer
+   * loses nothing by declining, and we lose a customer.
+   */
+  const waived = String(form?.get('withdrawalWaiver') ?? '') === 'granted';
+
   try {
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
@@ -47,7 +62,20 @@ export async function POST(request: Request) {
       // The licence, in two fields: which site sold it and which guide it was.
       // On the payment intent rather than the session, because that is what
       // both the account page and the entitlement check read.
-      payment_intent_data: {metadata: {site: SITE, guide: guide.slug}},
+      //
+      // The waiver rides along with it. Stripe's record of the payment is the
+      // one place that outlives a session, a cookie and a redeploy, so if the
+      // question is ever asked — did this person agree to lose their
+      // withdrawal right, and when — the answer is stored next to the payment
+      // it belongs to rather than in a table we would have to keep.
+      payment_intent_data: {
+        metadata: {
+          site: SITE,
+          guide: guide.slug,
+          withdrawal_waiver: waived ? 'granted' : 'not_granted',
+          withdrawal_waiver_at: waived ? new Date().toISOString() : ''
+        }
+      },
       locale: locale === 'nl' ? 'nl' : 'en',
       success_url: `${origin}${prefix}/guides/${guide.slug}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}${prefix}/guides/${guide.slug}`

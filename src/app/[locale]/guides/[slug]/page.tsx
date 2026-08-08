@@ -100,6 +100,33 @@ export default async function GuidePage({params: {locale, slug}}: PageParams) {
                 >
                   <input type="hidden" name="slug" value={guide.slug} />
                   <input type="hidden" name="locale" value={locale} />
+
+                  {/*
+                   * Waiver of the 14-day right of withdrawal.
+                   *
+                   * A download cannot be given back, so EU law lets the right be
+                   * waived — but only on two conditions, and both are in the
+                   * label: the buyer consents to delivery starting immediately,
+                   * and acknowledges that this is what costs them the right.
+                   * Consent has to be express, which is why this is an empty box
+                   * the buyer ticks rather than a pre-ticked one or a sentence
+                   * buried in the terms. `required` means the browser blocks
+                   * submission until they do; the server checks again, because
+                   * a form can be posted without ever rendering this page.
+                   */}
+                  <label className="longform mb-5 flex cursor-pointer items-start gap-3 text-left">
+                    <input
+                      type="checkbox"
+                      name="withdrawalWaiver"
+                      value="granted"
+                      required
+                      className="mt-1 h-5 w-5 shrink-0 accent-olive"
+                    />
+                    <span className="text-sm leading-relaxed text-black">
+                      {t('withdrawalWaiver')}
+                    </span>
+                  </label>
+
                   <button
                     type="submit"
                     className="rounded-[20px] bg-olive px-7 py-4 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-olive"

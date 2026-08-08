@@ -54,9 +54,22 @@ required — forgetting either fails closed, which is the point.
 
 - [ ] 🔴 👤 **Clear the salt lamp for the EU.** Currently `['NL']`. Blocked on the
       health-claims review of its product copy.
-- [ ] 🟡 The 14-day withdrawal waiver for digital downloads is **not captured at
-      checkout**. Without it every guide is refundable for 14 days after being
-      downloaded. Applies from the first guide sold — **I can build this.**
+- [x] **14-day withdrawal waiver captured at checkout.** Required, un-ticked
+      checkbox on every guide page carrying both conditions the law asks for;
+      re-checked server-side; recorded on the Stripe payment intent as
+      `withdrawal_waiver` + timestamp; confirmed back to the buyer on the
+      success page.
+- [ ] 🟡 👤 **Durable-medium confirmation of the waiver.** The law wants the
+      consent confirmed in something the buyer keeps. Stripe's receipt does not
+      mention it and we send no email on a guide purchase — the success page is
+      a screen, not a durable medium. Needs a purchase confirmation email.
+      **I can build this.**
+- [ ] 🔴 👤 **The refund policy has unfilled placeholders.** `refund.md` still
+      contains `[jouw e-mailadres]`, `[Naam bedrijf]`, `[Adres bedrijf]` and
+      `[E-mailadres bedrijf]`. It is a live legal document on both domains.
+- [ ] 🟡 👤 Local `.env.local` holds a **test** key while prices are livemode, so
+      dev shows "prijs niet beschikbaar" and buy forms do not render. Either add
+      test-mode prices or use a live restricted key locally.
 - [ ] 🟡 Guides cannot be market-gated by Stripe: Checkout restricts *shipping*
       countries and has no billing equivalent. Any restriction is best-effort at
       the app layer. Noted in the compliance doc.

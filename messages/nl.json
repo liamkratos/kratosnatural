@@ -184,7 +184,10 @@
     "successDownload": "Log in met het e-mailadres waarmee je betaald hebt, dan staat de download klaar in je account — nu, en elke keer dat je terugkomt.",
     "successAccount": "Naar mijn account",
     "successBack": "Terug naar de gidsen",
-    "download": "Download"
+    "download": "Download",
+    "withdrawalWaiver": "Ik vraag om de download direct beschikbaar te stellen, en ik begrijp dat ik daarmee mijn herroepingsrecht van 14 dagen verlies zodra hij geleverd is.",
+    "withdrawalKept": "Je hebt afstand van je herroepingsrecht niet aangevinkt, dus je houdt de volle 14 dagen. Mail ons en we betalen terug.",
+    "withdrawalWaived": "Je hebt om directe toegang gevraagd en erkend dat je daarmee het herroepingsrecht van 14 dagen voor deze download opgeeft."
   },
   "About": {
     "title": "Over Kratos Natural",
