@@ -13,101 +13,56 @@ legal, writing, decisions) — everything else I can build.
 
 ---
 
-## 0. Do these first, everything else waits
+## 0. Settled
 
-- [ ] 🔴 👤 **Roll the `sk_live_` key that was pasted into a chat.** Stripe →
-      Developers → API keys → roll, then update `STRIPE_SECRET_KEY` in Vercel on
-      every project using it. Treat it as compromised until done.
-- [ ] 🔴 👤 **Decide the launch order.** Three sites at once is three half
-      launches. Recommendation: Kratos Natural first (it is the €1B vehicle),
-      Liam Kratos second, Krealio third and quietly.
-- [ ] 🔴 👤 **Authorise the Stripe connector** if you want me creating prices and
-      products directly. Right now it is unauthenticated in this session, so
-      every Stripe step below is yours. Do it from your claude.ai connector
-      settings, or `/mcp` in an interactive terminal.
+- [x] **`sk_live_` key rolled.**
+- [x] **Launch order: Kratos Natural → Liam Kratos → Krealio.**
+- [x] **Stripe connector authorised** (`acct_1TyYXHLq2PCdti2p`, KRATOS NATURAL).
+      I can create and read prices directly now.
+- [x] **Market rollout: 🇳🇱 NL → 🇪🇺 EU → 🇬🇧 UK → 🇺🇸 US → 🌍 worldwide**, one at a
+      time, same sequence for all three sites. Encoded in
+      [`src/lib/markets.ts`](src/lib/markets.ts); requirements per market in
+      [`private/compliance.md`](private/compliance.md).
+- [x] **A product is only sold where it has been cleared.** `markets:` is now
+      **required** frontmatter on every product — no default, because a default
+      would be a guess at a legal question. The build fails without it.
+- [x] Salt lamp price verified live: €24.99, EUR, tax inclusive, active.
 
----
-
-## 1. Market expansion: USA + full EU + UK
-
-This is the section you did not ask for and most needs writing down. Adding the
-US is not a bigger version of selling to Belgium — it is a different legal
-regime, and two items here can stop the whole thing.
-
-**I am not a lawyer and this is not legal advice.** It is a list of what to ask
-a professional about, and every item below deserves one before you sell into
-that market.
-
-### 🔴 The two that can actually stop you
-
-- [ ] 🔴 👤 **The infrared lamp may be a regulated medical device in the US.**
-      A red/near-infrared device marketed for pain, wound healing or any
-      therapeutic effect is a device under FDA rules and can need clearance
-      before it is sold there. Sold as a *salt lamp*, no problem. Sold with the
-      claims currently on the product page, the classification question is real.
-      Ask a US regulatory consultant **before** the first US order, not after.
-- [ ] 🔴 👤 **FDA disclaimer on US structure/function claims.** Any supplement
-      claim about how something affects the body's structure or function needs
-      the statement "These statements have not been evaluated by the Food and
-      Drug Administration. This product is not intended to diagnose, treat, cure
-      or prevent any disease." — on the label *and* in marketing that carries the
-      claim. Needs to be a component, like `MedicalNotice`, so it cannot be
-      forgotten.
-
-### EU
-
-- [ ] 🔴 👤 **Health claims regulation (EC 1924/2006).** On a supplement or food
-      product page, only claims on the EU authorised register may be made. This
-      constrains product copy, not the research articles — but the line blurs the
-      moment an article links to a product it makes claims about. Get the product
-      pages reviewed specifically.
-- [ ] 🔴 👤 **VAT OSS registration for digital sales.** Selling a PDF to an EU
-      consumer means VAT at the *buyer's* rate. One OSS registration covers all
-      member states. Stripe Tax computes it; it does not register for you.
-- [ ] 🔴 👤 **GPSR (General Product Safety Regulation).** In force since Dec
-      2024. Selling physical products to EU consumers requires a named EU
-      responsible person, safety information and traceability on the listing.
-- [ ] 🟡 **European Accessibility Act.** Applies to e-commerce since June 2025.
-      A real obligation, not a nice-to-have. I can run an audit pass and fix the
-      site side — contrast, focus order, labels, keyboard traps.
-- [ ] 🟡 Extend `allowed_countries` to the full EU. Currently 14 of 27:
-      missing GR, CZ, SK, HU, RO, BG, HR, SI, EE, LV, LT, CY, MT.
-
-### UK
-
-- [ ] 🔴 👤 **UK VAT registration.** Not covered by EU OSS. An overseas seller
-      shipping goods to UK consumers generally has to register from the first
-      sale — there is no threshold the way there is for UK-established sellers.
-- [ ] 🟡 👤 **GB health claims register.** Mirrors the EU list but is diverging
-      post-Brexit. Assume it needs its own check, not a copy of the EU answer.
-- [ ] 🟡 👤 UKCA / CE marking position for the lamp.
-- [ ] 🟡 Add `GB` to `allowed_countries`.
-
-### USA
-
-- [ ] 🔴 👤 **Sales tax nexus.** Economic nexus is per-state (commonly ~$100k or
-      200 transactions). Stripe Tax can calculate and file, but registration is
-      per state and is yours.
-- [ ] 🟡 👤 **Digital goods tax.** PDFs are taxable in roughly half the states,
-      and not the same half that tax physical goods.
-- [ ] 🟡 👤 **California Prop 65.** Electrical products and mineral products can
-      trigger a warning obligation.
-- [ ] 🟡 👤 **CCPA/CPRA** if California revenue crosses the threshold.
-- [ ] 🟡 👤 Customs, duties and returns for US delivery. Decide who pays.
-- [ ] 🟡 **USD pricing.** Stripe multi-currency, or a US price per product.
-      Converting €12 at checkout looks like an afterthought; $12 does not.
-
-### Site work that follows from all of it
-
-- [ ] 🟡 **A third locale is probably wrong.** `en` currently serves everyone
-      outside NL. US English and UK English differ in spelling, units, and legal
-      furniture. Cheapest correct answer: keep `en`, but make the legal blocks
-      (disclaimers, tax lines, shipping) region-aware rather than forking the
-      whole site.
-- [ ] 🟡 Region-aware shipping and returns copy. A US buyer reading "PostNL or
-      DHL, 14 days" is reading someone else's policy.
+**Note:** your local `.env.local` is not resolving that live price — the dev
+site shows "prijs niet beschikbaar". Almost certainly a test-mode key locally
+against a livemode price. Harmless for development, worth knowing before you
+test checkout.
 
 ---
+
+## 1. Markets — NL first, then outward
+
+Full requirements per market live in [`private/compliance.md`](private/compliance.md).
+This is only the sequence and the switch.
+
+| Step | Market | State | Gate |
+|---|---|---|---|
+| 1 | 🇳🇱 Netherlands | **open** | — |
+| 2 | 🇪🇺 EU-27 | closed | health claims review, VAT OSS, GPSR |
+| 3 | 🇬🇧 UK | closed | UK VAT from first sale, GB claims register |
+| 4 | 🇺🇸 USA | closed | lamp device classification, FDA disclaimer, state nexus |
+| 5 | 🌍 Worldwide | closed | a legal way to determine region |
+
+**To open a market:** add it to `OPEN_MARKETS` in `src/lib/markets.ts`, then add
+it to the `markets:` list of each product that has been cleared for it. Both are
+required — forgetting either fails closed, which is the point.
+
+- [ ] 🔴 👤 **Clear the salt lamp for the EU.** Currently `['NL']`. Blocked on the
+      health-claims review of its product copy.
+- [ ] 🟡 The 14-day withdrawal waiver for digital downloads is **not captured at
+      checkout**. Without it every guide is refundable for 14 days after being
+      downloaded. Applies from the first guide sold — **I can build this.**
+- [ ] 🟡 Guides cannot be market-gated by Stripe: Checkout restricts *shipping*
+      countries and has no billing equivalent. Any restriction is best-effort at
+      the app layer. Noted in the compliance doc.
+- [ ] 🟡 Region selection for step 5: let the buyer **pick** their country rather
+      than reading their IP. No personal data, no consent needed, never wrong
+      about a VPN. Geo-IP only as a suggested default they can override.
 
 ## 2. Kratos Natural — the €1B vehicle, launches first
 

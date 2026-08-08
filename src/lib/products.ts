@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import type {Locale} from '@/i18n/routing';
 import {locales} from '@/i18n/routing';
+import {parseMarkets, type MarketId} from '@/lib/markets';
 
 const PRODUCTS_ROOT = path.join(process.cwd(), 'src', 'content', 'products');
 
@@ -41,6 +42,13 @@ export type ProductFrontmatter = {
   description: string;
   /** Stripe price id, e.g. "price_1Abc...". Source of truth for the amount. */
   priceId: string;
+  /**
+   * Markets this product has been **cleared** for sale in. Required, with no
+   * default: whether something may be sold in a country is a legal question,
+   * and a default would be a guess at one. See `markets.ts` for how this meets
+   * the rollout to decide what is actually on sale today.
+   */
+  markets: MarketId[];
   image?: string;
   /**
    * Meta description for search results. The on-page `description` is a
@@ -83,7 +91,9 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
 
   for (const field of ['title', 'description', 'priceId'] as const) {
     if (!fm[field]) {
-      throw new Error(`Product "${ref}" is missing required frontmatter "${field}".`);
+      throw new Error(
+        `Product "${ref}" is missing required frontmatter "${field}".`
+      );
     }
   }
   if (!/^price_/.test(fm.priceId!)) {
@@ -106,6 +116,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     title: fm.title!,
     description: fm.description!,
     priceId: fm.priceId!,
+    markets: parseMarkets(fm.markets, `Product "${ref}"`),
     image: fm.image,
     metaDescription: fm.metaDescription,
     images: fm.images ?? [],
@@ -152,11 +163,15 @@ export async function getProduct(
 
 export async function getProducts(locale: Locale): Promise<Product[]> {
   const slugs = await getProductSlugs(locale);
-  const loaded = await Promise.all(slugs.map((slug) => getProduct(locale, slug)));
+  const loaded = await Promise.all(
+    slugs.map((slug) => getProduct(locale, slug))
+  );
 
   return loaded
     .filter((product): product is Product => product !== null)
-    .filter((product) => !product.draft || process.env.NODE_ENV !== 'production')
+    .filter(
+      (product) => !product.draft || process.env.NODE_ENV !== 'production'
+    )
     .sort((a, b) => a.title.localeCompare(b.title, a.locale));
 }
 

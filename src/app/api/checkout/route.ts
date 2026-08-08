@@ -2,6 +2,11 @@ import {NextResponse} from 'next/server';
 import {getStripe} from '@/lib/stripe';
 import {SITE} from '@/lib/orders';
 import {getProduct} from '@/lib/products';
+import {
+  isSellable,
+  sellableCountriesForAll,
+  type MarketId
+} from '@/lib/markets';
 import {isLocale, defaultLocale} from '@/i18n/routing';
 
 /**
@@ -46,27 +51,50 @@ export async function POST(request: Request) {
     const resolved = await Promise.all(
       requested.map(async ({slug, quantity}) => {
         const product = await getProduct(locale, slug);
-        return product ? {price: product.priceId, quantity} : null;
+        if (!product) return null;
+        // A product that is cleared for nowhere currently open is dropped here
+        // rather than offered and then refused at the address step.
+        if (!isSellable(product.markets)) return null;
+        return {price: product.priceId, quantity, markets: product.markets};
       })
     );
 
     const lineItems = resolved.filter(
-      (item): item is {price: string; quantity: number} => item !== null
+      (item): item is {price: string; quantity: number; markets: MarketId[]} =>
+        item !== null
     );
 
     if (lineItems.length === 0) {
       return NextResponse.redirect(`${origin}${prefix}/shop`, {status: 303});
     }
 
+    /*
+     * Delivery countries, narrowed to what every line in this basket is cleared
+     * for. The intersection, not the union: a cart holding one EU-wide product
+     * and one cleared only for the Netherlands can only go to the Netherlands,
+     * and offering a German address would fail at the far end of a payment
+     * rather than before it.
+     */
+    const allowedCountries = sellableCountriesForAll(
+      lineItems.map((item) => item.markets)
+    );
+
+    if (allowedCountries.length === 0) {
+      return NextResponse.redirect(`${origin}${prefix}/shop?error=region`, {
+        status: 303
+      });
+    }
+
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
-      line_items: lineItems.map((item) => ({
-        ...item,
+      line_items: lineItems.map(({price, quantity}) => ({
+        price,
+        quantity,
         adjustable_quantity: {enabled: true, minimum: 1, maximum: 10}
       })),
       // Stripe Tax needs a destination before it can pick a rate.
       automatic_tax: {enabled: true},
-      shipping_address_collection: {allowed_countries: ['NL', 'BE', 'DE', 'FR', 'AT', 'ES', 'IT', 'IE', 'PT', 'LU', 'DK', 'SE', 'FI', 'PL']},
+      shipping_address_collection: {allowed_countries: allowedCountries},
       billing_address_collection: 'auto',
       // Lets Stripe attach the purchase to an existing customer by email, which
       // is what makes it show up in the buyer's account page afterwards.
@@ -79,11 +107,14 @@ export async function POST(request: Request) {
       cancel_url: `${origin}${prefix}/shop`
     });
 
-    if (!session.url) throw new Error('Stripe returned a session without a URL.');
+    if (!session.url)
+      throw new Error('Stripe returned a session without a URL.');
     return NextResponse.redirect(session.url, {status: 303});
   } catch (error) {
     console.error('checkout session failed', error);
-    return NextResponse.redirect(`${origin}/shop?error=checkout`, {status: 303});
+    return NextResponse.redirect(`${origin}/shop?error=checkout`, {
+      status: 303
+    });
   }
 }
 
