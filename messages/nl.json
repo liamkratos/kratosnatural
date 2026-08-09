@@ -186,8 +186,9 @@
     "successBack": "Terug naar de gidsen",
     "download": "Download",
     "withdrawalWaiver": "Ik vraag om de download direct beschikbaar te stellen, en ik begrijp dat ik daarmee mijn herroepingsrecht van 14 dagen verlies zodra hij geleverd is.",
-    "withdrawalKept": "Je hebt afstand van je herroepingsrecht niet aangevinkt, dus je houdt de volle 14 dagen. Mail ons en we betalen terug.",
-    "withdrawalWaived": "Je hebt om directe toegang gevraagd en erkend dat je daarmee het herroepingsrecht van 14 dagen voor deze download opgeeft."
+    "withdrawalWaived": "Je hebt om directe toegang gevraagd en erkend dat je daarmee het herroepingsrecht van 14 dagen voor deze download opgeeft.",
+    "withdrawalRequired": "Deze gids kan pas verkocht worden als je het vakje hieronder bevestigt. Een download kun je niet terugsturen, dus we hebben je akkoord nodig dat de levering direct begint voordat we een betaling kunnen aannemen.",
+    "checkoutError": "Afrekenen kon niet gestart worden. Probeer het opnieuw."
   },
   "About": {
     "title": "Over Kratos Natural",

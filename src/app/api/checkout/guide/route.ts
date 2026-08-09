@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   if (!guide) return NextResponse.redirect(back, {status: 303});
 
   /*
-   * The withdrawal waiver is checked again here.
+   * No waiver, no sale.
    *
    * The checkbox on the page carries `required`, so a browser will not submit
    * without it — but a form can be posted directly, and the whole value of the
@@ -44,11 +44,17 @@ export async function POST(request: Request) {
    * it on trust would mean recording a consent that may never have been given,
    * which is worse than not recording one at all.
    *
-   * Without it the sale still goes ahead; it simply keeps the full 14-day right
-   * of withdrawal. Refusing to sell would be the wrong trade — the consumer
-   * loses nothing by declining, and we lose a customer.
+   * Selling anyway and quietly keeping the 14-day right would mean shipping a
+   * file that can be kept and refunded in full. There is no version of that
+   * which is fair to either side, so the checkout stops here instead and sends
+   * the buyer back to tick the box.
    */
-  const waived = String(form?.get('withdrawalWaiver') ?? '') === 'granted';
+  if (String(form?.get('withdrawalWaiver') ?? '') !== 'granted') {
+    return NextResponse.redirect(
+      `${origin}${prefix}/guides/${guide.slug}?checkout=waiver`,
+      {status: 303}
+    );
+  }
 
   try {
     const session = await getStripe().checkout.sessions.create({
@@ -72,8 +78,8 @@ export async function POST(request: Request) {
         metadata: {
           site: SITE,
           guide: guide.slug,
-          withdrawal_waiver: waived ? 'granted' : 'not_granted',
-          withdrawal_waiver_at: waived ? new Date().toISOString() : ''
+          withdrawal_waiver: 'granted',
+          withdrawal_waiver_at: new Date().toISOString()
         }
       },
       locale: locale === 'nl' ? 'nl' : 'en',

@@ -186,8 +186,9 @@
     "successBack": "Back to the guides",
     "download": "Download",
     "withdrawalWaiver": "I ask for the download to be made available immediately, and I understand that I therefore give up my 14-day right of withdrawal once it is delivered.",
-    "withdrawalKept": "You did not waive your right of withdrawal, so you keep the full 14 days. Email us and we will refund it.",
-    "withdrawalWaived": "You asked for immediate access and acknowledged giving up the 14-day right of withdrawal for this download."
+    "withdrawalWaived": "You asked for immediate access and acknowledged giving up the 14-day right of withdrawal for this download.",
+    "withdrawalRequired": "This guide can only be sold once you confirm the box below. A download cannot be returned, so we need your agreement that delivery starts immediately before we can take payment.",
+    "checkoutError": "Checkout could not be started. Please try again."
   },
   "About": {
     "title": "About Kratos Natural",

@@ -4,44 +4,10 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
 import {getGuide} from '@/lib/guides';
-import {getStripe} from '@/lib/stripe';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
 
-type PageParams = {
-  params: {locale: string; slug: string};
-  searchParams: {session_id?: string};
-};
-
-/**
- * Whether this purchase waived the 14-day right of withdrawal.
- *
- * The shop's own confirmation page deliberately does not read the session id,
- * on the grounds that it would mean trusting a value from the URL to display
- * order details. This one does, and the reason is the difference between the
- * two pages: what is shown here is a statement about what the buyer just
- * agreed to give up, and telling somebody they waived a consumer right when
- * they did not is worse than the small exposure of reading one boolean against
- * an unguessable id. Nothing personal is displayed either way.
- *
- * A failure returns null and the page simply says nothing about it, rather
- * than guessing.
- */
-async function readWaiver(sessionId?: string): Promise<boolean | null> {
-  if (!sessionId) return null;
-
-  try {
-    const session = await getStripe().checkout.sessions.retrieve(sessionId, {
-      expand: ['payment_intent']
-    });
-    const intent = session.payment_intent;
-    if (!intent || typeof intent === 'string') return null;
-    return intent.metadata?.withdrawal_waiver === 'granted';
-  } catch (error) {
-    console.error('could not read withdrawal waiver', error);
-    return null;
-  }
-}
+type PageParams = {params: {locale: string; slug: string}};
 
 /**
  * Nothing here should ever be indexed or linked to: it is only reachable after
@@ -51,8 +17,7 @@ async function readWaiver(sessionId?: string): Promise<boolean | null> {
 export const metadata: Metadata = {robots: {index: false, follow: false}};
 
 export default async function GuideSuccessPage({
-  params: {locale, slug},
-  searchParams
+  params: {locale, slug}
 }: PageParams) {
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
@@ -61,7 +26,6 @@ export default async function GuideSuccessPage({
   if (!guide) notFound();
 
   const t = await getTranslations('Guides');
-  const waived = await readWaiver(searchParams.session_id);
 
   return (
     <Container className="max-w-3xl py-24">
@@ -85,14 +49,12 @@ export default async function GuideSuccessPage({
         </p>
 
         {/* Confirming the waiver back to the buyer, in the same words they
-            agreed to. Somebody who did not waive is told they kept the right
-            rather than being left to guess — the sale went through either way,
-            and the difference is only how long they can change their mind. */}
-        {waived !== null && (
-          <p className="mx-auto mt-6 max-w-2xl border-t border-ink/10 pt-6 font-mono text-xs uppercase leading-relaxed tracking-widest text-black">
-            {waived ? t('withdrawalWaived') : t('withdrawalKept')}
-          </p>
-        )}
+            agreed to. Stated unconditionally rather than looked up: checkout
+            refuses to sell without the waiver, so a purchase that reached this
+            page can only have been made with it. */}
+        <p className="mx-auto mt-6 max-w-2xl border-t border-ink/10 pt-6 font-mono text-xs uppercase leading-relaxed tracking-widest text-black">
+          {t('withdrawalWaived')}
+        </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link

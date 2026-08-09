@@ -39,7 +39,7 @@ terug via dezelfde betaalmethode waarmee de aankoop is gedaan.
 
 Hoe kunt u gebruikmaken van het herroepingsrecht?
 
-Stuur binnen 14 dagen na ontvangst van uw bestelling een e-mail naar [jouw e-mailadres] met:
+Stuur binnen 14 dagen na ontvangst van uw bestelling een e-mail naar info@kratosnatural.com met:
 
 uw naam
 
@@ -55,11 +55,11 @@ Herroepingsformulier
 
 Aan:
 
-[Naam bedrijf]
+Kratos Natural
 
-[Adres bedrijf]
+Clausstraat 6, 2661 BZ Bergschenhoek, Nederland
 
-[E-mailadres bedrijf]
+info@kratosnatural.com
 
 Ik/Wij (
 

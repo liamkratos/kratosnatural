@@ -15,7 +15,10 @@ import Reveal from '@/components/Reveal';
 
 export const revalidate = 300;
 
-type PageParams = {params: {locale: string; slug: string}};
+type PageParams = {
+  params: {locale: string; slug: string};
+  searchParams: {checkout?: string};
+};
 
 export async function generateStaticParams() {
   return getAllGuideParams();
@@ -37,7 +40,10 @@ export async function generateMetadata({
   });
 }
 
-export default async function GuidePage({params: {locale, slug}}: PageParams) {
+export default async function GuidePage({
+  params: {locale, slug},
+  searchParams
+}: PageParams) {
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
 
@@ -46,6 +52,11 @@ export default async function GuidePage({params: {locale, slug}}: PageParams) {
 
   const t = await getTranslations('Guides');
   const price = await getPrice(guide.priceId);
+
+  // Checkout sends the buyer back here rather than selling without the waiver.
+  // Landing on the same page with no explanation reads as a broken button, so
+  // the reason is stated next to the box they need to tick.
+  const checkoutError = searchParams.checkout;
 
   return (
     <Container className="max-w-4xl py-16">
@@ -89,6 +100,21 @@ export default async function GuidePage({params: {locale, slug}}: PageParams) {
                   </span>
                 )}
               </p>
+
+              {/* Outside the form on purpose. Why checkout sent somebody back
+                  has nothing to do with whether a price resolves, and nesting
+                  the two meant a bounced buyer saw an empty page whenever the
+                  price lookup happened to fail. */}
+              {checkoutError && (
+                <p
+                  role="alert"
+                  className="longform mt-6 rounded-[20px] border border-olive/40 bg-kratos-50 p-4 text-left text-sm leading-relaxed text-black"
+                >
+                  {checkoutError === 'waiver'
+                    ? t('withdrawalRequired')
+                    : t('checkoutError')}
+                </p>
+              )}
 
               {/* A button that cannot charge is worse than no button: without a
                   resolvable price the form is replaced by a plain statement. */}

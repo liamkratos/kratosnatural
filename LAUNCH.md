@@ -54,19 +54,20 @@ required — forgetting either fails closed, which is the point.
 
 - [ ] 🔴 👤 **Clear the salt lamp for the EU.** Currently `['NL']`. Blocked on the
       health-claims review of its product copy.
-- [x] **14-day withdrawal waiver captured at checkout.** Required, un-ticked
-      checkbox on every guide page carrying both conditions the law asks for;
-      re-checked server-side; recorded on the Stripe payment intent as
-      `withdrawal_waiver` + timestamp; confirmed back to the buyer on the
-      success page.
+- [x] **No waiver, no sale.** Required, un-ticked checkbox on every guide page
+      carrying both conditions the law asks for. Checkout **refuses** without
+      it and sends the buyer back with the reason — no exceptions, no quiet
+      sale that keeps the 14-day right. Recorded on the Stripe payment intent
+      as `withdrawal_waiver` + timestamp and confirmed back on the success
+      page.
 - [ ] 🟡 👤 **Durable-medium confirmation of the waiver.** The law wants the
       consent confirmed in something the buyer keeps. Stripe's receipt does not
       mention it and we send no email on a guide purchase — the success page is
       a screen, not a durable medium. Needs a purchase confirmation email.
       **I can build this.**
-- [ ] 🔴 👤 **The refund policy has unfilled placeholders.** `refund.md` still
-      contains `[jouw e-mailadres]`, `[Naam bedrijf]`, `[Adres bedrijf]` and
-      `[E-mailadres bedrijf]`. It is a live legal document on both domains.
+- [x] **Refund policy placeholders filled** from the Chamber of Commerce
+      details, the same source the About page and legal notice use, so the
+      three cannot disagree. No template text left in any policy.
 - [ ] 🟡 👤 Local `.env.local` holds a **test** key while prices are livemode, so
       dev shows "prijs niet beschikbaar" and buy forms do not render. Either add
       test-mode prices or use a live restricted key locally.
