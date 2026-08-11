@@ -157,8 +157,17 @@ Run this before adding a market to any product's `markets:` list.
 
 Digital products carry no shipping, so **Stripe cannot enforce a market for
 them**: Checkout has an `allowed_countries` list for *shipping* addresses, and
-no equivalent for billing. Restricting a guide by market is therefore
-best-effort at the app layer, not a hard gate.
+no equivalent for billing.
+
+The gate is therefore ours. `markets:` is required on every guide, and a guide
+cleared for no currently-open market is hidden from `/guides` **and** refused by
+`api/checkout/guide` before a session is created. That is a real gate on our
+side of the transaction — what it cannot do is stop somebody buying from a
+country they did not declare, which is a limit worth knowing rather than
+papering over.
+
+Guides already bought stay bought. `getGuide` and `findGuide` skip the market
+filter deliberately, so closing a market never confiscates a paid-for file.
 
 What actually matters for guides:
 

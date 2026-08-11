@@ -28,11 +28,6 @@ legal, writing, decisions) — everything else I can build.
       would be a guess at a legal question. The build fails without it.
 - [x] Salt lamp price verified live: €24.99, EUR, tax inclusive, active.
 
-**Note:** your local `.env.local` is not resolving that live price — the dev
-site shows "prijs niet beschikbaar". Almost certainly a test-mode key locally
-against a livemode price. Harmless for development, worth knowing before you
-test checkout.
-
 ---
 
 ## 1. Markets — NL first, then outward
@@ -60,23 +55,36 @@ required — forgetting either fails closed, which is the point.
       sale that keeps the 14-day right. Recorded on the Stripe payment intent
       as `withdrawal_waiver` + timestamp and confirmed back on the success
       page.
-- [ ] 🟡 👤 **Durable-medium confirmation of the waiver.** The law wants the
-      consent confirmed in something the buyer keeps. Stripe's receipt does not
-      mention it and we send no email on a guide purchase — the success page is
-      a screen, not a durable medium. Needs a purchase confirmation email.
-      **I can build this.**
+- [x] **Durable-medium confirmation built.** A Stripe webhook on
+      `checkout.session.completed` sends a purchase confirmation carrying the
+      waiver, the moment it was given, and the trader details. In a webhook
+      rather than on the success page: a confirmation that depends on the buyer
+      keeping a tab open is not a record of anything.
+- [ ] 🔴 👤 **Create the webhook endpoint in Stripe** → `/api/stripe/webhook`,
+      event `checkout.session.completed`, then set `STRIPE_WEBHOOK_SECRET` in
+      Vercel. Without it the endpoint refuses every call and a paying buyer
+      never gets the confirmation. Required **before** the first guide sells.
 - [x] **Refund policy placeholders filled** from the Chamber of Commerce
       details, the same source the About page and legal notice use, so the
       three cannot disagree. No template text left in any policy.
-- [ ] 🟡 👤 Local `.env.local` holds a **test** key while prices are livemode, so
-      dev shows "prijs niet beschikbaar" and buy forms do not render. Either add
-      test-mode prices or use a live restricted key locally.
-- [ ] 🟡 Guides cannot be market-gated by Stripe: Checkout restricts *shipping*
-      countries and has no billing equivalent. Any restriction is best-effort at
-      the app layer. Noted in the compliance doc.
-- [ ] 🟡 Region selection for step 5: let the buyer **pick** their country rather
-      than reading their IP. No personal data, no consent needed, never wrong
-      about a VPN. Geo-IP only as a suggested default they can override.
+- [x] ~~Local test key vs livemode prices.~~ **Accepted, not a bug.** Dev shows
+      "prijs niet beschikbaar" and buy forms do not render locally. That is the
+      correct behaviour for an unresolvable price and it keeps a live key off
+      the laptop. Use `stripe listen` when checkout itself needs testing.
+- [x] **Guides are market-gated in our own app**, since Stripe cannot do it for
+      a download. `markets:` is required on every guide exactly as on a product;
+      a guide cleared for no open market is hidden from the listing **and**
+      refused at checkout. Verified: a guide set to a closed market disappears
+      from `/guides` and its checkout returns `?checkout=region` even with a
+      valid waiver. Buyers keep guides they already own if a market later
+      closes — `getGuide`/`findGuide` deliberately skip the filter.
+- [x] **Region is always the buyer's own answer, never their IP.** Verified:
+      there is no geo-IP anywhere in the codebase — no `x-vercel-ip-country`, no
+      `request.geo`, nothing. For a parcel the buyer picks the country in Stripe
+      Checkout from our allowlist; for a download the market gate above decides.
+      Nothing to build for step 5 beyond widening `OPEN_MARKETS`, and no IP
+      lookup is to be added later: it is personal data under GDPR, needs a
+      lawful basis and a privacy-policy line, and is wrong about every VPN.
 
 ## 2. Kratos Natural — the €1B vehicle, launches first
 

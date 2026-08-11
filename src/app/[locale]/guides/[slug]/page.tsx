@@ -5,6 +5,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
 import {getGuide, getAllGuideParams, domainLabel} from '@/lib/guides';
+import {isSellable} from '@/lib/markets';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import {formatPrice} from '@/lib/utils';
@@ -52,6 +53,11 @@ export default async function GuidePage({
 
   const t = await getTranslations('Guides');
   const price = await getPrice(guide.priceId);
+
+  // Hidden from the listing is not the same as unbuyable: this page is still
+  // reachable by direct link, and by anyone who already owns the guide. It
+  // renders, and says plainly that it is not on sale here.
+  const sellable = isSellable(guide.markets);
 
   // Checkout sends the buyer back here rather than selling without the waiver.
   // Landing on the same page with no explanation reads as a broken button, so
@@ -112,13 +118,16 @@ export default async function GuidePage({
                 >
                   {checkoutError === 'waiver'
                     ? t('withdrawalRequired')
-                    : t('checkoutError')}
+                    : checkoutError === 'region'
+                      ? t('regionRequired')
+                      : t('checkoutError')}
                 </p>
               )}
 
               {/* A button that cannot charge is worse than no button: without a
-                  resolvable price the form is replaced by a plain statement. */}
-              {price ? (
+                  resolvable price, or in a market this guide is not cleared
+                  for, the form is replaced by a plain statement. */}
+              {price && sellable ? (
                 <form
                   action="/api/checkout/guide"
                   method="POST"
@@ -162,7 +171,7 @@ export default async function GuidePage({
                 </form>
               ) : (
                 <p className="mt-6 font-mono text-xs uppercase tracking-widest text-black">
-                  {t('unavailable')}
+                  {sellable ? t('unavailable') : t('unavailableRegion')}
                 </p>
               )}
 

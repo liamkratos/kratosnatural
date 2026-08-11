@@ -188,7 +188,9 @@
     "withdrawalWaiver": "Ik vraag om de download direct beschikbaar te stellen, en ik begrijp dat ik daarmee mijn herroepingsrecht van 14 dagen verlies zodra hij geleverd is.",
     "withdrawalWaived": "Je hebt om directe toegang gevraagd en erkend dat je daarmee het herroepingsrecht van 14 dagen voor deze download opgeeft.",
     "withdrawalRequired": "Deze gids kan pas verkocht worden als je het vakje hieronder bevestigt. Een download kun je niet terugsturen, dus we hebben je akkoord nodig dat de levering direct begint voordat we een betaling kunnen aannemen.",
-    "checkoutError": "Afrekenen kon niet gestart worden. Probeer het opnieuw."
+    "checkoutError": "Afrekenen kon niet gestart worden. Probeer het opnieuw.",
+    "unavailableRegion": "Nog niet beschikbaar in jouw regio.",
+    "regionRequired": "Deze gids is nog niet te koop in jouw regio."
   },
   "About": {
     "title": "Over Kratos Natural",

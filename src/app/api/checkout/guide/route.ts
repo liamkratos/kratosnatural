@@ -2,6 +2,7 @@ import {NextResponse} from 'next/server';
 import {getStripe} from '@/lib/stripe';
 import {SITE} from '@/lib/orders';
 import {findGuide} from '@/lib/guides';
+import {isSellable} from '@/lib/markets';
 import {isLocale, defaultLocale} from '@/i18n/routing';
 
 /**
@@ -34,6 +35,20 @@ export async function POST(request: Request) {
     : `${origin}${prefix}/guides`;
 
   if (!guide) return NextResponse.redirect(back, {status: 303});
+
+  /*
+   * Not cleared for any market that is currently open.
+   *
+   * Stripe cannot enforce this for a download the way it enforces a shipping
+   * country for a parcel, so this check is the gate. Hiding the guide from the
+   * listing is presentation; refusing here is the rule.
+   */
+  if (!isSellable(guide.markets)) {
+    return NextResponse.redirect(
+      `${origin}${prefix}/guides/${guide.slug}?checkout=region`,
+      {status: 303}
+    );
+  }
 
   /*
    * No waiver, no sale.

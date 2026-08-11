@@ -188,7 +188,9 @@
     "withdrawalWaiver": "I ask for the download to be made available immediately, and I understand that I therefore give up my 14-day right of withdrawal once it is delivered.",
     "withdrawalWaived": "You asked for immediate access and acknowledged giving up the 14-day right of withdrawal for this download.",
     "withdrawalRequired": "This guide can only be sold once you confirm the box below. A download cannot be returned, so we need your agreement that delivery starts immediately before we can take payment.",
-    "checkoutError": "Checkout could not be started. Please try again."
+    "checkoutError": "Checkout could not be started. Please try again.",
+    "unavailableRegion": "Not available in your region yet.",
+    "regionRequired": "This guide is not on sale in your region yet."
   },
   "About": {
     "title": "About Kratos Natural",

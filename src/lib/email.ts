@@ -30,7 +30,9 @@ export async function sendMagicLink({to, url, locale}: MagicLinkEmail) {
   }
 
   const subject =
-    locale === 'nl' ? 'Je inloglink voor Kratos Natural' : 'Your Kratos Natural sign-in link';
+    locale === 'nl'
+      ? 'Je inloglink voor Kratos Natural'
+      : 'Your Kratos Natural sign-in link';
   const body =
     locale === 'nl'
       ? `Klik om in te loggen. Deze link verloopt over 10 minuten.\n\n${url}`
@@ -120,6 +122,116 @@ export async function sendEbook({
 
   if (!response.ok) {
     throw new Error(`Sending the guide failed (${response.status}).`);
+  }
+}
+
+/**
+ * Purchase confirmation for a guide — and the record of the withdrawal waiver.
+ *
+ * This mail exists for two reasons, and the second is the one that makes it
+ * non-optional. The first is ordinary: somebody paid, and should be told where
+ * their file is.
+ *
+ * The second is that EU law asks for confirmation of the contract on a durable
+ * medium, and that confirmation has to include the buyer's express consent to
+ * delivery starting immediately together with their acknowledgement that this
+ * is what costs them the 14-day right of withdrawal. Checkout collects both;
+ * this is where they are given back in a form the buyer keeps. A page they
+ * were shown once and navigated away from is not that.
+ *
+ * Plain text rather than HTML: it is a receipt, it has to survive every mail
+ * client, and nothing in it benefits from styling.
+ */
+export async function sendGuideReceipt({
+  to,
+  origin,
+  locale,
+  title,
+  purchasedAt
+}: {
+  to: string;
+  origin: string;
+  locale: string;
+  title: string;
+  /** When the waiver was given, from the payment's own metadata. */
+  purchasedAt: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.ACCOUNT_EMAIL_FROM;
+  const accountUrl = `${origin}/account`;
+
+  if (!apiKey || !from) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error(
+        'RESEND_API_KEY and ACCOUNT_EMAIL_FROM must be set to send purchase confirmations.'
+      );
+    }
+    // eslint-disable-next-line no-console
+    console.warn(`\n[dev] guide receipt for ${to}: ${title} — ${accountUrl}\n`);
+    return;
+  }
+
+  const nl = locale === 'nl';
+  const date = new Date(purchasedAt);
+  const stamp = Number.isNaN(date.getTime())
+    ? purchasedAt
+    : date.toLocaleString(nl ? 'nl-NL' : 'en-GB', {
+        dateStyle: 'long',
+        timeStyle: 'short',
+        timeZone: 'Europe/Amsterdam'
+      });
+
+  const subject = nl ? `Je aankoop: ${title}` : `Your purchase: ${title}`;
+
+  const text = nl
+    ? [
+        `Bedankt voor je aankoop van "${title}".`,
+        '',
+        `Log in met dit e-mailadres en de download staat klaar in je account: ${accountUrl}`,
+        'Hij blijft daar staan, ook als je er over een jaar weer bij wilt.',
+        '',
+        '— Herroepingsrecht —',
+        '',
+        `Bij het afrekenen op ${stamp} heb je gevraagd om de download direct beschikbaar te stellen, en erkend dat je daarmee je herroepingsrecht van 14 dagen verliest zodra de levering begint.`,
+        'We bevestigen dat hier, zodat je het zwart op wit hebt.',
+        '',
+        'Klopt er iets niet? Mail ons gewoon terug.',
+        '',
+        'Kratos Natural',
+        'Clausstraat 6, 2661 BZ Bergschenhoek, Nederland',
+        'info@kratosnatural.com · KvK 92192475'
+      ].join('\n')
+    : [
+        `Thank you for buying "${title}".`,
+        '',
+        `Sign in with this email address and the download is waiting in your account: ${accountUrl}`,
+        'It stays there, including if you come back for it in a year.',
+        '',
+        '— Right of withdrawal —',
+        '',
+        `At checkout on ${stamp} you asked for the download to be made available immediately, and acknowledged that this means giving up your 14-day right of withdrawal once delivery begins.`,
+        'We are confirming that here so you have it in writing.',
+        '',
+        'Anything not right? Just reply to this email.',
+        '',
+        'Kratos Natural',
+        'Clausstraat 6, 2661 BZ Bergschenhoek, Netherlands',
+        'info@kratosnatural.com · CoC 92192475'
+      ].join('\n');
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({from, to, subject, text})
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Sending the purchase confirmation failed (${response.status}).`
+    );
   }
 }
 

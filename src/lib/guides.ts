@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import matter from 'gray-matter';
 import type {Locale} from '@/i18n/routing';
+import {parseMarkets, isSellable, type MarketId} from '@/lib/markets';
 
 /**
  * Written guides and e-books, sold as files.
@@ -72,6 +73,18 @@ export type GuideFrontmatter = {
   cover: string;
   /** Filename inside `private/guides/`, e.g. "houding-schouders-nl.pdf". */
   file: string;
+  /**
+   * Markets this guide has been cleared for. Required, exactly as it is on a
+   * product — a guide carries claims too, and VAT on a download follows the
+   * buyer's country.
+   *
+   * Worth knowing what this can and cannot do: Stripe restricts *shipping*
+   * countries and has no billing equivalent, so unlike a parcel this cannot be
+   * enforced at the payment. It hides the guide and refuses the sale in our own
+   * app, which is the real control available for something that is delivered
+   * over the wire.
+   */
+  markets: MarketId[];
   /** Which domain this belongs to on the shop page. */
   domain?: DomainId;
   /**
@@ -132,12 +145,29 @@ function parse(raw: string, slug: string, locale: Locale): Guide {
     );
   }
 
-  return {...(front as GuideFrontmatter), slug, locale};
+  return {
+    ...(front as GuideFrontmatter),
+    markets: parseMarkets(front.markets, `Guide ${locale}/${slug}`),
+    slug,
+    locale
+  };
 }
 
-/** Drafts are visible in development and excluded from production builds. */
+/**
+ * Whether a guide belongs in a listing.
+ *
+ * Drafts are visible in development and excluded from production builds. A
+ * guide cleared for no market that is currently open is excluded everywhere:
+ * listing something that cannot be sold is worse than not listing it.
+ *
+ * Deliberately not applied by `getGuide` or `findGuide`. Those back the
+ * entitlement check and the download, and somebody who already bought a guide
+ * keeps it — closing a market must not confiscate a file that has been paid
+ * for.
+ */
 function isVisible(guide: Guide) {
-  return !guide.draft || process.env.NODE_ENV !== 'production';
+  const published = !guide.draft || process.env.NODE_ENV !== 'production';
+  return published && isSellable(guide.markets);
 }
 
 /** Every guide on sale in this language, in display order. */
