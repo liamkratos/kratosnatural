@@ -43,10 +43,11 @@ half-right in four.
       health-claims question answers this one too.
 - [ ] 🟡 Right of withdrawal: 14 days, and the model withdrawal form must be
       reachable. Check the refund policy actually says this.
-- [ ] 🟡 Digital products: the 14-day withdrawal right is **waived** for
-      downloads only if the buyer expressly consents and acknowledges losing it.
-      Checkout has to capture that consent, or every guide is refundable for 14
-      days after download. **Not currently captured.**
+- [x] Digital products: the 14-day withdrawal right is **waived** for downloads
+      only if the buyer expressly consents and acknowledges losing it. Captured
+      as a required, un-ticked checkbox carrying both conditions; checkout
+      refuses without it; recorded on the payment intent; confirmed to the buyer
+      by email, which is the durable medium the rule asks for.
 - [ ] 🟡 Electrical safety for the lamp: CE marking, and the declaration of
       conformity kept on file.
 
