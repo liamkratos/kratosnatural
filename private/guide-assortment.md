@@ -117,11 +117,15 @@ assortment" made concrete — and it is a multi-year build, not a quarter.
 
 Your example, built out. Every other domain follows this shape.
 
-**Pillar: `houding` — "Houding"** · ~90 pages · €34
+**Pillar: `houding` — "De Houdingsbijbel"** · ~140 pages · €34
+
+The whole domain in one book: every misalignment, its causes, and the chains
+they run through — including the lower back, which is where most readers arrive
+from. The child guides are the same material narrowed to one problem each.
 
 | Order | Slug | Title | The search it answers |
 |---|---|---|---|
-| 21 | `houding-eenzijdig` | Eenzijdige dominantie | "één schouder lager dan de andere" |
+| 21 | `houding-eenzijdige-dominantie` | Eenzijdige dominantie ✅ **written** | "één schouder lager dan de andere" |
 | 22 | `houding-schouders` | Naar voren hangende schouders | "ronde schouders rechtzetten" |
 | 23 | `houding-bekkenkanteling` | Anterior pelvic tilt | "holle rug buik vooruit" |
 | 24 | `houding-nek` | Forward head & tech neck | "nek pijn van telefoon" |
@@ -132,15 +136,23 @@ Your example, built out. Every other domain follows this shape.
 | 29 | `houding-bureau` | Zitten & bureau-opstelling | "beste zithouding bureau" |
 | 30 | `houding-ademhaling` | Ademhaling & houding | "ademhaling ribbenkast houding" |
 
-**Shared skeleton for every guide in the domain** (write once, reuse):
+**Shared skeleton for every guide in the domain**, as set by the reference guide:
 
-1. **Wat het is** — plain description, no jargon
-2. **Hoe je het bij jezelf test** — 2–3 self-tests with photos
-3. **Wat het bewijs zegt over de oorzaak** — with the disagreements intact
-4. **Het protocol** — week by week, specific
-5. **Wat níét werkt** — and which studies found nothing
-6. **Wanneer je naar een professional moet** — the honest boundary
-7. **Bronnen** — every PMID
+1. **Er is altijd een oorzaak** — the misalignment is a consequence, never a fact on its own
+2. **De ketting** — how it propagates, link by link, each link separately sourced
+3. **Alle oorzaken** — habit load, sport, work, breath/stress, structural, fascia
+4. **Vind jouw eerste schakel** — self-tests plus a decision tree routing to a cause
+5. **Het protocol** — eight weeks, a separate part per cause
+6. **Wat níét werkt** — and which studies found nothing
+7. **Wanneer je naar een professional moet** — the honest boundary
+8. **Bronnen** — every PMID
+
+**The labelling rule.** Every claim carries `[gemeten]`, `[model]` or
+`[onbekend]`. This is what lets the guides teach causal chains without
+overclaiming: individual links are published — the hip-abductor → pelvic-drop
+link is experimentally causal, not merely correlated — while the full chain in
+one person is a model the reader tests on themselves. Without the labels a
+chain is a story; with them it is a tool.
 
 Section 5 and 6 are the ones competitors skip. They are the reason to buy ours.
 
