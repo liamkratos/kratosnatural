@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale, routing} from '@/i18n/routing';
+import {Link} from '@/i18n/navigation';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import Reveal from '@/components/Reveal';
@@ -97,7 +98,27 @@ export default async function AboutPage({
         </section>
       </Reveal>
 
+      {/* The manifest sits under the mission rather than beside it in the nav,
+          so the mission page has to actually lead somewhere. Without this the
+          hierarchy would exist only in the menu. */}
       <Reveal delay={60}>
+        <section className="floating mt-6 bg-white p-6 sm:p-10">
+          <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
+            {t('planTitle')}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
+            {t('planBody')}
+          </p>
+          <Link
+            href="/plan"
+            className="mt-6 inline-block rounded-[20px] bg-olive px-7 py-4 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+          >
+            {t('planCta')}
+          </Link>
+        </section>
+      </Reveal>
+
+      <Reveal delay={120}>
         <section className="floating mt-6 bg-white p-6 sm:p-10">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('detailsTitle')}
@@ -121,7 +142,7 @@ export default async function AboutPage({
         </section>
       </Reveal>
 
-      <Reveal delay={120}>
+      <Reveal delay={180}>
         <WhereNext className="mt-6" />
       </Reveal>
     </Container>

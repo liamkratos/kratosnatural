@@ -39,6 +39,25 @@ const config: Config = {
         pink: '#FEB9FF',
         ink: '#151515',
 
+        /**
+         * Review stars, and nothing else.
+         *
+         * Deliberately outside the brand palette rather than added to it. A
+         * star is a borrowed convention: people read a row of gold stars as a
+         * rating before they read anything around it, and rendering them in
+         * `olive` made them look like a decorative motif instead. This is the
+         * one place the site speaks somebody else's visual language on purpose.
+         *
+         * Kept out of every other component for the same reason — the moment
+         * gold shows up on a button it stops meaning "rating".
+         *
+         * On contrast: at roughly 1.9:1 on white this would fail as the sole
+         * carrier of meaning. It is not one. The rating is stated in words
+         * beside it ("5 van de 5, uit 2 Google-reviews"), so the stars are a
+         * second reading of a fact already written out.
+         */
+        gold: '#F0B429',
+
         // Superseded palette, still referenced by the existing components.
         // Being migrated page by page.
         kratos: {
@@ -62,10 +81,20 @@ const config: Config = {
         mono: ['var(--font-display)', 'ui-serif', 'cursive'],
         // Article prose only, so a meta-analysis reads like a paper rather than
         // a poster. Everything outside `.prose` stays on the display face.
-        reading: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        reading: [
+          'var(--font-sans)',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif'
+        ],
         // Running text outside headings. See the note in layout.tsx.
         body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        figures: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
+        figures: [
+          'var(--font-mono)',
+          'ui-monospace',
+          'SFMono-Regular',
+          'monospace'
+        ]
       }
     }
   },

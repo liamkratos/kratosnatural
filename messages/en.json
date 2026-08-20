@@ -11,7 +11,7 @@
     "plan": "The plan",
     "shop": "Shop",
     "guides": "Guides",
-    "about": "About",
+    "about": "Our mission",
     "account": "Account",
     "menu": "Menu"
   },
@@ -157,7 +157,10 @@
     "researchIntro": "Every claim below is drawn from our own analysis of the published studies. Follow the link to read the evidence, including the trials that found nothing.",
     "researchRead": "Read the full analysis",
     "researchStudies": "{count} studies analysed",
-    "galleryAlt": "{product}, photo {number}"
+    "galleryAlt": "{product}, photo {number}",
+    "guidesTitle": "Guides & e-books",
+    "guidesBody": "Applied protocols built on the research we publish in full. Every claim traced to a source, including the studies that found nothing.",
+    "guidesCta": "Browse the guides"
   },
   "Guides": {
     "title": "Guides",
@@ -193,7 +196,7 @@
     "regionRequired": "This guide is not on sale in your region yet."
   },
   "About": {
-    "title": "About Kratos Natural",
+    "title": "Our mission",
     "lead": "Nice to meet you. Kratos Natural is the shop and research arm of Liam Kratos, orthomolecular therapist and longevity coach.",
     "body1": "We sell natural products, and we publish the research behind them. Not press releases, not marketing claims: systematic reviews and meta-analyses, read in full and reported with the numbers intact.",
     "body2": "If we cannot trace a claim to an indexed, published source, we do not make it. Every analysis lists its PMIDs so you can check the work yourself.",
@@ -215,7 +218,10 @@
     "vat": "VAT number",
     "coc": "Chamber of Commerce",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "planTitle": "The plan",
+    "planBody": "The whole argument, written out: what is wrong with how food and attention are built, why it can change now, and what we are building over the next ten years.",
+    "planCta": "Read the plan"
   },
   "Policies": {
     "dutchNotice": "These documents are published in Dutch. That is the authoritative text, and it is served here rather than an unreviewed translation."
@@ -230,8 +236,8 @@
     "shopDescription": "Himalayan salt lamps with infrared light and more, with full specifications and the published research behind each claim. Shipped from the Netherlands.",
     "articlesTitle": "Research analyses of the published evidence",
     "articlesDescription": "Complete analyses of PubMed literature on nattokinase, red and infrared light and more. Human trials only, with every PMID listed and null results included.",
-    "aboutTitle": "About Kratos Natural, the shop and research arm",
-    "aboutDescription": "Kratos Natural sells natural products and publishes the research behind them. Founded by Liam Kratos, orthomolecular therapist and longevity coach.",
+    "aboutTitle": "Our mission — people above the margin",
+    "aboutDescription": "Kratos Natural sells natural products and publishes the research behind them in full. Who we are, what we are building, and the plan to get there.",
     "planTitle": "The plan: make the truth easier to find than the sales pitch",
     "planDescription": "The Kratos Natural manifest. Why food and attention are built the way they are, what we publish for free, and what we are building over the next ten years.",
     "guidesTitle": "Guides and e-books, built on published research",

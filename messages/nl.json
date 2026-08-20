@@ -11,7 +11,7 @@
     "plan": "Het plan",
     "shop": "Shop",
     "guides": "Gidsen",
-    "about": "Over ons",
+    "about": "Onze missie",
     "account": "Account",
     "menu": "Menu"
   },
@@ -157,7 +157,10 @@
     "researchIntro": "Elke claim hieronder komt uit onze eigen analyse van de gepubliceerde studies. Volg de link om het bewijs te lezen, inclusief de studies die niets vonden.",
     "researchRead": "Lees de volledige analyse",
     "researchStudies": "{count} studies geanalyseerd",
-    "galleryAlt": "{product}, foto {number}"
+    "galleryAlt": "{product}, foto {number}",
+    "guidesTitle": "Gidsen & e-books",
+    "guidesBody": "Toegepaste protocollen, gebouwd op het onderzoek dat we voluit publiceren. Elke claim herleidbaar tot een bron, inclusief de studies die niets vonden.",
+    "guidesCta": "Bekijk de gidsen"
   },
   "Guides": {
     "title": "Gidsen",
@@ -193,7 +196,7 @@
     "regionRequired": "Deze gids is nog niet te koop in jouw regio."
   },
   "About": {
-    "title": "Over Kratos Natural",
+    "title": "Onze missie",
     "lead": "Leuk je te ontmoeten. Kratos Natural is de winkel en onderzoekstak van Liam Kratos, orthomoleculair therapeut en longevity coach.",
     "body1": "Wij verkopen natuurlijke producten en publiceren het onderzoek erachter. Geen persberichten, geen marketingclaims: systematische reviews en meta-analyses, volledig gelezen en gerapporteerd met de cijfers intact.",
     "body2": "Kunnen we een bewering niet herleiden tot een geïndexeerde, gepubliceerde bron, dan doen we die bewering niet. Elke analyse vermeldt de PMIDs zodat je het zelf kunt nakijken.",
@@ -215,7 +218,10 @@
     "vat": "Btw-nummer",
     "coc": "KvK-nummer",
     "prev": "Vorige",
-    "next": "Volgende"
+    "next": "Volgende",
+    "planTitle": "Het plan",
+    "planBody": "Het hele verhaal, voluit: wat er mis is met hoe eten en aandacht gebouwd zijn, waarom het nu wel kan veranderen, en waar we de komende tien jaar aan bouwen.",
+    "planCta": "Lees het plan"
   },
   "Policies": {
     "dutchNotice": ""
@@ -230,8 +236,8 @@
     "shopDescription": "Himalaya-zoutlampen met infraroodlicht en meer, met volledige specificaties en het gepubliceerde onderzoek achter elke claim. Verzonden vanuit Nederland.",
     "articlesTitle": "Onderzoeksanalyses van het gepubliceerde bewijs",
     "articlesDescription": "Volledige analyses van PubMed-literatuur over nattokinase, rood en infrarood licht en meer. Alleen humaan onderzoek, met elk PMID en ook de nulresultaten.",
-    "aboutTitle": "Over Kratos Natural, de winkel en onderzoekstak",
-    "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter. Opgericht door Liam Kratos, orthomoleculair therapeut en longevity-coach.",
+    "aboutTitle": "Onze missie — de mens boven de marge",
+    "aboutDescription": "Kratos Natural verkoopt natuurlijke producten en publiceert het onderzoek erachter voluit. Wie we zijn, wat we bouwen, en het plan om er te komen.",
     "planTitle": "Het plan: maak de waarheid makkelijker te vinden dan de verkooppraat",
     "planDescription": "Het manifest van Kratos Natural. Waarom eten en aandacht zijn zoals ze zijn, wat we gratis publiceren, en waar we de komende tien jaar aan bouwen.",
     "guidesTitle": "Gidsen en e-books, gebouwd op gepubliceerd onderzoek",

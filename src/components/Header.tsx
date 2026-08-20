@@ -32,13 +32,35 @@ export default function Header({locale}: {locale: Locale}) {
   const pathname = usePathname();
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  const navItems = [
+  /*
+   * Four top-level destinations, not six.
+   *
+   * The guides belong under the shop because they are things you buy, and the
+   * manifest belongs under the mission because it is what the mission says at
+   * length. Both were briefly top-level, which made the bar read as a list of
+   * pages rather than as a shape somebody could hold in their head.
+   *
+   * A child is reachable in its own right — every parent is still a real link
+   * to a real page, and the submenu is an extra way in rather than the only
+   * one.
+   */
+  const navItems: Array<{
+    href: string;
+    label: string;
+    children?: Array<{href: string; label: string}>;
+  }> = [
     {href: '/', label: t('Nav.home')},
-    {href: '/shop', label: t('Nav.shop')},
-    {href: '/guides', label: t('Nav.guides')},
+    {
+      href: '/shop',
+      label: t('Nav.shop'),
+      children: [{href: '/guides', label: t('Nav.guides')}]
+    },
     {href: '/articles', label: t('Nav.articles')},
-    {href: '/plan', label: t('Nav.plan')},
-    {href: '/about', label: t('Nav.about')}
+    {
+      href: '/about',
+      label: t('Nav.about'),
+      children: [{href: '/plan', label: t('Nav.plan')}]
+    }
   ];
 
   return (
@@ -116,15 +138,39 @@ export default function Header({locale}: {locale: Locale}) {
             />
           </Link>
 
+          {/* Desktop only. Below md the drawer below renders the same tree
+              with the children nested, so no dropdown ever has to survive a
+              touchscreen — which is where a hover menu gets stuck open. */}
           <nav className="hidden items-center gap-7 font-display text-xl uppercase leading-none md:flex">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="transition-colors duration-200 hover:text-pink"
-              >
-                {item.label}
-              </Link>
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className="block py-2 transition-colors duration-200 hover:text-pink"
+                >
+                  {item.label}
+                </Link>
+
+                {item.children && (
+                  /* Opens on hover and on keyboard focus, so it is reachable
+                     without a pointer. The parent stays a link in its own
+                     right; this is a shortcut, not the only way in. */
+                  <div className="pointer-events-none absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1 opacity-0 transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
+                    <ul className="min-w-[12rem] rounded-[20px] bg-olive p-2 text-base shadow-[0_8px_30px_rgba(0,0,0,0.45)]">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            className="block whitespace-nowrap rounded-[14px] px-4 py-2.5 text-center transition-colors duration-200 hover:text-pink"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -168,6 +214,9 @@ export default function Header({locale}: {locale: Locale}) {
             menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
           )}
         >
+          {/* Children are listed under their parent rather than hidden behind
+              a tap: a drawer has the room, and a second level of tapping to
+              reach two pages would be ceremony for its own sake. */}
           <ul className="flex flex-col gap-2 font-display text-2xl uppercase leading-none">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -177,6 +226,21 @@ export default function Header({locale}: {locale: Locale}) {
                 >
                   {item.label}
                 </Link>
+
+                {item.children && (
+                  <ul className="mt-2 flex flex-col gap-2 pl-6">
+                    {item.children.map((child) => (
+                      <li key={child.href}>
+                        <Link
+                          href={child.href}
+                          className="block rounded-[20px] border border-white/30 px-5 py-3 text-center text-xl text-white transition-colors duration-200 hover:text-pink"
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
