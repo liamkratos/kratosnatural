@@ -6,6 +6,7 @@ import {Link} from '@/i18n/navigation';
 import {getGuide} from '@/lib/guides';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 
 type PageParams = {params: {locale: string; slug: string}};
 
@@ -29,11 +30,9 @@ export default async function GuideSuccessPage({
 
   return (
     <Container className="max-w-3xl py-24">
-      <Card>
-        <h1 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-5xl">
-          {t('successTitle')}
-        </h1>
+      <PageHeader title={t('successTitle')} />
 
+      <Card>
         <p className="mx-auto mt-6 max-w-2xl text-xl leading-snug text-black">
           {t('successIntro', {title: guide.title})}
         </p>

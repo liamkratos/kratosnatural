@@ -10,6 +10,7 @@ import {Link} from '@/i18n/navigation';
 import {getPlan, type InlineNode, type Paragraph} from '@/lib/plan';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
+import PageHeader from '@/components/PageHeader';
 import Card from '@/components/Card';
 import Reveal from '@/components/Reveal';
 import WhereNext from '@/components/WhereNext';
@@ -95,39 +96,30 @@ export default async function PlanPage({params: {locale}}: PageParams) {
 
   return (
     <Container className="max-w-4xl py-16">
-      <Reveal>
-        <Card>
-          <h1
-            className="quoted font-display font-bold uppercase leading-tight"
-            style={{fontSize: 'clamp(2rem, 6vw, 4rem)'}}
-          >
-            {plan.heading}
-          </h1>
+      <PageHeader title={plan.heading}>
+        <p className="mt-6 font-mono text-xs uppercase tracking-widest text-black">
+          {t('byline', {
+            author: plan.author,
+            date: format.dateTime(new Date(plan.date), {
+              year: 'numeric',
+              month: 'long'
+            })
+          })}
+        </p>
 
-          <p className="mt-6 font-mono text-xs uppercase tracking-widest text-black">
-            {t('byline', {
-              author: plan.author,
-              date: format.dateTime(new Date(plan.date), {
-                year: 'numeric',
-                month: 'long'
-              })
-            })}
-          </p>
-
-          {lead && (
-            <div id={lead.id} className="mx-auto mt-8 max-w-2xl scroll-mt-28">
-              {lead.paragraphs.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="mt-4 text-lg leading-snug first:mt-0 sm:text-xl"
-                >
-                  <Prose paragraph={paragraph} />
-                </p>
-              ))}
-            </div>
-          )}
-        </Card>
-      </Reveal>
+        {lead && (
+          <div id={lead.id} className="mx-auto mt-8 max-w-2xl scroll-mt-28">
+            {lead.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className="mt-4 text-lg leading-snug first:mt-0 sm:text-xl"
+              >
+                <Prose paragraph={paragraph} />
+              </p>
+            ))}
+          </div>
+        )}
+      </PageHeader>
 
       {/* The sections in document order. Each is its own card so the manifest
           reads as a sequence of arguments rather than one wall of copy, and

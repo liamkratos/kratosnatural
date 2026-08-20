@@ -161,7 +161,11 @@
     "galleryAlt": "{product}, foto {number}",
     "guidesTitle": "Gidsen & e-books",
     "guidesBody": "Toegepaste protocollen, gebouwd op het onderzoek dat we voluit publiceren. Elke claim herleidbaar tot een bron, inclusief de studies die niets vonden.",
-    "guidesCta": "Bekijk de gidsen"
+    "guidesCta": "Bekijk de gidsen",
+    "cat_home": "Huis",
+    "cat_light": "Licht & apparaten",
+    "cat_supplements": "Supplementen",
+    "other": "Overige producten"
   },
   "Guides": {
     "title": "Gidsen",

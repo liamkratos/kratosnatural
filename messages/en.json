@@ -161,7 +161,11 @@
     "galleryAlt": "{product}, photo {number}",
     "guidesTitle": "Guides & e-books",
     "guidesBody": "Applied protocols built on the research we publish in full. Every claim traced to a source, including the studies that found nothing.",
-    "guidesCta": "Browse the guides"
+    "guidesCta": "Browse the guides",
+    "cat_home": "Home",
+    "cat_light": "Light & devices",
+    "cat_supplements": "Supplements",
+    "other": "Other products"
   },
   "Guides": {
     "title": "Guides",

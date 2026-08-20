@@ -2,18 +2,14 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale, routing} from '@/i18n/routing';
-import {getProducts} from '@/lib/products';
+import {getProductsByCategory} from '@/lib/products';
 import {getGuides} from '@/lib/guides';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
-import Container from '@/components/Container';
-import Card from '@/components/Card';
 import PageHeader from '@/components/PageHeader';
-import GuideCard from '@/components/GuideCard';
-import ScrollRow from '@/components/ScrollRow';
-import {Link} from '@/i18n/navigation';
 import ProductCard from '@/components/ProductCard';
-import Reveal from '@/components/Reveal';
+import GuideCard from '@/components/GuideCard';
+import CollectionSection from '@/components/CollectionSection';
 
 // Prices come from Stripe, so the page is revalidated rather than frozen at
 // build time: a price change in the dashboard appears without a deploy.
@@ -48,73 +44,102 @@ export default async function ShopPage({
   setRequestLocale(locale);
 
   const t = await getTranslations('Shop');
-  const products = await getProducts(locale);
-  const prices = await Promise.all(products.map((p) => getPrice(p.priceId)));
+  const tGuides = await getTranslations('Guides');
 
-  // A taste of the library, not the library. The row running off the edge is
-  // what says there is more, so it is capped rather than showing everything.
+  const {grouped, uncategorised} = await getProductsByCategory(locale);
   const guides = (await getGuides(locale)).slice(0, 8);
-  const guidePrices = await Promise.all(guides.map((g) => getPrice(g.priceId)));
+
+  /*
+   * Every price on the page in one pass.
+   *
+   * `getPrice` is cached per price id, so the repeated ids across categories
+   * cost one Stripe call each rather than one per card — but the lookups still
+   * have to be resolved before render, and doing it per section would serialise
+   * them.
+   */
+  const sections = [
+    ...grouped.map((group) => ({
+      key: group.id,
+      title: t(`cat_${group.id}`),
+      products: group.products
+    })),
+    ...(uncategorised.length > 0
+      ? [{key: 'other', title: t('other'), products: uncategorised}]
+      : [])
+  ];
+
+  const productPrices = new Map(
+    await Promise.all(
+      sections
+        .flatMap((section) => section.products)
+        .map(async (p) => [p.slug, await getPrice(p.priceId)] as const)
+    )
+  );
+  const guidePrices = new Map(
+    await Promise.all(
+      guides.map(async (g) => [g.slug, await getPrice(g.priceId)] as const)
+    )
+  );
+
+  const nothingToSell = sections.length === 0 && guides.length === 0;
 
   return (
-    <Container className="max-w-6xl py-24">
+    <>
       <PageHeader title={t('title')} intro={t('intro')} />
 
-      {/* Guides live under the shop, so the shop shows them rather than
-          describing them. Real cards, scrolling sideways, because a grid of
-          everything would make the guides compete with the products for the
-          page instead of sitting under them. */}
-      <Card className="mt-6">
-        {/* Stacked and centred on a phone, where `justify-between` wrapped the
-            two onto separate lines and left-aligned them against a card whose
-            every other line is centred. Side by side from sm up. */}
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-          <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
-            {t('guidesTitle')}
-          </h2>
-          <Link
-            href="/guides"
-            className="font-display text-base uppercase leading-none text-olive underline underline-offset-4 transition-colors duration-200 hover:text-oliveSoft"
-          >
-            {t('guidesCta')}
-          </Link>
-        </div>
-
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
-          {t('guidesBody')}
+      {nothingToSell && (
+        <p className="px-6 pb-24 text-center text-xl text-black">
+          {t('empty')}
         </p>
-
-        {guides.length > 0 ? (
-          <ScrollRow label={t('guidesTitle')} className="mt-8">
-            {guides.map((guide, index) => (
-              <GuideCard
-                key={guide.slug}
-                guide={guide}
-                price={guidePrices[index] ?? null}
-              />
-            ))}
-          </ScrollRow>
-        ) : (
-          <Link
-            href="/guides"
-            className="mt-6 inline-block rounded-[20px] bg-olive px-7 py-4 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
-          >
-            {t('guidesCta')}
-          </Link>
-        )}
-      </Card>
-
-      {products.length === 0 ? (
-        <p className="mt-16 text-xl text-black">{t('empty')}</p>
-      ) : (
-        <div className="mt-16 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product, index) => (
-            <Reveal key={product.slug} delay={index * 60}>
-              <ProductCard product={product} price={prices[index]} />
-            </Reveal>
-          ))}
-        </div>
       )}
-    </Container>
+
+      {/* One section per shelf, in the same treatment the homepage uses for
+          bestsellers. A category with nothing in it never reaches here. */}
+      {sections.map((section) => (
+        <CollectionSection key={section.key} title={section.title}>
+          {section.products.map((product) => (
+            <ProductCard
+              key={product.slug}
+              product={product}
+              price={productPrices.get(product.slug) ?? null}
+            />
+          ))}
+        </CollectionSection>
+      ))}
+
+      {/* Guides are the other half of what the shop sells, so they get the
+          same block rather than a smaller one. */}
+      {guides.length > 0 && (
+        <CollectionSection
+          title={t('guidesTitle')}
+          intro={t('guidesBody')}
+          href="/guides"
+          cta={t('guidesCta')}
+          className="mb-3 sm:mb-5"
+        >
+          {guides.map((guide) => (
+            <GuideCard
+              key={guide.slug}
+              guide={guide}
+              price={guidePrices.get(guide.slug) ?? null}
+            />
+          ))}
+        </CollectionSection>
+      )}
+
+      {/* Nothing published yet, but the shop should still say the library
+          exists rather than pretend it does not. */}
+      {guides.length === 0 && !nothingToSell && (
+        <CollectionSection
+          title={t('guidesTitle')}
+          intro={tGuides('empty')}
+          href="/guides"
+          cta={t('guidesCta')}
+          className="mb-3 sm:mb-5"
+        >
+          {[]}
+        </CollectionSection>
+      )}
+    </>
   );
 }

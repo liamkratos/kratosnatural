@@ -4,6 +4,7 @@ import {isLocale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 
 /**
  * Post-checkout confirmation.
@@ -26,10 +27,9 @@ export default async function SuccessPage({
 
   return (
     <Container className="max-w-2xl py-32">
+      <PageHeader title={t('successTitle')} />
+
       <Card>
-        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
-          {t('successTitle')}
-        </h1>
         <p className="mx-auto mt-6 max-w-xl text-xl leading-snug text-black">
           {t('successIntro')}
         </p>

@@ -37,6 +37,25 @@ export type ProductResearch = {
   claims?: ProductClaim[];
 };
 
+/**
+ * Shop categories.
+ *
+ * A closed list rather than free-form strings, for the same reason the guide
+ * domains are: a typo in frontmatter would otherwise create a near-empty
+ * category on the shop page that nobody notices. Order here is the order they
+ * appear.
+ *
+ * Labels live in the message files, because a category name is read by a
+ * customer and has to be in their language.
+ */
+export const categories = ['home', 'light', 'supplements'] as const;
+
+export type CategoryId = (typeof categories)[number];
+
+export function isCategoryId(value: string): value is CategoryId {
+  return (categories as readonly string[]).includes(value);
+}
+
 export type ProductFrontmatter = {
   title: string;
   description: string;
@@ -49,6 +68,12 @@ export type ProductFrontmatter = {
    * the rollout to decide what is actually on sale today.
    */
   markets: MarketId[];
+  /**
+   * Which shelf this sits on. Optional: a shop with one product does not need
+   * categories, and an uncategorised product is still listed rather than
+   * silently dropped.
+   */
+  category?: CategoryId;
   image?: string;
   /**
    * Meta description for search results. The on-page `description` is a
@@ -96,6 +121,11 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
       );
     }
   }
+  if (fm.category && !isCategoryId(fm.category)) {
+    throw new Error(
+      `Product "${ref}": unknown category "${fm.category}". Valid ids: ${categories.join(', ')}.`
+    );
+  }
   if (!/^price_/.test(fm.priceId!)) {
     throw new Error(
       `Product "${ref}": "priceId" must be a Stripe price id starting with "price_", got "${fm.priceId}".`
@@ -117,6 +147,7 @@ function parseProduct(locale: Locale, slug: string, raw: string): Product {
     description: fm.description!,
     priceId: fm.priceId!,
     markets: parseMarkets(fm.markets, `Product "${ref}"`),
+    category: fm.category,
     image: fm.image,
     metaDescription: fm.metaDescription,
     images: fm.images ?? [],
@@ -200,4 +231,28 @@ export async function getBestsellers(
   const products = await getProducts(locale);
   const flagged = products.filter((product) => product.bestseller);
   return (flagged.length > 0 ? flagged : products).slice(0, limit);
+}
+
+/**
+ * Products grouped by category, in the order declared above.
+ *
+ * Categories with nothing in them are omitted rather than rendered empty, and
+ * anything without a category comes back separately so a product can never
+ * disappear from the shop by forgetting one field.
+ */
+export async function getProductsByCategory(locale: Locale): Promise<{
+  grouped: Array<{id: CategoryId; products: Product[]}>;
+  uncategorised: Product[];
+}> {
+  const products = await getProducts(locale);
+
+  return {
+    grouped: categories
+      .map((id) => ({
+        id,
+        products: products.filter((product) => product.category === id)
+      }))
+      .filter((group) => group.products.length > 0),
+    uncategorised: products.filter((product) => !product.category)
+  };
 }

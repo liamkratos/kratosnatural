@@ -6,6 +6,7 @@ import {getPolicy, policySlugs} from '@/lib/policies';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 
 type PageParams = {params: {locale: string; policy: string}};
 
@@ -46,10 +47,9 @@ export default async function PolicyPage({
 
   return (
     <Container className="max-w-3xl py-24">
+      <PageHeader title={doc.title} />
+
       <Card>
-        <h1 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-5xl">
-          {doc.title}
-        </h1>
         {/* The source documents are Dutch and are served as-is on both
             domains. An unreviewed translation of a privacy policy or terms of
             service would be worse than none, so English readers are told

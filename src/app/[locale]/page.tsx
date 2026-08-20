@@ -9,7 +9,7 @@ import {getPrice} from '@/lib/pricing';
 import Container from '@/components/Container';
 import Hero from '@/components/Hero';
 import Reveal from '@/components/Reveal';
-import ScrollRow from '@/components/ScrollRow';
+import CollectionSection from '@/components/CollectionSection';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
 import WhereNext from '@/components/WhereNext';
@@ -94,81 +94,37 @@ export default async function HomePage({
         </Container>
       </section>
 
-      {/* Bestsellers, above the research block. Same card as the shop so the
-          two pages cannot drift apart. */}
+      {/* Bestsellers. Same component as every other collection on the site,
+          so the shop and the homepage cannot drift apart the way they had. */}
       {bestsellers.length > 0 && (
-        <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
-          <Container className="max-w-6xl">
-            <Reveal>
-              <h2
-                className="quoted text-balance text-center font-display font-bold uppercase leading-tight"
-                style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
-              >
-                {tShop('bestsellers')}
-              </h2>
-            </Reveal>
-
-            <ScrollRow label={tShop('bestsellers')} className="mt-14">
-              {bestsellers.map((product, index) => (
-                <ProductCard
-                  key={product.slug}
-                  product={product}
-                  price={bestsellerPrices[index]}
-                />
-              ))}
-            </ScrollRow>
-
-            <Reveal>
-              <Link
-                href="/shop"
-                className="mt-14 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
-              >
-                {tShop('viewAll')}
-              </Link>
-            </Reveal>
-          </Container>
-        </section>
+        <CollectionSection
+          title={tShop('bestsellers')}
+          href="/shop"
+          cta={tShop('viewAll')}
+        >
+          {bestsellers.map((product, index) => (
+            <ProductCard
+              key={product.slug}
+              product={product}
+              price={bestsellerPrices[index]}
+            />
+          ))}
+        </CollectionSection>
       )}
 
-      {/* Research. Real, cited articles — the nattokinase piece is the showcase
-          until more are published. */}
+      {/* Research. The row runs off the edge because the library grows;
+          a grid would claim these few are all of it. */}
       {articles.length > 0 && (
-        <section className="floating mx-3 mt-3 bg-white py-24 text-ink sm:mx-5 sm:py-32">
-          <Container className="max-w-6xl">
-            <Reveal>
-              <h2
-                className="quoted text-balance text-center font-display font-bold uppercase leading-tight"
-                style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
-              >
-                {tArticles('title')}
-              </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-center text-xl leading-snug text-black sm:text-2xl">
-                {tArticles.rich('intro', bold)}
-              </p>
-            </Reveal>
-
-            {/* A row rather than a grid. The homepage is showing a handful of
-                a growing library, and a row that runs off the edge says so;
-                a grid would claim this is all of it. */}
-            <ScrollRow label={tArticles('title')} className="mt-12">
-              {articles.map((article) => (
-                <ArticleCard key={article.slug} article={article} />
-              ))}
-            </ScrollRow>
-
-            {/* The products row has always offered a way through to the full
-                list; research did not, so on a phone the row was the only
-                research that existed as far as the reader could tell. */}
-            <Reveal>
-              <Link
-                href="/articles"
-                className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
-              >
-                {tArticles('viewAll')}
-              </Link>
-            </Reveal>
-          </Container>
-        </section>
+        <CollectionSection
+          title={tArticles('title')}
+          intro={tArticles.rich('intro', bold)}
+          href="/articles"
+          cta={tArticles('viewAll')}
+        >
+          {articles.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </CollectionSection>
       )}
 
       <Reviews />

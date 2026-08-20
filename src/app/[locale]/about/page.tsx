@@ -5,6 +5,7 @@ import {isLocale, routing} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
+import PageHeader from '@/components/PageHeader';
 import Reveal from '@/components/Reveal';
 import WhereNext from '@/components/WhereNext';
 
@@ -77,31 +78,19 @@ export default async function AboutPage({
 
   return (
     <Container className="max-w-4xl py-16">
-      <Reveal>
-        <section className="floating bg-white p-6 sm:p-10">
-          <h1
-            className="quoted text-balance font-display font-bold uppercase leading-tight"
-            style={{fontSize: 'clamp(2rem, 7vw, 4.5rem)'}}
-          >
-            {t('title')}
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-2xl text-xl leading-snug sm:text-2xl">
-            {t('lead')}
-          </p>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
-            {t('body1')}
-          </p>
-          <p className="mx-auto mt-3 max-w-2xl text-lg leading-snug text-black">
-            {t('body2')}
-          </p>
-        </section>
-      </Reveal>
+      <PageHeader title={t('title')} intro={t('lead')}>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
+          {t('body1')}
+        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-lg leading-snug text-black">
+          {t('body2')}
+        </p>
+      </PageHeader>
 
       {/* The manifest sits under the mission rather than beside it in the nav,
           so the mission page has to actually lead somewhere. Without this the
           hierarchy would exist only in the menu. */}
-      <Reveal delay={60}>
+      <Reveal>
         <section className="floating mt-6 bg-white p-6 sm:p-10">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('planTitle')}
@@ -118,7 +107,7 @@ export default async function AboutPage({
         </section>
       </Reveal>
 
-      <Reveal delay={120}>
+      <Reveal delay={60}>
         <section className="floating mt-6 bg-white p-6 sm:p-10">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('detailsTitle')}
@@ -142,7 +131,7 @@ export default async function AboutPage({
         </section>
       </Reveal>
 
-      <Reveal delay={180}>
+      <Reveal delay={120}>
         <WhereNext className="mt-6" />
       </Reveal>
     </Container>

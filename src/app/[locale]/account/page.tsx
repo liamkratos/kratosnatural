@@ -10,6 +10,7 @@ import {findGuide, type Guide} from '@/lib/guides';
 import {formatDate, formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 
 /**
  * Account overview: orders and their delivery state, read live from Stripe, plus
@@ -39,9 +40,7 @@ function OrderRow({
       </div>
 
       <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
-        <p className="text-2xl leading-none">
-          {t(`state_${order.state}`)}
-        </p>
+        <p className="text-2xl leading-none">{t(`state_${order.state}`)}</p>
         <p className="font-mono text-lg tabular-nums">
           {formatPrice(order.amountCents, locale)}
         </p>
@@ -117,7 +116,9 @@ export default async function AccountPage({
   let guides: Guide[] = [];
   try {
     const owned = await getOwnedGuides(email);
-    const resolved = await Promise.all([...owned].map((slug) => findGuide(slug)));
+    const resolved = await Promise.all(
+      [...owned].map((slug) => findGuide(slug))
+    );
     guides = resolved.filter((guide): guide is Guide => guide !== null);
   } catch (error) {
     console.error('could not load owned guides', error);
@@ -127,10 +128,9 @@ export default async function AccountPage({
 
   return (
     <Container className="max-w-3xl py-24">
+      <PageHeader title={t('title')} />
+
       <Card>
-        <h1 className="quoted font-display text-5xl font-bold uppercase leading-tight">
-          {t('title')}
-        </h1>
         <p className="mt-3 font-mono text-xs uppercase tracking-widest text-black">
           {t('signedInAs', {email})}
         </p>
@@ -151,13 +151,9 @@ export default async function AccountPage({
         </h2>
 
         {ordersFailed ? (
-          <p className="mt-6 text-xl text-black">
-            {t('noOrders')}
-          </p>
+          <p className="mt-6 text-xl text-black">{t('noOrders')}</p>
         ) : orders.length === 0 ? (
-          <p className="mt-6 text-xl text-black">
-            {t('noOrders')}
-          </p>
+          <p className="mt-6 text-xl text-black">{t('noOrders')}</p>
         ) : (
           <ul className="mt-8 space-y-4">
             {orders.map((order) => (
@@ -205,9 +201,7 @@ export default async function AccountPage({
         <h2 className="quoted font-display text-4xl font-bold uppercase leading-tight">
           {t('returns')}
         </h2>
-        <p className="mt-3 text-xl text-black">
-          {t('returnsIntro')}
-        </p>
+        <p className="mt-3 text-xl text-black">{t('returnsIntro')}</p>
 
         <ol className="mt-8 space-y-4 text-left">
           {steps.map((step) => (

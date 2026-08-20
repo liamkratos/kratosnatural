@@ -55,7 +55,9 @@ export async function generateMetadata({
   });
 }
 
-export default async function ArticlePage({params: {locale, slug}}: PageParams) {
+export default async function ArticlePage({
+  params: {locale, slug}
+}: PageParams) {
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
 
@@ -69,8 +71,12 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
   // Same collection first, then anything else, so the closest matches lead.
   const others = (await getArticles(locale)).filter((a) => a.slug !== slug);
   const related = [
-    ...others.filter((a) => a.collection && a.collection === article.collection),
-    ...others.filter((a) => !a.collection || a.collection !== article.collection)
+    ...others.filter(
+      (a) => a.collection && a.collection === article.collection
+    ),
+    ...others.filter(
+      (a) => !a.collection || a.collection !== article.collection
+    )
   ].slice(0, 3);
 
   // 900px is the source document's own measure — wide enough for the data
@@ -86,8 +92,7 @@ export default async function ArticlePage({params: {locale, slug}}: PageParams) 
               sources back it. */}
           <div className="meta-info">
             <p>
-              <strong>{t('metaAuthorLabel')}</strong>{' '}
-              {article.author}
+              <strong>{t('metaAuthorLabel')}</strong> {article.author}
               {' | '}
               <strong>{t('metaPublishedLabel')}</strong>{' '}
               <time dateTime={article.publishDate}>
