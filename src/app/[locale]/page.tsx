@@ -63,7 +63,7 @@ export default async function HomePage({
         <Container className="max-w-6xl">
           <Reveal>
             <h2
-              className="quoted whitespace-nowrap text-center font-display font-bold uppercase leading-tight"
+              className="quoted text-balance text-center font-display font-bold uppercase leading-tight"
               style={{fontSize: 'clamp(1.6rem, 5.2vw, 5rem)'}}
             >
               {t('title')}
@@ -101,7 +101,7 @@ export default async function HomePage({
           <Container className="max-w-6xl">
             <Reveal>
               <h2
-                className="quoted whitespace-nowrap text-center font-display font-bold uppercase leading-tight"
+                className="quoted text-balance text-center font-display font-bold uppercase leading-tight"
                 style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
               >
                 {tShop('bestsellers')}
@@ -137,7 +137,7 @@ export default async function HomePage({
           <Container className="max-w-6xl">
             <Reveal>
               <h2
-                className="quoted whitespace-nowrap text-center font-display font-bold uppercase leading-tight"
+                className="quoted text-balance text-center font-display font-bold uppercase leading-tight"
                 style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
               >
                 {tArticles('title')}
@@ -155,6 +155,18 @@ export default async function HomePage({
                 <ArticleCard key={article.slug} article={article} />
               ))}
             </ScrollRow>
+
+            {/* The products row has always offered a way through to the full
+                list; research did not, so on a phone the row was the only
+                research that existed as far as the reader could tell. */}
+            <Reveal>
+              <Link
+                href="/articles"
+                className="mt-10 inline-flex items-center justify-center rounded-[20px] bg-olive px-8 py-4 font-display text-xl uppercase leading-none text-white transition-colors duration-200 hover:text-pink"
+              >
+                {tArticles('viewAll')}
+              </Link>
+            </Reveal>
           </Container>
         </section>
       )}

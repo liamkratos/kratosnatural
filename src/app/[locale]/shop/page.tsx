@@ -65,7 +65,10 @@ export default async function ShopPage({
           everything would make the guides compete with the products for the
           page instead of sitting under them. */}
       <Card className="mt-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
+        {/* Stacked and centred on a phone, where `justify-between` wrapped the
+            two onto separate lines and left-aligned them against a card whose
+            every other line is centred. Side by side from sm up. */}
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
           <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
             {t('guidesTitle')}
           </h2>

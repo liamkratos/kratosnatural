@@ -34,7 +34,8 @@
     "publishedOn": "Gepubliceerd op {date}",
     "readingTime": "{minutes} min lezen",
     "other": "Overig onderzoek",
-    "related": "Gerelateerde analyses"
+    "related": "Gerelateerde analyses",
+    "viewAll": "Bekijk al het onderzoek"
   },
   "Article": {
     "keyFindings": "Belangrijkste bevindingen",

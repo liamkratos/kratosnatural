@@ -43,7 +43,11 @@ export default function Slider({slides}: {slides: Slide[]}) {
 
   return (
     <div className="floating relative overflow-hidden">
-      <div className="relative aspect-[3/2] bg-olive">
+      {/* Taller on a phone. At 3:2 a 375px-wide slide is only 199px high, and
+          the title, body and button fill every pixel of it — the photograph was
+          there but completely covered, which read as the image being missing.
+          Portrait on mobile gives the picture back its half of the frame. */}
+      <div className="relative aspect-[4/5] bg-olive sm:aspect-[3/2]">
         {slides.map((slide, i) => (
           <div
             key={slide.title}
@@ -67,7 +71,10 @@ export default function Slider({slides}: {slides: Slide[]}) {
             />
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25"
+              /* Heavy where the words are, clear where the picture is. The
+                 old top stop was 25% black across the whole frame, which
+                 muddied a photograph that nothing was written over. */
+              className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
             />
 
             <div className="relative flex h-full flex-col items-center justify-end gap-3 p-6 text-center sm:p-12">

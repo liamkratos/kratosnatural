@@ -34,7 +34,8 @@
     "publishedOn": "Published on {date}",
     "readingTime": "{minutes} min read",
     "other": "Other research",
-    "related": "Related analyses"
+    "related": "Related analyses",
+    "viewAll": "View all research"
   },
   "Article": {
     "keyFindings": "Key findings",

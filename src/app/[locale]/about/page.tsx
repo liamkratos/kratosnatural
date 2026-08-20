@@ -80,7 +80,7 @@ export default async function AboutPage({
       <Reveal>
         <section className="floating bg-white p-6 sm:p-10">
           <h1
-            className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
+            className="quoted text-balance font-display font-bold uppercase leading-tight"
             style={{fontSize: 'clamp(2rem, 7vw, 4.5rem)'}}
           >
             {t('title')}
