@@ -221,7 +221,10 @@
     "next": "Next",
     "planTitle": "The plan",
     "planBody": "The whole argument, written out: what is wrong with how food and attention are built, why it can change now, and what we are building over the next ten years.",
-    "planCta": "Read the plan"
+    "planCta": "Read the plan",
+    "slide1Alt": "A young man looking into a mirror that reflects him as an old man, with a glowing DNA helix between them",
+    "slide2Alt": "Open-air campus of timber buildings with thatched roofs, students walking the paths between them",
+    "slide3Alt": "Covered fresh food market, stalls piled with unpackaged fruit, vegetables and mushrooms"
   },
   "Policies": {
     "dutchNotice": "These documents are published in Dutch. That is the authoritative text, and it is served here rather than an unreviewed translation."

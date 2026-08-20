@@ -12,6 +12,16 @@ export type Slide = {
   cta: string;
   href: string;
   image: string;
+  /**
+   * What the photograph shows, in the reader's own language.
+   *
+   * Required, and separate from `title`, because the two answer different
+   * questions. The heading says where the button goes; the alt says what is in
+   * the picture. Reusing the heading — which is what this did — tells a screen
+   * reader the same sentence twice and tells a search engine nothing it could
+   * not already read from the h3.
+   */
+  alt: string;
 };
 
 /**
@@ -45,7 +55,7 @@ export default function Slider({slides}: {slides: Slide[]}) {
           >
             <Image
               src={slide.image}
-              alt={slide.title}
+              alt={slide.alt}
               fill
               sizes="(min-width: 768px) 768px, 100vw"
               className="object-contain"

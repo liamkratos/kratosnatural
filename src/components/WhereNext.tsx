@@ -21,21 +21,24 @@ export default function WhereNext({className}: {className?: string}) {
       body: t('slide1Body'),
       cta: t('slide1Cta'),
       href: '/articles',
-      image: '/slow-down-aging.png'
+      image: '/slow-down-aging.jpg',
+      alt: t('slide1Alt')
     },
     {
       title: t('slide2Title'),
       body: t('slide2Body'),
       cta: t('slide2Cta'),
       href: '/articles',
-      image: '/hero.jpg'
+      image: '/kratos-university-campus.jpg',
+      alt: t('slide2Alt')
     },
     {
       title: t('slide3Title'),
       body: t('slide3Body'),
       cta: t('slide3Cta'),
       href: '/shop',
-      image: '/products/salt-lamp-lit.jpg'
+      image: '/fresh-food-market-unprocessed-produce.jpg',
+      alt: t('slide3Alt')
     }
   ];
 

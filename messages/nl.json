@@ -221,7 +221,10 @@
     "next": "Volgende",
     "planTitle": "Het plan",
     "planBody": "Het hele verhaal, voluit: wat er mis is met hoe eten en aandacht gebouwd zijn, waarom het nu wel kan veranderen, en waar we de komende tien jaar aan bouwen.",
-    "planCta": "Lees het plan"
+    "planCta": "Lees het plan",
+    "slide1Alt": "Een jonge man kijkt in een spiegel die hem als oude man weerspiegelt, met een oplichtende DNA-helix ertussen",
+    "slide2Alt": "Openluchtcampus met houten gebouwen en rieten daken, studenten lopen over de paden ertussen",
+    "slide3Alt": "Overdekte versmarkt met kramen vol onverpakte groenten, fruit en paddenstoelen"
   },
   "Policies": {
     "dutchNotice": ""
