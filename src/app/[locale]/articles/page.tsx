@@ -6,6 +6,7 @@ import {getArticlesByCollection, getUncollectedArticles} from '@/lib/mdx';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 import ArticleCard from '@/components/ArticleCard';
 import Reveal from '@/components/Reveal';
 
@@ -52,22 +53,13 @@ export default async function ArticlesPage({
 
   return (
     <Container className="max-w-6xl py-24">
-      <Card>
-        <h1
-        className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
-        style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
-      >
-        {t('title')}
-      </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-xl leading-snug text-black sm:text-2xl">
-          {t.rich('intro', {b: (chunks) => <b className="font-semibold">{chunks}</b>})}
-        </p>
-      </Card>
+      <PageHeader
+        title={t('title')}
+        intro={t.rich('intro', {b: (c) => <b>{c}</b>})}
+      />
 
       {sections.length === 0 ? (
-        <p className="mt-16 text-xl text-black">
-          {t('empty')}
-        </p>
+        <p className="mt-16 text-xl text-black">{t('empty')}</p>
       ) : (
         sections.map((section) => (
           <Card key={section.id} className="mt-6">

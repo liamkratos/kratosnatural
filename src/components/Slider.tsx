@@ -58,7 +58,12 @@ export default function Slider({slides}: {slides: Slide[]}) {
               alt={slide.alt}
               fill
               sizes="(min-width: 768px) 768px, 100vw"
-              className="object-contain"
+              // Cover, not contain: a slide that letterboxes leaves olive bars
+              // beside the photograph and reads as a mistake. Cropping a
+              // non-3:2 image is the better trade — the frame always looks
+              // deliberate, and the photographs here have nothing critical at
+              // the edges.
+              className="object-cover"
             />
             <div
               aria-hidden="true"

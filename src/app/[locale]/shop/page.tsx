@@ -3,10 +3,14 @@ import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale, routing} from '@/i18n/routing';
 import {getProducts} from '@/lib/products';
+import {getGuides} from '@/lib/guides';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
+import GuideCard from '@/components/GuideCard';
+import ScrollRow from '@/components/ScrollRow';
 import {Link} from '@/i18n/navigation';
 import ProductCard from '@/components/ProductCard';
 import Reveal from '@/components/Reveal';
@@ -47,36 +51,54 @@ export default async function ShopPage({
   const products = await getProducts(locale);
   const prices = await Promise.all(products.map((p) => getPrice(p.priceId)));
 
+  // A taste of the library, not the library. The row running off the edge is
+  // what says there is more, so it is capped rather than showing everything.
+  const guides = (await getGuides(locale)).slice(0, 8);
+  const guidePrices = await Promise.all(guides.map((g) => getPrice(g.priceId)));
+
   return (
     <Container className="max-w-6xl py-24">
-      <Card>
-        <h1
-          className="quoted whitespace-nowrap font-display font-bold uppercase leading-tight"
-          style={{fontSize: 'clamp(2.5rem, 9vw, 7rem)'}}
-        >
-          {t('title')}
-        </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-xl leading-snug text-black sm:text-2xl">
-          {t('intro')}
-        </p>
-      </Card>
+      <PageHeader title={t('title')} intro={t('intro')} />
 
-      {/* Guides live under the shop, so the shop has to say so. A menu entry
-          that is the only route to a whole half of what we sell is a menu
-          entry doing too much work. */}
+      {/* Guides live under the shop, so the shop shows them rather than
+          describing them. Real cards, scrolling sideways, because a grid of
+          everything would make the guides compete with the products for the
+          page instead of sitting under them. */}
       <Card className="mt-6">
-        <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
-          {t('guidesTitle')}
-        </h2>
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
+            {t('guidesTitle')}
+          </h2>
+          <Link
+            href="/guides"
+            className="font-display text-base uppercase leading-none text-olive underline underline-offset-4 transition-colors duration-200 hover:text-oliveSoft"
+          >
+            {t('guidesCta')}
+          </Link>
+        </div>
+
         <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
           {t('guidesBody')}
         </p>
-        <Link
-          href="/guides"
-          className="mt-6 inline-block rounded-[20px] bg-olive px-7 py-4 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
-        >
-          {t('guidesCta')}
-        </Link>
+
+        {guides.length > 0 ? (
+          <ScrollRow label={t('guidesTitle')} className="mt-8">
+            {guides.map((guide, index) => (
+              <GuideCard
+                key={guide.slug}
+                guide={guide}
+                price={guidePrices[index] ?? null}
+              />
+            ))}
+          </ScrollRow>
+        ) : (
+          <Link
+            href="/guides"
+            className="mt-6 inline-block rounded-[20px] bg-olive px-7 py-4 font-display text-lg uppercase leading-none text-white transition-colors duration-200 hover:bg-oliveSoft"
+          >
+            {t('guidesCta')}
+          </Link>
+        )}
       </Card>
 
       {products.length === 0 ? (

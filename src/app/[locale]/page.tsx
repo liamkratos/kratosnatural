@@ -9,6 +9,7 @@ import {getPrice} from '@/lib/pricing';
 import Container from '@/components/Container';
 import Hero from '@/components/Hero';
 import Reveal from '@/components/Reveal';
+import ScrollRow from '@/components/ScrollRow';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
 import WhereNext from '@/components/WhereNext';
@@ -40,7 +41,9 @@ export default async function HomePage({
 
   const t = await getTranslations('Home');
   /** Bold anchors inside the copy; see the note in globals.css. */
-  const bold = {b: (chunks: React.ReactNode) => <b className="font-semibold">{chunks}</b>};
+  const bold = {
+    b: (chunks: React.ReactNode) => <b className="font-semibold">{chunks}</b>
+  };
   const tArticles = await getTranslations('Articles');
   const articles = (await getArticles(locale)).slice(0, 2);
   const tShop = await getTranslations('Shop');
@@ -105,16 +108,15 @@ export default async function HomePage({
               </h2>
             </Reveal>
 
-            <div className="mt-14 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            <ScrollRow label={tShop('bestsellers')} className="mt-14">
               {bestsellers.map((product, index) => (
-                <Reveal key={product.slug} delay={index * 60}>
-                  <ProductCard
-                    product={product}
-                    price={bestsellerPrices[index]}
-                  />
-                </Reveal>
+                <ProductCard
+                  key={product.slug}
+                  product={product}
+                  price={bestsellerPrices[index]}
+                />
               ))}
-            </div>
+            </ScrollRow>
 
             <Reveal>
               <Link
@@ -145,13 +147,14 @@ export default async function HomePage({
               </p>
             </Reveal>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {articles.map((article, index) => (
-                <Reveal key={article.slug} delay={index * 60}>
-                  <ArticleCard article={article} />
-                </Reveal>
+            {/* A row rather than a grid. The homepage is showing a handful of
+                a growing library, and a row that runs off the edge says so;
+                a grid would claim this is all of it. */}
+            <ScrollRow label={tArticles('title')} className="mt-12">
+              {articles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
               ))}
-            </div>
+            </ScrollRow>
           </Container>
         </section>
       )}

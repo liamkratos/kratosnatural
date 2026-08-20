@@ -7,6 +7,7 @@ import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
 import GuideCard from '@/components/GuideCard';
 import MedicalNotice from '@/components/MedicalNotice';
 import Reveal from '@/components/Reveal';
@@ -68,23 +69,14 @@ export default async function GuidesPage({
 
   return (
     <Container className="max-w-6xl py-24">
-      <Card>
-        <h1
-          className="quoted font-display font-bold uppercase leading-tight"
-          style={{fontSize: 'clamp(2.5rem, 9vw, 6rem)'}}
-        >
-          {t('title')}
-        </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-xl leading-snug text-black sm:text-2xl">
-          {t('intro')}
-        </p>
+      <PageHeader title={t('title')} intro={t('intro')}>
         {/* The promise the whole library rests on: the evidence is never the
-            part behind the paywall. Stated here, where somebody deciding
-            whether to buy can see it. */}
-        <p className="mx-auto mt-4 max-w-3xl text-lg leading-snug text-black">
+            part behind the paywall. Stated where somebody deciding whether to
+            buy can see it. */}
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-snug text-black">
           {t('researchFree')}
         </p>
-      </Card>
+      </PageHeader>
 
       {sections.length === 0 ? (
         <p className="mt-16 text-xl text-black">{t('empty')}</p>
