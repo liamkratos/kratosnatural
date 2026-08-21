@@ -75,7 +75,7 @@
     "newsletterTitle": "Gratis longevity e-book",
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mail",
-    "subscribe": "Word lid",
+    "subscribe": "Join the tribe",
     "stayConnected": "Blijf op de hoogte",
     "policies": "Voorwaarden en beleid",
     "privacy": "Privacybeleid",
@@ -205,11 +205,11 @@
     "lead": "Leuk je te ontmoeten. Kratos Natural is de winkel en onderzoekstak van Liam Kratos, orthomoleculair therapeut en longevity coach.",
     "body1": "Wij verkopen natuurlijke producten en publiceren het onderzoek erachter. Geen persberichten, geen marketingclaims: systematische reviews en meta-analyses, volledig gelezen en gerapporteerd met de cijfers intact.",
     "body2": "Kunnen we een bewering niet herleiden tot een geïndexeerde, gepubliceerde bron, dan doen we die bewering niet. Elke analyse vermeldt de PMID's zodat je het zelf kunt nakijken.",
-    "sliderTitle": "Waar wil je heen",
+    "sliderTitle": "Waar begin je",
     "slide1Title": "Longevity & anti-aging",
     "slide1Body": "Vertraag je verouderingsproces met methoden die getest zijn.",
     "slide1Cta": "Let's go",
-    "slide2Title": "Kratos Universiteit",
+    "slide2Title": "Kratos Academie",
     "slide2Body": "Leer over longevity en anti-aging van A tot Z.",
     "slide2Cta": "Let's go",
     "slide3Title": "Kratos Natural",
@@ -252,7 +252,7 @@
     "guidesDescription": "Toegepaste protocollen voor slaap, licht, supplementen, houding en meer. Elke claim herleidbaar tot een gepubliceerde bron, inclusief de studies die niets vonden."
   },
   "Reviews": {
-    "title": "Wat mensen zeggen",
+    "title": "Reviews",
     "summary": "{rating} van de 5, uit {count} Google-reviews",
     "write": "Schrijf een review"
   }

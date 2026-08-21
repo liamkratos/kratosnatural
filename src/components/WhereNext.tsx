@@ -29,7 +29,7 @@ export default function WhereNext({className}: {className?: string}) {
       body: t('slide2Body'),
       cta: t('slide2Cta'),
       href: '/articles',
-      image: '/kratos-university-campus.jpg',
+      image: '/kratos-academy-campus.jpg',
       alt: t('slide2Alt')
     },
     {

@@ -75,7 +75,7 @@
     "newsletterTitle": "Free longevity e-book",
     "emailLabel": "Email",
     "emailPlaceholder": "E-mail",
-    "subscribe": "Join mailinglist",
+    "subscribe": "Join the tribe",
     "stayConnected": "Stay connected",
     "policies": "Terms and policies",
     "privacy": "Privacy policy",
@@ -205,11 +205,11 @@
     "lead": "Nice to meet you. Kratos Natural is the shop and research arm of Liam Kratos, orthomolecular therapist and longevity coach.",
     "body1": "We sell natural products, and we publish the research behind them. Not press releases, not marketing claims: systematic reviews and meta-analyses, read in full and reported with the numbers intact.",
     "body2": "If we cannot trace a claim to an indexed, published source, we do not make it. Every analysis lists its PMIDs so you can check the work yourself.",
-    "sliderTitle": "Where to go next",
+    "sliderTitle": "Where do you start",
     "slide1Title": "Longevity & anti-aging",
     "slide1Body": "Slow your aging process with methods that have been tested.",
     "slide1Cta": "Let's go",
-    "slide2Title": "Kratos University",
+    "slide2Title": "Kratos Academy",
     "slide2Body": "Learn about longevity and anti-aging from A to Z.",
     "slide2Cta": "Let's go",
     "slide3Title": "Kratos Natural",
@@ -252,7 +252,7 @@
     "guidesDescription": "Applied protocols for sleep, light, supplements, posture and more. Every claim traced to a published source, including the studies that found nothing."
   },
   "Reviews": {
-    "title": "What people say",
+    "title": "Reviews",
     "summary": "{rating} out of 5, from {count} Google reviews",
     "write": "Write a review"
   }
