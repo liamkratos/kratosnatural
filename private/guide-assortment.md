@@ -10,6 +10,32 @@ pieces relate.
 
 ## 1. The model
 
+**Category → domain → guide.** Three levels, because a reader browses at the
+first and buys at the last.
+
+```
+BODY                          ← the shelf they browse
+└── Houding & mechanica       ← the section they land on
+    ├── De Houdingsbijbel  €34   (pillar e-book)
+    ├── Eenzijdige dominantie €12
+    └── Naar voren hangende schouders €12
+```
+
+**The five categories:** MIND · SOUL · BODY · NUTRITION · ENVIRONMENT
+
+| Category | Domains |
+|---|---|
+| **Mind** | Stress & zenuwstelsel · Brein & focus · Slaap |
+| **Soul** | Zingeving & doel |
+| **Body** | Houding & mechanica · Kracht & spiermassa · Metabole gezondheid · Bloedwaarden & testen |
+| **Nutrition** | Voeding · Supplementen · Darmen & spijsvertering |
+| **Environment** | Licht & circadiaan · Omgeving & toxines |
+
+A guide declares only its **domain**; the category is derived, so a guide can
+never disagree with its own domain about where it belongs. Category and domain
+labels live in the message files, because a customer reads them and they have
+to be in their language.
+
 **Pillar e-book per domain → narrow guides per problem.**
 
 One domain is researched once. The e-book is the whole domain. Each guide is one

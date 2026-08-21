@@ -4,7 +4,7 @@ import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
-import {getGuide, getAllGuideParams, domainLabel} from '@/lib/guides';
+import {getGuide, getAllGuideParams} from '@/lib/guides';
 import {isSellable} from '@/lib/markets';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
@@ -83,7 +83,7 @@ export default async function GuidePage({
             <div>
               {guide.domain && (
                 <p className="font-mono text-xs uppercase tracking-widest text-olive">
-                  {domainLabel(guide.domain)}
+                  {t(`dom_${guide.domain}`)}
                   {guide.pillar ? ` · ${t('ebook')}` : ''}
                 </p>
               )}

@@ -31,24 +31,61 @@ const GUIDES_ROOT = path.join(process.cwd(), 'src', 'content', 'guides');
 const FILES_ROOT = path.join(process.cwd(), 'private', 'guides');
 
 /**
- * The domain a guide belongs to, from the assortment plan.
+ * The five things a life is made of, as the library divides them.
+ *
+ * The top level a reader chooses from. Domains sit underneath: somebody
+ * arrives knowing they want to sleep better long before they know whether
+ * that is a Body problem or an Environment one, so the category is the shelf
+ * and the domain is the section on it.
+ *
+ * Labels are not here. A category name is read by a customer and has to be in
+ * their language, so it lives in the message files under `Guides.cat_*`.
+ */
+export const guideCategories = [
+  'mind',
+  'soul',
+  'body',
+  'nutrition',
+  'environment'
+] as const;
+
+export type GuideCategoryId = (typeof guideCategories)[number];
+
+/**
+ * The domain a guide belongs to, and the category that domain sits under.
  *
  * A closed list rather than free-form strings: a typo in frontmatter would
  * otherwise silently create a near-empty domain on the shop page. Order here is
- * the order domains appear.
+ * the order they appear within a category.
+ *
+ * A guide declares only its domain. The category is derived, so a guide can
+ * never disagree with its own domain about where it belongs, and moving a
+ * domain between categories is one edit here rather than one per guide.
  */
 export const domains = [
-  {id: 'licht', label: 'Licht & circadiaan'},
-  {id: 'supplementen', label: 'Supplementen'},
-  {id: 'testen', label: 'Bloedwaarden & testen'},
-  {id: 'houding', label: 'Houding & mechanica'},
-  {id: 'slaap', label: 'Slaap'},
-  {id: 'voeding', label: 'Voeding'},
-  {id: 'kracht', label: 'Kracht & spiermassa'},
-  {id: 'stress', label: 'Stress & zenuwstelsel'},
-  {id: 'darmen', label: 'Darmen & spijsvertering'},
-  {id: 'metabool', label: 'Metabole gezondheid'}
-] as const;
+  // MIND — how you think, focus and regulate.
+  {id: 'stress', category: 'mind'},
+  {id: 'brein', category: 'mind'},
+  {id: 'slaap', category: 'mind'},
+
+  // SOUL — meaning, connection, and the practices around them.
+  {id: 'zingeving', category: 'soul'},
+
+  // BODY — the machine itself.
+  {id: 'houding', category: 'body'},
+  {id: 'kracht', category: 'body'},
+  {id: 'metabool', category: 'body'},
+  {id: 'testen', category: 'body'},
+
+  // NUTRITION — what goes in.
+  {id: 'voeding', category: 'nutrition'},
+  {id: 'supplementen', category: 'nutrition'},
+  {id: 'darmen', category: 'nutrition'},
+
+  // ENVIRONMENT — what the world does to you while you are not looking.
+  {id: 'licht', category: 'environment'},
+  {id: 'omgeving', category: 'environment'}
+] as const satisfies ReadonlyArray<{id: string; category: GuideCategoryId}>;
 
 export type DomainId = (typeof domains)[number]['id'];
 
@@ -56,8 +93,9 @@ export function isDomainId(value: string): value is DomainId {
   return domains.some((domain) => domain.id === value);
 }
 
-export function domainLabel(id: DomainId): string {
-  return domains.find((domain) => domain.id === id)?.label ?? id;
+/** Which of the five a domain belongs to. */
+export function categoryOf(id: DomainId): GuideCategoryId {
+  return domains.find((domain) => domain.id === id)!.category;
 }
 
 export type GuideFrontmatter = {
@@ -193,26 +231,41 @@ export async function getGuides(locale: Locale): Promise<Guide[]> {
 }
 
 /**
- * Guides grouped by domain, in the order declared above.
+ * Guides grouped by category, and by domain within it.
+ *
+ * Two levels because a reader browses at the first and buys at the second:
+ * Body tells them they are in the right half of the library, Houding tells
+ * them they are on the right shelf.
  *
  * The pillar e-book sorts to the front of its domain regardless of `order`, so
  * a reader meets the whole-domain book before the single-problem guides.
- * Domains with nothing published are omitted rather than rendered empty.
+ * Anything empty is dropped rather than rendered as a heading with nothing
+ * under it.
  */
-export async function getGuidesByDomain(
-  locale: Locale
-): Promise<Array<{id: DomainId; label: string; guides: Guide[]}>> {
+export async function getGuidesByCategory(locale: Locale): Promise<
+  Array<{
+    id: GuideCategoryId;
+    domains: Array<{id: DomainId; guides: Guide[]}>;
+  }>
+> {
   const guides = await getGuides(locale);
 
-  return domains
-    .map((domain) => ({
-      id: domain.id,
-      label: domain.label,
-      guides: guides
-        .filter((guide) => guide.domain === domain.id)
-        .sort((a, b) => Number(b.pillar ?? false) - Number(a.pillar ?? false))
+  return guideCategories
+    .map((category) => ({
+      id: category,
+      domains: domains
+        .filter((domain) => domain.category === category)
+        .map((domain) => ({
+          id: domain.id as DomainId,
+          guides: guides
+            .filter((guide) => guide.domain === domain.id)
+            .sort(
+              (a, b) => Number(b.pillar ?? false) - Number(a.pillar ?? false)
+            )
+        }))
+        .filter((domain) => domain.guides.length > 0)
     }))
-    .filter((group) => group.guides.length > 0);
+    .filter((category) => category.domains.length > 0);
 }
 
 /** Guides with no domain set, so nothing is silently hidden from the shop. */
