@@ -394,3 +394,93 @@ have to be `[geloof]`. Framed as sudden gains — discontinuous change, what
 precedes it, what makes it hold — it can be `[gemeten]`. The physics metaphor
 in "quantum jumping" is the only part that cannot be sourced, and it is also
 the part the guide does not need.
+
+
+---
+
+## 12. Where to look, before writing anything
+
+PubMed is not the library. It indexes biomedicine, so it is the right tool for
+a supplement, a lamp or a physiotherapy protocol — and close to useless for
+goal-setting, beliefs, gratitude or meditation, which live in psychology and
+management journals it does not carry. Searching PubMed for those and finding
+nothing is not evidence of absence; it is evidence of the wrong database.
+
+**So: pick the databases before writing, per guide, and write them down.**
+
+### The databases, and what each is for
+
+| Source | Covers | Access |
+|---|---|---|
+| **PubMed / NCBI E-utilities** | Biomedicine, physiology, clinical trials, Cochrane reviews | Free API. The web page CAPTCHAs; the API does not — use `eutils.ncbi.nlm.nih.gov`. |
+| **OpenAlex** | Everything, including psychology, management, education. Returns DOI, year and citation count. | Free, no key. `api.openalex.org`. **The default for anything not biomedical.** |
+| **Crossref** | DOI metadata, for verifying a reference exists as described | Free, no key. |
+| **Cochrane Library** | Systematic reviews, highest evidence tier | Reachable through PubMed. |
+| **PsycINFO (APA)** | Psychology, the deepest coverage | Paywalled. Find the record elsewhere, then verify. |
+| **PsyArXiv / SSRN** | Preprints | **Not peer reviewed. Never cite as settled** — usable only to find a paper that was later published. |
+
+### The rule
+
+A guide names its databases in the manuscript before the first claim is
+written. If a subject has no usable database, that is a finding: it means the
+claim is `[geloof]` or `[onbekend]`, not that the search failed.
+
+### What "verified" means here
+
+Every citation resolves to a real record with a matching title, year and
+venue, retrieved from an API rather than from memory. A DOI or PMID that was
+never checked is worse than no citation, because it looks like diligence.
+
+
+---
+
+## 13. Capture list — future guides
+
+Ideas land here as they arrive. Nothing here is committed to; the point is that
+an idea stops living in your head and starts being checkable. Each gets a
+one-line note on where the evidence stands, so the writing starts from the
+truth rather than discovering it late.
+
+Add to this freely. Deciding comes later.
+
+### `consumptie` — "Alles wat je consumeert"
+
+*Everything you take in — food, reels, music, rooms, people — is stored and
+becomes who you are. And that can be used deliberately.*
+
+Category: **Mind** (behaviour and identity), with a foot in **Environment**.
+
+**Where the evidence stands — this one needs care, because it splits.**
+
+| Part of the claim | Standing |
+|---|---|
+| Your environment shapes what you eat and do | **Solid.** Food environment and choice architecture is a real, replicated literature. |
+| Repeated exposure changes preference | **Solid.** The mere-exposure effect is one of the older, better-replicated findings in psychology. |
+| Heavy media consumption shapes how you believe the world is | **Reasonable.** Cultivation research is real, though effect sizes are argued over. |
+| Behaviour follows identity, and identity can be chosen | **Reasonable.** Self-perception and identity-based behaviour change have support. |
+| Subliminal input is silently programming you | ⚠️ **Weak, and a trap.** Social priming was hit hard by the replication crisis — several famous results did not survive. Do not build the guide on it. |
+
+**The honest shape:** not "your subconscious is being programmed", which leans
+on the shakiest part — but *what you repeatedly put in front of yourself
+changes what you want, and you can choose what you put there.* That version is
+defensible, is the same practical advice, and does not collapse when somebody
+checks it.
+
+### `geloof-celestial-terrestrial` — "Hemels en aards"
+
+Category: **Soul**, domain **Geloof**.
+
+Scriptural rather than scientific — the terms come from the writings, not from
+a study. This is `[geloof]` territory throughout, and that is fine as long as
+it is labelled, sits under Geloof where a reader knows what they are getting,
+and does not borrow the authority of the cited guides.
+
+Worth deciding before writing: whether the faith guides are sold alongside the
+researched ones or offered separately. They are a different kind of thing, and
+mixing them on one shelf is the fastest way to make a sceptic distrust both.
+
+### Still to be captured
+
+- Ademwerk and the growth-hormone claim (needs its own sources first — §10)
+- Rapid identity change, framed as sudden gains (§11)
+- Dankbaarheid, meditatie — both have real literature, neither written yet
