@@ -86,11 +86,26 @@ Krealio.
 
 - **Kratos Natural is the €1B vehicle.** Everything in sections 3–8 is about
   this. It is the only one of the three with a category big enough.
-- **Liam Kratos is the trust engine, not a revenue line.** A person is more
-  followable than a company. Every piece of research is published under a
-  human name; coaching is the proof that the person is real, not the business
-  model. Cap it deliberately — coaching does not scale and must never be
-  allowed to consume the week.
+
+  It also carries one constraint the others do not: **everything sold here
+  traces to a published source.** That is the moat, and it is why faith guides
+  are not sold here — not because they are worth less, but because a shelf
+  that cannot meet the standard, standing beside shelves that do, teaches a
+  sceptic to doubt both.
+- **Liam Kratos is the person, and the apex offer.** A person is more
+  followable than a company, and a person is also allowed to hold convictions
+  a research brand is not. So this is where the faith guides live, where the
+  essays live, and where coaching lives.
+
+  **Coaching is the whole library, delivered by hand.** Not a longevity
+  protocol — the integration of everything the guides cover, for one person at
+  a time. That is a defensible thing to charge properly for, because the
+  alternative on offer is reading a hundred and sixty guides and working out
+  the order yourself.
+
+  It still does not scale, and must never be allowed to consume the week. But
+  it stops being a side proof of credibility and becomes the top of the ladder:
+  free research → paid guide → the whole thing, with a person.
 - **Krealio is a hobby with a shop attached, and that is fine.** It gets
   built once, cheaply, and then left alone. It does not get a content engine,
   a launch calendar, or a percentage of attention. Revisit in 2030 or never.

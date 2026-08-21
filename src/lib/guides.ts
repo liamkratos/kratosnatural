@@ -68,14 +68,25 @@ export const domains = [
   {id: 'brein', category: 'mind'},
   {id: 'slaap', category: 'mind'},
 
-  // SOUL — meaning, belief, and the practices built on them.
+  /*
+   * SOUL — meaning and the practices built on it.
+   *
+   * Faith itself is not here, and that is a decision rather than an omission.
+   * Convictions are sold under Liam Kratos, where a person is speaking and a
+   * reader knows it. This library is held to "every claim traced to a source",
+   * and a shelf that cannot meet that standard sitting beside shelves that do
+   * is how a sceptic learns to distrust both.
+   *
+   * `manifestatie` stays, narrowed to the half that is measured: mental
+   * rehearsal and contrasting a wish against its obstacle. The other half goes
+   * with the faith guides.
+   */
   {id: 'zingeving', category: 'soul'},
   {id: 'overtuigingen', category: 'soul'},
   {id: 'dankbaarheid', category: 'soul'},
   {id: 'meditatie', category: 'soul'},
   {id: 'ademwerk', category: 'soul'},
   {id: 'manifestatie', category: 'soul'},
-  {id: 'geloof', category: 'soul'},
 
   // BODY — the machine itself.
   {id: 'houding', category: 'body'},

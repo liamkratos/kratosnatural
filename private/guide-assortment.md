@@ -26,7 +26,7 @@ BODY                          ← the shelf they browse
 | Category | Domains |
 |---|---|
 | **Mind** | Stress & zenuwstelsel · Brein & focus · Slaap |
-| **Soul** | Zingeving & doel · Overtuigingen · Dankbaarheid · Meditatie · Ademwerk · Manifestatie & visualisatie · Geloof |
+| **Soul** | Zingeving & doel · Overtuigingen · Dankbaarheid · Meditatie · Ademwerk · Manifestatie & visualisatie |
 | **Body** | Houding & mechanica · Fascie · Kracht & spiermassa · Metabole gezondheid · Bloedwaarden & testen |
 | **Nutrition** | Voeding · Supplementen · Darmen & spijsvertering |
 | **Environment** | Licht & circadiaan · Omgeving & toxines |
@@ -372,9 +372,19 @@ needs sourcing outside the usual search):
 - **Sudden gains** — see below. Relevant because clarity is often what precedes
   a discontinuous change rather than a gradual one.
 
-**The honest shape:** vagueness is not a motivation problem, it is a
-specification problem. That claim is defensible from the literature, it is
-useful, and it does not need a single unsourced sentence.
+**The thesis, in Liam's words:** you are stuck because you do not know exactly
+what you want. "Rich" and "good-looking" are directions, not goals, and you
+cannot act on a direction. The second cause is limiting beliefs — you do not
+make a goal specific if you privately think you will miss it, because what was
+never precisely said can never precisely fail.
+
+Both halves are sourced. Specificity: Locke & Latham. Beliefs: self-efficacy,
+with the Nature growth-mindset trial as the honest counterweight — the effect
+is real, small, and conditional on the environment allowing the behaviour,
+which is not what the self-help industry sells.
+
+**Written.** `private/guides/manuscripts/zingeving-weten-wat-je-wilt-nl.md` —
+nine sources, every DOI resolved through OpenAlex.
 
 ### On sudden, discontinuous change
 
@@ -466,18 +476,23 @@ changes what you want, and you can choose what you put there.* That version is
 defensible, is the same practical advice, and does not collapse when somebody
 checks it.
 
-### `geloof-celestial-terrestrial` — "Hemels en aards"
+### Faith guides — **decided: these live on Liam Kratos**
 
-Category: **Soul**, domain **Geloof**.
+Celestial and terrestrial, and everything else that comes from the writings
+rather than from a study.
 
-Scriptural rather than scientific — the terms come from the writings, not from
-a study. This is `[geloof]` territory throughout, and that is fine as long as
-it is labelled, sits under Geloof where a reader knows what they are getting,
-and does not borrow the authority of the cited guides.
+The question of whether they sit beside the researched guides is settled: they
+do not. Kratos Natural sells what traces to a source. Liam Kratos sells what a
+person believes and what he has seen — and a reader arriving there knows they
+are hearing from someone rather than from a literature.
 
-Worth deciding before writing: whether the faith guides are sold alongside the
-researched ones or offered separately. They are a different kind of thing, and
-mixing them on one shelf is the fastest way to make a sceptic distrust both.
+This is not a demotion. It is the only arrangement where both can be said
+plainly. On one shelf, the faith guides would have to be hedged and the
+researched ones would be doubted; on two, each gets to be fully itself.
+
+`geloof` has been removed from this library's domains. `manifestatie` stays,
+narrowed to the measured half — mental rehearsal, and contrasting a wish
+against its obstacle.
 
 ### Still to be captured
 
