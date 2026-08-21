@@ -373,3 +373,48 @@ Exactly one number matters at a time. The rest are diagnostics.
 - **Regulatory.** EFSA health claims are strict. Every claim already traces to a source, which is the best possible position, but Line 2 needs a legal read before it scales.
 - **Being right is not a growth strategy on its own.** The research moat is a retention and trust asset. Reach still has to be earned separately, every week, on someone else's platform.
 - **€1B may simply not happen.** €120M by 2030 would already be a serious company doing the thing the manifest describes. The plan should be run so that stopping at any gate is still a win, not a failure.
+
+
+---
+
+## 10. Funding — decided: none
+
+No grants, no investors, no outside capital. Checked properly in August 2026
+and closed.
+
+**The EIC would not have worked anyway.** The Accelerator requires deep tech —
+an innovation building on *"scientific discovery, radical thinking or
+technological breakthroughs"* — at TRL 6 or above. An app applying existing
+models to a protocol library is a product, not a technological breakthrough,
+and there is no prototype. Both gates fail. That is months of work at a
+single-digit success rate for companies that *do* fit.
+
+**And this is not a leap.** Upfront reached roughly €70M with no external
+capital, marketing at 6–9% of revenue, almost entirely organic — because the
+content was the marketing. The path is proven by the closest comparable
+company there is.
+
+### What follows from it
+
+Bootstrapped means the business funds itself, so the paid side has to work. It
+already does, by design: **the research stays free forever and the applied
+protocols are what is sold.** Guides and products pay for the analyses that are
+given away. Nothing about this decision changes the model — it removes the
+alternative that would have changed it.
+
+The one thing it does change is the timeline. Everything is paid for out of
+revenue, which means the first hire in §7 arrives when the business can carry
+it rather than when a fund decides.
+
+### Why an investor was never the right instrument
+
+An investor is capital that needs to come first — on their timeline, at their
+multiple, toward an exit. The manifest's endgame is knowledge given away free
+and eventually taught in schools. That is not an exit, and a fund would be
+right to say so. Two honest positions that do not fit in one cap table.
+
+**Not to be reopened** unless the person who decided it reopens it.
+
+*Footnote for accuracy, not persuasion: WBSO is a tax credit on R&D labour
+rather than capital — no equity, no investor, no expectations. It sits in a
+different category from what was declined here. Noted once and left alone.*
