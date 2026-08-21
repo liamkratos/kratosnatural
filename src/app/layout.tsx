@@ -1,16 +1,9 @@
 import type {ReactNode} from 'react';
-import {
-  Covered_By_Your_Grace,
-  IBM_Plex_Mono,
-  Inter,
-  Poppins
-} from 'next/font/google';
+import {Covered_By_Your_Grace, Poppins} from 'next/font/google';
 import {getLocale} from 'next-intl/server';
 import {Analytics} from '@vercel/analytics/next';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import './globals.css';
-
-const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
 /*
  * Body face. The display face is a handwriting script: legible as a wordmark or
@@ -31,12 +24,6 @@ const coveredByYourGrace = Covered_By_Your_Grace({
   variable: '--font-display'
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-mono'
-});
-
 /**
  * Root layout — the only place that renders <html>/<body>.
  *
@@ -53,7 +40,7 @@ export default async function RootLayout({children}: {children: ReactNode}) {
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${coveredByYourGrace.variable} ${ibmPlexMono.variable} ${poppins.variable}`}
+      className={`${coveredByYourGrace.variable} ${poppins.variable}`}
     >
       <body className="flex min-h-screen flex-col font-sans">
         {children}

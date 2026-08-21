@@ -71,47 +71,33 @@ const config: Config = {
       },
       fontFamily: {
         /*
-         * The script is for things that are *looked at*: page titles, section
-         * headings, the wordmark, buttons and nav. Covered By Your Grace is a
-         * connected handwriting face — it carries the sketchbook character the
-         * brand is built on, and it is genuinely hard to read below about 20px,
-         * because a connected script does not give a word the outline an eye
-         * scans for.
+         * Two faces on the whole site, and no more.
          *
-         * `sans` and `mono` used to be aliases for it, which quietly put the
-         * script on everything the reader has to *read*: the announcement bar,
-         * price notes, VAT lines, spec labels, bylines. Those are back on real
-         * faces now — Poppins for interface text, IBM Plex Mono for the small
-         * uppercase labels, where a true monospace reads like a specification
-         * rather than a signature.
+         * `display` is Covered By Your Grace, a connected handwriting script.
+         * It is for things that are *looked at* — page titles, section
+         * headings, the wordmark, nav and buttons — and it carries the
+         * sketchbook character the brand is built on. Below roughly 20px a
+         * connected script stops giving a word the outline an eye scans for,
+         * so it never goes on running text.
          *
-         * Headings keep the script by asking for it explicitly with
-         * `font-display`, so the character stays exactly where it earns its
-         * keep and nowhere it costs legibility.
+         * Everything else is Poppins. `sans` and `mono` used to alias the
+         * script, which quietly put handwriting on the announcement bar, VAT
+         * lines, spec labels and bylines; they point at Poppins now, so a
+         * `font-mono` label is upright and readable while keeping the
+         * uppercase, letter-spaced treatment that makes it read as a label.
+         *
+         * Adding a third face is the thing to resist. Two is the brand.
          */
         display: ['var(--font-display)', 'ui-serif', 'cursive'],
         sans: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: [
-          'var(--font-mono)',
-          'ui-monospace',
-          'SFMono-Regular',
-          'monospace'
-        ],
-        // Article prose only, so a meta-analysis reads like a paper rather than
-        // a poster. Everything outside `.prose` stays on the display face.
+        mono: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Article prose. Same face; the `.paper` stylesheet handles the rest.
         reading: [
-          'var(--font-sans)',
+          'var(--font-body)',
           'ui-sans-serif',
           'system-ui',
           'sans-serif'
-        ],
-        // Running text outside headings. See the note in layout.tsx.
-        body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        figures: [
-          'var(--font-mono)',
-          'ui-monospace',
-          'SFMono-Regular',
-          'monospace'
         ]
       }
     }
