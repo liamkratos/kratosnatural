@@ -38,9 +38,7 @@ export default function Hero() {
     <section
       className={cn(
         'relative isolate flex min-h-[calc(100svh-8rem)] flex-col justify-center overflow-hidden transition-[margin,border-radius] duration-300 ease-out',
-        scrolled
-          ? 'mx-3 rounded-[20px] sm:mx-5'
-          : 'mx-0 rounded-none sm:mx-0'
+        scrolled ? 'mx-3 rounded-[20px] sm:mx-5' : 'mx-0 rounded-none sm:mx-0'
       )}
     >
       <Image
@@ -75,10 +73,16 @@ export default function Hero() {
           Kratos Natural
         </h1>
 
-        <p
-          className="mx-auto mt-6 whitespace-nowrap font-display uppercase leading-tight text-white"
-          style={{fontSize: 'clamp(0.72rem, 2.8vw, 1.9rem)'}}
-        >
+        {/*
+         * The one line the whole brand rests on, so it has to be readable.
+         * It used to be the display script held on a single line by
+         * `whitespace-nowrap`, which forced it down to about 11px on a phone —
+         * a connected handwriting face at that size is decoration, not a
+         * sentence. It wraps now, sits on the mono face, and is large enough
+         * to actually read. The wordmark above it keeps the script; this is
+         * the line underneath that explains it.
+         */}
+        <p className="mx-auto mt-6 max-w-2xl text-balance font-mono text-sm uppercase leading-relaxed tracking-widest text-white sm:text-lg">
           {t('tagline')}
         </p>
 
@@ -93,7 +97,11 @@ export default function Hero() {
       </div>
 
       {/* Watched by the header to decide transparent vs solid. */}
-      <div id="hero-sentinel" aria-hidden="true" className="absolute bottom-0 h-px w-full" />
+      <div
+        id="hero-sentinel"
+        aria-hidden="true"
+        className="absolute bottom-0 h-px w-full"
+      />
     </section>
   );
 }

@@ -71,14 +71,32 @@ const config: Config = {
       },
       fontFamily: {
         /*
-         * One face across the whole site. `sans` and `mono` deliberately point
-         * at the same display font, so existing font-sans / font-mono classes
-         * keep their meaning and the decision can be reversed by editing these
-         * three lines rather than every component.
+         * The script is for things that are *looked at*: page titles, section
+         * headings, the wordmark, buttons and nav. Covered By Your Grace is a
+         * connected handwriting face — it carries the sketchbook character the
+         * brand is built on, and it is genuinely hard to read below about 20px,
+         * because a connected script does not give a word the outline an eye
+         * scans for.
+         *
+         * `sans` and `mono` used to be aliases for it, which quietly put the
+         * script on everything the reader has to *read*: the announcement bar,
+         * price notes, VAT lines, spec labels, bylines. Those are back on real
+         * faces now — Poppins for interface text, IBM Plex Mono for the small
+         * uppercase labels, where a true monospace reads like a specification
+         * rather than a signature.
+         *
+         * Headings keep the script by asking for it explicitly with
+         * `font-display`, so the character stays exactly where it earns its
+         * keep and nowhere it costs legibility.
          */
         display: ['var(--font-display)', 'ui-serif', 'cursive'],
-        sans: ['var(--font-display)', 'ui-serif', 'cursive'],
-        mono: ['var(--font-display)', 'ui-serif', 'cursive'],
+        sans: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: [
+          'var(--font-mono)',
+          'ui-monospace',
+          'SFMono-Regular',
+          'monospace'
+        ],
         // Article prose only, so a meta-analysis reads like a paper rather than
         // a poster. Everything outside `.prose` stays on the display face.
         reading: [

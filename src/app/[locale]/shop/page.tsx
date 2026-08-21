@@ -115,7 +115,6 @@ export default async function ShopPage({
           intro={t('guidesBody')}
           href="/guides"
           cta={t('guidesCta')}
-          className="mb-3 sm:mb-5"
         >
           {guides.map((guide) => (
             <GuideCard
@@ -135,7 +134,6 @@ export default async function ShopPage({
           intro={tGuides('empty')}
           href="/guides"
           cta={t('guidesCta')}
-          className="mb-3 sm:mb-5"
         >
           {[]}
         </CollectionSection>
