@@ -25,9 +25,19 @@ import AddToCart from '@/components/AddToCart';
  */
 export default function ProductCard({
   product,
-  price
+  price,
+  showDescription = true
 }: {
   product: Product;
+  /**
+   * The one-line description under the title.
+   *
+   * Off in a scrolling row, where the cards are narrow and the sentence wraps
+   * to two clamped lines that read as a fragment rather than a description.
+   * The title and the price are what a card at that size is for; the sentence
+   * is on the product page, one tap away.
+   */
+  showDescription?: boolean;
   price: PriceInfo | null;
 }) {
   const t = useTranslations('Shop');
@@ -102,9 +112,11 @@ export default function ProductCard({
           </Link>
         </h3>
 
-        <p className="mt-1 line-clamp-2 flex-1 text-base leading-snug text-black">
-          {product.description}
-        </p>
+        {showDescription && (
+          <p className="mt-1 line-clamp-2 flex-1 text-base leading-snug text-black">
+            {product.description}
+          </p>
+        )}
 
         <p className="mt-3 font-mono text-sm tabular-nums text-ink">
           {price ? (

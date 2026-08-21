@@ -345,3 +345,52 @@ these teachings ask for — gratitude, purpose, rest, community, restraint —
 turn out to be measurable, and the measurements are good.** That is a real
 finding, it is citable, and it is more persuasive than the overclaim, because
 a sceptic can check it.
+
+
+---
+
+## 11. Next guides to write
+
+### `zingeving-weten-wat-je-wilt` — "Weten wat je wilt"
+
+*Why not knowing exactly what you want is the thing keeping you stuck.*
+
+Liam's, and it has an unusually strong evidence base for a Soul guide — which
+makes it the right one to write first in that category, because it sets the
+standard the softer subjects will be measured against.
+
+**The literature to build it on** (verify each before writing; goal-setting
+research lives in psychology and management journals rather than PubMed, so it
+needs sourcing outside the usual search):
+
+- **Goal-setting theory** — specific, difficult goals outperform "do your
+  best". One of the most replicated findings in applied psychology.
+- **Implementation intentions** — "when X, I will do Y". Large meta-analytic
+  support for closing the gap between intention and action.
+- **Goal conflict and ambivalence** — competing goals predict *inaction*,
+  which is the mechanism behind "stuck" and the actual subject of the guide.
+- **Sudden gains** — see below. Relevant because clarity is often what precedes
+  a discontinuous change rather than a gradual one.
+
+**The honest shape:** vagueness is not a motivation problem, it is a
+specification problem. That claim is defensible from the literature, it is
+useful, and it does not need a single unsourced sentence.
+
+### On sudden, discontinuous change
+
+Worth recording because it changes how one Soul subject gets labelled.
+
+The experience of changing completely and quickly — rather than by degrees —
+has a real research literature under the name **sudden gains**: measured,
+replicated across conditions and populations, and indexed. Recent examples:
+**PMID 40288269**, **PMID 40955789**, **PMID 39786803**.
+
+Psychology also carries the term **quantum change** (Miller & C'de Baca) for
+the same phenomenon, though that sits in book and APA literature rather than
+PubMed and needs its own verification before being cited.
+
+**What this means practically:** a guide about rapid identity change does not
+have to be `[geloof]`. Framed as sudden gains — discontinuous change, what
+precedes it, what makes it hold — it can be `[gemeten]`. The physics metaphor
+in "quantum jumping" is the only part that cannot be sourced, and it is also
+the part the guide does not need.

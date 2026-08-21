@@ -5,6 +5,7 @@ import {buildMetadata} from '@/lib/seo';
 import {Link} from '@/i18n/navigation';
 import {getArticles} from '@/lib/mdx';
 import {getBestsellers} from '@/lib/products';
+import {getGuides} from '@/lib/guides';
 import {getPrice} from '@/lib/pricing';
 import Container from '@/components/Container';
 import Hero from '@/components/Hero';
@@ -12,6 +13,7 @@ import Reveal from '@/components/Reveal';
 import CollectionSection from '@/components/CollectionSection';
 import ArticleCard from '@/components/ArticleCard';
 import ProductCard from '@/components/ProductCard';
+import GuideCard from '@/components/GuideCard';
 import WhereNext from '@/components/WhereNext';
 import Reviews from '@/components/Reviews';
 
@@ -48,8 +50,15 @@ export default async function HomePage({
   const articles = (await getArticles(locale)).slice(0, 2);
   const tShop = await getTranslations('Shop');
   const bestsellers = await getBestsellers(locale, 4);
+
+  // A taste of the library. The row running off the edge is what says there is
+  // more, so it is capped rather than showing everything.
+  const guides = (await getGuides(locale)).slice(0, 8);
   const bestsellerPrices = await Promise.all(
     bestsellers.map((product) => getPrice(product.priceId))
+  );
+  const guidePrices = await Promise.all(
+    guides.map((guide) => getPrice(guide.priceId))
   );
 
   return (
@@ -107,6 +116,26 @@ export default async function HomePage({
               key={product.slug}
               product={product}
               price={bestsellerPrices[index]}
+              showDescription={false}
+            />
+          ))}
+        </CollectionSection>
+      )}
+
+      {/* Guides, in the same block as the products, because they are the
+          other half of what the shop sells rather than a lesser thing. */}
+      {guides.length > 0 && (
+        <CollectionSection
+          title={tShop('guidesTitle')}
+          intro={tShop('guidesBody')}
+          href="/guides"
+          cta={tShop('guidesCta')}
+        >
+          {guides.map((guide, index) => (
+            <GuideCard
+              key={guide.slug}
+              guide={guide}
+              price={guidePrices[index]}
             />
           ))}
         </CollectionSection>
