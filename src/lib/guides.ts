@@ -68,13 +68,20 @@ export const domains = [
   {id: 'brein', category: 'mind'},
   {id: 'slaap', category: 'mind'},
 
-  // SOUL — meaning, connection, and the practices around them.
+  // SOUL — meaning, belief, and the practices built on them.
   {id: 'zingeving', category: 'soul'},
+  {id: 'overtuigingen', category: 'soul'},
+  {id: 'dankbaarheid', category: 'soul'},
+  {id: 'meditatie', category: 'soul'},
+  {id: 'ademwerk', category: 'soul'},
+  {id: 'manifestatie', category: 'soul'},
+  {id: 'geloof', category: 'soul'},
 
   // BODY — the machine itself.
   {id: 'houding', category: 'body'},
   {id: 'kracht', category: 'body'},
   {id: 'metabool', category: 'body'},
+  {id: 'fascie', category: 'body'},
   {id: 'testen', category: 'body'},
 
   // NUTRITION — what goes in.
@@ -88,6 +95,10 @@ export const domains = [
 ] as const satisfies ReadonlyArray<{id: string; category: GuideCategoryId}>;
 
 export type DomainId = (typeof domains)[number]['id'];
+
+export function isGuideCategoryId(value: string): value is GuideCategoryId {
+  return (guideCategories as readonly string[]).includes(value);
+}
 
 export function isDomainId(value: string): value is DomainId {
   return domains.some((domain) => domain.id === value);
@@ -173,6 +184,17 @@ function parse(raw: string, slug: string, locale: Locale): Guide {
         `Guide ${locale}/${slug} is missing "${key}" in its frontmatter.`
       );
     }
+  }
+
+  /*
+   * Category pages live at /guides/{category}, the same shape as a guide's own
+   * URL. A guide slugged "body" would therefore shadow the Body page. Rather
+   * than resolving that at request time and hoping, it fails the build.
+   */
+  if (isGuideCategoryId(slug)) {
+    throw new Error(
+      `Guide ${locale}/${slug}: "${slug}" is a category name and would hide /guides/${slug}. Pick another slug.`
+    );
   }
 
   if (front.domain && !isDomainId(front.domain)) {
@@ -326,4 +348,22 @@ export async function readGuideFile(guide: Guide): Promise<Buffer> {
   // defensively: a stray "../" would otherwise read anything on disk.
   const name = path.basename(guide.file);
   return fs.readFile(path.join(FILES_ROOT, name));
+}
+
+/** One category's domains and guides, for its landing page. */
+export async function getCategory(
+  locale: Locale,
+  category: GuideCategoryId
+): Promise<Array<{id: DomainId; guides: Guide[]}>> {
+  const guides = await getGuides(locale);
+
+  return domains
+    .filter((domain) => domain.category === category)
+    .map((domain) => ({
+      id: domain.id as DomainId,
+      guides: guides
+        .filter((guide) => guide.domain === domain.id)
+        .sort((a, b) => Number(b.pillar ?? false) - Number(a.pillar ?? false))
+    }))
+    .filter((domain) => domain.guides.length > 0);
 }

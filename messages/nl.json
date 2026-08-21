@@ -216,7 +216,19 @@
     "dom_supplementen": "Supplementen",
     "dom_darmen": "Darmen & spijsvertering",
     "dom_licht": "Licht & circadiaan",
-    "dom_omgeving": "Omgeving & toxines"
+    "dom_omgeving": "Omgeving & toxines",
+    "dom_overtuigingen": "Overtuigingen",
+    "dom_dankbaarheid": "Dankbaarheid",
+    "dom_meditatie": "Meditatie",
+    "dom_ademwerk": "Ademwerk",
+    "dom_manifestatie": "Manifestatie & visualisatie",
+    "dom_geloof": "Geloof",
+    "dom_fascie": "Fascie",
+    "catIntro_mind": "Hoe je denkt, focust en herstelt van stress — en wat het bewijs zegt dat daar echt aan beweegt.",
+    "catIntro_soul": "Zingeving, geloof en de praktijken die erop gebouwd zijn. Waar gemeten en geloofd allebei benoemd worden als wat ze zijn.",
+    "catIntro_body": "De machine zelf: hoe hij in elkaar zit, hoe hij beweegt, en hoe je leest wat hij je vertelt.",
+    "catIntro_nutrition": "Wat er ingaat, en wat het gepubliceerde bewijs zegt dat het daar doet.",
+    "catIntro_environment": "Wat de wereld met je doet terwijl je niet oplet — licht, lucht, en alles waar je in leeft."
   },
   "About": {
     "title": "Onze missie",

@@ -26,8 +26,8 @@ BODY                          ← the shelf they browse
 | Category | Domains |
 |---|---|
 | **Mind** | Stress & zenuwstelsel · Brein & focus · Slaap |
-| **Soul** | Zingeving & doel |
-| **Body** | Houding & mechanica · Kracht & spiermassa · Metabole gezondheid · Bloedwaarden & testen |
+| **Soul** | Zingeving & doel · Overtuigingen · Dankbaarheid · Meditatie · Ademwerk · Manifestatie & visualisatie · Geloof |
+| **Body** | Houding & mechanica · Fascie · Kracht & spiermassa · Metabole gezondheid · Bloedwaarden & testen |
 | **Nutrition** | Voeding · Supplementen · Darmen & spijsvertering |
 | **Environment** | Licht & circadiaan · Omgeving & toxines |
 
@@ -173,8 +173,8 @@ from. The child guides are the same material narrowed to one problem each.
 7. **Wanneer je naar een professional moet** — the honest boundary
 8. **Bronnen** — every PMID
 
-**The labelling rule.** Every claim carries `[gemeten]`, `[model]` or
-`[onbekend]`. This is what lets the guides teach causal chains without
+**The labelling rule.** Every claim carries `[gemeten]`, `[model]`,
+`[onbekend]` or `[geloof]`. This is what lets the guides teach causal chains without
 overclaiming: individual links are published — the hip-abductor → pelvic-drop
 link is experimentally causal, not merely correlated — while the full chain in
 one person is a model the reader tests on themselves. Without the labels a
@@ -287,3 +287,61 @@ On top of that, **section 6 of every guide** is the referral boundary in that
 guide's own terms. Scoliosis, hernia and acute pain get referred out, never
 protocolised. The blanket notice covers the site; section 6 covers the specific
 thing the reader came for.
+
+
+---
+
+## 10. Soul, and how it stays honest
+
+Soul is the category where the research standard is most at risk, and also the
+one with the most to gain from keeping it. The rest of the library buys the
+credibility that makes anything said here worth reading; spending that
+credibility on one unsourced sentence is a bad trade.
+
+The way through is not to soften the standard. It is to add a fourth label.
+
+### `[geloof]` — the fourth label
+
+The existing three all make claims *about the world* at different strengths of
+evidence. A belief is a different kind of statement, and pretending otherwise
+is what damages both sides of it:
+
+| Label | Means |
+|---|---|
+| `[gemeten]` | Published, cited, checkable. |
+| `[model]` | Follows from measured parts; the whole is not itself tested. |
+| `[onbekend]` | Claimed by others, not supported — or studied and found nothing. |
+| **`[geloof]`** | **Stated as conviction, not as evidence. Held, not proven.** |
+
+Marking something `[geloof]` is not a weaker version of `[gemeten]`. It is an
+honest declaration that this is not the kind of claim a study settles. A reader
+who disagrees with the belief can still trust every `[gemeten]` line on the
+page — which is precisely what is lost if the two are blended.
+
+### Where each topic actually stands
+
+Written down so a guide starts from the truth rather than discovering it late.
+
+| Topic | Standing |
+|---|---|
+| **Purpose & meaning** | Strong. Purpose in life is associated with all-cause mortality across large cohorts and meta-analysis. |
+| **Gratitude** | Real RCT literature on well-being. Effects are genuine and modest — report the size, not just the direction. |
+| **Meditation** | Large literature, including Cochrane-level reviews. Real, generally modest, and heavily dependent on what was measured. |
+| **Breathwork** | Slow breathing and vagal tone / HRV is well-studied physiology. **The growth-hormone claim is specific and needs its own sources before it is written**, not assumed. |
+| **Beliefs** | Maps onto published constructs: self-efficacy, mindset, expectancy and placebo research. Defensible when framed that way. |
+| **Fascia** | Real tissue, real mechanics, measured force transmission at a distance. "Release and reset" is a therapy claim and a weaker one — separate the two. |
+| **Manifestation** | Split it. Mental rehearsal and motor imagery have a real sports-psychology literature `[gemeten]`. "The universe delivers" is `[geloof]`. Same guide, different labels. |
+| **Quantum jumping** | No published basis, and the word "quantum" is borrowed from physics for something that is not physics. Either `[geloof]`, or reframe around identity-based change, which does have literature. |
+| **Jehovah** | Not a scientific claim and cannot be made one. But **religion and health is a real research field** — service attendance and mortality, religious practice and well-being — so the honest move is to cite research *about practice*, and mark the theology `[geloof]`. |
+
+### The line that must not blur
+
+Do not write that studies prove a theological claim. They cannot, and a reader
+who knows the literature will stop trusting the rest of the library the moment
+they see it.
+
+What is true, defensible and still says what you want to say: **practices that
+these teachings ask for — gratitude, purpose, rest, community, restraint —
+turn out to be measurable, and the measurements are good.** That is a real
+finding, it is citable, and it is more persuasive than the overclaim, because
+a sceptic can check it.

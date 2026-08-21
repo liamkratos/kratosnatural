@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {isLocale, routing} from '@/i18n/routing';
+import {Link} from '@/i18n/navigation';
 import {getGuidesByCategory, getUngroupedGuides} from '@/lib/guides';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
@@ -78,12 +79,16 @@ export default async function GuidesPage({
           they are on the right shelf. */}
       {categories.map((category) => (
         <section key={category.id} className="mt-24 first:mt-16">
-          <h2
-            className="quoted text-balance font-display font-bold uppercase leading-tight"
-            style={{fontSize: 'clamp(2.25rem, 7vw, 4.5rem)'}}
-          >
-            {t(`cat_${category.id}`)}
-          </h2>
+          {/* The heading is the way in to the category's own page, which is
+              where the whole shelf lives rather than the taste of it here. */}
+          <Link href={`/guides/${category.id}`} className="group inline-block">
+            <h2
+              className="quoted text-balance font-display font-bold uppercase leading-tight transition-colors duration-200 group-hover:text-olive"
+              style={{fontSize: 'clamp(2.25rem, 7vw, 4.5rem)'}}
+            >
+              {t(`cat_${category.id}`)}
+            </h2>
+          </Link>
 
           {category.domains.map((domain) => (
             <div key={domain.id} className="mt-14">

@@ -2,15 +2,24 @@ import type {Metadata} from 'next';
 import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
-import {isLocale} from '@/i18n/routing';
+import {isLocale, locales, type Locale} from '@/i18n/routing';
 import {Link} from '@/i18n/navigation';
-import {getGuide, getAllGuideParams} from '@/lib/guides';
+import {
+  getGuide,
+  getAllGuideParams,
+  getCategory,
+  guideCategories,
+  isGuideCategoryId,
+  type GuideCategoryId
+} from '@/lib/guides';
 import {isSellable} from '@/lib/markets';
 import {getPrice} from '@/lib/pricing';
 import {buildMetadata} from '@/lib/seo';
 import {formatPrice} from '@/lib/utils';
 import Container from '@/components/Container';
 import Card from '@/components/Card';
+import PageHeader from '@/components/PageHeader';
+import GuideCard from '@/components/GuideCard';
 import MedicalNotice from '@/components/MedicalNotice';
 import Reveal from '@/components/Reveal';
 
@@ -22,13 +31,29 @@ type PageParams = {
 };
 
 export async function generateStaticParams() {
-  return getAllGuideParams();
+  const guides = await getAllGuideParams();
+  // Category landing pages share this route, so they are pre-rendered here too.
+  const categories = locales.flatMap((locale) =>
+    guideCategories.map((slug) => ({locale, slug}))
+  );
+  return [...guides, ...categories];
 }
 
 export async function generateMetadata({
   params: {locale, slug}
 }: PageParams): Promise<Metadata> {
   if (!isLocale(locale)) notFound();
+
+  if (isGuideCategoryId(slug)) {
+    const t = await getTranslations({locale, namespace: 'Guides'});
+    return buildMetadata({
+      locale,
+      title: t(`cat_${slug}`),
+      description: t(`catIntro_${slug}`),
+      pathname: `/guides/${slug}`
+    });
+  }
+
   const guide = await getGuide(locale, slug);
   if (!guide) return {};
 
@@ -47,6 +72,16 @@ export default async function GuidePage({
 }: PageParams) {
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
+
+  /*
+   * One route, two kinds of page. A category and a guide both sit directly
+   * under /guides, and the category is checked first because `parse` refuses
+   * to build a guide whose slug is a category name — so this branch can never
+   * be shadowed by content.
+   */
+  if (isGuideCategoryId(slug)) {
+    return <CategoryPage locale={locale} category={slug} />;
+  }
 
   const guide = await getGuide(locale, slug);
   if (!guide) notFound();
@@ -228,6 +263,66 @@ export default async function GuidePage({
       <Reveal delay={180}>
         <MedicalNotice className="mt-6" />
       </Reveal>
+    </Container>
+  );
+}
+
+/**
+ * A category landing page: Mind, Soul, Body, Nutrition or Environment.
+ *
+ * Shares the `/guides/[slug]` route with the guide pages. That keeps the URL
+ * short — /guides/body rather than /guides/category/body — and the build-time
+ * guard in `guides.ts` is what makes sharing it safe.
+ */
+async function CategoryPage({
+  locale,
+  category
+}: {
+  locale: Locale;
+  category: GuideCategoryId;
+}) {
+  const t = await getTranslations('Guides');
+  const domainGroups = await getCategory(locale, category);
+
+  const prices = new Map(
+    await Promise.all(
+      domainGroups
+        .flatMap((group) => group.guides)
+        .map(async (g) => [g.slug, await getPrice(g.priceId)] as const)
+    )
+  );
+
+  return (
+    <Container className="max-w-6xl py-24">
+      <PageHeader
+        title={t(`cat_${category}`)}
+        intro={t(`catIntro_${category}`)}
+      />
+
+      {domainGroups.length === 0 ? (
+        <p className="mt-16 text-xl text-black">{t('empty')}</p>
+      ) : (
+        domainGroups.map((group) => (
+          <section key={group.id} className="mt-20 first:mt-10">
+            <h2 className="quoted font-display text-3xl font-bold uppercase leading-tight sm:text-4xl">
+              {t(`dom_${group.id}`)}
+            </h2>
+
+            <div className="mt-10 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {group.guides.map((guide, index) => (
+                <Reveal key={guide.slug} delay={Math.min(index * 60, 240)}>
+                  <GuideCard
+                    guide={guide}
+                    price={prices.get(guide.slug) ?? null}
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        ))
+      )}
+
+      <MedicalNotice className="mt-20" />
     </Container>
   );
 }

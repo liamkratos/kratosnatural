@@ -216,7 +216,19 @@
     "dom_supplementen": "Supplements",
     "dom_darmen": "Gut & digestion",
     "dom_licht": "Light & circadian",
-    "dom_omgeving": "Environment & toxins"
+    "dom_omgeving": "Environment & toxins",
+    "dom_overtuigingen": "Beliefs",
+    "dom_dankbaarheid": "Gratitude",
+    "dom_meditatie": "Meditation",
+    "dom_ademwerk": "Breathwork",
+    "dom_manifestatie": "Manifestation & visualisation",
+    "dom_geloof": "Faith",
+    "dom_fascie": "Fascia",
+    "catIntro_mind": "How you think, focus and recover from stress — and what the evidence says actually moves those.",
+    "catIntro_soul": "Meaning, belief and the practices built on them. Where what is measured and what is held are both named as what they are.",
+    "catIntro_body": "The machine itself: how it is built, how it moves, and how to read what it is telling you.",
+    "catIntro_nutrition": "What goes in, and what the published evidence says it does once it is there.",
+    "catIntro_environment": "What the world does to you while you are not looking — light, air, and everything you live inside."
   },
   "About": {
     "title": "Our mission",

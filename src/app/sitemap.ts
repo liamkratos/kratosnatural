@@ -2,7 +2,7 @@ import type {MetadataRoute} from 'next';
 import {locales, localeDomains, type Locale} from '@/i18n/routing';
 import {getArticles} from '@/lib/mdx';
 import {getProducts} from '@/lib/products';
-import {getGuides} from '@/lib/guides';
+import {getGuides, guideCategories} from '@/lib/guides';
 import {policySlugs} from '@/lib/policies';
 
 /**
@@ -51,6 +51,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {path: '/', priority: 1, frequency: CHANGE.home},
     {path: '/shop', priority: 0.9, frequency: CHANGE.listing},
     {path: '/guides', priority: 0.9, frequency: CHANGE.listing},
+    // Category landing pages exist in every language at the same path, so they
+    // belong with the shared entries rather than the per-slug ones below.
+    ...guideCategories.map((category) => ({
+      path: `/guides/${category}`,
+      priority: 0.7,
+      frequency: CHANGE.listing
+    })),
     {path: '/articles', priority: 0.9, frequency: CHANGE.listing},
     {path: '/plan', priority: 0.7, frequency: CHANGE.static},
     {path: '/about', priority: 0.6, frequency: CHANGE.static},
