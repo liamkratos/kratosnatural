@@ -20,6 +20,7 @@ Onderdeel van *De Houdingsbijbel*
 | **[gemeten]** | Direct onderzocht en gepubliceerd. Bron met PMID. |
 | **[model]** | Redenering die volgt uit gemeten schakels, maar zelf niet als geheel getest. |
 | **[onbekend]** | Wordt vaak beweerd, is niet onderzocht of onderzoek vond niets. |
+| **[ervaring]** | Liam heeft dit zelf gedaan. Eén persoon, eerlijk gelabeld — geen bewijs dat het bij jou werkt. |
 
 ---
 

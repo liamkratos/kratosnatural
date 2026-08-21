@@ -84,15 +84,27 @@ Krealio.
 
 **The decision:**
 
-- **Kratos Natural is the €1B vehicle.** Everything in sections 3–8 is about
-  this. It is the only one of the three with a category big enough.
+- **Kratos Natural is the €1B vehicle, and it is about longevity and health.**
+  Everything in sections 3–8 is about this. It is the only one of the three
+  with a category big enough.
+
+  Its goal is the manifest's: **make the knowledge free and reachable by
+  everyone**, and eventually have it taught from a young age. The shop exists
+  to fund that and to prove the standard is real, not the other way round.
+
+  Soul belongs here despite sounding like it belongs elsewhere, because purpose,
+  gratitude and meditation are **longevity findings** — purpose in life and
+  all-cause mortality is one of the stronger results in the whole library.
+  Faith does not, and that is the line.
 
   It also carries one constraint the others do not: **everything sold here
   traces to a published source.** That is the moat, and it is why faith guides
   are not sold here — not because they are worth less, but because a shelf
   that cannot meet the standard, standing beside shelves that do, teaches a
   sceptic to doubt both.
-- **Liam Kratos is the person, and the apex offer.** A person is more
+- **Liam Kratos is the complete life change.** Kratos Natural changes what
+  somebody knows about their health; this changes a life, and that is a larger
+  and more personal claim that only a person can make. A person is more
   followable than a company, and a person is also allowed to hold convictions
   a research brand is not. So this is where the faith guides live, where the
   essays live, and where coaching lives.

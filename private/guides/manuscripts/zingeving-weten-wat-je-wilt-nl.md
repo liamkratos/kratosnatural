@@ -24,6 +24,7 @@ is geen bewijs van afwezigheid.
 | **[model]** | Volgt uit gemeten onderdelen; het geheel is niet als geheel getest. |
 | **[onbekend]** | Wordt beweerd, niet ondersteund — of onderzocht en niets gevonden. |
 | **[geloof]** | Overtuiging, geen bewijs. Gehouden, niet bewezen. |
+| **[ervaring]** | Liam heeft dit zelf gedaan. Eén persoon, eerlijk gelabeld — geen bewijs dat het bij jou werkt. |
 
 ---
 
@@ -174,7 +175,22 @@ noemen — en precies waar het bewijs afslaat.** Het zien van wat je wilt doet
 iets. Het zien van wat je wilt *plus* wat je tegenhoudt doet meer. Zie
 hoofdstuk 6.
 
-### 5.3 Acht weken
+#### 5.3 Dit protocol is zelf gelopen
+
+Het achtwekenschema hieronder is niet uit de literatuur afgeleid en daarna
+opgeschreven. Het is wat er overbleef nadat ik het zelf had gedaan: de
+literatuur zegt wat in het algemeen waar is, doen zegt wat er op een dinsdag
+werkelijk lukt **[ervaring]**.
+
+Wat dat wél betekent: de stappen zijn uitvoerbaar, de volgorde is getest op één
+persoon, en de plekken waar het misgaat staan erin omdat ik ze ben
+tegengekomen.
+
+Wat het **niet** betekent: bewijs dat het bij jou werkt. Daarvoor staan de
+bronnen in hoofdstuk 8, en die gaan over de mechanismen — niet over dit
+schema.
+
+## 5.3 Acht weken
 
 | Week | Wat |
 |---|---|

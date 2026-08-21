@@ -15,13 +15,14 @@ Onderdeel van *De Houdingsbijbel*
 
 ## Hoe je deze gids leest
 
-Bij elke uitspraak staat wat voor soort uitspraak het is. Drie soorten:
+Bij elke uitspraak staat wat voor soort uitspraak het is. Vier soorten:
 
 | Label | Betekenis |
 |---|---|
 | **[gemeten]** | Direct onderzocht en gepubliceerd. Bron met PMID. |
 | **[model]** | Redenering die volgt uit gemeten schakels, maar zelf niet als geheel getest. |
 | **[onbekend]** | Wordt vaak beweerd, is niet onderzocht of onderzoek vond niets. |
+| **[ervaring]** | Liam heeft dit zelf gedaan. Eén persoon, eerlijk gelabeld — geen bewijs dat het bij jou werkt. |
 
 Dat is geen slag om de arm. Het is precies wat een ketting bruikbaar maakt: je
 weet welke schakels vaststaan en welke je bij jezelf moet controleren in plaats

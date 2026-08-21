@@ -311,7 +311,8 @@ is what damages both sides of it:
 | `[gemeten]` | Published, cited, checkable. |
 | `[model]` | Follows from measured parts; the whole is not itself tested. |
 | `[onbekend]` | Claimed by others, not supported — or studied and found nothing. |
-| **`[geloof]`** | **Stated as conviction, not as evidence. Held, not proven.** |
+| `[geloof]` | Stated as conviction, not as evidence. Held, not proven. |
+| **`[ervaring]`** | **Liam ran this himself and it worked. One person, honestly labelled.** |
 
 Marking something `[geloof]` is not a weaker version of `[gemeten]`. It is an
 honest declaration that this is not the kind of claim a study settles. A reader
@@ -499,3 +500,44 @@ against its obstacle.
 - Ademwerk and the growth-hormone claim (needs its own sources first — §10)
 - Rapid identity change, framed as sudden gains (§11)
 - Dankbaarheid, meditatie — both have real literature, neither written yet
+
+
+---
+
+## 14. `[ervaring]` — the fifth label
+
+Every protocol in this library has been run by the person who wrote it. That is
+not a marketing line, it is how they got designed: the research says what is
+true in general, and doing it says what is actually workable on a Tuesday.
+
+Those are two different kinds of backing, and merging them wastes both.
+
+- Research alone produces guides that are correct and unusable — the shape of
+  most academic health writing.
+- Experience alone produces guides that are vivid and unfalsifiable — the shape
+  of most of the internet.
+
+**`[ervaring]` is how both get said without either pretending to be the other.**
+
+| What it is | What it is not |
+|---|---|
+| One person, named, who did the thing | Evidence that it works for anyone else |
+| The reason the protocol is practical | A reason to believe the claim |
+| Honest, checkable against a real life | A substitute for `[gemeten]` |
+
+### The rule
+
+`[ervaring]` never carries a claim about **outcomes in other people**. It
+carries claims about **doing**: this is what it was like, this is where it was
+hard, this is what I changed on week three. Those are worth a great deal and
+cost nothing in credibility, because nobody has to take an n=1 as proof of
+anything except that a person did it.
+
+A sentence like "this fixed my sleep" is `[ervaring]`. A sentence like "this
+fixes sleep" needs `[gemeten]` or it does not go in.
+
+### Why this is worth the extra label
+
+Most brands pick one lane: hide behind studies, or only tell the story. Doing
+both, marked, is unusual enough to be a reason to buy — and it happens to be
+the truth about how these guides are made.
