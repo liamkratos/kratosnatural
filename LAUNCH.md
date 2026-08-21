@@ -104,8 +104,11 @@ required — forgetting either fails closed, which is the point.
 - [ ] 🔴 👤 **Write Wave 1**: `licht`, `supplementen`, `testen`. These first
       because the published infraroodlicht and nattokinase analyses already back
       them, so they can ship *honestly* fastest.
-- [ ] 🔴 One complete reference guide, written end to end, as the quality bar
-      everything else is measured against. **I can draft this — say the word.**
+- [x] **Three guides written**, manuscripts in `private/guides/manuscripts/`:
+      Eenzijdige dominantie (17 sources), Naar voren hangende schouders (11),
+      Weten wat je wilt (9). Every DOI and PMID resolved against an API.
+      **Next: Liam takes them to Canva for covers and layout, rewrites in his
+      own voice, returns PDFs in both languages.**
 - [ ] 🔴 👤 Stripe price per guide. One each, `tax_behavior: inclusive`.
 - [ ] 🔴 👤 Cover images in `public/guides/`. The template currently points at
       `/moss.jpg` so the page renders.
@@ -129,12 +132,10 @@ required — forgetting either fails closed, which is the point.
 
 ### Site fixes
 
-- [ ] 🟡 **Dead images in `public/`**: `anti-wrinkle.png` (2.2MB),
-      `anti-wrinkle-protocol.png` (1.5MB), `stream.jpg` (2.6MB),
-      `swiss-view.jpg` (1.7MB) are not referenced anywhere. Delete or use.
-- [ ] 🟡 **Oversized images.** `slow-down-aging.png` is 2.6MB and renders in the
-      homepage slider. Convert to WebP and resize — this is the single biggest
-      page-weight win available.
+- [x] **Images cleaned.** Four unreferenced files deleted, the homepage PNG
+      converted; `public/` went from ~12MB to 4.7MB. Note the earlier claim that
+      this was a page-weight win was wrong — `next/image` already resized and
+      served WebP to visitors. The saving is repository and deploy size.
 - [ ] 🟡 Apex vs www: Vercel serves `www`, canonical tags name the apex. Pick one.
 - [ ] 🟡 👤 Google Business Profile — the reviews block links to it and the star
       ratings in search come from there, not from the site.
@@ -252,29 +253,149 @@ engine, no launch calendar, no percentage of weekly attention.
 
 ---
 
-## 5. The weekly rhythm
+## 5. Monday 24 August — the cold start
 
-The plan needs 18 months of consistent publishing through near-zero traction.
-That only survives if it is a schedule, not a mood.
+The schedule starts Monday. Today is Friday 21st; tomorrow is the only working
+day before it, because Sunday is a rest day and that is not negotiable in week
+one of all weeks.
 
-| Day | Block | What |
-|---|---|---|
-| **Mon** | Deep work | Write. One guide section or one article. No admin. |
-| **Tue** | Film | Everything for the week, one session. Batch or it will not happen. |
-| **Wed** | Coaching | All client calls in one day. Protects the rest of the week. |
-| **Thu** | Edit + publish | YouTube long-form out. Cut the shorts from it. |
-| **Fri** | Kratos Weekly | Newsletter, without exception. Then admin and orders. |
-| **Sat** | Shorts + Krealio | Schedule the week's shorts. Krealio only if it is fun. |
-| **Sun** | Off | Genuinely off. The plan is nine years long. |
+### The problem with week 1
 
-**Monthly:** review the one metric for the current phase (right now: **email
-subscribers**, not revenue). **Quarterly:** re-read the manifest and check the
-work still matches it.
+The steady-state week films on Tuesday. But reels publish from **Monday**, and
+Tuesday's footage does not exist yet — so week one has a hole in it that every
+later week does not.
 
-- [ ] 🟡 👤 Commit to this, or edit it into something you will actually hold.
-      A schedule you ignore is worse than none.
+Two ways through. Pick one tomorrow morning, not Monday night.
+
+**Option A — front-load Saturday.** Film Monday and Tuesday's reels tomorrow,
+alongside writing the blog. Honest assessment: that is a heavy day, and the
+blog is the thing that will suffer.
+
+**Option B — reels start Wednesday in week 1.** Blog goes out Monday as
+planned, research Thursday, newsletter Friday. Filming happens Tuesday as it
+always will, and reels begin Wednesday. Week one publishes 4 reels per brand
+instead of 6 and 5.
+
+**Recommended: B.** The three fixed deadlines all hold, the schedule you
+designed starts exactly as designed, and nothing is missed except three reels
+in a week nobody is watching yet. Option A trades the blog — the one piece with
+a real publication date — for volume on a channel with no audience.
+
+### What has to be true by end of Saturday
+
+**Must, or Monday does not happen:**
+
+- [ ] 🔴 👤 **Monday's blog written.** This is the schedule's own Saturday task
+      and the only thing with a Monday deadline.
+- [ ] 🔴 👤 **Accounts exist and are reachable**: TikTok, Instagram, Facebook
+      and X, for both brands. Nothing can be scheduled into an account that
+      does not exist.
+- [ ] 🔴 👤 **A scheduler chosen and connected.** Thursday only works as one
+      session. Four separate apps is four sessions, and that is the version
+      that quietly stops happening.
+
+**Should, or Tuesday's film day is wasted:**
+
+- [ ] 🟡 👤 **Eleven reel topics decided**, written down. Turning up to film
+      without a list is how a filming day becomes a filming afternoon and then
+      four videos.
+- [ ] 🟡 👤 **Filming setup fixed in place** — camera, light, sound, framing.
+      Eleven videos in a day only works if setup time is zero.
+- [ ] 🟡 👤 **Wednesday's research article topic picked**, so Monday's writing
+      day starts with a subject rather than a search.
+
+**Not needed Monday — do not let these block the start:**
+
+The shop being sellable. Guide prices, guide PDFs, covers, salt lamp specs.
+None of that gates the content engine, and the plan is explicit that the
+audience comes before the revenue. Publishing starts Monday whether or not
+anything can be bought.
 
 ---
+
+## 5. The week
+
+Fixed deadlines, one filming day, one scheduling session. Nothing is published
+by hand on the day it goes out — that is the only version of this that survives
+past month two.
+
+### The deadlines
+
+| Publishes | Must be finished |
+|---|---|
+| Newsletter — **Friday** | Thursday |
+| Research article — **Thursday** | Wednesday |
+| Liam Kratos blog — **Monday** | Saturday |
+
+### The week
+
+| Day | Deep work | Goes out |
+|---|---|---|
+| **Mon** | Write the research article | Blog (written Sat) · reels · X |
+| **Tue** | **FILM DAY** — all 11 videos, one session | reels · X |
+| **Wed** | Edit and cut. **Research article done.** | reels · X |
+| **Thu** | Newsletter written. **Schedule all of next week.** | Research article · reels · X |
+| **Fri** | Coaching, admin, orders | **Newsletter** · reels · X |
+| **Sat** | Write Monday's blog | reels · X |
+| **Sun** | **Rest. Genuinely.** | — |
+
+**Reels:** Liam Kratos 6×/week (Mon–Sat), Kratos Natural 5×/week (Mon–Fri).
+Same videos in both languages. X on the same cadence, no testing. Reels also to
+Facebook.
+
+### The two rules that make it possible
+
+**1. Film once, schedule once.** Tuesday is the only camera day; Thursday is
+the only scheduling session. Everything else runs from a queue. Publishing by
+hand is ninety-odd small decisions a week, and that — not the filming — is what
+kills content calendars.
+
+**2. Test in Dutch only.** Two or three hooks per video, TikTok first, Dutch
+only. The winner gets cut in both languages and goes everywhere else.
+
+Testing both languages means 55 TikTok uploads a week instead of 28, to answer
+a question you already have: a hook that wins in Dutch wins in English, because
+what is being tested is the *hook*, not the translation.
+
+### What this costs
+
+| | Per week | Per year |
+|---|---|---|
+| Videos made | 11 | **572** |
+| Upload actions | ~94 | ~4,900 |
+| Research articles | 1 | 52 |
+| Blogs | 1 | 52 |
+| Newsletters | 1 | 52 |
+
+This is a full-time content operation, run by one person, alongside coaching, a
+shop, and writing a hundred and sixty guides. It is achievable for a while and
+not achievable indefinitely. The marketing plan puts a video producer as the
+first hire; this table is the argument for making that hire earlier than
+planned rather than later.
+
+### If it cracks, cut in this order
+
+Decided now, while it is calm, so it is not decided at 11pm on a Thursday in
+month four.
+
+1. **Kratos Natural reels 5 → 3.** Research articles are that brand's engine;
+   reels amplify them.
+2. **X.** Lowest reach per unit of effort on the list.
+3. **Facebook.** Keep only while it returns something measurable.
+4. **Liam Kratos reels 6 → 4.**
+
+**Never cut, in increasing order of stubbornness:** the newsletter, the
+research article, Sunday.
+
+The newsletter is the only audience you own — everything else is rented from a
+company that can change its mind. The research article is the moat. And a rest
+day dropped "just this week" is how a nine-year plan becomes an eighteen-month
+one.
+
+- [ ] 🟡 👤 Pick a scheduler that posts to TikTok, Instagram, Facebook and X in
+      one pass. Thursday only works if it is one session, not four.
+- [ ] 🟡 👤 Decide the filming setup before the first Tuesday — 11 videos in a
+      day only works with the camera already in place.
 
 ## 6. What I can start on immediately
 

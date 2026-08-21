@@ -1,0 +1,182 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kratos Natural//Weekritme//NL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Kratos — weekritme
+X-WR-TIMEZONE:Europe/Amsterdam
+BEGIN:VTIMEZONE
+TZID:Europe/Amsterdam
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:kn-mon-blog@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260824T080000
+DTEND;TZID=Europe/Amsterdam:20260824T081500
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:📤 Blog live (Liam Kratos)
+DESCRIPTION:Geschreven op zaterdag. Controleren dat hij online staat.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:📤 Blog live (Liam Kratos)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-mon-write@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260824T090000
+DTEND;TZID=Europe/Amsterdam:20260824T120000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:✍️ Onderzoeksartikel schrijven
+DESCRIPTION:Deadline woensdag. Begin met het onderwerp dat zaterdag is gekozen.
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:✍️ Onderzoeksartikel schrijven
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-tue-film@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260825T090000
+DTEND;TZID=Europe/Amsterdam:20260825T170000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:🎬 FILMDAG — 11 video's
+DESCRIPTION:6 Liam Kratos + 5 Kratos Natural.\nSetup staat al klaar.\n2-3 hooks per video voor de TikTok-test.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:🎬 FILMDAG — 11 video's
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-wed-edit@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260826T090000
+DTEND;TZID=Europe/Amsterdam:20260826T130000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:✂️ Monteren + artikel AF
+DESCRIPTION:DEADLINE: onderzoeksartikel klaar voor donderdag.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:✂️ Monteren + artikel AF
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-thu-live@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260827T080000
+DTEND;TZID=Europe/Amsterdam:20260827T081500
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:📤 Onderzoek live
+DESCRIPTION:Publiceren op kratosnatural.nl
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:📤 Onderzoek live
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-thu-news@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260827T090000
+DTEND;TZID=Europe/Amsterdam:20260827T120000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:✍️ Nieuwsbrief schrijven
+DESCRIPTION:DEADLINE: Kratos Weekly gaat vrijdag uit.
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:✍️ Nieuwsbrief schrijven
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-thu-sched@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260827T130000
+DTEND;TZID=Europe/Amsterdam:20260827T150000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:📅 Hele volgende week inplannen
+DESCRIPTION:Eén sessie, alle kanalen: TikTok, Instagram, Facebook, X.\nBeide merken, beide talen.\nDit is de enige inplanmoment van de week.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:📅 Hele volgende week inplannen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-fri-news@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260828T080000
+DTEND;TZID=Europe/Amsterdam:20260828T081500
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:📤 Kratos Weekly gaat uit
+DESCRIPTION:Elke vrijdag. Zonder uitzondering.
+BEGIN:VALARM
+TRIGGER:-PT0M
+ACTION:DISPLAY
+DESCRIPTION:📤 Kratos Weekly gaat uit
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-fri-admin@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260828T090000
+DTEND;TZID=Europe/Amsterdam:20260828T120000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Coaching / admin / bestellingen
+DESCRIPTION:
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-sat-blog@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260829T090000
+DTEND;TZID=Europe/Amsterdam:20260829T120000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:✍️ Blog van maandag schrijven
+DESCRIPTION:DEADLINE: gaat maandag 08:00 live.
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:✍️ Blog van maandag schrijven
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-sun-rest@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260831
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:🌿 RUSTDAG
+DESCRIPTION:Niet onderhandelbaar. Een rustdag die "even" wordt overgeslagen is hoe een plan van negen jaar er achttien maanden wordt.
+END:VEVENT
+BEGIN:VEVENT
+UID:kn-coldstart@kratosnatural.nl
+DTSTAMP:20260821T120000Z
+DTSTART;TZID=Europe/Amsterdam:20260822T090000
+DTEND;TZID=Europe/Amsterdam:20260822T170000
+SUMMARY:🚀 Startdag — alles klaar voor maandag
+DESCRIPTION:MOET af vandaag:\n1. Blog van maandag schrijven\n2. Accounts: TikTok, Instagram, Facebook, X — beide merken\n3. Scheduler kiezen en koppelen\n\nZOU MOETEN:\n4. 11 reel-onderwerpen opschrijven\n5. Filmsetup neerzetten\n6. Onderwerp onderzoeksartikel kiezen\n\nNIET nodig voor maandag: shop verkoopbaar, gidsprijzen, PDF's, lampspecs.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Startdag
+END:VALARM
+END:VEVENT
+END:VCALENDAR
